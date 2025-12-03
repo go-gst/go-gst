@@ -371,9 +371,12 @@ func main() {
 	)
 }
 
-var borrowedTypes = []string{
-	"Gst-1.MiniObject", "Gst-1.Structure", "Gst-1.Caps", "Gst-1.Buffer", "Gst-1.BufferList", "Gst-1.Memory", "Gst-1.Message", "Gst-1.Query", "Gst-1.Sample",
-}
+// borrowedTypes are the types that need to be marked as borrowed when returned as transfer none because their reference count
+// is tied to their writability
+var borrowedTypes = append([]string{
+	"Gst-1.MiniObject",
+	"Gst-1.Structure",
+}, miniObjectExtenders...)
 
 // gst.MiniObject extenders must not take a ref on these methods, or they are made readonly
 func MiniObjectExtenderBorrows() gir.Preprocessor {
@@ -401,8 +404,22 @@ func MiniObjectExtenderBorrows() gir.Preprocessor {
 	})
 }
 
+// miniObjectExtenders are gst.MiniObject derived types that need same ref/unref handling as MiniObject.
+//
+// find these with:
+// * https://gitlab.freedesktop.org/search?search=GST_DEFINE_MINI_OBJECT_TYPE&nav_source=navbar&project_id=1357&group_id=1152&search_code=true&repository_ref=main
+// * https://gitlab.freedesktop.org/search?group_id=1152&nav_source=navbar&project_id=1398&repository_ref=main&search=mini_object_wrapper&search_code=true
 var miniObjectExtenders = []string{
-	"Gst-1.Structure", "Gst-1.Caps", "Gst-1.Toc", "Gst-1.Buffer", "Gst-1.BufferList", "Gst-1.Memory", "Gst-1.Message", "Gst-1.Query", "Gst-1.Sample",
+	"Gst-1.Buffer",
+	"Gst-1.BufferList",
+	"Gst-1.Caps",
+	"Gst-1.Memory",
+	"Gst-1.Message",
+	"Gst-1.Query",
+	"Gst-1.Sample",
+	"Gst-1.TagList",
+	"Gst-1.Toc",
+	"Gst-1.TocEntry",
 }
 
 // these are implemented as go function to proxy the type casting
