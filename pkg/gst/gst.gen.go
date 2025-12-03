@@ -46093,19 +46093,13 @@ func UnsafeStructureFromGlibBorrow(p unsafe.Pointer) *Structure {
 
 // UnsafeStructureFromGlibNone is used to convert raw C.GstStructure pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeStructureFromGlibNone(p unsafe.Pointer) *Structure {
-	miniObjectRef(unsafe.Pointer(p))
 	wrapped := UnsafeStructureFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.structure,
-		func (intern *structure) {
-			miniObjectUnref(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
+	return wrapped.Copy() // create an owned copy
+
 }
 
 // UnsafeStructureFromGlibFull is used to convert raw C.GstStructure pointers to go while taking ownership. This is used by the bindings internally.
@@ -46117,24 +46111,17 @@ func UnsafeStructureFromGlibFull(p unsafe.Pointer) *Structure {
 	runtime.SetFinalizer(
 		wrapped.structure,
 		func (intern *structure) {
-			miniObjectUnref(unsafe.Pointer(intern.native))
+			C.gst_structure_free(intern.native)
 		},
 	)
 	return wrapped
 }
 
-// UnsafeStructureRef increases the refcount on the underlying resource.
-// 
-// When this is called without an associated call to [Structure.UnsafeStructureUnref], then [Structure] will leak memory.
-func UnsafeStructureRef(s *Structure) {
-	miniObjectRef(unsafe.Pointer(s.native))
-}
-
-// UnsafeStructureUnref unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
+// UnsafeStructureFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [Structure] is expected to work anymore.
-func UnsafeStructureUnref(s *Structure) {
-	miniObjectUnref(unsafe.Pointer(s.native))
+func UnsafeStructureFree(s *Structure) {
+	C.gst_structure_free(s.native)
 	runtime.SetFinalizer(s.structure, nil)
 }
 
@@ -47615,7 +47602,7 @@ func UnsafeTagListFromGlibBorrow(p unsafe.Pointer) *TagList {
 
 // UnsafeTagListFromGlibNone is used to convert raw C.GstTagList pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTagListFromGlibNone(p unsafe.Pointer) *TagList {
-	C.gst_tag_list_ref((*C.GstTagList)(p))
+	miniObjectRef(unsafe.Pointer(p))
 	wrapped := UnsafeTagListFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
@@ -47624,7 +47611,7 @@ func UnsafeTagListFromGlibNone(p unsafe.Pointer) *TagList {
 	runtime.SetFinalizer(
 		wrapped.tagList,
 		func (intern *tagList) {
-			C.gst_tag_list_unref(intern.native)
+			miniObjectUnref(unsafe.Pointer(intern.native))
 		},
 	)
 	return wrapped
@@ -47639,7 +47626,7 @@ func UnsafeTagListFromGlibFull(p unsafe.Pointer) *TagList {
 	runtime.SetFinalizer(
 		wrapped.tagList,
 		func (intern *tagList) {
-			C.gst_tag_list_unref(intern.native)
+			miniObjectUnref(unsafe.Pointer(intern.native))
 		},
 	)
 	return wrapped
@@ -47649,14 +47636,14 @@ func UnsafeTagListFromGlibFull(p unsafe.Pointer) *TagList {
 // 
 // When this is called without an associated call to [TagList.UnsafeTagListUnref], then [TagList] will leak memory.
 func UnsafeTagListRef(t *TagList) {
-	C.gst_tag_list_ref((*C.GstTagList)(t.native))
+	miniObjectRef(unsafe.Pointer(t.native))
 }
 
 // UnsafeTagListUnref unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [TagList] is expected to work anymore.
 func UnsafeTagListUnref(t *TagList) {
-	C.gst_tag_list_unref(t.native)
+	miniObjectUnref(unsafe.Pointer(t.native))
 	runtime.SetFinalizer(t.tagList, nil)
 }
 
@@ -49095,7 +49082,7 @@ func (toc *Toc) Dump() {
 func (toc *Toc) FindEntry(uid string) *TocEntry {
 	var carg0 *C.GstToc      // in, none, converted
 	var carg1 *C.gchar       // in, none, string
-	var cret  *C.GstTocEntry // return, none, converted, nullable
+	var cret  *C.GstTocEntry // return, borrow, converted, nullable
 
 	carg0 = (*C.GstToc)(UnsafeTocToGlibNone(toc))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uid)))
@@ -49108,7 +49095,8 @@ func (toc *Toc) FindEntry(uid string) *TocEntry {
 	var goret *TocEntry
 
 	if cret != nil {
-		goret = UnsafeTocEntryFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeTocEntryFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Toc) {}, toc)
 	}
 
 	return goret
@@ -49164,7 +49152,7 @@ func (toc *Toc) GetScope() TocScope {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#gst_toc_get_tags
 func (toc *Toc) GetTags() *TagList {
 	var carg0 *C.GstToc     // in, none, converted
-	var cret  *C.GstTagList // return, none, converted, nullable
+	var cret  *C.GstTagList // return, borrow, converted, nullable
 
 	carg0 = (*C.GstToc)(UnsafeTocToGlibNone(toc))
 
@@ -49174,7 +49162,8 @@ func (toc *Toc) GetTags() *TagList {
 	var goret *TagList
 
 	if cret != nil {
-		goret = UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeTagListFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Toc) {}, toc)
 	}
 
 	return goret
@@ -49262,12 +49251,18 @@ func UnsafeTocEntryFromGlibBorrow(p unsafe.Pointer) *TocEntry {
 
 // UnsafeTocEntryFromGlibNone is used to convert raw C.GstTocEntry pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTocEntryFromGlibNone(p unsafe.Pointer) *TocEntry {
+	miniObjectRef(unsafe.Pointer(p))
 	wrapped := UnsafeTocEntryFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	log.Println("WARNING: not attaching a finalizer to TocEntry because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
+	runtime.SetFinalizer(
+		wrapped.tocEntry,
+		func (intern *tocEntry) {
+			miniObjectUnref(unsafe.Pointer(intern.native))
+		},
+	)
 	return wrapped
 }
 
@@ -49280,17 +49275,24 @@ func UnsafeTocEntryFromGlibFull(p unsafe.Pointer) *TocEntry {
 	runtime.SetFinalizer(
 		wrapped.tocEntry,
 		func (intern *tocEntry) {
-			C.free(unsafe.Pointer(intern.native))
+			miniObjectUnref(unsafe.Pointer(intern.native))
 		},
 	)
 	return wrapped
 }
 
-// UnsafeTocEntryFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
+// UnsafeTocEntryRef increases the refcount on the underlying resource.
+// 
+// When this is called without an associated call to [TocEntry.UnsafeTocEntryUnref], then [TocEntry] will leak memory.
+func UnsafeTocEntryRef(t *TocEntry) {
+	miniObjectRef(unsafe.Pointer(t.native))
+}
+
+// UnsafeTocEntryUnref unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [TocEntry] is expected to work anymore.
-func UnsafeTocEntryFree(t *TocEntry) {
-	C.free(unsafe.Pointer(t.native))
+func UnsafeTocEntryUnref(t *TocEntry) {
+	miniObjectUnref(unsafe.Pointer(t.native))
 	runtime.SetFinalizer(t.tocEntry, nil)
 }
 
@@ -49403,7 +49405,7 @@ func (entry *TocEntry) GetLoop() (TocLoopType, int32, bool) {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#gst_toc_entry_get_parent
 func (entry *TocEntry) GetParent() *TocEntry {
 	var carg0 *C.GstTocEntry // in, none, converted
-	var cret  *C.GstTocEntry // return, none, converted, nullable
+	var cret  *C.GstTocEntry // return, borrow, converted, nullable
 
 	carg0 = (*C.GstTocEntry)(UnsafeTocEntryToGlibNone(entry))
 
@@ -49413,7 +49415,8 @@ func (entry *TocEntry) GetParent() *TocEntry {
 	var goret *TocEntry
 
 	if cret != nil {
-		goret = UnsafeTocEntryFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeTocEntryFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *TocEntry) {}, entry)
 	}
 
 	return goret
@@ -49477,7 +49480,7 @@ func (entry *TocEntry) GetSubEntries() []*TocEntry {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#gst_toc_entry_get_tags
 func (entry *TocEntry) GetTags() *TagList {
 	var carg0 *C.GstTocEntry // in, none, converted
-	var cret  *C.GstTagList  // return, none, converted, nullable
+	var cret  *C.GstTagList  // return, borrow, converted, nullable
 
 	carg0 = (*C.GstTocEntry)(UnsafeTocEntryToGlibNone(entry))
 
@@ -49487,7 +49490,8 @@ func (entry *TocEntry) GetTags() *TagList {
 	var goret *TagList
 
 	if cret != nil {
-		goret = UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeTagListFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *TocEntry) {}, entry)
 	}
 
 	return goret
@@ -49498,7 +49502,7 @@ func (entry *TocEntry) GetTags() *TagList {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#gst_toc_entry_get_toc
 func (entry *TocEntry) GetToc() *Toc {
 	var carg0 *C.GstTocEntry // in, none, converted
-	var cret  *C.GstToc      // return, none, converted, nullable
+	var cret  *C.GstToc      // return, borrow, converted, nullable
 
 	carg0 = (*C.GstTocEntry)(UnsafeTocEntryToGlibNone(entry))
 
@@ -49508,7 +49512,8 @@ func (entry *TocEntry) GetToc() *Toc {
 	var goret *Toc
 
 	if cret != nil {
-		goret = UnsafeTocFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeTocFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *TocEntry) {}, entry)
 	}
 
 	return goret
