@@ -28,8 +28,10 @@ func _gogst_gst1_BusSyncHandler(carg1 *C.GstBus, carg2 *C.GstMessage, carg3 C.gp
 	goret := fn(bus, msg)
 
 	// if the user returns BusDrop then we must unref the message an additional time.
+	//
+	// the finalizer on message will unref it once more
 	if goret == BusDrop {
-		UnsafeMessageUnref(msg)
+		miniObjectUnref(unsafe.Pointer(msg.native))
 	}
 
 	return C.GstBusSyncReply(goret)
