@@ -1,2 +1,4 @@
 github.com/go-gst/go-glib v1.4.1-0.20251202170825-6bef3e3b621f h1:GkcbBAm98UtICYDIZ7DN3ZkYL47gCCN2ysKzvMoR5so=
 github.com/go-gst/go-glib v1.4.1-0.20251202170825-6bef3e3b621f/go.mod h1:n9WnJ6bNPKRrc7aWKgrsRfNh3LPw5RSz6dfcB1bd0Qk=
+github.com/go-gst/go-glib v1.4.1-0.20260106131347-011b0f9a12ed h1:q5UM+7m0OpMzGwJhAJzxghm6jfUQ5hNCZB/5hvTB4pI=
+github.com/go-gst/go-glib v1.4.1-0.20260106131347-011b0f9a12ed/go.mod h1:n9WnJ6bNPKRrc7aWKgrsRfNh3LPw5RSz6dfcB1bd0Qk=
