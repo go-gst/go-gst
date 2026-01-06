@@ -133,10 +133,6 @@ func unmarshalInto(typeOf reflect.Type, valsOf reflect.Value, s *Structure) erro
 			}
 		}
 
-		if !supportedStructureMarshalPrimitive(field) {
-			continue
-		}
-
 		val := s.GetValue(fieldName)
 
 		if val == nil {
@@ -150,7 +146,7 @@ func unmarshalInto(typeOf reflect.Type, valsOf reflect.Value, s *Structure) erro
 			return fmt.Errorf("cannot convert value %#v of type %T to %s", val, val, field.Type.String())
 		}
 
-		fieldVal.Set(rv)
+		fieldVal.Set(rv.Convert(field.Type))
 	}
 
 	return nil
