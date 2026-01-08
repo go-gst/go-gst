@@ -103,7 +103,7 @@ var Data = genmain.Data{
 
 		MarkSDPMessageGettersAsBorrowed(),
 
-		GstLogFunctionDebugCategoryBorrows(),
+		GstLogFunctionDebugBorrows(),
 	},
 	Config: typesystem.Config{
 		Namespaces: map[string]typesystem.NamespaceConfig{
@@ -406,20 +406,21 @@ func MiniObjectExtenderBorrows() gir.Preprocessor {
 	})
 }
 
-// GstLogFunctionDebugCategoryBorrows marks the GstDebugCategory parameter of GstLogFunction as borrowed
+// GstLogFunctionDebugBorrows marks the GstDebugCategory and GstDebugMessage parameter of GstLogFunction as borrowed
 //
-// Since the debug category is only initialized once and never freed
-func GstLogFunctionDebugCategoryBorrows() gir.Preprocessor {
+// The params are only valid for the duration of the call. Requires correct handling from the user.
+func GstLogFunctionDebugBorrows() gir.Preprocessor {
+	overrides := map[string]string{
+		"category": "borrow",
+		"message":  "borrow",
+	}
+
 	return gir.ModifyCallable("Gst-1.LogFunction", func(c *gir.CallableAttrs) {
 		for i, p := range c.Parameters.Parameters {
-			if p.Type.Name == "DebugCategory" {
-				log.Printf("marking GstLogFunction debug category parameter as borrowed")
-				c.Parameters.Parameters[i].TransferOwnership.TransferOwnership = "borrow"
-				return
+			if to, ok := overrides[p.Name]; ok {
+				c.Parameters.Parameters[i].TransferOwnership.TransferOwnership = to
 			}
 		}
-
-		log.Panicf("GstLogFunction has no GstDebugCategory parameter")
 	})
 }
 

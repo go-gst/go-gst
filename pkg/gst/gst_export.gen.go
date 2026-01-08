@@ -211,7 +211,7 @@ func _goglib_gst1_LogFunction(carg1 *C.GstDebugCategory, carg2 C.GstDebugLevel, 
 	var function string         // in, none, string
 	var line     int32          // in, none, casted
 	var object   gobject.Object // in, none, converted
-	var message  *DebugMessage  // in, none, converted
+	var message  *DebugMessage  // in, borrow, converted
 
 	category = UnsafeDebugCategoryFromGlibBorrow(unsafe.Pointer(carg1))
 	// borrow not bound to another value, this requires correct handling by the user
@@ -220,7 +220,8 @@ func _goglib_gst1_LogFunction(carg1 *C.GstDebugCategory, carg2 C.GstDebugLevel, 
 	function = C.GoString((*C.char)(unsafe.Pointer(carg4)))
 	line = int32(carg5)
 	object = gobject.UnsafeObjectFromGlibNone(unsafe.Pointer(carg6))
-	message = UnsafeDebugMessageFromGlibNone(unsafe.Pointer(carg7))
+	message = UnsafeDebugMessageFromGlibBorrow(unsafe.Pointer(carg7))
+	// borrow not bound to another value, this requires correct handling by the user
 
 	fn(category, level, file, function, line, object, message)
 }
