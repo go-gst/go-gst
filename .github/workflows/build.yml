@@ -9,30 +9,14 @@ on:
       - main
 
 jobs:
-  build:
+  build-nix:
     strategy:
       matrix:
         os:
           - ubuntu-latest
-          # - windows-latest
           - macos-latest
     runs-on: ${{ matrix.os }}
     steps:
-      # - name: install mingw 11.2.0 using choco
-      #   if: runner.os == 'Windows'
-      #   shell: powershell
-      #   run: choco install mingw --version 11.2.0
-
-      # - name: Add mingw to path on windows
-      #   if: runner.os == 'Windows'
-      #   run: Add-Content $env:GITHUB_PATH "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
-      #   shell: powershell
-
-      # - name: install pkgconfiglite using choco
-      #   if: runner.os == 'Windows'
-      #   shell: powershell
-      #   run: choco install pkgconfiglite --allow-empty-checksums
-
       - uses: actions/checkout@v4
 
       - uses: DeterminateSystems/nix-installer-action@main
@@ -40,4 +24,43 @@ jobs:
 
       - name: build
         shell: nix develop -c bash -e {0}
+        run: ./buildAll.sh
+
+  build-windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    env:
+      PKG_CONFIG_PATH: C:/msys64/mingw64/lib/pkgconfig
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            git
+            mingw-w64-x86_64-toolchain
+            mingw-w64-x86_64-pkg-config
+            mingw-w64-x86_64-gstreamer
+            mingw-w64-x86_64-gst-plugins-base
+            mingw-w64-x86_64-gst-plugins-good
+            mingw-w64-x86_64-gst-plugins-bad
+            mingw-w64-x86_64-gst-plugins-ugly
+            mingw-w64-x86_64-gst-libav
+            mingw-w64-x86_64-gst-rtsp-server
+          path-type: inherit
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+
+      - name: Setup PKG_CONFIG
+        shell: msys2 {0}
+        run: |
+          echo "PKG_CONFIG=$(cygpath -m /mingw64/bin/pkg-config.exe)" >> $GITHUB_ENV
+
+      - name: build
         run: ./buildAll.sh
