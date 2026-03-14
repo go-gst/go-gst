@@ -8,11 +8,13 @@ extern void          goAppGDestroyNotifyFunc (gpointer user_data);
 extern void          goSinkEOSCb        (GstAppSink * sink, gpointer user_data);
 extern GstFlowReturn goSinkNewPrerollCb (GstAppSink * sink, gpointer user_data);
 extern GstFlowReturn goSinkNewSampleCb  (GstAppSink * sink, gpointer user_data);
+extern gboolean      goSinkProposeAllocationCb  (GstAppSink * sink, GstQuery * query, gpointer user_data);
 
 void          cgoSinkGDestroyNotifyFunc (gpointer user_data) { goAppGDestroyNotifyFunc(user_data); }
 void          cgoSinkEOSCb        (GstAppSink * sink, gpointer user_data) { return goSinkEOSCb(sink, user_data); }
 GstFlowReturn cgoSinkNewPrerollCb (GstAppSink * sink, gpointer user_data) { return goSinkNewPrerollCb(sink, user_data); }
 GstFlowReturn cgoSinkNewSampleCb  (GstAppSink * sink, gpointer user_data) { return goSinkNewSampleCb(sink, user_data); }
+gboolean cgoSinkProposeAllocationCb  (GstAppSink * sink, GstQuery * query, gpointer user_data) { return goSinkProposeAllocationCb(sink, query, user_data); }
 
 */
 import "C"
@@ -29,9 +31,10 @@ import (
 
 // SinkCallbacks represents callbacks that can be installed on an app sink when data is available.
 type SinkCallbacks struct {
-	EOSFunc        func(appSink *Sink)
-	NewPrerollFunc func(appSink *Sink) gst.FlowReturn
-	NewSampleFunc  func(appSink *Sink) gst.FlowReturn
+	EOSFunc               func(appSink *Sink)
+	NewPrerollFunc        func(appSink *Sink) gst.FlowReturn
+	NewSampleFunc         func(appSink *Sink) gst.FlowReturn
+	ProposeAllocationFunc func(appSink *Sink, query *gst.Query) bool
 }
 
 // ErrEOS represents that the stream has ended.
@@ -151,9 +154,10 @@ func (a *Sink) SetBufferListSupport(enabled bool) {
 func (a *Sink) SetCallbacks(cbs *SinkCallbacks) {
 	ptr := gopointer.Save(cbs)
 	appSinkCallbacks := &C.GstAppSinkCallbacks{
-		eos:         (*[0]byte)(unsafe.Pointer(C.cgoSinkEOSCb)),
-		new_preroll: (*[0]byte)(unsafe.Pointer(C.cgoSinkNewPrerollCb)),
-		new_sample:  (*[0]byte)(unsafe.Pointer(C.cgoSinkNewSampleCb)),
+		eos:                (*[0]byte)(unsafe.Pointer(C.cgoSinkEOSCb)),
+		new_preroll:        (*[0]byte)(unsafe.Pointer(C.cgoSinkNewPrerollCb)),
+		new_sample:         (*[0]byte)(unsafe.Pointer(C.cgoSinkNewSampleCb)),
+		propose_allocation: (*[0]byte)(unsafe.Pointer(C.cgoSinkProposeAllocationCb)),
 	}
 	C.gst_app_sink_set_callbacks(
 		a.Instance(),

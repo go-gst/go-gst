@@ -141,6 +141,23 @@ func goSinkNewSampleCb(sink *C.GstAppSink, userData C.gpointer) C.GstFlowReturn 
 	return ret
 }
 
+//export goSinkProposeAllocationCb
+func goSinkProposeAllocationCb(sink *C.GstAppSink, query *C.GstQuery, userData C.gpointer) C.gboolean {
+	cbs := getSinkCbsFromPtr(userData)
+	if cbs == nil {
+		return gboolean(false)
+	}
+	if cbs.ProposeAllocationFunc == nil {
+		return gboolean(true)
+	}
+	gosink := wrapCSink(sink)
+	goquery := gst.ToGstQuery(unsafe.Pointer(query))
+
+	ret := gboolean(cbs.ProposeAllocationFunc(gosink, goquery))
+
+	return ret
+}
+
 //export goAppGDestroyNotifyFunc
 func goAppGDestroyNotifyFunc(ptr C.gpointer) {
 	gopointer.Unref(unsafe.Pointer(ptr))
