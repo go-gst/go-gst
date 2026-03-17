@@ -8,6 +8,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -1185,8 +1186,8 @@ func PlayConfigSetUserAgent(config *gst.Structure, agent string) {
 
 	carg1 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(config))
 	if agent != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(agent)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(agent))
+		defer C.g_free(C.gpointer(carg2))
 	}
 
 	C.gst_play_config_set_user_agent(carg1, carg2)
@@ -1828,8 +1829,8 @@ func (play *PlayInstance) SetAudioTrackID(streamId string) bool {
 
 	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
 	if streamId != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(streamId))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_play_set_audio_track_id(carg0, carg1)
@@ -1991,8 +1992,8 @@ func (play *PlayInstance) SetSubtitleTrackID(streamId string) bool {
 
 	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
 	if streamId != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(streamId))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_play_set_subtitle_track_id(carg0, carg1)
@@ -2017,8 +2018,8 @@ func (play *PlayInstance) SetSubtitleURI(uri string) {
 
 	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
 	if uri != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(uri))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C.gst_play_set_subtitle_uri(carg0, carg1)
@@ -2053,16 +2054,16 @@ func (play *PlayInstance) SetTrackIDs(audioStreamId string, videoStreamId string
 
 	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
 	if audioStreamId != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(audioStreamId)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(audioStreamId))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	if videoStreamId != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(videoStreamId)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(videoStreamId))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	if subtitleStreamId != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(subtitleStreamId)))
-		defer C.free(unsafe.Pointer(carg3))
+		carg3 = (*C.gchar)(transfer.GLibString(subtitleStreamId))
+		defer C.g_free(C.gpointer(carg3))
 	}
 
 	cret = C.gst_play_set_track_ids(carg0, carg1, carg2, carg3)
@@ -2089,8 +2090,8 @@ func (play *PlayInstance) SetURI(uri string) {
 
 	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
 	if uri != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(uri))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C.gst_play_set_uri(carg0, carg1)
@@ -2125,8 +2126,8 @@ func (play *PlayInstance) SetVideoTrackID(streamId string) bool {
 
 	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
 	if streamId != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(streamId))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_play_set_video_track_id(carg0, carg1)
@@ -2152,8 +2153,8 @@ func (play *PlayInstance) SetVisualization(name string) bool {
 
 	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_play_set_visualization(carg0, carg1)

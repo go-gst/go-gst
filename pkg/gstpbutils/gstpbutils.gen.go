@@ -9,6 +9,7 @@ import (
 	"unsafe"
 
 	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/core/userdata"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
@@ -749,8 +750,8 @@ func CodecUtilsAv1GetSeqLevelIdx(level string) uint8 {
 	var carg1 *C.gchar // in, none, string
 	var cret  C.guint8 // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(level)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(level))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_codec_utils_av1_get_seq_level_idx(carg1)
 	runtime.KeepAlive(level)
@@ -769,8 +770,8 @@ func CodecUtilsCapsFromMimeCodec(codecsField string) *gst.Caps {
 	var carg1 *C.gchar   // in, none, string
 	var cret  *C.GstCaps // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(codecsField)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(codecsField))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_codec_utils_caps_from_mime_codec(carg1)
 	runtime.KeepAlive(codecsField)
@@ -866,8 +867,8 @@ func CodecUtilsH264GetLevelIdc(level string) uint8 {
 	var carg1 *C.gchar // in, none, string
 	var cret  C.guint8 // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(level)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(level))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_codec_utils_h264_get_level_idc(carg1)
 	runtime.KeepAlive(level)
@@ -998,8 +999,8 @@ func CodecUtilsH265GetLevelIdc(level string) uint8 {
 	var carg1 *C.gchar // in, none, string
 	var cret  C.guint8 // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(level)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(level))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_codec_utils_h265_get_level_idc(carg1)
 	runtime.KeepAlive(level)
@@ -1121,8 +1122,8 @@ func CodecUtilsH266GetLevelIdc(level string) uint8 {
 	var carg1 *C.gchar // in, none, string
 	var cret  C.guint8 // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(level)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(level))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_codec_utils_h266_get_level_idc(carg1)
 	runtime.KeepAlive(level)
@@ -1296,8 +1297,8 @@ func EncodingListAllTargets(categoryname string) []EncodingTarget {
 	var cret  *C.GList // container, transfer: full
 
 	if categoryname != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(categoryname)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(categoryname))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_encoding_list_all_targets(carg1)
@@ -1501,8 +1502,8 @@ func NewMissingElementInstallerDetail(factoryName string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(factoryName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(factoryName))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_missing_element_installer_detail_new(carg1)
 	runtime.KeepAlive(factoryName)
@@ -1524,8 +1525,8 @@ func NewMissingElementMessage(element gst.Element, factoryName string) *gst.Mess
 	var cret  *C.GstMessage // return, full, converted
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(factoryName)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(factoryName))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_missing_element_message_new(carg1, carg2)
 	runtime.KeepAlive(element)
@@ -1651,8 +1652,8 @@ func MissingPluginMessageSetStreamID(msg *gst.Message, streamId string) {
 	var carg2 *C.gchar      // in, none, string
 
 	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(msg))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(streamId))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_missing_plugin_message_set_stream_id(carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -1666,8 +1667,8 @@ func NewMissingURISinkInstallerDetail(protocol string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(protocol)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(protocol))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_missing_uri_sink_installer_detail_new(carg1)
 	runtime.KeepAlive(protocol)
@@ -1689,8 +1690,8 @@ func NewMissingURISinkMessage(element gst.Element, protocol string) *gst.Message
 	var cret  *C.GstMessage // return, full, converted
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(protocol)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(protocol))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_missing_uri_sink_message_new(carg1, carg2)
 	runtime.KeepAlive(element)
@@ -1710,8 +1711,8 @@ func NewMissingURISourceInstallerDetail(protocol string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(protocol)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(protocol))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_missing_uri_source_installer_detail_new(carg1)
 	runtime.KeepAlive(protocol)
@@ -1733,8 +1734,8 @@ func NewMissingURISourceMessage(element gst.Element, protocol string) *gst.Messa
 	var cret  *C.GstMessage // return, full, converted
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(protocol)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(protocol))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_missing_uri_source_message_new(carg1, carg2)
 	runtime.KeepAlive(element)
@@ -1758,8 +1759,8 @@ func PbUtilsAddCodecDescriptionToTagList(taglist *gst.TagList, codecTag string, 
 
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(taglist))
 	if codecTag != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(codecTag)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(codecTag))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
@@ -1845,8 +1846,8 @@ func PbUtilsGetElementDescription(factoryName string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(factoryName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(factoryName))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_pb_utils_get_element_description(carg1)
 	runtime.KeepAlive(factoryName)
@@ -1908,8 +1909,8 @@ func PbUtilsGetSinkDescription(protocol string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(protocol)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(protocol))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_pb_utils_get_sink_description(carg1)
 	runtime.KeepAlive(protocol)
@@ -1929,8 +1930,8 @@ func PbUtilsGetSourceDescription(protocol string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(protocol)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(protocol))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_pb_utils_get_source_description(carg1)
 	runtime.KeepAlive(protocol)
@@ -2444,8 +2445,8 @@ func (discoverer *DiscovererInstance) DiscoverURI(uri string) (DiscovererInfo, e
 	var _cerr *C.GError            // out, full, converted, nullable
 
 	carg0 = (*C.GstDiscoverer)(UnsafeDiscovererToGlibNone(discoverer))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_discoverer_discover_uri(carg0, carg1, &_cerr)
 	runtime.KeepAlive(discoverer)
@@ -2471,8 +2472,8 @@ func (discoverer *DiscovererInstance) DiscoverURIAsync(uri string) bool {
 	var cret  C.gboolean       // return
 
 	carg0 = (*C.GstDiscoverer)(UnsafeDiscovererToGlibNone(discoverer))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_discoverer_discover_uri_async(carg0, carg1)
 	runtime.KeepAlive(discoverer)
@@ -2674,8 +2675,8 @@ func (dc *DiscovererInstance) ParentLoadSerializeInfo(uri string) DiscovererInfo
 	parentclass := (*C.GstDiscovererClass)(classdata.PeekParentClass(UnsafeDiscovererToGlibNone(dc)))
 
 	carg0 = (*C.GstDiscoverer)(UnsafeDiscovererToGlibNone(dc))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C._goglib_gstpbutils1_Discoverer_virtual_load_serialize_info(unsafe.Pointer(parentclass.load_serialize_info), carg0, carg1)
 	runtime.KeepAlive(dc)
@@ -4075,15 +4076,15 @@ func EncodingProfileFind(targetname string, profilename string, category string)
 	var carg3 *C.gchar              // in, none, string, nullable-string
 	var cret  *C.GstEncodingProfile // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(targetname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(targetname))
+	defer C.g_free(C.gpointer(carg1))
 	if profilename != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(profilename)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(profilename))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	if category != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(category)))
-		defer C.free(unsafe.Pointer(carg3))
+		carg3 = (*C.gchar)(transfer.GLibString(category))
+		defer C.g_free(C.gpointer(carg3))
 	}
 
 	cret = C.gst_encoding_profile_find(carg1, carg2, carg3)
@@ -4128,8 +4129,8 @@ func EncodingProfileFromString(str string) EncodingProfile {
 	var carg1 *C.gchar              // in, none, string
 	var cret  *C.GstEncodingProfile // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_encoding_profile_from_string(carg1)
 	runtime.KeepAlive(str)
@@ -4498,8 +4499,8 @@ func (profile *EncodingProfileInstance) SetDescription(description string) {
 
 	carg0 = (*C.GstEncodingProfile)(UnsafeEncodingProfileToGlibNone(profile))
 	if description != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(description)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(description))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C.gst_encoding_profile_set_description(carg0, carg1)
@@ -4563,8 +4564,8 @@ func (profile *EncodingProfileInstance) SetName(name string) {
 
 	carg0 = (*C.GstEncodingProfile)(UnsafeEncodingProfileToGlibNone(profile))
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C.gst_encoding_profile_set_name(carg0, carg1)
@@ -4596,8 +4597,8 @@ func (profile *EncodingProfileInstance) SetPreset(preset string) {
 
 	carg0 = (*C.GstEncodingProfile)(UnsafeEncodingProfileToGlibNone(profile))
 	if preset != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(preset)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(preset))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C.gst_encoding_profile_set_preset(carg0, carg1)
@@ -4614,8 +4615,8 @@ func (profile *EncodingProfileInstance) SetPresetName(presetName string) {
 
 	carg0 = (*C.GstEncodingProfile)(UnsafeEncodingProfileToGlibNone(profile))
 	if presetName != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(presetName)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(presetName))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C.gst_encoding_profile_set_preset_name(carg0, carg1)
@@ -4787,11 +4788,11 @@ func EncodingTargetLoad(name string, category string) (EncodingTarget, error) {
 	var cret  *C.GstEncodingTarget // return, full, converted
 	var _cerr *C.GError            // out, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	if category != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(category)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(category))
+		defer C.g_free(C.gpointer(carg2))
 	}
 
 	cret = C.gst_encoding_target_load(carg1, carg2, &_cerr)
@@ -4817,8 +4818,8 @@ func EncodingTargetLoadFromFile(filepath string) (EncodingTarget, error) {
 	var cret  *C.GstEncodingTarget // return, full, converted
 	var _cerr *C.GError            // out, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(filepath)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(filepath))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_encoding_target_load_from_file(carg1, &_cerr)
 	runtime.KeepAlive(filepath)
@@ -4945,8 +4946,8 @@ func (target *EncodingTargetInstance) GetProfile(name string) EncodingProfile {
 	var cret  *C.GstEncodingProfile // return, full, converted, nullable
 
 	carg0 = (*C.GstEncodingTarget)(UnsafeEncodingTargetToGlibNone(target))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_encoding_target_get_profile(carg0, carg1)
 	runtime.KeepAlive(target)
@@ -5023,8 +5024,8 @@ func (target *EncodingTargetInstance) SaveToFile(filepath string) (bool, error) 
 	var _cerr *C.GError            // out, full, converted, nullable
 
 	carg0 = (*C.GstEncodingTarget)(UnsafeEncodingTargetToGlibNone(target))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(filepath)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(filepath))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_encoding_target_save_to_file(carg0, carg1, &_cerr)
 	runtime.KeepAlive(target)
@@ -5138,8 +5139,8 @@ func NewEncodingVideoProfile(format *gst.Caps, preset string, restriction *gst.C
 
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(format))
 	if preset != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(preset)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(preset))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	if restriction != nil {
 		carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(restriction))
@@ -5661,8 +5662,8 @@ func NewEncodingAudioProfile(format *gst.Caps, preset string, restriction *gst.C
 
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(format))
 	if preset != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(preset)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(preset))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	if restriction != nil {
 		carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(restriction))
@@ -5772,17 +5773,17 @@ func NewEncodingContainerProfile(name string, description string, format *gst.Ca
 	var cret  *C.GstEncodingContainerProfile // return, full, converted
 
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	if description != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(description)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(description))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(format))
 	if preset != "" {
-		carg4 = (*C.gchar)(unsafe.Pointer(C.CString(preset)))
-		defer C.free(unsafe.Pointer(carg4))
+		carg4 = (*C.gchar)(transfer.GLibString(preset))
+		defer C.g_free(C.gpointer(carg4))
 	}
 
 	cret = C.gst_encoding_container_profile_new(carg1, carg2, carg3, carg4)
@@ -6358,8 +6359,8 @@ func (ctx *InstallPluginsContext) SetDesktopID(desktopId string) {
 	var carg1 *C.gchar                    // in, none, string
 
 	carg0 = (*C.GstInstallPluginsContext)(UnsafeInstallPluginsContextToGlibNone(ctx))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(desktopId)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(desktopId))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_install_plugins_context_set_desktop_id(carg0, carg1)
 	runtime.KeepAlive(ctx)
@@ -6374,8 +6375,8 @@ func (ctx *InstallPluginsContext) SetStartupNotificationID(startupId string) {
 	var carg1 *C.gchar                    // in, none, string
 
 	carg0 = (*C.GstInstallPluginsContext)(UnsafeInstallPluginsContextToGlibNone(ctx))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(startupId)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(startupId))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_install_plugins_context_set_startup_notification_id(carg0, carg1)
 	runtime.KeepAlive(ctx)

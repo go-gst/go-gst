@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -372,8 +373,8 @@ func TagCheckLanguageCode(langCode string) bool {
 	var carg1 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(langCode)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(langCode))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_check_language_code(carg1)
 	runtime.KeepAlive(langCode)
@@ -425,8 +426,8 @@ func TagFromId3Tag(id3Tag string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(id3Tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(id3Tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_from_id3_tag(carg1)
 	runtime.KeepAlive(id3Tag)
@@ -448,10 +449,10 @@ func TagFromId3UserTag(typ string, id3UserTag string) string {
 	var carg2 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(typ)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(id3UserTag)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(typ))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(id3UserTag))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_tag_from_id3_user_tag(carg1, carg2)
 	runtime.KeepAlive(typ)
@@ -473,8 +474,8 @@ func TagFromVorbisTag(vorbisTag string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(vorbisTag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(vorbisTag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_from_vorbis_tag(carg1)
 	runtime.KeepAlive(vorbisTag)
@@ -514,8 +515,8 @@ func TagGetLanguageCodeIso6391(langCode string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(langCode)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(langCode))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_language_code_iso_639_1(carg1)
 	runtime.KeepAlive(langCode)
@@ -536,8 +537,8 @@ func TagGetLanguageCodeIso6392b(langCode string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(langCode)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(langCode))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_language_code_iso_639_2B(carg1)
 	runtime.KeepAlive(langCode)
@@ -558,8 +559,8 @@ func TagGetLanguageCodeIso6392t(langCode string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(langCode)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(langCode))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_language_code_iso_639_2T(carg1)
 	runtime.KeepAlive(langCode)
@@ -597,8 +598,8 @@ func TagGetLanguageName(languageCode string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(languageCode)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(languageCode))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_language_name(carg1)
 	runtime.KeepAlive(languageCode)
@@ -619,8 +620,8 @@ func TagGetLicenseDescription(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(licenseRef)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(licenseRef))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_license_description(carg1)
 	runtime.KeepAlive(licenseRef)
@@ -641,8 +642,8 @@ func TagGetLicenseFlags(licenseRef string) TagLicenseFlags {
 	var carg1 *C.gchar             // in, none, string
 	var cret  C.GstTagLicenseFlags // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(licenseRef)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(licenseRef))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_license_flags(carg1)
 	runtime.KeepAlive(licenseRef)
@@ -661,8 +662,8 @@ func TagGetLicenseJurisdiction(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(licenseRef)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(licenseRef))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_license_jurisdiction(carg1)
 	runtime.KeepAlive(licenseRef)
@@ -683,8 +684,8 @@ func TagGetLicenseNick(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(licenseRef)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(licenseRef))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_license_nick(carg1)
 	runtime.KeepAlive(licenseRef)
@@ -705,8 +706,8 @@ func TagGetLicenseTitle(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(licenseRef)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(licenseRef))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_license_title(carg1)
 	runtime.KeepAlive(licenseRef)
@@ -727,8 +728,8 @@ func TagGetLicenseVersion(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(licenseRef)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(licenseRef))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_license_version(carg1)
 	runtime.KeepAlive(licenseRef)
@@ -1095,8 +1096,8 @@ func TagListToVorbiscommentBuffer(list *gst.TagList, idData []uint8, vendorStrin
 	_ = carg3
 	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 	if vendorString != "" {
-		carg4 = (*C.gchar)(unsafe.Pointer(C.CString(vendorString)))
-		defer C.free(unsafe.Pointer(carg4))
+		carg4 = (*C.gchar)(transfer.GLibString(vendorString))
+		defer C.g_free(C.gpointer(carg4))
 	}
 
 	cret = C.gst_tag_list_to_vorbiscomment_buffer(carg1, carg2, carg3, carg4)
@@ -1153,8 +1154,8 @@ func TagParseExtendedComment(extComment string, failIfNoKey bool) (string, strin
 	var carg4 *C.gchar   // out, full, string
 	var cret  C.gboolean // return
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(extComment)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(extComment))
+	defer C.g_free(C.gpointer(carg1))
 	if failIfNoKey {
 		carg5 = C.TRUE
 	}
@@ -1200,8 +1201,8 @@ func TagToId3Tag(gstTag string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(gstTag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(gstTag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_to_id3_tag(carg1)
 	runtime.KeepAlive(gstTag)
@@ -1224,8 +1225,8 @@ func TagToVorbisComments(list *gst.TagList, tag string) []string {
 	var cret  *C.GList      // container, transfer: full
 
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(list))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_tag_to_vorbis_comments(carg1, carg2)
 	runtime.KeepAlive(list)
@@ -1253,8 +1254,8 @@ func TagToVorbisTag(gstTag string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(gstTag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(gstTag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_to_vorbis_tag(carg1)
 	runtime.KeepAlive(gstTag)
@@ -1294,10 +1295,10 @@ func VorbisTagAdd(list *gst.TagList, tag string, value string) {
 	var carg3 *C.gchar      // in, none, string
 
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(list))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg2 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(value))
+	defer C.g_free(C.gpointer(carg3))
 
 	C.gst_vorbis_tag_add(carg1, carg2, carg3)
 	runtime.KeepAlive(list)
@@ -1408,8 +1409,8 @@ func (config *TagXmpWriterInstance) AddSchema(schema string) {
 	var carg1 *C.gchar           // in, none, string
 
 	carg0 = (*C.GstTagXmpWriter)(UnsafeTagXmpWriterToGlibNone(config))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(schema)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(schema))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_tag_xmp_writer_add_schema(carg0, carg1)
 	runtime.KeepAlive(config)
@@ -1425,8 +1426,8 @@ func (config *TagXmpWriterInstance) HasSchema(schema string) bool {
 	var cret  C.gboolean         // return
 
 	carg0 = (*C.GstTagXmpWriter)(UnsafeTagXmpWriterToGlibNone(config))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(schema)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(schema))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_xmp_writer_has_schema(carg0, carg1)
 	runtime.KeepAlive(config)
@@ -1461,8 +1462,8 @@ func (config *TagXmpWriterInstance) RemoveSchema(schema string) {
 	var carg1 *C.gchar           // in, none, string
 
 	carg0 = (*C.GstTagXmpWriter)(UnsafeTagXmpWriterToGlibNone(config))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(schema)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(schema))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_tag_xmp_writer_remove_schema(carg0, carg1)
 	runtime.KeepAlive(config)

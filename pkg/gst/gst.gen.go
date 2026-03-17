@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/core/userdata"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
@@ -1668,8 +1669,8 @@ func FormatGetByNick(nick string) Format {
 	var carg1 *C.gchar    // in, none, string
 	var cret  C.GstFormat // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(nick)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(nick))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_format_get_by_nick(carg1)
 	runtime.KeepAlive(nick)
@@ -1746,10 +1747,10 @@ func FormatRegister(nick string, description string) Format {
 	var carg2 *C.gchar    // in, none, string
 	var cret  C.GstFormat // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(nick)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(description)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(nick))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(description))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_format_register(carg1, carg2)
 	runtime.KeepAlive(nick)
@@ -7300,8 +7301,8 @@ func DebugBinToDotFile(bin Bin, details DebugGraphDetails, fileName string) {
 
 	carg1 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg2 = C.GstDebugGraphDetails(details)
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(fileName)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg3 = (*C.gchar)(transfer.GLibString(fileName))
+	defer C.g_free(C.gpointer(carg3))
 
 	C.gst_debug_bin_to_dot_file(carg1, carg2, carg3)
 	runtime.KeepAlive(bin)
@@ -7319,8 +7320,8 @@ func DebugBinToDotFileWithTs(bin Bin, details DebugGraphDetails, fileName string
 
 	carg1 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg2 = C.GstDebugGraphDetails(details)
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(fileName)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg3 = (*C.gchar)(transfer.GLibString(fileName))
+	defer C.g_free(C.gpointer(carg3))
 
 	C.gst_debug_bin_to_dot_file_with_ts(carg1, carg2, carg3)
 	runtime.KeepAlive(bin)
@@ -7490,10 +7491,10 @@ func DebugLogGetLine(category *DebugCategory, level DebugLevel, file string, fun
 
 	carg1 = (*C.GstDebugCategory)(UnsafeDebugCategoryToGlibNone(category))
 	carg2 = C.GstDebugLevel(level)
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(file)))
-	defer C.free(unsafe.Pointer(carg3))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(function)))
-	defer C.free(unsafe.Pointer(carg4))
+	carg3 = (*C.gchar)(transfer.GLibString(file))
+	defer C.g_free(C.gpointer(carg3))
+	carg4 = (*C.gchar)(transfer.GLibString(function))
+	defer C.g_free(C.gpointer(carg4))
 	carg5 = C.gint(line)
 	if object != nil {
 		carg6 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(object))
@@ -7531,17 +7532,17 @@ func DebugLogIDLiteral(category *DebugCategory, level DebugLevel, file string, f
 
 	carg1 = (*C.GstDebugCategory)(UnsafeDebugCategoryToGlibNone(category))
 	carg2 = C.GstDebugLevel(level)
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(file)))
-	defer C.free(unsafe.Pointer(carg3))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(function)))
-	defer C.free(unsafe.Pointer(carg4))
+	carg3 = (*C.gchar)(transfer.GLibString(file))
+	defer C.g_free(C.gpointer(carg3))
+	carg4 = (*C.gchar)(transfer.GLibString(function))
+	defer C.g_free(C.gpointer(carg4))
 	carg5 = C.gint(line)
 	if id != "" {
-		carg6 = (*C.gchar)(unsafe.Pointer(C.CString(id)))
-		defer C.free(unsafe.Pointer(carg6))
+		carg6 = (*C.gchar)(transfer.GLibString(id))
+		defer C.g_free(C.gpointer(carg6))
 	}
-	carg7 = (*C.gchar)(unsafe.Pointer(C.CString(messageString)))
-	defer C.free(unsafe.Pointer(carg7))
+	carg7 = (*C.gchar)(transfer.GLibString(messageString))
+	defer C.g_free(C.gpointer(carg7))
 
 	C.gst_debug_log_id_literal(carg1, carg2, carg3, carg4, carg5, carg6, carg7)
 	runtime.KeepAlive(category)
@@ -7567,16 +7568,16 @@ func DebugLogLiteral(category *DebugCategory, level DebugLevel, file string, fun
 
 	carg1 = (*C.GstDebugCategory)(UnsafeDebugCategoryToGlibNone(category))
 	carg2 = C.GstDebugLevel(level)
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(file)))
-	defer C.free(unsafe.Pointer(carg3))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(function)))
-	defer C.free(unsafe.Pointer(carg4))
+	carg3 = (*C.gchar)(transfer.GLibString(file))
+	defer C.g_free(C.gpointer(carg3))
+	carg4 = (*C.gchar)(transfer.GLibString(function))
+	defer C.g_free(C.gpointer(carg4))
 	carg5 = C.gint(line)
 	if object != nil {
 		carg6 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(object))
 	}
-	carg7 = (*C.gchar)(unsafe.Pointer(C.CString(messageString)))
-	defer C.free(unsafe.Pointer(carg7))
+	carg7 = (*C.gchar)(transfer.GLibString(messageString))
+	defer C.g_free(C.gpointer(carg7))
 
 	C.gst_debug_log_literal(carg1, carg2, carg3, carg4, carg5, carg6, carg7)
 	runtime.KeepAlive(category)
@@ -7675,8 +7676,8 @@ func DebugSetColorMode(mode DebugColorMode) {
 func DebugSetColorModeFromString(mode string) {
 	var carg1 *C.gchar // in, none, string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(mode)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(mode))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_debug_set_color_mode_from_string(carg1)
 	runtime.KeepAlive(mode)
@@ -7715,8 +7716,8 @@ func DebugSetThresholdForName(name string, level DebugLevel) {
 	var carg1 *C.gchar        // in, none, string
 	var carg2 C.GstDebugLevel // in, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.GstDebugLevel(level)
 
 	C.gst_debug_set_threshold_for_name(carg1, carg2)
@@ -7731,8 +7732,8 @@ func DebugSetThresholdFromString(list string, reset bool) {
 	var carg1 *C.gchar   // in, none, string
 	var carg2 C.gboolean // in
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(list)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(list))
+	defer C.g_free(C.gpointer(carg1))
 	if reset {
 		carg2 = C.TRUE
 	}
@@ -7748,8 +7749,8 @@ func DebugSetThresholdFromString(list string, reset bool) {
 func DebugUnsetThresholdForName(name string) {
 	var carg1 *C.gchar // in, none, string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_debug_unset_threshold_for_name(carg1)
 	runtime.KeepAlive(name)
@@ -7818,8 +7819,8 @@ func FilenameToURI(filename string) (string, error) {
 	var cret  *C.gchar  // return, full, string, nullable-string
 	var _cerr *C.GError // out, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(filename)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(filename))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_filename_to_uri(carg1, &_cerr)
 	runtime.KeepAlive(filename)
@@ -7947,12 +7948,12 @@ func ParamSpecArray(name string, nick string, blurb string, elementSpec *gobject
 	var carg5 C.GParamFlags // in, none, casted
 	var cret  *C.GParamSpec // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(nick)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(blurb)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(nick))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(blurb))
+	defer C.g_free(C.gpointer(carg3))
 	carg4 = (*C.GParamSpec)(gobject.UnsafeParamSpecToGlibNone(elementSpec))
 	carg5 = C.GParamFlags(flags)
 
@@ -7986,12 +7987,12 @@ func ParamSpecFraction(name string, nick string, blurb string, minNum int32, min
 	var carg10 C.GParamFlags // in, none, casted
 	var cret   *C.GParamSpec // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(nick)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(blurb)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(nick))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(blurb))
+	defer C.g_free(C.gpointer(carg3))
 	carg4 = C.gint(minNum)
 	carg5 = C.gint(minDenom)
 	carg6 = C.gint(maxNum)
@@ -8045,8 +8046,8 @@ func ParseBinFromDescription(binDescription string, ghostUnlinkedPads bool) (Bin
 	var cret  *C.GstElement // return, none, converted
 	var _cerr *C.GError     // out, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(binDescription)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(binDescription))
+	defer C.g_free(C.gpointer(carg1))
 	if ghostUnlinkedPads {
 		carg2 = C.TRUE
 	}
@@ -8077,8 +8078,8 @@ func ParseBinFromDescriptionFull(binDescription string, ghostUnlinkedPads bool, 
 	var cret  *C.GstElement      // return, none, converted
 	var _cerr *C.GError          // out, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(binDescription)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(binDescription))
+	defer C.g_free(C.gpointer(carg1))
 	if ghostUnlinkedPads {
 		carg2 = C.TRUE
 	}
@@ -8112,8 +8113,8 @@ func ParseLaunch(pipelineDescription string) (Element, error) {
 	var cret  *C.GstElement // return, none, converted
 	var _cerr *C.GError     // out, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(pipelineDescription)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(pipelineDescription))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_parse_launch(carg1, &_cerr)
 	runtime.KeepAlive(pipelineDescription)
@@ -8139,8 +8140,8 @@ func ParseLaunchFull(pipelineDescription string, _context *ParseContext, flags P
 	var cret  *C.GstElement      // return, none, converted
 	var _cerr *C.GError          // out, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(pipelineDescription)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(pipelineDescription))
+	defer C.g_free(C.gpointer(carg1))
 	if _context != nil {
 		carg2 = (*C.GstParseContext)(UnsafeParseContextToGlibNone(_context))
 	}
@@ -8306,8 +8307,8 @@ func TagExists(tag string) bool {
 	var carg1 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_exists(carg1)
 	runtime.KeepAlive(tag)
@@ -8328,8 +8329,8 @@ func TagGetDescription(tag string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_description(carg1)
 	runtime.KeepAlive(tag)
@@ -8348,8 +8349,8 @@ func TagGetFlag(tag string) TagFlag {
 	var carg1 *C.gchar     // in, none, string
 	var cret  C.GstTagFlag // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_flag(carg1)
 	runtime.KeepAlive(tag)
@@ -8368,8 +8369,8 @@ func TagGetNick(tag string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_nick(carg1)
 	runtime.KeepAlive(tag)
@@ -8388,8 +8389,8 @@ func TagGetType(tag string) gobject.Type {
 	var carg1 *C.gchar // in, none, string
 	var cret  C.GType  // return, none, casted, alias
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_get_type(carg1)
 	runtime.KeepAlive(tag)
@@ -8408,8 +8409,8 @@ func TagIsFixed(tag string) bool {
 	var carg1 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_is_fixed(carg1)
 	runtime.KeepAlive(tag)
@@ -8593,10 +8594,10 @@ func UtilFilenameCompare(a string, b string) int32 {
 	var carg2 *C.gchar // in, none, string
 	var cret  C.gint   // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(a)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(b)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(a))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(b))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_util_filename_compare(carg1, carg2)
 	runtime.KeepAlive(a)
@@ -8944,10 +8945,10 @@ func UtilSetObjectArg(object gobject.Object, name string, value string) {
 	var carg3 *C.gchar   // in, none, string
 
 	carg1 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(object))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg2 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(value))
+	defer C.g_free(C.gpointer(carg3))
 
 	C.gst_util_set_object_arg(carg1, carg2, carg3)
 	runtime.KeepAlive(object)
@@ -10106,8 +10107,8 @@ func (parent *ChildProxyInstance) ChildAdded(child gobject.Object, name string) 
 
 	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
 	carg1 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(child))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_child_proxy_child_added(carg0, carg1, carg2)
 	runtime.KeepAlive(parent)
@@ -10125,8 +10126,8 @@ func (parent *ChildProxyInstance) ChildRemoved(child gobject.Object, name string
 
 	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
 	carg1 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(child))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_child_proxy_child_removed(carg0, carg1, carg2)
 	runtime.KeepAlive(parent)
@@ -10167,8 +10168,8 @@ func (parent *ChildProxyInstance) GetChildByName(name string) gobject.Object {
 	var cret  *C.GObject       // return, full, converted, nullable
 
 	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_child_proxy_get_child_by_name(carg0, carg1)
 	runtime.KeepAlive(parent)
@@ -10192,8 +10193,8 @@ func (childProxy *ChildProxyInstance) GetChildByNameRecurse(name string) gobject
 	var cret  *C.GObject       // return, full, converted, nullable
 
 	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(childProxy))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_child_proxy_get_child_by_name_recurse(carg0, carg1)
 	runtime.KeepAlive(childProxy)
@@ -10238,8 +10239,8 @@ func (object *ChildProxyInstance) Lookup(name string) (gobject.Object, *gobject.
 	var cret  C.gboolean       // return
 
 	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(object))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_child_proxy_lookup(carg0, carg1, &carg2, &carg3)
 	runtime.KeepAlive(object)
@@ -10391,8 +10392,8 @@ func PresetSetAppDir(appDir string) bool {
 	var carg1 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(appDir)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(appDir))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_preset_set_app_dir(carg1)
 	runtime.KeepAlive(appDir)
@@ -10415,8 +10416,8 @@ func (preset *PresetInstance) DeletePreset(name string) bool {
 	var cret  C.gboolean   // return
 
 	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_preset_delete_preset(carg0, carg1)
 	runtime.KeepAlive(preset)
@@ -10442,10 +10443,10 @@ func (preset *PresetInstance) GetMeta(name string, tag string) (string, bool) {
 	var cret  C.gboolean   // return
 
 	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_preset_get_meta(carg0, carg1, carg2, &carg3)
 	runtime.KeepAlive(preset)
@@ -10536,8 +10537,8 @@ func (preset *PresetInstance) LoadPreset(name string) bool {
 	var cret  C.gboolean   // return
 
 	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_preset_load_preset(carg0, carg1)
 	runtime.KeepAlive(preset)
@@ -10562,10 +10563,10 @@ func (preset *PresetInstance) RenamePreset(oldName string, newName string) bool 
 	var cret  C.gboolean   // return
 
 	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(oldName)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(newName)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(oldName))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(newName))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_preset_rename_preset(carg0, carg1, carg2)
 	runtime.KeepAlive(preset)
@@ -10590,8 +10591,8 @@ func (preset *PresetInstance) SavePreset(name string) bool {
 	var cret  C.gboolean   // return
 
 	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_preset_save_preset(carg0, carg1)
 	runtime.KeepAlive(preset)
@@ -10617,13 +10618,13 @@ func (preset *PresetInstance) SetMeta(name string, tag string, value string) boo
 	var cret  C.gboolean   // return
 
 	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg2))
 	if value != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-		defer C.free(unsafe.Pointer(carg3))
+		carg3 = (*C.gchar)(transfer.GLibString(value))
+		defer C.g_free(C.gpointer(carg3))
 	}
 
 	cret = C.gst_preset_set_meta(carg0, carg1, carg2, carg3)
@@ -10788,8 +10789,8 @@ func (handler *URIHandlerInstance) SetURI(uri string) (bool, error) {
 	var _cerr *C.GError        // out, full, converted, nullable
 
 	carg0 = (*C.GstURIHandler)(UnsafeURIHandlerToGlibNone(handler))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_handler_set_uri(carg0, carg1, &_cerr)
 	runtime.KeepAlive(handler)
@@ -11302,8 +11303,8 @@ func (object *ObjectInstance) CurrentControlBinding(propertyName string) Control
 	var cret  *C.GstControlBinding // return, full, converted, nullable
 
 	carg0 = (*C.GstObject)(UnsafeObjectToGlibNone(object))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(propertyName))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_object_get_control_binding(carg0, carg1)
 	runtime.KeepAlive(object)
@@ -11502,8 +11503,8 @@ func (object *ObjectInstance) SetControlBindingDisabled(propertyName string, dis
 	var carg2 C.gboolean   // in
 
 	carg0 = (*C.GstObject)(UnsafeObjectToGlibNone(object))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(propertyName))
+	defer C.g_free(C.gpointer(carg1))
 	if disabled {
 		carg2 = C.TRUE
 	}
@@ -11556,8 +11557,8 @@ func (object *ObjectInstance) SetName(name string) bool {
 
 	carg0 = (*C.GstObject)(UnsafeObjectToGlibNone(object))
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_object_set_name(carg0, carg1)
@@ -12108,8 +12109,8 @@ func NewPad(name string, direction PadDirection) Pad {
 	var cret  *C.GstPad         // return, none, converted
 
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	carg2 = C.GstPadDirection(direction)
 
@@ -12133,8 +12134,8 @@ func NewPadFromStaticTemplate(templ *StaticPadTemplate, name string) Pad {
 	var cret  *C.GstPad               // return, none, converted
 
 	carg1 = (*C.GstStaticPadTemplate)(UnsafeStaticPadTemplateToGlibNone(templ))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_pad_new_from_static_template(carg1, carg2)
 	runtime.KeepAlive(templ)
@@ -12157,8 +12158,8 @@ func NewPadFromTemplate(templ PadTemplate, name string) Pad {
 
 	carg1 = (*C.GstPadTemplate)(UnsafePadTemplateToGlibNone(templ))
 	if name != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg2))
 	}
 
 	cret = C.gst_pad_new_from_template(carg1, carg2)
@@ -12350,8 +12351,8 @@ func (pad *PadInstance) CreateStreamID(parent Element, streamId string) string {
 	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 	carg1 = (*C.GstElement)(UnsafeElementToGlibNone(parent))
 	if streamId != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(streamId))
+		defer C.g_free(C.gpointer(carg2))
 	}
 
 	cret = C.gst_pad_create_stream_id(carg0, carg1, carg2)
@@ -13965,8 +13966,8 @@ func NewPadTemplate(nameTemplate string, direction PadDirection, presence PadPre
 	var carg4 *C.GstCaps        // in, none, converted
 	var cret  *C.GstPadTemplate // return, none, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(nameTemplate)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(nameTemplate))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.GstPadDirection(direction)
 	carg3 = C.GstPadPresence(presence)
 	carg4 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
@@ -14021,8 +14022,8 @@ func NewPadTemplateWithGType(nameTemplate string, direction PadDirection, presen
 	var carg5 C.GType           // in, none, casted, alias
 	var cret  *C.GstPadTemplate // return, none, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(nameTemplate)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(nameTemplate))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.GstPadDirection(direction)
 	carg3 = C.GstPadPresence(presence)
 	carg4 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
@@ -14360,8 +14361,8 @@ func PluginLoadByName(name string) Plugin {
 	var carg1 *C.gchar     // in, none, string
 	var cret  *C.GstPlugin // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_plugin_load_by_name(carg1)
 	runtime.KeepAlive(name)
@@ -14383,8 +14384,8 @@ func PluginLoadFile(filename string) (Plugin, error) {
 	var cret  *C.GstPlugin // return, full, converted
 	var _cerr *C.GError    // out, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(filename)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(filename))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_plugin_load_file(carg1, &_cerr)
 	runtime.KeepAlive(filename)
@@ -14419,23 +14420,23 @@ func PluginRegisterStaticFull(majorVersion int32, minorVersion int32, name strin
 
 	carg1 = C.gint(majorVersion)
 	carg2 = C.gint(minorVersion)
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg3))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(description)))
-	defer C.free(unsafe.Pointer(carg4))
+	carg3 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg3))
+	carg4 = (*C.gchar)(transfer.GLibString(description))
+	defer C.g_free(C.gpointer(carg4))
 	carg5 = (*[0]byte)(C._goglib_gst1_PluginInitFullFunc)
 	carg11 = C.gpointer(userdata.Register(initFullFunc))
 	defer userdata.Delete(unsafe.Pointer(carg11))
-	carg6 = (*C.gchar)(unsafe.Pointer(C.CString(version)))
-	defer C.free(unsafe.Pointer(carg6))
-	carg7 = (*C.gchar)(unsafe.Pointer(C.CString(license)))
-	defer C.free(unsafe.Pointer(carg7))
-	carg8 = (*C.gchar)(unsafe.Pointer(C.CString(source)))
-	defer C.free(unsafe.Pointer(carg8))
-	carg9 = (*C.gchar)(unsafe.Pointer(C.CString(pkg)))
-	defer C.free(unsafe.Pointer(carg9))
-	carg10 = (*C.gchar)(unsafe.Pointer(C.CString(origin)))
-	defer C.free(unsafe.Pointer(carg10))
+	carg6 = (*C.gchar)(transfer.GLibString(version))
+	defer C.g_free(C.gpointer(carg6))
+	carg7 = (*C.gchar)(transfer.GLibString(license))
+	defer C.g_free(C.gpointer(carg7))
+	carg8 = (*C.gchar)(transfer.GLibString(source))
+	defer C.g_free(C.gpointer(carg8))
+	carg9 = (*C.gchar)(transfer.GLibString(pkg))
+	defer C.g_free(C.gpointer(carg9))
+	carg10 = (*C.gchar)(transfer.GLibString(origin))
+	defer C.g_free(C.gpointer(carg10))
 
 	cret = C.gst_plugin_register_static_full(carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8, carg9, carg10, carg11)
 	runtime.KeepAlive(majorVersion)
@@ -14500,16 +14501,16 @@ func (plugin *PluginInstance) AddDependencySimple(envVars string, paths string, 
 
 	carg0 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 	if envVars != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(envVars)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(envVars))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	if paths != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(paths)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(paths))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	if names != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(names)))
-		defer C.free(unsafe.Pointer(carg3))
+		carg3 = (*C.gchar)(transfer.GLibString(names))
+		defer C.g_free(C.gpointer(carg3))
 	}
 	carg4 = C.GstPluginDependencyFlags(flags)
 
@@ -14529,8 +14530,8 @@ func (plugin *PluginInstance) AddStatusError(message string) {
 	var carg1 *C.gchar     // in, none, string
 
 	carg0 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(message)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(message))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_plugin_add_status_error(carg0, carg1)
 	runtime.KeepAlive(plugin)
@@ -14545,8 +14546,8 @@ func (plugin *PluginInstance) AddStatusInfo(message string) {
 	var carg1 *C.gchar     // in, none, string
 
 	carg0 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(message)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(message))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_plugin_add_status_info(carg0, carg1)
 	runtime.KeepAlive(plugin)
@@ -14561,8 +14562,8 @@ func (plugin *PluginInstance) AddStatusWarning(message string) {
 	var carg1 *C.gchar     // in, none, string
 
 	carg0 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(message)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(message))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_plugin_add_status_warning(carg0, carg1)
 	runtime.KeepAlive(plugin)
@@ -15603,8 +15604,8 @@ func (registry *RegistryInstance) CheckFeatureVersion(featureName string, minMaj
 	var cret  C.gboolean     // return
 
 	carg0 = (*C.GstRegistry)(UnsafeRegistryToGlibNone(registry))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(featureName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(featureName))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(minMajor)
 	carg3 = C.guint(minMinor)
 	carg4 = C.guint(minMicro)
@@ -15672,8 +15673,8 @@ func (registry *RegistryInstance) FindFeature(name string, typ gobject.Type) Plu
 	var cret  *C.GstPluginFeature // return, full, converted, nullable
 
 	carg0 = (*C.GstRegistry)(UnsafeRegistryToGlibNone(registry))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.GType(typ)
 
 	cret = C.gst_registry_find_feature(carg0, carg1, carg2)
@@ -15699,8 +15700,8 @@ func (registry *RegistryInstance) FindPlugin(name string) Plugin {
 	var cret  *C.GstPlugin   // return, full, converted, nullable
 
 	carg0 = (*C.GstRegistry)(UnsafeRegistryToGlibNone(registry))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_registry_find_plugin(carg0, carg1)
 	runtime.KeepAlive(registry)
@@ -15753,8 +15754,8 @@ func (registry *RegistryInstance) GetFeatureListByPlugin(name string) []PluginFe
 	var cret  *C.GList       // container, transfer: full
 
 	carg0 = (*C.GstRegistry)(UnsafeRegistryToGlibNone(registry))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_registry_get_feature_list_by_plugin(carg0, carg1)
 	runtime.KeepAlive(registry)
@@ -15828,8 +15829,8 @@ func (registry *RegistryInstance) Lookup(filename string) Plugin {
 	var cret  *C.GstPlugin   // return, full, converted, nullable
 
 	carg0 = (*C.GstRegistry)(UnsafeRegistryToGlibNone(registry))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(filename)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.char)(transfer.GLibString(filename))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_registry_lookup(carg0, carg1)
 	runtime.KeepAlive(registry)
@@ -15853,8 +15854,8 @@ func (registry *RegistryInstance) LookupFeature(name string) PluginFeature {
 	var cret  *C.GstPluginFeature // return, full, converted, nullable
 
 	carg0 = (*C.GstRegistry)(UnsafeRegistryToGlibNone(registry))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.char)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_registry_lookup_feature(carg0, carg1)
 	runtime.KeepAlive(registry)
@@ -15945,8 +15946,8 @@ func (registry *RegistryInstance) ScanPath(path string) bool {
 	var cret  C.gboolean     // return
 
 	carg0 = (*C.GstRegistry)(UnsafeRegistryToGlibNone(registry))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(path)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(path))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_registry_scan_path(carg0, carg1)
 	runtime.KeepAlive(registry)
@@ -16133,8 +16134,8 @@ func NewStream(streamId string, caps *Caps, typ StreamType, flags StreamFlags) S
 	var cret  *C.GstStream     // return, full, converted
 
 	if streamId != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(streamId))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	if caps != nil {
 		carg2 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
@@ -16465,8 +16466,8 @@ func NewStreamCollection(upstreamId string) StreamCollection {
 	var cret  *C.GstStreamCollection // return, full, converted
 
 	if upstreamId != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(upstreamId)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(upstreamId))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_stream_collection_new(carg1)
@@ -17381,8 +17382,8 @@ func TracerRegister(plugin Plugin, name string, typ gobject.Type) bool {
 	if plugin != nil {
 		carg1 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 	}
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = C.GType(typ)
 
 	cret = C.gst_tracer_register(carg1, carg2, carg3)
@@ -17912,8 +17913,8 @@ func AllocatorFind(name string) Allocator {
 	var cret  *C.GstAllocator // return, full, converted, nullable
 
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_allocator_find(carg1)
@@ -17935,8 +17936,8 @@ func AllocatorRegister(name string, allocator Allocator) {
 	var carg1 *C.gchar        // in, none, string
 	var carg2 *C.GstAllocator // in, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = (*C.GstAllocator)(UnsafeAllocatorToGlibFull(allocator))
 
 	C.gst_allocator_register(carg1, carg2)
@@ -18331,8 +18332,8 @@ func BufferPoolConfigAddOption(config *Structure, option string) {
 	var carg2 *C.gchar        // in, none, string
 
 	carg1 = (*C.GstStructure)(UnsafeStructureToGlibNone(config))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(option)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(option))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_buffer_pool_config_add_option(carg1, carg2)
 	runtime.KeepAlive(config)
@@ -18407,8 +18408,8 @@ func BufferPoolConfigHasOption(config *Structure, option string) bool {
 	var cret  C.gboolean      // return
 
 	carg1 = (*C.GstStructure)(UnsafeStructureToGlibNone(config))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(option)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(option))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_buffer_pool_config_has_option(carg1, carg2)
 	runtime.KeepAlive(config)
@@ -18603,8 +18604,8 @@ func (pool *BufferPoolInstance) HasOption(option string) bool {
 	var cret  C.gboolean       // return
 
 	carg0 = (*C.GstBufferPool)(UnsafeBufferPoolToGlibNone(pool))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(option)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(option))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_buffer_pool_has_option(carg0, carg1)
 	runtime.KeepAlive(pool)
@@ -21731,8 +21732,8 @@ func (device *DeviceInstance) CreateElement(name string) Element {
 
 	carg0 = (*C.GstDevice)(UnsafeDeviceToGlibNone(device))
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_device_create_element(carg0, carg1)
@@ -21839,8 +21840,8 @@ func (device *DeviceInstance) HasClasses(classes string) bool {
 	var cret  C.gboolean   // return
 
 	carg0 = (*C.GstDevice)(UnsafeDeviceToGlibNone(device))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(classes)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(classes))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_device_has_classes(carg0, carg1)
 	runtime.KeepAlive(device)
@@ -21999,8 +22000,8 @@ func (device *DeviceInstance) ParentCreateElement(name string) Element {
 
 	carg0 = (*C.GstDevice)(UnsafeDeviceToGlibNone(device))
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C._goglib_gst1_Device_virtual_create_element(unsafe.Pointer(parentclass.create_element), carg0, carg1)
@@ -22202,8 +22203,8 @@ func (monitor *DeviceMonitorInstance) AddFilter(classes string, caps *Caps) uint
 
 	carg0 = (*C.GstDeviceMonitor)(UnsafeDeviceMonitorToGlibNone(monitor))
 	if classes != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(classes)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(classes))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	if caps != nil {
 		carg2 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
@@ -22581,8 +22582,8 @@ func DeviceProviderRegister(plugin Plugin, name string, rank uint, typ gobject.T
 	if plugin != nil {
 		carg1 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 	}
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = C.guint(rank)
 	carg4 = C.GType(typ)
 
@@ -22766,8 +22767,8 @@ func (provider *DeviceProviderInstance) GetMetadata(key string) string {
 	var cret  *C.gchar             // return, none, string
 
 	carg0 = (*C.GstDeviceProvider)(UnsafeDeviceProviderToGlibNone(provider))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_device_provider_get_metadata(carg0, carg1)
 	runtime.KeepAlive(provider)
@@ -22788,8 +22789,8 @@ func (provider *DeviceProviderInstance) HideProvider(name string) {
 	var carg1 *C.gchar             // in, none, string
 
 	carg0 = (*C.GstDeviceProvider)(UnsafeDeviceProviderToGlibNone(provider))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_device_provider_hide_provider(carg0, carg1)
 	runtime.KeepAlive(provider)
@@ -22858,8 +22859,8 @@ func (provider *DeviceProviderInstance) UnhideProvider(name string) {
 	var carg1 *C.gchar             // in, none, string
 
 	carg0 = (*C.GstDeviceProvider)(UnsafeDeviceProviderToGlibNone(provider))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_device_provider_unhide_provider(carg0, carg1)
 	runtime.KeepAlive(provider)
@@ -23108,8 +23109,8 @@ func DeviceProviderFactoryFind(name string) DeviceProviderFactory {
 	var carg1 *C.gchar                    // in, none, string
 	var cret  *C.GstDeviceProviderFactory // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_device_provider_factory_find(carg1)
 	runtime.KeepAlive(name)
@@ -23130,8 +23131,8 @@ func DeviceProviderFactoryGetByName(factoryname string) DeviceProvider {
 	var carg1 *C.gchar             // in, none, string
 	var cret  *C.GstDeviceProvider // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(factoryname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(factoryname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_device_provider_factory_get_by_name(carg1)
 	runtime.KeepAlive(factoryname)
@@ -23220,8 +23221,8 @@ func (factory *DeviceProviderFactoryInstance) GetMetadata(key string) string {
 	var cret  *C.gchar                    // return, none, string, nullable-string
 
 	carg0 = (*C.GstDeviceProviderFactory)(UnsafeDeviceProviderFactoryToGlibNone(factory))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_device_provider_factory_get_metadata(carg0, carg1)
 	runtime.KeepAlive(factory)
@@ -23267,8 +23268,8 @@ func (factory *DeviceProviderFactoryInstance) HasClasses(classes string) bool {
 
 	carg0 = (*C.GstDeviceProviderFactory)(UnsafeDeviceProviderFactoryToGlibNone(factory))
 	if classes != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(classes)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(classes))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_device_provider_factory_has_classes(carg0, carg1)
@@ -23387,8 +23388,8 @@ func DynamicTypeFactoryLoad(factoryname string) gobject.Type {
 	var carg1 *C.gchar // in, none, string
 	var cret  C.GType  // return, none, casted, alias
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(factoryname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(factoryname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_dynamic_type_factory_load(carg1)
 	runtime.KeepAlive(factoryname)
@@ -23572,6 +23573,14 @@ type Element interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#gst_element_lost_state
 	LostState()
+	// MessageFull wraps gst_element_message_full
+	// 
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#gst_element_message_full
+	MessageFull(MessageType, glib.Quark, int32, string, string, string, string, int32)
+	// MessageFullWithDetails wraps gst_element_message_full_with_details
+	// 
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#gst_element_message_full_with_details
+	MessageFullWithDetails(MessageType, glib.Quark, int32, string, string, string, string, int32, *Structure)
 	// NoMorePads wraps gst_element_no_more_pads
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#gst_element_no_more_pads
@@ -23832,11 +23841,11 @@ func ElementMakeFromURI(typ URIType, uri string, elementname string) (Element, e
 	var _cerr *C.GError     // out, full, converted, nullable
 
 	carg1 = C.GstURIType(typ)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg2))
 	if elementname != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(elementname)))
-		defer C.free(unsafe.Pointer(carg3))
+		carg3 = (*C.gchar)(transfer.GLibString(elementname))
+		defer C.g_free(C.gpointer(carg3))
 	}
 
 	cret = C.gst_element_make_from_uri(carg1, carg2, carg3, &_cerr)
@@ -23868,8 +23877,8 @@ func ElementRegister(plugin Plugin, name string, rank uint, typ gobject.Type) bo
 	if plugin != nil {
 		carg1 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 	}
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = C.guint(rank)
 	carg4 = C.GType(typ)
 
@@ -23989,8 +23998,8 @@ func (element *ElementInstance) AddPropertyDeepNotifyWatch(propertyName string, 
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	if propertyName != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(propertyName))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	if includeValue {
 		carg2 = C.TRUE
@@ -24019,8 +24028,8 @@ func (element *ElementInstance) AddPropertyNotifyWatch(propertyName string, incl
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	if propertyName != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(propertyName))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	if includeValue {
 		carg2 = C.TRUE
@@ -24122,8 +24131,8 @@ func (element *ElementInstance) DecorateStreamID(streamId string) string {
 	var cret  *C.gchar      // return, full, string
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(streamId))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_element_decorate_stream_id(carg0, carg1)
 	runtime.KeepAlive(element)
@@ -24341,8 +24350,8 @@ func (element *ElementInstance) GetContext(contextType string) *Context {
 	var cret  *C.GstContext // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(contextType)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(contextType))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_element_get_context(carg0, carg1)
 	runtime.KeepAlive(element)
@@ -24366,8 +24375,8 @@ func (element *ElementInstance) GetContextUnlocked(contextType string) *Context 
 	var cret  *C.GstContext // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(contextType)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(contextType))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_element_get_context_unlocked(carg0, carg1)
 	runtime.KeepAlive(element)
@@ -24476,8 +24485,8 @@ func (element *ElementInstance) GetMetadata(key string) string {
 	var cret  *C.gchar      // return, none, string
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_element_get_metadata(carg0, carg1)
 	runtime.KeepAlive(element)
@@ -24499,8 +24508,8 @@ func (element *ElementInstance) GetPadTemplate(name string) PadTemplate {
 	var cret  *C.GstPadTemplate // return, none, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_element_get_pad_template(carg0, carg1)
 	runtime.KeepAlive(element)
@@ -24597,8 +24606,8 @@ func (element *ElementInstance) GetStaticPad(name string) Pad {
 	var cret  *C.GstPad     // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_element_get_static_pad(carg0, carg1)
 	runtime.KeepAlive(element)
@@ -24756,13 +24765,13 @@ func (src *ElementInstance) LinkPads(srcpadname string, dest Element, destpadnam
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(src))
 	if srcpadname != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(srcpadname)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(srcpadname))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	carg2 = (*C.GstElement)(UnsafeElementToGlibNone(dest))
 	if destpadname != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(destpadname)))
-		defer C.free(unsafe.Pointer(carg3))
+		carg3 = (*C.gchar)(transfer.GLibString(destpadname))
+		defer C.g_free(C.gpointer(carg3))
 	}
 
 	cret = C.gst_element_link_pads(carg0, carg1, carg2, carg3)
@@ -24793,13 +24802,13 @@ func (src *ElementInstance) LinkPadsFiltered(srcpadname string, dest Element, de
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(src))
 	if srcpadname != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(srcpadname)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(srcpadname))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	carg2 = (*C.GstElement)(UnsafeElementToGlibNone(dest))
 	if destpadname != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(destpadname)))
-		defer C.free(unsafe.Pointer(carg3))
+		carg3 = (*C.gchar)(transfer.GLibString(destpadname))
+		defer C.g_free(C.gpointer(carg3))
 	}
 	if filter != nil {
 		carg4 = (*C.GstCaps)(UnsafeCapsToGlibNone(filter))
@@ -24834,13 +24843,13 @@ func (src *ElementInstance) LinkPadsFull(srcpadname string, dest Element, destpa
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(src))
 	if srcpadname != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(srcpadname)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(srcpadname))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	carg2 = (*C.GstElement)(UnsafeElementToGlibNone(dest))
 	if destpadname != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(destpadname)))
-		defer C.free(unsafe.Pointer(carg3))
+		carg3 = (*C.gchar)(transfer.GLibString(destpadname))
+		defer C.g_free(C.gpointer(carg3))
 	}
 	carg4 = C.GstPadLinkCheck(flags)
 
@@ -24870,6 +24879,93 @@ func (element *ElementInstance) LostState() {
 
 	C.gst_element_lost_state(carg0)
 	runtime.KeepAlive(element)
+}
+
+// MessageFull wraps gst_element_message_full
+// 
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#gst_element_message_full
+func (element *ElementInstance) MessageFull(typ MessageType, domain glib.Quark, code int32, text string, debug string, file string, function string, line int32) {
+	var carg0 *C.GstElement    // in, none, converted
+	var carg1 C.GstMessageType // in, none, casted
+	var carg2 C.GQuark         // in, none, casted, alias
+	var carg3 C.gint           // in, none, casted
+	var carg4 *C.gchar         // in, full, string, nullable-string
+	var carg5 *C.gchar         // in, full, string, nullable-string
+	var carg6 *C.gchar         // in, none, string
+	var carg7 *C.gchar         // in, none, string
+	var carg8 C.gint           // in, none, casted
+
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
+	carg1 = C.GstMessageType(typ)
+	carg2 = C.GQuark(domain)
+	carg3 = C.gint(code)
+	if text != "" {
+		carg4 = (*C.gchar)(transfer.GLibString(text))
+	}
+	if debug != "" {
+		carg5 = (*C.gchar)(transfer.GLibString(debug))
+	}
+	carg6 = (*C.gchar)(transfer.GLibString(file))
+	defer C.g_free(C.gpointer(carg6))
+	carg7 = (*C.gchar)(transfer.GLibString(function))
+	defer C.g_free(C.gpointer(carg7))
+	carg8 = C.gint(line)
+
+	C.gst_element_message_full(carg0, carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(typ)
+	runtime.KeepAlive(domain)
+	runtime.KeepAlive(code)
+	runtime.KeepAlive(text)
+	runtime.KeepAlive(debug)
+	runtime.KeepAlive(file)
+	runtime.KeepAlive(function)
+	runtime.KeepAlive(line)
+}
+
+// MessageFullWithDetails wraps gst_element_message_full_with_details
+// 
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#gst_element_message_full_with_details
+func (element *ElementInstance) MessageFullWithDetails(typ MessageType, domain glib.Quark, code int32, text string, debug string, file string, function string, line int32, structure *Structure) {
+	var carg0 *C.GstElement    // in, none, converted
+	var carg1 C.GstMessageType // in, none, casted
+	var carg2 C.GQuark         // in, none, casted, alias
+	var carg3 C.gint           // in, none, casted
+	var carg4 *C.gchar         // in, full, string, nullable-string
+	var carg5 *C.gchar         // in, full, string, nullable-string
+	var carg6 *C.gchar         // in, none, string
+	var carg7 *C.gchar         // in, none, string
+	var carg8 C.gint           // in, none, casted
+	var carg9 *C.GstStructure  // in, full, converted
+
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
+	carg1 = C.GstMessageType(typ)
+	carg2 = C.GQuark(domain)
+	carg3 = C.gint(code)
+	if text != "" {
+		carg4 = (*C.gchar)(transfer.GLibString(text))
+	}
+	if debug != "" {
+		carg5 = (*C.gchar)(transfer.GLibString(debug))
+	}
+	carg6 = (*C.gchar)(transfer.GLibString(file))
+	defer C.g_free(C.gpointer(carg6))
+	carg7 = (*C.gchar)(transfer.GLibString(function))
+	defer C.g_free(C.gpointer(carg7))
+	carg8 = C.gint(line)
+	carg9 = (*C.GstStructure)(UnsafeStructureToGlibFull(structure))
+
+	C.gst_element_message_full_with_details(carg0, carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8, carg9)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(typ)
+	runtime.KeepAlive(domain)
+	runtime.KeepAlive(code)
+	runtime.KeepAlive(text)
+	runtime.KeepAlive(debug)
+	runtime.KeepAlive(file)
+	runtime.KeepAlive(function)
+	runtime.KeepAlive(line)
+	runtime.KeepAlive(structure)
 }
 
 // NoMorePads wraps gst_element_no_more_pads
@@ -25107,8 +25203,8 @@ func (element *ElementInstance) RequestPad(templ PadTemplate, name string, caps 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.GstPadTemplate)(UnsafePadTemplateToGlibNone(templ))
 	if name != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	if caps != nil {
 		carg3 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
@@ -25138,8 +25234,8 @@ func (element *ElementInstance) RequestPadSimple(name string) Pad {
 	var cret  *C.GstPad     // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_element_request_pad_simple(carg0, carg1)
 	runtime.KeepAlive(element)
@@ -25432,11 +25528,11 @@ func (src *ElementInstance) UnlinkPads(srcpadname string, dest Element, destpadn
 	var carg3 *C.gchar      // in, none, string
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(src))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(srcpadname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(srcpadname))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = (*C.GstElement)(UnsafeElementToGlibNone(dest))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(destpadname)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg3 = (*C.gchar)(transfer.GLibString(destpadname))
+	defer C.g_free(C.gpointer(carg3))
 
 	C.gst_element_unlink_pads(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(src)
@@ -26110,8 +26206,8 @@ func (element *ElementInstance) ParentRequestNewPad(templ PadTemplate, name stri
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.GstPadTemplate)(UnsafePadTemplateToGlibNone(templ))
 	if name != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	if caps != nil {
 		carg3 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
@@ -26439,8 +26535,8 @@ func ElementFactoryFind(name string) ElementFactory {
 	var carg1 *C.gchar             // in, none, string
 	var cret  *C.GstElementFactory // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_element_factory_find(carg1)
 	runtime.KeepAlive(name)
@@ -26491,11 +26587,11 @@ func ElementFactoryMake(factoryname string, name string) Element {
 	var carg2 *C.gchar      // in, none, string, nullable-string
 	var cret  *C.GstElement // return, none, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(factoryname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(factoryname))
+	defer C.g_free(C.gpointer(carg1))
 	if name != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg2))
 	}
 
 	cret = C.gst_element_factory_make(carg1, carg2)
@@ -26617,8 +26713,8 @@ func (factory *ElementFactoryInstance) Create(name string) Element {
 
 	carg0 = (*C.GstElementFactory)(UnsafeElementFactoryToGlibNone(factory))
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_element_factory_create(carg0, carg1)
@@ -26662,8 +26758,8 @@ func (factory *ElementFactoryInstance) GetMetadata(key string) string {
 	var cret  *C.gchar             // return, none, string, nullable-string
 
 	carg0 = (*C.GstElementFactory)(UnsafeElementFactoryToGlibNone(factory))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_element_factory_get_metadata(carg0, carg1)
 	runtime.KeepAlive(factory)
@@ -26814,8 +26910,8 @@ func (factory *ElementFactoryInstance) HasInterface(interfacename string) bool {
 	var cret  C.gboolean           // return
 
 	carg0 = (*C.GstElementFactory)(UnsafeElementFactoryToGlibNone(factory))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(interfacename)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(interfacename))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_element_factory_has_interface(carg0, carg1)
 	runtime.KeepAlive(factory)
@@ -26946,8 +27042,8 @@ func NewGhostPad(name string, target Pad) Pad {
 	var cret  *C.GstPad // return, none, converted, nullable
 
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	carg2 = (*C.GstPad)(UnsafePadToGlibNone(target))
 
@@ -26974,8 +27070,8 @@ func NewGhostPadFromTemplate(name string, target Pad, templ PadTemplate) Pad {
 	var cret  *C.GstPad         // return, none, converted, nullable
 
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	carg2 = (*C.GstPad)(UnsafePadToGlibNone(target))
 	carg3 = (*C.GstPadTemplate)(UnsafePadTemplateToGlibNone(templ))
@@ -27003,8 +27099,8 @@ func NewGhostPadNoTarget(name string, dir PadDirection) Pad {
 	var cret  *C.GstPad         // return, none, converted, nullable
 
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	carg2 = C.GstPadDirection(dir)
 
@@ -27030,8 +27126,8 @@ func NewGhostPadNoTargetFromTemplate(name string, templ PadTemplate) Pad {
 	var cret  *C.GstPad         // return, none, converted, nullable
 
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	carg2 = (*C.GstPadTemplate)(UnsafePadTemplateToGlibNone(templ))
 
@@ -27731,8 +27827,8 @@ func NewBin(name string) Element {
 	var cret  *C.GstElement // return, none, converted
 
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_bin_new(carg1)
@@ -27826,8 +27922,8 @@ func (bin *BinInstance) GetByName(name string) Element {
 	var cret  *C.GstElement // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_bin_get_by_name(carg0, carg1)
 	runtime.KeepAlive(bin)
@@ -27851,8 +27947,8 @@ func (bin *BinInstance) GetByNameRecurseUp(name string) Element {
 	var cret  *C.GstElement // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_bin_get_by_name_recurse_up(carg0, carg1)
 	runtime.KeepAlive(bin)
@@ -27895,8 +27991,8 @@ func (bin *BinInstance) IterateAllByElementFactoryName(factoryName string) *Iter
 	var cret  *C.GstIterator // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(factoryName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(factoryName))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_bin_iterate_all_by_element_factory_name(carg0, carg1)
 	runtime.KeepAlive(bin)
@@ -28697,8 +28793,8 @@ func NewPipeline(name string) Element {
 	var cret  *C.GstElement // return, none, converted
 
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_pipeline_new(carg1)
@@ -29566,8 +29662,8 @@ func (buffer *Buffer) AddCustomMeta(name string) *CustomMeta {
 	var cret  *C.GstCustomMeta // return, none, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_buffer_add_custom_meta(carg0, carg1)
 	runtime.KeepAlive(buffer)
@@ -29900,8 +29996,8 @@ func (buffer *Buffer) GetCustomMeta(name string) *CustomMeta {
 	var cret  *C.GstCustomMeta // return, none, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_buffer_get_custom_meta(carg0, carg1)
 	runtime.KeepAlive(buffer)
@@ -31278,8 +31374,8 @@ func NewCapsEmptySimple(mediaType string) *Caps {
 	var carg1 *C.char    // in, none, string
 	var cret  *C.GstCaps // return, full, converted
 
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(mediaType)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.char)(transfer.GLibString(mediaType))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_caps_new_empty_simple(carg1)
 	runtime.KeepAlive(mediaType)
@@ -31317,8 +31413,8 @@ func NewCapsStaticStrEmptySimple(mediaType string) *Caps {
 	var carg1 *C.char    // in, none, string
 	var cret  *C.GstCaps // return, full, converted
 
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(mediaType)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.char)(transfer.GLibString(mediaType))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_caps_new_static_str_empty_simple(carg1)
 	runtime.KeepAlive(mediaType)
@@ -31337,8 +31433,8 @@ func CapsFromString(str string) *Caps {
 	var carg1 *C.gchar   // in, none, string
 	var cret  *C.GstCaps // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_caps_from_string(carg1)
 	runtime.KeepAlive(str)
@@ -32099,8 +32195,8 @@ func (caps *Caps) SetValue(field string, value *gobject.Value) {
 	var carg2 *C.GValue  // in, none, converted
 
 	carg0 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(field)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.char)(transfer.GLibString(field))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	C.gst_caps_set_value(carg0, carg1, carg2)
@@ -32118,8 +32214,8 @@ func (caps *Caps) SetValueStaticStr(field string, value *gobject.Value) {
 	var carg2 *C.GValue  // in, none, converted
 
 	carg0 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(field)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.char)(transfer.GLibString(field))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	C.gst_caps_set_value_static_str(carg0, carg1, carg2)
@@ -32366,8 +32462,8 @@ func NewCapsFeaturesSingle(feature string) *CapsFeatures {
 	var carg1 *C.gchar           // in, none, string
 	var cret  *C.GstCapsFeatures // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(feature))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_caps_features_new_single(carg1)
 	runtime.KeepAlive(feature)
@@ -32386,8 +32482,8 @@ func NewCapsFeaturesSingleStaticStr(feature string) *CapsFeatures {
 	var carg1 *C.gchar           // in, none, string
 	var cret  *C.GstCapsFeatures // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(feature))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_caps_features_new_single_static_str(carg1)
 	runtime.KeepAlive(feature)
@@ -32406,8 +32502,8 @@ func CapsFeaturesFromString(features string) *CapsFeatures {
 	var carg1 *C.gchar           // in, none, string
 	var cret  *C.GstCapsFeatures // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(features)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(features))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_caps_features_from_string(carg1)
 	runtime.KeepAlive(features)
@@ -32429,8 +32525,8 @@ func (features *CapsFeatures) Add(feature string) {
 	var carg1 *C.gchar           // in, none, string
 
 	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(feature))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_caps_features_add(carg0, carg1)
 	runtime.KeepAlive(features)
@@ -32460,8 +32556,8 @@ func (features *CapsFeatures) AddStaticStr(feature string) {
 	var carg1 *C.gchar           // in, none, string
 
 	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(feature))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_caps_features_add_static_str(carg0, carg1)
 	runtime.KeepAlive(features)
@@ -32477,8 +32573,8 @@ func (features *CapsFeatures) Contains(feature string) bool {
 	var cret  C.gboolean         // return
 
 	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(feature))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_caps_features_contains(carg0, carg1)
 	runtime.KeepAlive(features)
@@ -32654,8 +32750,8 @@ func (features *CapsFeatures) Remove(feature string) {
 	var carg1 *C.gchar           // in, none, string
 
 	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(feature))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_caps_features_remove(carg0, carg1)
 	runtime.KeepAlive(features)
@@ -33034,8 +33130,8 @@ func NewContext(contextType string, persistent bool) *Context {
 	var carg2 C.gboolean    // in
 	var cret  *C.GstContext // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(contextType)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(contextType))
+	defer C.g_free(C.gpointer(carg1))
 	if persistent {
 		carg2 = C.TRUE
 	}
@@ -33117,8 +33213,8 @@ func (_context *Context) HasContextType(contextType string) bool {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(_context))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(contextType)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(contextType))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_context_has_context_type(carg0, carg1)
 	runtime.KeepAlive(_context)
@@ -33393,8 +33489,8 @@ func (meta *CustomMeta) HasName(name string) bool {
 	var cret  C.gboolean       // return
 
 	carg0 = (*C.GstCustomMeta)(UnsafeCustomMetaToGlibNone(meta))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_custom_meta_has_name(carg0, carg1)
 	runtime.KeepAlive(meta)
@@ -33565,8 +33661,8 @@ func NewDateTimeFromIso8601String(str string) *DateTime {
 	var carg1 *C.gchar       // in, none, string
 	var cret  *C.GstDateTime // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_date_time_new_from_iso8601_string(carg1)
 	runtime.KeepAlive(str)
@@ -34568,12 +34664,31 @@ func (klass *DeviceProviderClass) AddMetadata(key string, value string) {
 	var carg2 *C.gchar                  // in, none, string
 
 	carg0 = (*C.GstDeviceProviderClass)(UnsafeDeviceProviderClassToGlibNone(klass))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(value))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_device_provider_class_add_metadata(carg0, carg1, carg2)
+	runtime.KeepAlive(klass)
+	runtime.KeepAlive(key)
+	runtime.KeepAlive(value)
+}
+
+// AddStaticMetadata wraps gst_device_provider_class_add_static_metadata
+// 
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstdeviceprovider.html#gst_device_provider_class_add_static_metadata
+func (klass *DeviceProviderClass) AddStaticMetadata(key string, value string) {
+	var carg0 *C.GstDeviceProviderClass // in, none, converted
+	var carg1 *C.gchar                  // in, none, string
+	var carg2 *C.gchar                  // in, full, string
+
+	carg0 = (*C.GstDeviceProviderClass)(UnsafeDeviceProviderClassToGlibNone(klass))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(value))
+
+	C.gst_device_provider_class_add_static_metadata(carg0, carg1, carg2)
 	runtime.KeepAlive(klass)
 	runtime.KeepAlive(key)
 	runtime.KeepAlive(value)
@@ -34588,8 +34703,8 @@ func (klass *DeviceProviderClass) GetMetadata(key string) string {
 	var cret  *C.gchar                  // return, none, string, nullable-string
 
 	carg0 = (*C.GstDeviceProviderClass)(UnsafeDeviceProviderClassToGlibNone(klass))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_device_provider_class_get_metadata(carg0, carg1)
 	runtime.KeepAlive(klass)
@@ -34615,16 +34730,40 @@ func (klass *DeviceProviderClass) SetMetadata(longname string, classification st
 	var carg4 *C.gchar                  // in, none, string
 
 	carg0 = (*C.GstDeviceProviderClass)(UnsafeDeviceProviderClassToGlibNone(klass))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(longname)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(classification)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(description)))
-	defer C.free(unsafe.Pointer(carg3))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(author)))
-	defer C.free(unsafe.Pointer(carg4))
+	carg1 = (*C.gchar)(transfer.GLibString(longname))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(classification))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(description))
+	defer C.g_free(C.gpointer(carg3))
+	carg4 = (*C.gchar)(transfer.GLibString(author))
+	defer C.g_free(C.gpointer(carg4))
 
 	C.gst_device_provider_class_set_metadata(carg0, carg1, carg2, carg3, carg4)
+	runtime.KeepAlive(klass)
+	runtime.KeepAlive(longname)
+	runtime.KeepAlive(classification)
+	runtime.KeepAlive(description)
+	runtime.KeepAlive(author)
+}
+
+// SetStaticMetadata wraps gst_device_provider_class_set_static_metadata
+// 
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstdeviceprovider.html#gst_device_provider_class_set_static_metadata
+func (klass *DeviceProviderClass) SetStaticMetadata(longname string, classification string, description string, author string) {
+	var carg0 *C.GstDeviceProviderClass // in, none, converted
+	var carg1 *C.gchar                  // in, full, string
+	var carg2 *C.gchar                  // in, full, string
+	var carg3 *C.gchar                  // in, full, string
+	var carg4 *C.gchar                  // in, full, string
+
+	carg0 = (*C.GstDeviceProviderClass)(UnsafeDeviceProviderClassToGlibNone(klass))
+	carg1 = (*C.gchar)(transfer.GLibString(longname))
+	carg2 = (*C.gchar)(transfer.GLibString(classification))
+	carg3 = (*C.gchar)(transfer.GLibString(description))
+	carg4 = (*C.gchar)(transfer.GLibString(author))
+
+	C.gst_device_provider_class_set_static_metadata(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(klass)
 	runtime.KeepAlive(longname)
 	runtime.KeepAlive(classification)
@@ -34806,10 +34945,10 @@ func (klass *ElementClass) AddMetadata(key string, value string) {
 	var carg2 *C.gchar           // in, none, string
 
 	carg0 = (*C.GstElementClass)(UnsafeElementClassToGlibNone(klass))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(value))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_element_class_add_metadata(carg0, carg1, carg2)
 	runtime.KeepAlive(klass)
@@ -34841,10 +34980,10 @@ func (klass *ElementClass) AddStaticMetadata(key string, value string) {
 	var carg2 *C.gchar           // in, none, string
 
 	carg0 = (*C.GstElementClass)(UnsafeElementClassToGlibNone(klass))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(value))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_element_class_add_static_metadata(carg0, carg1, carg2)
 	runtime.KeepAlive(klass)
@@ -34894,8 +35033,8 @@ func (klass *ElementClass) GetMetadata(key string) string {
 	var cret  *C.gchar           // return, none, string
 
 	carg0 = (*C.GstElementClass)(UnsafeElementClassToGlibNone(klass))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_element_class_get_metadata(carg0, carg1)
 	runtime.KeepAlive(klass)
@@ -34917,8 +35056,8 @@ func (elementClass *ElementClass) GetPadTemplate(name string) PadTemplate {
 	var cret  *C.GstPadTemplate  // return, none, converted, nullable
 
 	carg0 = (*C.GstElementClass)(UnsafeElementClassToGlibNone(elementClass))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_element_class_get_pad_template(carg0, carg1)
 	runtime.KeepAlive(elementClass)
@@ -34970,14 +35109,14 @@ func (klass *ElementClass) SetMetadata(longname string, classification string, d
 	var carg4 *C.gchar           // in, none, string
 
 	carg0 = (*C.GstElementClass)(UnsafeElementClassToGlibNone(klass))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(longname)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(classification)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(description)))
-	defer C.free(unsafe.Pointer(carg3))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(author)))
-	defer C.free(unsafe.Pointer(carg4))
+	carg1 = (*C.gchar)(transfer.GLibString(longname))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(classification))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(description))
+	defer C.g_free(C.gpointer(carg3))
+	carg4 = (*C.gchar)(transfer.GLibString(author))
+	defer C.g_free(C.gpointer(carg4))
 
 	C.gst_element_class_set_metadata(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(klass)
@@ -34998,14 +35137,14 @@ func (klass *ElementClass) SetStaticMetadata(longname string, classification str
 	var carg4 *C.gchar           // in, none, string
 
 	carg0 = (*C.GstElementClass)(UnsafeElementClassToGlibNone(klass))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(longname)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(classification)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(description)))
-	defer C.free(unsafe.Pointer(carg3))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(author)))
-	defer C.free(unsafe.Pointer(carg4))
+	carg1 = (*C.gchar)(transfer.GLibString(longname))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(classification))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(description))
+	defer C.g_free(C.gpointer(carg3))
+	carg4 = (*C.gchar)(transfer.GLibString(author))
+	defer C.g_free(C.gpointer(carg4))
 
 	C.gst_element_class_set_static_metadata(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(klass)
@@ -35418,11 +35557,11 @@ func NewEventProtection(systemId string, data *Buffer, origin string) *Event {
 	var carg3 *C.gchar     // in, none, string
 	var cret  *C.GstEvent  // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(systemId)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(systemId))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = (*C.GstBuffer)(UnsafeBufferToGlibNone(data))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(origin)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg3 = (*C.gchar)(transfer.GLibString(origin))
+	defer C.g_free(C.gpointer(carg3))
 
 	cret = C.gst_event_new_protection(carg1, carg2, carg3)
 	runtime.KeepAlive(systemId)
@@ -35565,8 +35704,8 @@ func NewEventSinkMessage(name string, msg *Message) *Event {
 	var carg2 *C.GstMessage // in, none, converted
 	var cret  *C.GstEvent   // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = (*C.GstMessage)(UnsafeMessageToGlibNone(msg))
 
 	cret = C.gst_event_new_sink_message(carg1, carg2)
@@ -35660,8 +35799,8 @@ func NewEventStreamStart(streamId string) *Event {
 	var carg1 *C.gchar    // in, none, string
 	var cret  *C.GstEvent // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(streamId))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_event_new_stream_start(carg1)
 	runtime.KeepAlive(streamId)
@@ -35723,8 +35862,8 @@ func NewEventTocSelect(uid string) *Event {
 	var carg1 *C.gchar    // in, none, string
 	var cret  *C.GstEvent // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uid)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uid))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_event_new_toc_select(carg1)
 	runtime.KeepAlive(uid)
@@ -35819,8 +35958,8 @@ func (event *Event) HasName(name string) bool {
 	var cret  C.gboolean  // return
 
 	carg0 = (*C.GstEvent)(UnsafeEventToGlibNone(event))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_event_has_name(carg0, carg1)
 	runtime.KeepAlive(event)
@@ -36900,8 +37039,8 @@ func (s1 *IdStr) IsEqualToStr(s2 string) bool {
 	var cret  C.gboolean  // return
 
 	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s1))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(s2)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(s2))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_id_str_is_equal_to_str(carg0, carg1)
 	runtime.KeepAlive(s1)
@@ -36926,8 +37065,8 @@ func (s1 *IdStr) IsEqualToStrWithLen(s2 string, len uint) bool {
 	var cret  C.gboolean  // return
 
 	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s1))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(s2)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(s2))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gsize(len)
 
 	cret = C.gst_id_str_is_equal_to_str_with_len(carg0, carg1, carg2)
@@ -36967,8 +37106,8 @@ func (s *IdStr) Set(value string) {
 	var carg1 *C.gchar    // in, none, string
 
 	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(value))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_id_str_set(carg0, carg1)
 	runtime.KeepAlive(s)
@@ -36983,8 +37122,8 @@ func (s *IdStr) SetStaticStr(value string) {
 	var carg1 *C.gchar    // in, none, string
 
 	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(value))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_id_str_set_static_str(carg0, carg1)
 	runtime.KeepAlive(s)
@@ -37000,8 +37139,8 @@ func (s *IdStr) SetStaticStrWithLen(value string, len uint) {
 	var carg2 C.gsize     // in, none, casted
 
 	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(value))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gsize(len)
 
 	C.gst_id_str_set_static_str_with_len(carg0, carg1, carg2)
@@ -37019,8 +37158,8 @@ func (s *IdStr) SetWithLen(value string, len uint) {
 	var carg2 C.gsize     // in, none, casted
 
 	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(value))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gsize(len)
 
 	C.gst_id_str_set_with_len(carg0, carg1, carg2)
@@ -37445,8 +37584,8 @@ func (mem *Memory) IsType(memType string) bool {
 	var cret  C.gboolean   // return
 
 	carg0 = (*C.GstMemory)(UnsafeMemoryToGlibNone(mem))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(memType)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(memType))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_memory_is_type(carg0, carg1)
 	runtime.KeepAlive(mem)
@@ -38010,8 +38149,8 @@ func NewMessageNeedContext(src Object, contextType string) *Message {
 	if src != nil {
 		carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(src))
 	}
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(contextType)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(contextType))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_message_new_need_context(carg1, carg2)
 	runtime.KeepAlive(src)
@@ -38062,10 +38201,10 @@ func NewMessageProgress(src Object, typ ProgressType, code string, text string) 
 		carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(src))
 	}
 	carg2 = C.GstProgressType(typ)
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(code)))
-	defer C.free(unsafe.Pointer(carg3))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(text)))
-	defer C.free(unsafe.Pointer(carg4))
+	carg3 = (*C.gchar)(transfer.GLibString(code))
+	defer C.g_free(C.gpointer(carg3))
+	carg4 = (*C.gchar)(transfer.GLibString(text))
+	defer C.g_free(C.gpointer(carg4))
 
 	cret = C.gst_message_new_progress(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(src)
@@ -38131,8 +38270,8 @@ func NewMessageRedirect(src Object, location string, tagList *TagList, entryStru
 	if src != nil {
 		carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(src))
 	}
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(location)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(location))
+	defer C.g_free(C.gpointer(carg2))
 	if tagList != nil {
 		carg3 = (*C.GstTagList)(UnsafeTagListToGlibFull(tagList))
 	}
@@ -38590,8 +38729,8 @@ func (message *Message) AddRedirectEntry(location string, tagList *TagList, entr
 	var carg3 *C.GstStructure // in, full, converted, nullable
 
 	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(location)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(location))
+	defer C.g_free(C.gpointer(carg1))
 	if tagList != nil {
 		carg2 = (*C.GstTagList)(UnsafeTagListToGlibFull(tagList))
 	}
@@ -38716,8 +38855,8 @@ func (message *Message) HasName(name string) bool {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_message_has_name(carg0, carg1)
 	runtime.KeepAlive(message)
@@ -40030,8 +40169,8 @@ func MetaAPITypeRegister(api string, tags []string) gobject.Type {
 	var carg2 **C.gchar // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 	var cret  C.GType   // return, none, casted, alias
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(api)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(api))
+	defer C.g_free(C.gpointer(carg1))
 	_ = tags
 	_ = carg2
 	panic("unimplemented conversion of []string (const gchar**) because of unimplemented: inner pointers in array")
@@ -40085,8 +40224,8 @@ func MetaGetInfo(impl string) *MetaInfo {
 	var carg1 *C.gchar       // in, none, string
 	var cret  *C.GstMetaInfo // return, none, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(impl)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(impl))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_meta_get_info(carg1)
 	runtime.KeepAlive(impl)
@@ -40107,8 +40246,8 @@ func MetaRegisterCustomSimple(name string) *MetaInfo {
 	var carg1 *C.gchar       // in, none, string
 	var cret  *C.GstMetaInfo // return, none, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_meta_register_custom_simple(carg1)
 	runtime.KeepAlive(name)
@@ -42449,8 +42588,8 @@ func NewQueryContext(contextType string) *Query {
 	var carg1 *C.gchar    // in, none, string
 	var cret  *C.GstQuery // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(contextType)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(contextType))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_query_new_context(carg1)
 	runtime.KeepAlive(contextType)
@@ -44089,8 +44228,8 @@ func (query *Query) SetURI(uri string) {
 
 	carg0 = (*C.GstQuery)(UnsafeQueryToGlibNone(query))
 	if uri != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(uri))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C.gst_query_set_uri(carg0, carg1)
@@ -44107,8 +44246,8 @@ func (query *Query) SetURIRedirection(uri string) {
 
 	carg0 = (*C.GstQuery)(UnsafeQueryToGlibNone(query))
 	if uri != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(uri))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C.gst_query_set_uri_redirection(carg0, carg1)
@@ -45683,8 +45822,8 @@ func StructureFromString(str string) *Structure {
 	var carg2 *C.gchar        // skipped
 	var cret  *C.GstStructure // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_from_string(carg1, &carg2)
 	runtime.KeepAlive(str)
@@ -45705,8 +45844,8 @@ func NewStructureEmpty(name string) *Structure {
 	var carg1 *C.gchar        // in, none, string
 	var cret  *C.GstStructure // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_new_empty(carg1)
 	runtime.KeepAlive(name)
@@ -45725,8 +45864,8 @@ func NewStructureFromString(str string) *Structure {
 	var carg1 *C.gchar        // in, none, string
 	var cret  *C.GstStructure // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_new_from_string(carg1)
 	runtime.KeepAlive(str)
@@ -45766,8 +45905,8 @@ func NewStructureStaticStrEmpty(name string) *Structure {
 	var carg1 *C.gchar        // in, none, string
 	var cret  *C.GstStructure // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_new_static_str_empty(carg1)
 	runtime.KeepAlive(name)
@@ -45861,8 +46000,8 @@ func (structure *Structure) FixateField(fieldName string) bool {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(fieldName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.char)(transfer.GLibString(fieldName))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_fixate_field(carg0, carg1)
 	runtime.KeepAlive(structure)
@@ -45887,8 +46026,8 @@ func (structure *Structure) FixateFieldBoolean(fieldName string, target bool) bo
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(fieldName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.char)(transfer.GLibString(fieldName))
+	defer C.g_free(C.gpointer(carg1))
 	if target {
 		carg2 = C.TRUE
 	}
@@ -45917,8 +46056,8 @@ func (structure *Structure) FixateFieldNearestDouble(fieldName string, target fl
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(fieldName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.char)(transfer.GLibString(fieldName))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.double(target)
 
 	cret = C.gst_structure_fixate_field_nearest_double(carg0, carg1, carg2)
@@ -45946,8 +46085,8 @@ func (structure *Structure) FixateFieldNearestFraction(fieldName string, targetN
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(fieldName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.char)(transfer.GLibString(fieldName))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(targetNumerator)
 	carg3 = C.gint(targetDenominator)
 
@@ -45976,8 +46115,8 @@ func (structure *Structure) FixateFieldNearestInt(fieldName string, target int32
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(fieldName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.char)(transfer.GLibString(fieldName))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.int(target)
 
 	cret = C.gst_structure_fixate_field_nearest_int(carg0, carg1, carg2)
@@ -46004,10 +46143,10 @@ func (structure *Structure) FixateFieldString(fieldName string, target string) b
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(fieldName)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(target)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.char)(transfer.GLibString(fieldName))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(target))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_structure_fixate_field_string(carg0, carg1, carg2)
 	runtime.KeepAlive(structure)
@@ -46060,8 +46199,8 @@ func (structure *Structure) GetBoolean(fieldname string) (bool, bool) {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_get_boolean(carg0, carg1, &carg2)
 	runtime.KeepAlive(structure)
@@ -46090,8 +46229,8 @@ func (structure *Structure) GetClockTime(fieldname string) (ClockTime, bool) {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_get_clock_time(carg0, carg1, &carg2)
 	runtime.KeepAlive(structure)
@@ -46118,8 +46257,8 @@ func (structure *Structure) GetDateTime(fieldname string) (*DateTime, bool) {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_get_date_time(carg0, carg1, &carg2)
 	runtime.KeepAlive(structure)
@@ -46146,8 +46285,8 @@ func (structure *Structure) GetDouble(fieldname string) (float64, bool) {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_get_double(carg0, carg1, &carg2)
 	runtime.KeepAlive(structure)
@@ -46175,8 +46314,8 @@ func (structure *Structure) GetEnum(fieldname string, enumtype gobject.Type) (in
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.GType(enumtype)
 
 	cret = C.gst_structure_get_enum(carg0, carg1, carg2, &carg3)
@@ -46204,8 +46343,8 @@ func (structure *Structure) GetFieldType(fieldname string) gobject.Type {
 	var cret  C.GType         // return, none, casted, alias
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_get_field_type(carg0, carg1)
 	runtime.KeepAlive(structure)
@@ -46229,8 +46368,8 @@ func (structure *Structure) GetFlags(fieldname string, flagsType gobject.Type) (
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.GType(flagsType)
 
 	cret = C.gst_structure_get_flags(carg0, carg1, carg2, &carg3)
@@ -46260,8 +46399,8 @@ func (structure *Structure) GetFlagset(fieldname string) (uint, uint, bool) {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_get_flagset(carg0, carg1, &carg2, &carg3)
 	runtime.KeepAlive(structure)
@@ -46291,8 +46430,8 @@ func (structure *Structure) GetFraction(fieldname string) (int32, int32, bool) {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_get_fraction(carg0, carg1, &carg2, &carg3)
 	runtime.KeepAlive(structure)
@@ -46321,8 +46460,8 @@ func (structure *Structure) GetInt(fieldname string) (int32, bool) {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_get_int(carg0, carg1, &carg2)
 	runtime.KeepAlive(structure)
@@ -46349,8 +46488,8 @@ func (structure *Structure) GetInt64(fieldname string) (int64, bool) {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_get_int64(carg0, carg1, &carg2)
 	runtime.KeepAlive(structure)
@@ -46414,8 +46553,8 @@ func (structure *Structure) GetString(fieldname string) string {
 	var cret  *C.gchar        // return, none, string, nullable-string
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_get_string(carg0, carg1)
 	runtime.KeepAlive(structure)
@@ -46440,8 +46579,8 @@ func (structure *Structure) GetUint(fieldname string) (uint, bool) {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_get_uint(carg0, carg1, &carg2)
 	runtime.KeepAlive(structure)
@@ -46468,8 +46607,8 @@ func (structure *Structure) GetUint64(fieldname string) (uint64, bool) {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_get_uint64(carg0, carg1, &carg2)
 	runtime.KeepAlive(structure)
@@ -46495,8 +46634,8 @@ func (structure *Structure) HasField(fieldname string) bool {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_has_field(carg0, carg1)
 	runtime.KeepAlive(structure)
@@ -46521,8 +46660,8 @@ func (structure *Structure) HasFieldTyped(fieldname string, typ gobject.Type) bo
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.GType(typ)
 
 	cret = C.gst_structure_has_field_typed(carg0, carg1, carg2)
@@ -46548,8 +46687,8 @@ func (structure *Structure) HasName(name string) bool {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_structure_has_name(carg0, carg1)
 	runtime.KeepAlive(structure)
@@ -46894,8 +47033,8 @@ func (structure *Structure) RemoveField(fieldname string) {
 	var carg1 *C.gchar        // in, none, string
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_structure_remove_field(carg0, carg1)
 	runtime.KeepAlive(structure)
@@ -46935,8 +47074,8 @@ func (structure *Structure) SetName(name string) {
 	var carg1 *C.gchar        // in, none, string
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_structure_set_name(carg0, carg1)
 	runtime.KeepAlive(structure)
@@ -46966,8 +47105,8 @@ func (structure *Structure) SetNameStaticStr(name string) {
 	var carg1 *C.gchar        // in, none, string
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_structure_set_name_static_str(carg0, carg1)
 	runtime.KeepAlive(structure)
@@ -46983,8 +47122,8 @@ func (structure *Structure) SetValueStaticStr(fieldname string, value *gobject.V
 	var carg2 *C.GValue       // in, none, converted
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	C.gst_structure_set_value_static_str(carg0, carg1, carg2)
@@ -47002,8 +47141,8 @@ func (structure *Structure) TakeValueStaticStr(fieldname string, value *gobject.
 	var carg2 *C.GValue       // in, full, converted
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(fieldname))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	C.gst_structure_take_value_static_str(carg0, carg1, carg2)
@@ -47219,8 +47358,8 @@ func NewTagListFromString(str string) *TagList {
 	var carg1 *C.gchar      // in, none, string
 	var cret  *C.GstTagList // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_list_new_from_string(carg1)
 	runtime.KeepAlive(str)
@@ -47245,8 +47384,8 @@ func (list *TagList) AddValue(mode TagMergeMode, tag string, value *gobject.Valu
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
 	carg1 = C.GstTagMergeMode(mode)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	C.gst_tag_list_add_value(carg0, carg1, carg2, carg3)
@@ -47303,8 +47442,8 @@ func (list *TagList) GetBoolean(tag string) (bool, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_list_get_boolean(carg0, carg1, &carg2)
 	runtime.KeepAlive(list)
@@ -47334,8 +47473,8 @@ func (list *TagList) GetBooleanIndex(tag string, index uint) (bool, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(index)
 
 	cret = C.gst_tag_list_get_boolean_index(carg0, carg1, carg2, &carg3)
@@ -47366,8 +47505,8 @@ func (list *TagList) GetDateTime(tag string) (*DateTime, bool) {
 	var cret  C.gboolean     // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_list_get_date_time(carg0, carg1, &carg2)
 	runtime.KeepAlive(list)
@@ -47395,8 +47534,8 @@ func (list *TagList) GetDateTimeIndex(tag string, index uint) (*DateTime, bool) 
 	var cret  C.gboolean     // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(index)
 
 	cret = C.gst_tag_list_get_date_time_index(carg0, carg1, carg2, &carg3)
@@ -47425,8 +47564,8 @@ func (list *TagList) GetDouble(tag string) (float64, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_list_get_double(carg0, carg1, &carg2)
 	runtime.KeepAlive(list)
@@ -47454,8 +47593,8 @@ func (list *TagList) GetDoubleIndex(tag string, index uint) (float64, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(index)
 
 	cret = C.gst_tag_list_get_double_index(carg0, carg1, carg2, &carg3)
@@ -47484,8 +47623,8 @@ func (list *TagList) GetFloat(tag string) (float32, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_list_get_float(carg0, carg1, &carg2)
 	runtime.KeepAlive(list)
@@ -47513,8 +47652,8 @@ func (list *TagList) GetFloatIndex(tag string, index uint) (float32, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(index)
 
 	cret = C.gst_tag_list_get_float_index(carg0, carg1, carg2, &carg3)
@@ -47543,8 +47682,8 @@ func (list *TagList) GetInt(tag string) (int32, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_list_get_int(carg0, carg1, &carg2)
 	runtime.KeepAlive(list)
@@ -47571,8 +47710,8 @@ func (list *TagList) GetInt64(tag string) (int64, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_list_get_int64(carg0, carg1, &carg2)
 	runtime.KeepAlive(list)
@@ -47600,8 +47739,8 @@ func (list *TagList) GetInt64Index(tag string, index uint) (int64, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(index)
 
 	cret = C.gst_tag_list_get_int64_index(carg0, carg1, carg2, &carg3)
@@ -47631,8 +47770,8 @@ func (list *TagList) GetIntIndex(tag string, index uint) (int32, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(index)
 
 	cret = C.gst_tag_list_get_int_index(carg0, carg1, carg2, &carg3)
@@ -47661,8 +47800,8 @@ func (list *TagList) GetSample(tag string) (*Sample, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_list_get_sample(carg0, carg1, &carg2)
 	runtime.KeepAlive(list)
@@ -47690,8 +47829,8 @@ func (list *TagList) GetSampleIndex(tag string, index uint) (*Sample, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(index)
 
 	cret = C.gst_tag_list_get_sample_index(carg0, carg1, carg2, &carg3)
@@ -47739,8 +47878,8 @@ func (list *TagList) GetString(tag string) (string, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_list_get_string(carg0, carg1, &carg2)
 	runtime.KeepAlive(list)
@@ -47769,8 +47908,8 @@ func (list *TagList) GetStringIndex(tag string, index uint) (string, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(index)
 
 	cret = C.gst_tag_list_get_string_index(carg0, carg1, carg2, &carg3)
@@ -47799,8 +47938,8 @@ func (list *TagList) GetTagSize(tag string) uint {
 	var cret  C.guint       // return, none, casted
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_list_get_tag_size(carg0, carg1)
 	runtime.KeepAlive(list)
@@ -47823,8 +47962,8 @@ func (list *TagList) GetUint(tag string) (uint, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_list_get_uint(carg0, carg1, &carg2)
 	runtime.KeepAlive(list)
@@ -47851,8 +47990,8 @@ func (list *TagList) GetUint64(tag string) (uint64, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_tag_list_get_uint64(carg0, carg1, &carg2)
 	runtime.KeepAlive(list)
@@ -47880,8 +48019,8 @@ func (list *TagList) GetUint64Index(tag string, index uint) (uint64, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(index)
 
 	cret = C.gst_tag_list_get_uint64_index(carg0, carg1, carg2, &carg3)
@@ -47911,8 +48050,8 @@ func (list *TagList) GetUintIndex(tag string, index uint) (uint, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(index)
 
 	cret = C.gst_tag_list_get_uint_index(carg0, carg1, carg2, &carg3)
@@ -48075,8 +48214,8 @@ func (list *TagList) PeekStringIndex(tag string, index uint) (string, bool) {
 	var cret  C.gboolean    // return
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(index)
 
 	cret = C.gst_tag_list_peek_string_index(carg0, carg1, carg2, &carg3)
@@ -48103,8 +48242,8 @@ func (list *TagList) RemoveTag(tag string) {
 	var carg1 *C.gchar      // in, none, string
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tag))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_tag_list_remove_tag(carg0, carg1)
 	runtime.KeepAlive(list)
@@ -48585,8 +48724,8 @@ func (toc *Toc) FindEntry(uid string) *TocEntry {
 	var cret  *C.GstTocEntry // return, borrow, converted, nullable
 
 	carg0 = (*C.GstToc)(UnsafeTocToGlibNone(toc))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uid)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uid))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_toc_find_entry(carg0, carg1)
 	runtime.KeepAlive(toc)
@@ -48825,8 +48964,8 @@ func NewTocEntry(typ TocEntryType, uid string) *TocEntry {
 	var cret  *C.GstTocEntry    // return, full, converted
 
 	carg1 = C.GstTocEntryType(typ)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(uid)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(uid))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_toc_entry_new(carg1, carg2)
 	runtime.KeepAlive(typ)
@@ -49537,15 +49676,15 @@ func TypeFindRegister(plugin Plugin, name string, rank uint, fn TypeFindFunction
 	if plugin != nil {
 		carg1 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 	}
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = C.guint(rank)
 	carg4 = (*[0]byte)(C._goglib_gst1_TypeFindFunction)
 	carg7 = C.gpointer(userdata.Register(fn))
 	carg8 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
 	if extensions != "" {
-		carg5 = (*C.gchar)(unsafe.Pointer(C.CString(extensions)))
-		defer C.free(unsafe.Pointer(carg5))
+		carg5 = (*C.gchar)(transfer.GLibString(extensions))
+		defer C.g_free(C.gpointer(carg5))
 	}
 	if possibleCaps != nil {
 		carg6 = (*C.GstCaps)(UnsafeCapsToGlibNone(possibleCaps))
@@ -49615,8 +49754,8 @@ func (find *TypeFind) SuggestEmptySimple(probability uint, mediaType string) {
 
 	carg0 = (*C.GstTypeFind)(UnsafeTypeFindToGlibNone(find))
 	carg1 = C.guint(probability)
-	carg2 = (*C.char)(unsafe.Pointer(C.CString(mediaType)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.char)(transfer.GLibString(mediaType))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_type_find_suggest_empty_simple(carg0, carg1, carg2)
 	runtime.KeepAlive(find)
@@ -49885,29 +50024,29 @@ func NewUri(scheme string, userinfo string, host string, port uint, path string,
 	var cret  *C.GstUri // return, full, converted
 
 	if scheme != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(scheme)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(scheme))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	if userinfo != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(userinfo)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(userinfo))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	if host != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(host)))
-		defer C.free(unsafe.Pointer(carg3))
+		carg3 = (*C.gchar)(transfer.GLibString(host))
+		defer C.g_free(C.gpointer(carg3))
 	}
 	carg4 = C.guint(port)
 	if path != "" {
-		carg5 = (*C.gchar)(unsafe.Pointer(C.CString(path)))
-		defer C.free(unsafe.Pointer(carg5))
+		carg5 = (*C.gchar)(transfer.GLibString(path))
+		defer C.g_free(C.gpointer(carg5))
 	}
 	if query != "" {
-		carg6 = (*C.gchar)(unsafe.Pointer(C.CString(query)))
-		defer C.free(unsafe.Pointer(carg6))
+		carg6 = (*C.gchar)(transfer.GLibString(query))
+		defer C.g_free(C.gpointer(carg6))
 	}
 	if fragment != "" {
-		carg7 = (*C.gchar)(unsafe.Pointer(C.CString(fragment)))
-		defer C.free(unsafe.Pointer(carg7))
+		carg7 = (*C.gchar)(transfer.GLibString(fragment))
+		defer C.g_free(C.gpointer(carg7))
 	}
 
 	cret = C.gst_uri_new(carg1, carg2, carg3, carg4, carg5, carg6, carg7)
@@ -49933,8 +50072,8 @@ func UriFromString(uri string) *Uri {
 	var carg1 *C.gchar  // in, none, string
 	var cret  *C.GstUri // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_from_string(carg1)
 	runtime.KeepAlive(uri)
@@ -49955,8 +50094,8 @@ func UriFromStringEscaped(uri string) *Uri {
 	var carg1 *C.gchar  // in, none, string
 	var cret  *C.GstUri // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_from_string_escaped(carg1)
 	runtime.KeepAlive(uri)
@@ -49977,8 +50116,8 @@ func UriGetLocation(uri string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_get_location(carg1)
 	runtime.KeepAlive(uri)
@@ -50000,8 +50139,8 @@ func UriGetProtocol(uri string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_get_protocol(carg1)
 	runtime.KeepAlive(uri)
@@ -50024,10 +50163,10 @@ func UriHasProtocol(uri string, protocol string) bool {
 	var carg2 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(protocol)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(protocol))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_uri_has_protocol(carg1, carg2)
 	runtime.KeepAlive(uri)
@@ -50049,8 +50188,8 @@ func UriIsValid(uri string) bool {
 	var carg1 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_is_valid(carg1)
 	runtime.KeepAlive(uri)
@@ -50072,10 +50211,10 @@ func UriJoinStrings(baseUri string, refUri string) string {
 	var carg2 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string, nullable-string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(baseUri)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(refUri)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(baseUri))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(refUri))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_uri_join_strings(carg1, carg2)
 	runtime.KeepAlive(baseUri)
@@ -50100,8 +50239,8 @@ func UriProtocolIsSupported(typ URIType, protocol string) bool {
 	var cret  C.gboolean   // return
 
 	carg1 = C.GstURIType(typ)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(protocol)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(protocol))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_uri_protocol_is_supported(carg1, carg2)
 	runtime.KeepAlive(typ)
@@ -50123,8 +50262,8 @@ func UriProtocolIsValid(protocol string) bool {
 	var carg1 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(protocol)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(protocol))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_protocol_is_valid(carg1)
 	runtime.KeepAlive(protocol)
@@ -50148,8 +50287,8 @@ func (uri *Uri) AppendPath(relativePath string) bool {
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
 	if relativePath != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(relativePath)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(relativePath))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_uri_append_path(carg0, carg1)
@@ -50175,8 +50314,8 @@ func (uri *Uri) AppendPathSegment(pathSegment string) bool {
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
 	if pathSegment != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(pathSegment)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(pathSegment))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_uri_append_path_segment(carg0, carg1)
@@ -50244,8 +50383,8 @@ func (base *Uri) FromStringWithBase(uri string) *Uri {
 	var cret  *C.GstUri // return, full, converted, nullable
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(base))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_from_string_with_base(carg0, carg1)
 	runtime.KeepAlive(base)
@@ -50449,8 +50588,8 @@ func (uri *Uri) GetQueryValue(queryKey string) string {
 	var cret  *C.gchar  // return, none, string, nullable-string
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(queryKey)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(queryKey))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_get_query_value(carg0, carg1)
 	runtime.KeepAlive(uri)
@@ -50610,29 +50749,29 @@ func (base *Uri) NewWithBase(scheme string, userinfo string, host string, port u
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(base))
 	if scheme != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(scheme)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(scheme))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	if userinfo != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(userinfo)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(userinfo))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	if host != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(host)))
-		defer C.free(unsafe.Pointer(carg3))
+		carg3 = (*C.gchar)(transfer.GLibString(host))
+		defer C.g_free(C.gpointer(carg3))
 	}
 	carg4 = C.guint(port)
 	if path != "" {
-		carg5 = (*C.gchar)(unsafe.Pointer(C.CString(path)))
-		defer C.free(unsafe.Pointer(carg5))
+		carg5 = (*C.gchar)(transfer.GLibString(path))
+		defer C.g_free(C.gpointer(carg5))
 	}
 	if query != "" {
-		carg6 = (*C.gchar)(unsafe.Pointer(C.CString(query)))
-		defer C.free(unsafe.Pointer(carg6))
+		carg6 = (*C.gchar)(transfer.GLibString(query))
+		defer C.g_free(C.gpointer(carg6))
 	}
 	if fragment != "" {
-		carg7 = (*C.gchar)(unsafe.Pointer(C.CString(fragment)))
-		defer C.free(unsafe.Pointer(carg7))
+		carg7 = (*C.gchar)(transfer.GLibString(fragment))
+		defer C.g_free(C.gpointer(carg7))
 	}
 
 	cret = C.gst_uri_new_with_base(carg0, carg1, carg2, carg3, carg4, carg5, carg6, carg7)
@@ -50682,8 +50821,8 @@ func (uri *Uri) QueryHasKey(queryKey string) bool {
 	var cret  C.gboolean // return
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(queryKey)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(queryKey))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_query_has_key(carg0, carg1)
 	runtime.KeepAlive(uri)
@@ -50707,8 +50846,8 @@ func (uri *Uri) RemoveQueryKey(queryKey string) bool {
 	var cret  C.gboolean // return
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(queryKey)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(queryKey))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_remove_query_key(carg0, carg1)
 	runtime.KeepAlive(uri)
@@ -50733,8 +50872,8 @@ func (uri *Uri) SetFragment(fragment string) bool {
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
 	if fragment != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fragment)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(fragment))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_uri_set_fragment(carg0, carg1)
@@ -50759,8 +50898,8 @@ func (uri *Uri) SetHost(host string) bool {
 	var cret  C.gboolean // return
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(host)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(host))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_set_host(carg0, carg1)
 	runtime.KeepAlive(uri)
@@ -50785,8 +50924,8 @@ func (uri *Uri) SetPath(path string) bool {
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
 	if path != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(path)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(path))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_uri_set_path(carg0, carg1)
@@ -50811,8 +50950,8 @@ func (uri *Uri) SetPathString(path string) bool {
 	var cret  C.gboolean // return
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(path)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(path))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_set_path_string(carg0, carg1)
 	runtime.KeepAlive(uri)
@@ -50861,8 +51000,8 @@ func (uri *Uri) SetQueryString(query string) bool {
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
 	if query != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(query)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(query))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_uri_set_query_string(carg0, carg1)
@@ -50888,11 +51027,11 @@ func (uri *Uri) SetQueryValue(queryKey string, queryValue string) bool {
 	var cret  C.gboolean // return
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(queryKey)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(queryKey))
+	defer C.g_free(C.gpointer(carg1))
 	if queryValue != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(queryValue)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(queryValue))
+		defer C.g_free(C.gpointer(carg2))
 	}
 
 	cret = C.gst_uri_set_query_value(carg0, carg1, carg2)
@@ -50918,8 +51057,8 @@ func (uri *Uri) SetScheme(scheme string) bool {
 	var cret  C.gboolean // return
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(scheme)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(scheme))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_set_scheme(carg0, carg1)
 	runtime.KeepAlive(uri)
@@ -50943,8 +51082,8 @@ func (uri *Uri) SetUserinfo(userinfo string) bool {
 	var cret  C.gboolean // return
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(userinfo)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(userinfo))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_uri_set_userinfo(carg0, carg1)
 	runtime.KeepAlive(uri)

@@ -8,6 +8,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
@@ -392,8 +393,8 @@ func NewDRMDumbAllocatorWithDevicePath(drmDevicePath string) gst.Allocator {
 	var carg1 *C.gchar        // in, none, string
 	var cret  *C.GstAllocator // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(drmDevicePath)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(drmDevicePath))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_drm_dumb_allocator_new_with_device_path(carg1)
 	runtime.KeepAlive(drmDevicePath)

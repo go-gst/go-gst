@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/core/userdata"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
@@ -972,8 +973,8 @@ func GLSLVersionFromString(str string) GLSLVersion {
 	var carg1 *C.gchar         // in, none, string
 	var cret  C.GstGLSLVersion // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_glsl_version_from_string(carg1)
 	runtime.KeepAlive(str)
@@ -994,8 +995,8 @@ func GLSLVersionProfileFromString(str string) (GLSLVersion, GLSLProfile, bool) {
 	var carg3 C.GstGLSLProfile // out, full, casted
 	var cret  C.gboolean       // return
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_glsl_version_profile_from_string(carg1, &carg2, &carg3)
 	runtime.KeepAlive(str)
@@ -1176,8 +1177,8 @@ func GLTextureTargetFromString(str string) GLTextureTarget {
 	var carg1 *C.gchar             // in, none, string
 	var cret  C.GstGLTextureTarget // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_gl_texture_target_from_string(carg1)
 	runtime.KeepAlive(str)
@@ -1445,8 +1446,8 @@ func GLAPIFromString(apiS string) GLAPI {
 	var carg1 *C.gchar   // in, none, string
 	var cret  C.GstGLAPI // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(apiS)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(apiS))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_gl_api_from_string(carg1)
 	runtime.KeepAlive(apiS)
@@ -1898,8 +1899,8 @@ func GLPlatformFromString(platformS string) GLPlatform {
 	var carg1 *C.gchar        // in, none, string
 	var cret  C.GstGLPlatform // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(platformS)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(platformS))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_gl_platform_from_string(carg1)
 	runtime.KeepAlive(platformS)
@@ -2008,8 +2009,8 @@ func GLSLProfileFromString(str string) GLSLProfile {
 	var carg1 *C.gchar         // in, none, string
 	var cret  C.GstGLSLProfile // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_glsl_profile_from_string(carg1)
 	runtime.KeepAlive(str)
@@ -2041,6 +2042,11 @@ func GLSLProfileString(profile GLSLProfile) string {
 
 	return goret
 }
+
+// GLAsyncDebugLogGetMessage wraps GstGLAsyncDebugLogGetMessage
+// 
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldebug.html#GstGLAsyncDebugLogGetMessage
+type GLAsyncDebugLogGetMessage func() (goret string)
 
 // GLFilterRenderFunc wraps GstGLFilterRenderFunc
 // 
@@ -2192,10 +2198,10 @@ func GlCheckExtension(name string, ext string) bool {
 	var carg2 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
 
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(ext)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.char)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(ext))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_gl_check_extension(carg1, carg2)
 	runtime.KeepAlive(name)
@@ -2521,8 +2527,8 @@ func GlslStringGetVersionProfile(s string) (GLSLVersion, GLSLProfile, bool) {
 	var carg3 C.GstGLSLProfile // out, full, casted
 	var cret  C.gboolean       // return
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(s)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(s))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_glsl_string_get_version_profile(carg1, &carg2, &carg3)
 	runtime.KeepAlive(s)
@@ -4706,8 +4712,8 @@ func (_context *GLContextInstance) CheckFeature(feature string) bool {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(feature))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_gl_context_check_feature(carg0, carg1)
 	runtime.KeepAlive(_context)
@@ -5532,8 +5538,8 @@ func (_context *GLContextInstance) ParentCheckFeature(feature string) bool {
 	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
 
 	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(feature))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C._goglib_gstgl1_GLContext_virtual_check_feature(unsafe.Pointer(parentclass.check_feature), carg0, carg1)
 	runtime.KeepAlive(_context)
@@ -8175,8 +8181,8 @@ func NewGLSLStageWithString(_context GLContext, typ uint, version GLSLVersion, p
 	carg2 = C.guint(typ)
 	carg3 = C.GstGLSLVersion(version)
 	carg4 = C.GstGLSLProfile(profile)
-	carg5 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg5))
+	carg5 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg5))
 
 	cret = C.gst_glsl_stage_new_with_string(carg1, carg2, carg3, carg4, carg5)
 	runtime.KeepAlive(_context)
@@ -8808,8 +8814,8 @@ func (shader *GLShaderInstance) BindAttributeLocation(index uint, name string) {
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
 	carg1 = C.guint(index)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_gl_shader_bind_attribute_location(carg0, carg1, carg2)
 	runtime.KeepAlive(shader)
@@ -8827,8 +8833,8 @@ func (shader *GLShaderInstance) BindFragDataLocation(index uint, name string) {
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
 	carg1 = C.guint(index)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_gl_shader_bind_frag_data_location(carg0, carg1, carg2)
 	runtime.KeepAlive(shader)
@@ -8904,8 +8910,8 @@ func (shader *GLShaderInstance) GetAttributeLocation(name string) int32 {
 	var cret  C.gint         // return, none, casted
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_gl_shader_get_attribute_location(carg0, carg1)
 	runtime.KeepAlive(shader)
@@ -9017,8 +9023,8 @@ func (shader *GLShaderInstance) SetUniform1f(name string, value float32) {
 	var carg2 C.gfloat       // in, none, casted
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gfloat(value)
 
 	C.gst_gl_shader_set_uniform_1f(carg0, carg1, carg2)
@@ -9037,8 +9043,8 @@ func (shader *GLShaderInstance) SetUniform1fv(name string, value []float32) {
 	var carg3 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner gfloat (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	_ = value
 	_ = carg3
 	_ = carg2
@@ -9059,8 +9065,8 @@ func (shader *GLShaderInstance) SetUniform1i(name string, value int32) {
 	var carg2 C.gint         // in, none, casted
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(value)
 
 	C.gst_gl_shader_set_uniform_1i(carg0, carg1, carg2)
@@ -9079,8 +9085,8 @@ func (shader *GLShaderInstance) SetUniform1iv(name string, value []int32) {
 	var carg3 *C.gint        // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner gint (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	_ = value
 	_ = carg3
 	_ = carg2
@@ -9102,8 +9108,8 @@ func (shader *GLShaderInstance) SetUniform2f(name string, v0 float32, v1 float32
 	var carg3 C.gfloat       // in, none, casted
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gfloat(v0)
 	carg3 = C.gfloat(v1)
 
@@ -9124,8 +9130,8 @@ func (shader *GLShaderInstance) SetUniform2fv(name string, value []float32) {
 	var carg3 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner gfloat (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	_ = value
 	_ = carg3
 	_ = carg2
@@ -9147,8 +9153,8 @@ func (shader *GLShaderInstance) SetUniform2i(name string, v0 int32, v1 int32) {
 	var carg3 C.gint         // in, none, casted
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(v0)
 	carg3 = C.gint(v1)
 
@@ -9169,8 +9175,8 @@ func (shader *GLShaderInstance) SetUniform2iv(name string, value []int32) {
 	var carg3 *C.gint        // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner gint (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	_ = value
 	_ = carg3
 	_ = carg2
@@ -9193,8 +9199,8 @@ func (shader *GLShaderInstance) SetUniform3f(name string, v0 float32, v1 float32
 	var carg4 C.gfloat       // in, none, casted
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gfloat(v0)
 	carg3 = C.gfloat(v1)
 	carg4 = C.gfloat(v2)
@@ -9217,8 +9223,8 @@ func (shader *GLShaderInstance) SetUniform3fv(name string, value []float32) {
 	var carg3 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner gfloat (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	_ = value
 	_ = carg3
 	_ = carg2
@@ -9241,8 +9247,8 @@ func (shader *GLShaderInstance) SetUniform3i(name string, v0 int32, v1 int32, v2
 	var carg4 C.gint         // in, none, casted
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(v0)
 	carg3 = C.gint(v1)
 	carg4 = C.gint(v2)
@@ -9265,8 +9271,8 @@ func (shader *GLShaderInstance) SetUniform3iv(name string, value []int32) {
 	var carg3 *C.gint        // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner gint (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	_ = value
 	_ = carg3
 	_ = carg2
@@ -9290,8 +9296,8 @@ func (shader *GLShaderInstance) SetUniform4f(name string, v0 float32, v1 float32
 	var carg5 C.gfloat       // in, none, casted
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gfloat(v0)
 	carg3 = C.gfloat(v1)
 	carg4 = C.gfloat(v2)
@@ -9316,8 +9322,8 @@ func (shader *GLShaderInstance) SetUniform4fv(name string, value []float32) {
 	var carg3 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner gfloat (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	_ = value
 	_ = carg3
 	_ = carg2
@@ -9341,8 +9347,8 @@ func (shader *GLShaderInstance) SetUniform4i(name string, v0 int32, v1 int32, v2
 	var carg5 C.gint         // in, none, casted
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(v0)
 	carg3 = C.gint(v1)
 	carg4 = C.gint(v2)
@@ -9367,8 +9373,8 @@ func (shader *GLShaderInstance) SetUniform4iv(name string, value []int32) {
 	var carg3 *C.gint        // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner gint (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	_ = value
 	_ = carg3
 	_ = carg2
@@ -9391,8 +9397,8 @@ func (shader *GLShaderInstance) SetUniformMatrix2fv(name string, count int32, tr
 	var carg4 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: gfloat
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(count)
 	if transpose {
 		carg3 = C.TRUE
@@ -9420,8 +9426,8 @@ func (shader *GLShaderInstance) SetUniformMatrix2x3fv(name string, count int32, 
 	var carg4 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: gfloat
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(count)
 	if transpose {
 		carg3 = C.TRUE
@@ -9449,8 +9455,8 @@ func (shader *GLShaderInstance) SetUniformMatrix2x4fv(name string, count int32, 
 	var carg4 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: gfloat
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(count)
 	if transpose {
 		carg3 = C.TRUE
@@ -9478,8 +9484,8 @@ func (shader *GLShaderInstance) SetUniformMatrix3fv(name string, count int32, tr
 	var carg4 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: gfloat
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(count)
 	if transpose {
 		carg3 = C.TRUE
@@ -9507,8 +9513,8 @@ func (shader *GLShaderInstance) SetUniformMatrix3x2fv(name string, count int32, 
 	var carg4 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: gfloat
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(count)
 	if transpose {
 		carg3 = C.TRUE
@@ -9536,8 +9542,8 @@ func (shader *GLShaderInstance) SetUniformMatrix3x4fv(name string, count int32, 
 	var carg4 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: gfloat
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(count)
 	if transpose {
 		carg3 = C.TRUE
@@ -9565,8 +9571,8 @@ func (shader *GLShaderInstance) SetUniformMatrix4fv(name string, count int32, tr
 	var carg4 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: gfloat
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(count)
 	if transpose {
 		carg3 = C.TRUE
@@ -9594,8 +9600,8 @@ func (shader *GLShaderInstance) SetUniformMatrix4x2fv(name string, count int32, 
 	var carg4 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: gfloat
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(count)
 	if transpose {
 		carg3 = C.TRUE
@@ -9623,8 +9629,8 @@ func (shader *GLShaderInstance) SetUniformMatrix4x3fv(name string, count int32, 
 	var carg4 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: gfloat
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(count)
 	if transpose {
 		carg3 = C.TRUE
@@ -10781,10 +10787,10 @@ func (window *GLWindowInstance) SendKeyEvent(eventType string, keyStr string) {
 	var carg2 *C.char        // in, none, string
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(eventType)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.char)(unsafe.Pointer(C.CString(keyStr)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.char)(transfer.GLibString(eventType))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.char)(transfer.GLibString(keyStr))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_gl_window_send_key_event(carg0, carg1, carg2)
 	runtime.KeepAlive(window)
@@ -10803,8 +10809,8 @@ func (window *GLWindowInstance) SendMouseEvent(eventType string, button int32, p
 	var carg4 C.double       // in, none, casted
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(eventType)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.char)(transfer.GLibString(eventType))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.int(button)
 	carg3 = C.double(posx)
 	carg4 = C.double(posy)

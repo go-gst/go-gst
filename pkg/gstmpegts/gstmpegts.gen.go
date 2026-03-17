@@ -9,6 +9,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -5060,8 +5061,8 @@ func (seg *AtscStringSegment) SetString(str string, compressionType uint8, mode 
 	var cret  C.gboolean                    // return
 
 	carg0 = (*C.GstMpegtsAtscStringSegment)(UnsafeAtscStringSegmentToGlibNone(seg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint8(compressionType)
 	carg3 = C.guint8(mode)
 
@@ -6723,8 +6724,8 @@ func DescriptorFromDvbNetworkName(name string) *Descriptor {
 	var carg1 *C.gchar               // in, none, string
 	var cret  *C.GstMpegtsDescriptor // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_mpegts_descriptor_from_dvb_network_name(carg1)
 	runtime.KeepAlive(name)
@@ -6749,12 +6750,12 @@ func DescriptorFromDvbService(serviceType DVBServiceType, serviceName string, se
 
 	carg1 = C.GstMpegtsDVBServiceType(serviceType)
 	if serviceName != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(serviceName)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(serviceName))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	if serviceProvider != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(serviceProvider)))
-		defer C.free(unsafe.Pointer(carg3))
+		carg3 = (*C.gchar)(transfer.GLibString(serviceProvider))
+		defer C.g_free(C.gpointer(carg3))
 	}
 
 	cret = C.gst_mpegts_descriptor_from_dvb_service(carg1, carg2, carg3)
@@ -6781,8 +6782,8 @@ func DescriptorFromDvbSubtitling(lang string, typ uint8, composition uint16, anc
 	var carg4 C.guint16              // in, none, casted
 	var cret  *C.GstMpegtsDescriptor // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(lang)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(lang))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint8(typ)
 	carg3 = C.guint16(composition)
 	carg4 = C.guint16(ancillary)
@@ -6807,8 +6808,8 @@ func DescriptorFromIso639Language(language string) *Descriptor {
 	var carg1 *C.gchar               // in, none, string
 	var cret  *C.GstMpegtsDescriptor // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(language)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(language))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_mpegts_descriptor_from_iso_639_language(carg1)
 	runtime.KeepAlive(language)
@@ -6886,8 +6887,8 @@ func DescriptorFromRegistration(formatIdentifier string, additionalInfo []uint8)
 	var carg3 C.gsize                // implicit
 	var cret  *C.GstMpegtsDescriptor // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(formatIdentifier)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(formatIdentifier))
+	defer C.g_free(C.gpointer(carg1))
 	_ = additionalInfo
 	_ = carg2
 	_ = carg3

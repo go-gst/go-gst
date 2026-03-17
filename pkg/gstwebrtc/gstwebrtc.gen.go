@@ -8,6 +8,7 @@ import (
 	"unsafe"
 
 	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/core/userdata"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
@@ -25,8 +26,11 @@ import (
 // extern gboolean _goglib_gstwebrtc1_WebRTCICE_add_turn_server(GstWebRTCICE*, const gchar*);
 // extern GstWebRTCICETransport* _goglib_gstwebrtc1_WebRTCICE_find_transport(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICEComponent);
 // extern gboolean _goglib_gstwebrtc1_WebRTCICE_gather_candidates(GstWebRTCICE*, GstWebRTCICEStream*);
+// extern gchar* _goglib_gstwebrtc1_WebRTCICE_get_http_proxy(GstWebRTCICE*);
 // extern gboolean _goglib_gstwebrtc1_WebRTCICE_get_is_controller(GstWebRTCICE*);
 // extern gboolean _goglib_gstwebrtc1_WebRTCICE_get_selected_pair(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICECandidateStats*, GstWebRTCICECandidateStats*);
+// extern gchar* _goglib_gstwebrtc1_WebRTCICE_get_stun_server(GstWebRTCICE*);
+// extern gchar* _goglib_gstwebrtc1_WebRTCICE_get_turn_server(GstWebRTCICE*);
 // extern void _goglib_gstwebrtc1_WebRTCICE_set_force_relay(GstWebRTCICE*, gboolean);
 // extern void _goglib_gstwebrtc1_WebRTCICE_set_http_proxy(GstWebRTCICE*, const gchar*);
 // extern void _goglib_gstwebrtc1_WebRTCICE_set_is_controller(GstWebRTCICE*, gboolean);
@@ -50,11 +54,20 @@ import (
 // gboolean _goglib_gstwebrtc1_WebRTCICE_virtual_gather_candidates(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1) {
 // 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*))(fnptr))(carg0, carg1);
 // }
+// gchar* _goglib_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(void* fnptr, GstWebRTCICE* carg0) {
+// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
+// }
 // gboolean _goglib_gstwebrtc1_WebRTCICE_virtual_get_is_controller(void* fnptr, GstWebRTCICE* carg0) {
 // 	return ((gboolean (*) (GstWebRTCICE*))(fnptr))(carg0);
 // }
 // gboolean _goglib_gstwebrtc1_WebRTCICE_virtual_get_selected_pair(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, GstWebRTCICECandidateStats** carg2, GstWebRTCICECandidateStats** carg3) {
 // 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICECandidateStats**, GstWebRTCICECandidateStats**))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gchar* _goglib_gstwebrtc1_WebRTCICE_virtual_get_stun_server(void* fnptr, GstWebRTCICE* carg0) {
+// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
+// }
+// gchar* _goglib_gstwebrtc1_WebRTCICE_virtual_get_turn_server(void* fnptr, GstWebRTCICE* carg0) {
+// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
 // }
 // void _goglib_gstwebrtc1_WebRTCICE_virtual_set_force_relay(void* fnptr, GstWebRTCICE* carg0, gboolean carg1) {
 // 	return ((void (*) (GstWebRTCICE*, gboolean))(fnptr))(carg0, carg1);
@@ -1429,8 +1442,8 @@ func (channel *WebRTCDataChannelInstance) SendStringFull(str string) (bool, erro
 
 	carg0 = (*C.GstWebRTCDataChannel)(UnsafeWebRTCDataChannelToGlibNone(channel))
 	if str != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(str))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_webrtc_data_channel_send_string_full(carg0, carg1, &_cerr)
@@ -1644,6 +1657,11 @@ type WebRTCICE interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gather_candidates
 	ParentGatherCandidates(stream WebRTCICEStream) bool
+	// ParentGetHttpProxy calls the default implementations of the `GstWebRTCICE.get_http_proxy` virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_http_proxy
+	ParentGetHttpProxy() string
 	// ParentGetIsController calls the default implementations of the `GstWebRTCICE.get_is_controller` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
@@ -1654,6 +1672,16 @@ type WebRTCICE interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_selected_pair
 	ParentGetSelectedPair(stream WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool)
+	// ParentGetStunServer calls the default implementations of the `GstWebRTCICE.get_stun_server` virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_stun_server
+	ParentGetStunServer() string
+	// ParentGetTurnServer calls the default implementations of the `GstWebRTCICE.get_turn_server` virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_turn_server
+	ParentGetTurnServer() string
 	// ParentSetForceRelay calls the default implementations of the `GstWebRTCICE.set_force_relay` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
@@ -1759,8 +1787,8 @@ func (ice *WebRTCICEInstance) AddCandidate(stream WebRTCICEStream, candidate str
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(candidate)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(candidate))
+	defer C.g_free(C.gpointer(carg2))
 	if promise != nil {
 		carg3 = (*C.GstPromise)(gst.UnsafePromiseToGlibNone(promise))
 	}
@@ -1805,8 +1833,8 @@ func (ice *WebRTCICEInstance) AddTurnServer(uri string) bool {
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_webrtc_ice_add_turn_server(carg0, carg1)
 	runtime.KeepAlive(ice)
@@ -2060,8 +2088,8 @@ func (ice *WebRTCICEInstance) SetHttpProxy(uri string) {
 	var carg1 *C.gchar        // in, none, string
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_webrtc_ice_set_http_proxy(carg0, carg1)
 	runtime.KeepAlive(ice)
@@ -2097,10 +2125,10 @@ func (ice *WebRTCICEInstance) SetLocalCredentials(stream WebRTCICEStream, ufrag 
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(ufrag)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(pwd)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg2 = (*C.gchar)(transfer.GLibString(ufrag))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(pwd))
+	defer C.g_free(C.gpointer(carg3))
 
 	cret = C.gst_webrtc_ice_set_local_credentials(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(ice)
@@ -2148,10 +2176,10 @@ func (ice *WebRTCICEInstance) SetRemoteCredentials(stream WebRTCICEStream, ufrag
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(ufrag)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(pwd)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg2 = (*C.gchar)(transfer.GLibString(ufrag))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(pwd))
+	defer C.g_free(C.gpointer(carg3))
 
 	cret = C.gst_webrtc_ice_set_remote_credentials(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(ice)
@@ -2177,8 +2205,8 @@ func (ice *WebRTCICEInstance) SetStunServer(uri string) {
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	if uri != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(uri))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C.gst_webrtc_ice_set_stun_server(carg0, carg1)
@@ -2213,8 +2241,8 @@ func (ice *WebRTCICEInstance) SetTurnServer(uri string) {
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	if uri != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(uri))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C.gst_webrtc_ice_set_turn_server(carg0, carg1)
@@ -2255,6 +2283,10 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gather_candidates
 	GatherCandidates func(Instance, WebRTCICEStream) bool
+	// // GetHttpProxy allows you to override the implementation of the virtual method get_http_proxy.
+	// 
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_http_proxy
+	GetHttpProxy func(Instance) string
 	// // GetIsController allows you to override the implementation of the virtual method get_is_controller.
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_is_controller
@@ -2263,6 +2295,14 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_selected_pair
 	GetSelectedPair func(Instance, WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool)
+	// // GetStunServer allows you to override the implementation of the virtual method get_stun_server.
+	// 
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_stun_server
+	GetStunServer func(Instance) string
+	// // GetTurnServer allows you to override the implementation of the virtual method get_turn_server.
+	// 
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_turn_server
+	GetTurnServer func(Instance) string
 	// // SetForceRelay allows you to override the implementation of the virtual method set_force_relay.
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_force_relay
@@ -2425,6 +2465,26 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 		)
 	}
 
+	if overrides.GetHttpProxy != nil {
+		pclass.get_http_proxy = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_get_http_proxy)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_goglib_gstwebrtc1_WebRTCICE_get_http_proxy",
+			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
+				var ice   Instance // go GstWebRTCICE subclass
+				var goret string   // return, full, string
+
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
+
+				goret = overrides.GetHttpProxy(ice)
+
+				cret = (*C.gchar)(transfer.GLibString(goret))
+
+				return cret
+			},
+		)
+	}
+
 	if overrides.GetIsController != nil {
 		pclass.get_is_controller = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_get_is_controller)
 		classdata.StoreVirtualMethod(
@@ -2468,6 +2528,50 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				*carg3 = (*C.GstWebRTCICECandidateStats)(UnsafeWebRTCICECandidateStatsToGlibFull(remoteStats))
 				if goret {
 					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
+	}
+
+	if overrides.GetStunServer != nil {
+		pclass.get_stun_server = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_get_stun_server)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_goglib_gstwebrtc1_WebRTCICE_get_stun_server",
+			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
+				var ice   Instance // go GstWebRTCICE subclass
+				var goret string   // return, full, string, nullable-string
+
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
+
+				goret = overrides.GetStunServer(ice)
+
+				if goret != "" {
+					cret = (*C.gchar)(transfer.GLibString(goret))
+				}
+
+				return cret
+			},
+		)
+	}
+
+	if overrides.GetTurnServer != nil {
+		pclass.get_turn_server = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_get_turn_server)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_goglib_gstwebrtc1_WebRTCICE_get_turn_server",
+			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
+				var ice   Instance // go GstWebRTCICE subclass
+				var goret string   // return, full, string, nullable-string
+
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
+
+				goret = overrides.GetTurnServer(ice)
+
+				if goret != "" {
+					cret = (*C.gchar)(transfer.GLibString(goret))
 				}
 
 				return cret
@@ -2658,8 +2762,8 @@ func (ice *WebRTCICEInstance) ParentAddCandidate(stream WebRTCICEStream, candida
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(candidate)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(candidate))
+	defer C.g_free(C.gpointer(carg2))
 	if promise != nil {
 		carg3 = (*C.GstPromise)(gst.UnsafePromiseToGlibNone(promise))
 	}
@@ -2710,8 +2814,8 @@ func (ice *WebRTCICEInstance) ParentAddTurnServer(uri string) bool {
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_add_turn_server(unsafe.Pointer(parentclass.add_turn_server), carg0, carg1)
 	runtime.KeepAlive(ice)
@@ -2783,6 +2887,29 @@ func (ice *WebRTCICEInstance) ParentGatherCandidates(stream WebRTCICEStream) boo
 	return goret
 }
 
+// ParentGetHttpProxy calls the default implementations of the `GstWebRTCICE.get_http_proxy` virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_http_proxy
+func (ice *WebRTCICEInstance) ParentGetHttpProxy() string {
+	var carg0 *C.GstWebRTCICE
+	var cret  *C.gchar // return, full, string
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
+
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(unsafe.Pointer(parentclass.get_http_proxy), carg0)
+	runtime.KeepAlive(ice)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	defer C.g_free(C.gpointer(cret))
+
+	return goret
+}
+
 // ParentGetIsController calls the default implementations of the `GstWebRTCICE.get_is_controller` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
@@ -2840,6 +2967,56 @@ func (ice *WebRTCICEInstance) ParentGetSelectedPair(stream WebRTCICEStream) (*We
 	return localStats, remoteStats, goret
 }
 
+// ParentGetStunServer calls the default implementations of the `GstWebRTCICE.get_stun_server` virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_stun_server
+func (ice *WebRTCICEInstance) ParentGetStunServer() string {
+	var carg0 *C.GstWebRTCICE
+	var cret  *C.gchar // return, full, string, nullable-string
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
+
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_get_stun_server(unsafe.Pointer(parentclass.get_stun_server), carg0)
+	runtime.KeepAlive(ice)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.g_free(C.gpointer(cret))
+	}
+
+	return goret
+}
+
+// ParentGetTurnServer calls the default implementations of the `GstWebRTCICE.get_turn_server` virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_turn_server
+func (ice *WebRTCICEInstance) ParentGetTurnServer() string {
+	var carg0 *C.GstWebRTCICE
+	var cret  *C.gchar // return, full, string, nullable-string
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
+
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_get_turn_server(unsafe.Pointer(parentclass.get_turn_server), carg0)
+	runtime.KeepAlive(ice)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.g_free(C.gpointer(cret))
+	}
+
+	return goret
+}
+
 // ParentSetForceRelay calls the default implementations of the `GstWebRTCICE.set_force_relay` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
@@ -2871,8 +3048,8 @@ func (ice *WebRTCICEInstance) ParentSetHttpProxy(uri string) {
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	C._goglib_gstwebrtc1_WebRTCICE_virtual_set_http_proxy(unsafe.Pointer(parentclass.set_http_proxy), carg0, carg1)
 	runtime.KeepAlive(ice)
@@ -2914,10 +3091,10 @@ func (ice *WebRTCICEInstance) ParentSetLocalCredentials(stream WebRTCICEStream, 
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(ufrag)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(pwd)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg2 = (*C.gchar)(transfer.GLibString(ufrag))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(pwd))
+	defer C.g_free(C.gpointer(carg3))
 
 	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_set_local_credentials(unsafe.Pointer(parentclass.set_local_credentials), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(ice)
@@ -2949,10 +3126,10 @@ func (ice *WebRTCICEInstance) ParentSetRemoteCredentials(stream WebRTCICEStream,
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(ufrag)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(pwd)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg2 = (*C.gchar)(transfer.GLibString(ufrag))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(pwd))
+	defer C.g_free(C.gpointer(carg3))
 
 	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_set_remote_credentials(unsafe.Pointer(parentclass.set_remote_credentials), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(ice)
@@ -2981,8 +3158,8 @@ func (ice *WebRTCICEInstance) ParentSetStunServer(uri string) {
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	if uri != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(uri))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C._goglib_gstwebrtc1_WebRTCICE_virtual_set_stun_server(unsafe.Pointer(parentclass.set_stun_server), carg0, carg1)
@@ -3023,8 +3200,8 @@ func (ice *WebRTCICEInstance) ParentSetTurnServer(uri string) {
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	if uri != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(uri))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C._goglib_gstwebrtc1_WebRTCICE_virtual_set_turn_server(unsafe.Pointer(parentclass.set_turn_server), carg0, carg1)
@@ -3483,8 +3660,8 @@ func (ice *WebRTCICETransportInstance) NewCandidate(streamId uint, component Web
 	carg0 = (*C.GstWebRTCICETransport)(UnsafeWebRTCICETransportToGlibNone(ice))
 	carg1 = C.guint(streamId)
 	carg2 = C.GstWebRTCICEComponent(component)
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(attr)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg3 = (*C.gchar)(transfer.GLibString(attr))
+	defer C.g_free(C.gpointer(carg3))
 
 	C.gst_webrtc_ice_transport_new_candidate(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(ice)

@@ -7,6 +7,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -244,8 +245,8 @@ func NewARGBControlBinding(object gst.Object, propertyName string, csA gst.Contr
 	var cret  *C.GstControlBinding // return, none, converted
 
 	carg1 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(object))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(propertyName))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = (*C.GstControlSource)(gst.UnsafeControlSourceToGlibNone(csA))
 	carg4 = (*C.GstControlSource)(gst.UnsafeControlSourceToGlibNone(csR))
 	carg5 = (*C.GstControlSource)(gst.UnsafeControlSourceToGlibNone(csG))
@@ -388,8 +389,8 @@ func NewDirectControlBinding(object gst.Object, propertyName string, cs gst.Cont
 	var cret  *C.GstControlBinding // return, none, converted
 
 	carg1 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(object))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(propertyName))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = (*C.GstControlSource)(gst.UnsafeControlSourceToGlibNone(cs))
 
 	cret = C.gst_direct_control_binding_new(carg1, carg2, carg3)
@@ -414,8 +415,8 @@ func NewDirectControlBindingAbsolute(object gst.Object, propertyName string, cs 
 	var cret  *C.GstControlBinding // return, none, converted
 
 	carg1 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(object))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(propertyName))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = (*C.GstControlSource)(gst.UnsafeControlSourceToGlibNone(cs))
 
 	cret = C.gst_direct_control_binding_new_absolute(carg1, carg2, carg3)
@@ -680,11 +681,11 @@ func NewProxyControlBinding(object gst.Object, propertyName string, refObject gs
 	var cret  *C.GstControlBinding // return, none, converted
 
 	carg1 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(object))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(propertyName))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(refObject))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(refPropertyName)))
-	defer C.free(unsafe.Pointer(carg4))
+	carg4 = (*C.gchar)(transfer.GLibString(refPropertyName))
+	defer C.g_free(C.gpointer(carg4))
 
 	cret = C.gst_proxy_control_binding_new(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(object)

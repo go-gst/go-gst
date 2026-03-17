@@ -9,6 +9,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/core/userdata"
 	"github.com/go-gst/go-glib/pkg/gio/v2"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
@@ -1739,8 +1740,8 @@ func RtspFindHeaderField(header string) RTSPHeaderField {
 	var carg1 *C.gchar             // in, none, string
 	var cret  C.GstRTSPHeaderField // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(header)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(header))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_rtsp_find_header_field(carg1)
 	runtime.KeepAlive(header)
@@ -1759,8 +1760,8 @@ func RtspFindMethod(method string) RTSPMethod {
 	var carg1 *C.gchar        // in, none, string
 	var cret  C.GstRTSPMethod // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(method)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(method))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_rtsp_find_method(carg1)
 	runtime.KeepAlive(method)
@@ -1786,21 +1787,21 @@ func RtspGenerateDigestAuthResponse(algorithm string, method string, realm strin
 	var cret  *C.gchar // return, full, string, nullable-string
 
 	if algorithm != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(algorithm)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(algorithm))
+		defer C.g_free(C.gpointer(carg1))
 	}
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(method)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(realm)))
-	defer C.free(unsafe.Pointer(carg3))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(username)))
-	defer C.free(unsafe.Pointer(carg4))
-	carg5 = (*C.gchar)(unsafe.Pointer(C.CString(password)))
-	defer C.free(unsafe.Pointer(carg5))
-	carg6 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg6))
-	carg7 = (*C.gchar)(unsafe.Pointer(C.CString(nonce)))
-	defer C.free(unsafe.Pointer(carg7))
+	carg2 = (*C.gchar)(transfer.GLibString(method))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(realm))
+	defer C.g_free(C.gpointer(carg3))
+	carg4 = (*C.gchar)(transfer.GLibString(username))
+	defer C.g_free(C.gpointer(carg4))
+	carg5 = (*C.gchar)(transfer.GLibString(password))
+	defer C.g_free(C.gpointer(carg5))
+	carg6 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg6))
+	carg7 = (*C.gchar)(transfer.GLibString(nonce))
+	defer C.g_free(C.gpointer(carg7))
 
 	cret = C.gst_rtsp_generate_digest_auth_response(carg1, carg2, carg3, carg4, carg5, carg6, carg7)
 	runtime.KeepAlive(algorithm)
@@ -1833,17 +1834,17 @@ func RtspGenerateDigestAuthResponseFromMD5(algorithm string, method string, md5 
 	var cret  *C.gchar // return, full, string, nullable-string
 
 	if algorithm != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(algorithm)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(algorithm))
+		defer C.g_free(C.gpointer(carg1))
 	}
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(method)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(md5)))
-	defer C.free(unsafe.Pointer(carg3))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg4))
-	carg5 = (*C.gchar)(unsafe.Pointer(C.CString(nonce)))
-	defer C.free(unsafe.Pointer(carg5))
+	carg2 = (*C.gchar)(transfer.GLibString(method))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(md5))
+	defer C.g_free(C.gpointer(carg3))
+	carg4 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg4))
+	carg5 = (*C.gchar)(transfer.GLibString(nonce))
+	defer C.g_free(C.gpointer(carg5))
 
 	cret = C.gst_rtsp_generate_digest_auth_response_from_md5(carg1, carg2, carg3, carg4, carg5)
 	runtime.KeepAlive(algorithm)
@@ -1954,8 +1955,8 @@ func RtspMessageNewRequest(method RTSPMethod, uri string) (*RTSPMessage, RTSPRes
 	var cret  C.GstRTSPResult   // return, none, casted
 
 	carg2 = C.GstRTSPMethod(method)
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg3 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg3))
 
 	cret = C.gst_rtsp_message_new_request(&carg1, carg2, carg3)
 	runtime.KeepAlive(method)
@@ -1982,8 +1983,8 @@ func RtspMessageNewResponse(code RTSPStatusCode, reason string, request *RTSPMes
 
 	carg2 = C.GstRTSPStatusCode(code)
 	if reason != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(reason)))
-		defer C.free(unsafe.Pointer(carg3))
+		carg3 = (*C.gchar)(transfer.GLibString(reason))
+		defer C.g_free(C.gpointer(carg3))
 	}
 	if request != nil {
 		carg4 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(request))
@@ -2030,8 +2031,8 @@ func RtspOptionsFromText(options string) RTSPMethod {
 	var carg1 *C.gchar        // in, none, string
 	var cret  C.GstRTSPMethod // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(options)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(options))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_rtsp_options_from_text(carg1)
 	runtime.KeepAlive(options)
@@ -2757,11 +2758,11 @@ func RTSPConnectionCreateFromSocket(socket gio.Socket, ip string, port uint16, i
 	var cret  C.GstRTSPResult      // return, none, casted
 
 	carg1 = (*C.GSocket)(gio.UnsafeSocketToGlibNone(socket))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(ip)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(ip))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = C.guint16(port)
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(initialBuffer)))
-	defer C.free(unsafe.Pointer(carg4))
+	carg4 = (*C.gchar)(transfer.GLibString(initialBuffer))
+	defer C.g_free(C.gpointer(carg4))
 
 	cret = C.gst_rtsp_connection_create_from_socket(carg1, carg2, carg3, carg4, &carg5)
 	runtime.KeepAlive(socket)
@@ -2789,10 +2790,10 @@ func (conn *RTSPConnection) AddExtraHttpRequestHeader(key string, value string) 
 	var carg2 *C.gchar             // in, none, string
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(value))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_rtsp_connection_add_extra_http_request_header(carg0, carg1, carg2)
 	runtime.KeepAlive(conn)
@@ -3355,10 +3356,10 @@ func (conn *RTSPConnection) SetAuth(method RTSPAuthMethod, user string, pass str
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
 	carg1 = C.GstRTSPAuthMethod(method)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(user)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(pass)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg2 = (*C.gchar)(transfer.GLibString(user))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(pass))
+	defer C.g_free(C.gpointer(carg3))
 
 	cret = C.gst_rtsp_connection_set_auth(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(conn)
@@ -3382,10 +3383,10 @@ func (conn *RTSPConnection) SetAuthParam(param string, value string) {
 	var carg2 *C.gchar             // in, none, string
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(param)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(param))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(value))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_rtsp_connection_set_auth_param(carg0, carg1, carg2)
 	runtime.KeepAlive(conn)
@@ -3450,8 +3451,8 @@ func (conn *RTSPConnection) SetIp(ip string) {
 	var carg1 *C.gchar             // in, none, string
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(ip)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(ip))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_rtsp_connection_set_ip(carg0, carg1)
 	runtime.KeepAlive(conn)
@@ -3468,8 +3469,8 @@ func (conn *RTSPConnection) SetProxy(host string, port uint) RTSPResult {
 	var cret  C.GstRTSPResult      // return, none, casted
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(host)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(host))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(port)
 
 	cret = C.gst_rtsp_connection_set_proxy(carg0, carg1, carg2)
@@ -3817,8 +3818,8 @@ func (msg *RTSPMessage) AddHeader(field RTSPHeaderField, value string) RTSPResul
 
 	carg0 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(msg))
 	carg1 = C.GstRTSPHeaderField(field)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(value))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_rtsp_message_add_header(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -3842,10 +3843,10 @@ func (msg *RTSPMessage) AddHeaderByName(header string, value string) RTSPResult 
 	var cret  C.GstRTSPResult   // return, none, casted
 
 	carg0 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(header)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(header))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(value))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_rtsp_message_add_header_by_name(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -3965,8 +3966,8 @@ func (msg *RTSPMessage) GetHeaderByName(header string, index int32) (string, RTS
 	var cret  C.GstRTSPResult   // return, none, casted
 
 	carg0 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(header)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(header))
+	defer C.g_free(C.gpointer(carg1))
 	carg3 = C.gint(index)
 
 	cret = C.gst_rtsp_message_get_header_by_name(carg0, carg1, &carg2, carg3)
@@ -4077,8 +4078,8 @@ func (msg *RTSPMessage) InitRequest(method RTSPMethod, uri string) RTSPResult {
 
 	carg0 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(msg))
 	carg1 = C.GstRTSPMethod(method)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_rtsp_message_init_request(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -4105,8 +4106,8 @@ func (msg *RTSPMessage) InitResponse(code RTSPStatusCode, reason string, request
 	carg0 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(msg))
 	carg1 = C.GstRTSPStatusCode(code)
 	if reason != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(reason)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(reason))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	if request != nil {
 		carg3 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(request))
@@ -4262,8 +4263,8 @@ func (msg *RTSPMessage) RemoveHeaderByName(header string, index int32) RTSPResul
 	var cret  C.GstRTSPResult   // return, none, casted
 
 	carg0 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(header)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(header))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.gint(index)
 
 	cret = C.gst_rtsp_message_remove_header_by_name(carg0, carg1, carg2)
@@ -4388,6 +4389,57 @@ func (msg *RTSPMessage) TakeBodyBuffer(buffer *gst.Buffer) RTSPResult {
 	cret = C.gst_rtsp_message_take_body_buffer(carg0, carg1)
 	runtime.KeepAlive(msg)
 	runtime.KeepAlive(buffer)
+
+	var goret RTSPResult
+
+	goret = RTSPResult(cret)
+
+	return goret
+}
+
+// TakeHeader wraps gst_rtsp_message_take_header
+// 
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_take_header
+func (msg *RTSPMessage) TakeHeader(field RTSPHeaderField, value string) RTSPResult {
+	var carg0 *C.GstRTSPMessage    // in, none, converted
+	var carg1 C.GstRTSPHeaderField // in, none, casted
+	var carg2 *C.gchar             // in, full, string
+	var cret  C.GstRTSPResult      // return, none, casted
+
+	carg0 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(msg))
+	carg1 = C.GstRTSPHeaderField(field)
+	carg2 = (*C.gchar)(transfer.GLibString(value))
+
+	cret = C.gst_rtsp_message_take_header(carg0, carg1, carg2)
+	runtime.KeepAlive(msg)
+	runtime.KeepAlive(field)
+	runtime.KeepAlive(value)
+
+	var goret RTSPResult
+
+	goret = RTSPResult(cret)
+
+	return goret
+}
+
+// TakeHeaderByName wraps gst_rtsp_message_take_header_by_name
+// 
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_take_header_by_name
+func (msg *RTSPMessage) TakeHeaderByName(header string, value string) RTSPResult {
+	var carg0 *C.GstRTSPMessage // in, none, converted
+	var carg1 *C.gchar          // in, none, string
+	var carg2 *C.gchar          // in, full, string
+	var cret  C.GstRTSPResult   // return, none, casted
+
+	carg0 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(msg))
+	carg1 = (*C.gchar)(transfer.GLibString(header))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(value))
+
+	cret = C.gst_rtsp_message_take_header_by_name(carg0, carg1, carg2)
+	runtime.KeepAlive(msg)
+	runtime.KeepAlive(header)
+	runtime.KeepAlive(value)
 
 	var goret RTSPResult
 
@@ -4568,8 +4620,8 @@ func RTSPRangeParse(rangestr string) (*RTSPTimeRange, RTSPResult) {
 	var carg2 *C.GstRTSPTimeRange // out, full, converted
 	var cret  C.GstRTSPResult     // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(rangestr)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(rangestr))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_rtsp_range_parse(carg1, &carg2)
 	runtime.KeepAlive(rangestr)
@@ -5125,8 +5177,8 @@ func RTSPUrlParse(urlstr string) (*RTSPUrl, RTSPResult) {
 	var carg2 *C.GstRTSPUrl   // out, full, converted, nullable
 	var cret  C.GstRTSPResult // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(urlstr)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(urlstr))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_rtsp_url_parse(carg1, &carg2)
 	runtime.KeepAlive(urlstr)
@@ -5233,8 +5285,8 @@ func (url *RTSPUrl) GetRequestURIWithControl(controlPath string) string {
 	var cret  *C.gchar      // return, full, string
 
 	carg0 = (*C.GstRTSPUrl)(UnsafeRTSPUrlToGlibNone(url))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(controlPath)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(controlPath))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_rtsp_url_get_request_uri_with_control(carg0, carg1)
 	runtime.KeepAlive(url)
