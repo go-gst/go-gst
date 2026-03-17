@@ -1815,7 +1815,7 @@ func RtspGenerateDigestAuthResponse(algorithm string, method string, realm strin
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -1856,7 +1856,7 @@ func RtspGenerateDigestAuthResponseFromMD5(algorithm string, method string, md5 
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -2018,7 +2018,7 @@ func RtspOptionsAsText(options RTSPMethod) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -2077,7 +2077,7 @@ func RtspStrresult(result RTSPResult) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -3299,35 +3299,6 @@ func (conn *RTSPConnection) ResetTimeout() RTSPResult {
 	return goret
 }
 
-// SendMessagesUsec wraps gst_rtsp_connection_send_messages_usec
-// 
-// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_send_messages_usec
-func (conn *RTSPConnection) SendMessagesUsec(messages []RTSPMessage, timeout int64) RTSPResult {
-	var carg0 *C.GstRTSPConnection // in, none, converted
-	var carg1 *C.GstRTSPMessage    // in, transfer: none, C Pointers: 1, Name: array[RTSPMessage], array (inner GstRTSPMessage (*typesystem.Record), length-by: carg2)
-	var carg2 C.guint              // implicit
-	var carg3 C.gint64             // in, none, casted
-	var cret  C.GstRTSPResult      // return, none, casted
-
-	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-	_ = messages
-	_ = carg1
-	_ = carg2
-	panic("unimplemented conversion of []RTSPMessage (GstRTSPMessage*) because of unimplemented: non-fixed size array")
-	carg3 = C.gint64(timeout)
-
-	cret = C.gst_rtsp_connection_send_messages_usec(carg0, carg1, carg2, carg3)
-	runtime.KeepAlive(conn)
-	runtime.KeepAlive(messages)
-	runtime.KeepAlive(timeout)
-
-	var goret RTSPResult
-
-	goret = RTSPResult(cret)
-
-	return goret
-}
-
 // SendUsec wraps gst_rtsp_connection_send_usec
 // 
 // see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_send_usec
@@ -4425,57 +4396,6 @@ func (msg *RTSPMessage) TakeBodyBuffer(buffer *gst.Buffer) RTSPResult {
 	return goret
 }
 
-// TakeHeader wraps gst_rtsp_message_take_header
-// 
-// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_take_header
-func (msg *RTSPMessage) TakeHeader(field RTSPHeaderField, value string) RTSPResult {
-	var carg0 *C.GstRTSPMessage    // in, none, converted
-	var carg1 C.GstRTSPHeaderField // in, none, casted
-	var carg2 *C.gchar             // in, full, string
-	var cret  C.GstRTSPResult      // return, none, casted
-
-	carg0 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(msg))
-	carg1 = C.GstRTSPHeaderField(field)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-
-	cret = C.gst_rtsp_message_take_header(carg0, carg1, carg2)
-	runtime.KeepAlive(msg)
-	runtime.KeepAlive(field)
-	runtime.KeepAlive(value)
-
-	var goret RTSPResult
-
-	goret = RTSPResult(cret)
-
-	return goret
-}
-
-// TakeHeaderByName wraps gst_rtsp_message_take_header_by_name
-// 
-// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_take_header_by_name
-func (msg *RTSPMessage) TakeHeaderByName(header string, value string) RTSPResult {
-	var carg0 *C.GstRTSPMessage // in, none, converted
-	var carg1 *C.gchar          // in, none, string
-	var carg2 *C.gchar          // in, full, string
-	var cret  C.GstRTSPResult   // return, none, casted
-
-	carg0 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(header)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-
-	cret = C.gst_rtsp_message_take_header_by_name(carg0, carg1, carg2)
-	runtime.KeepAlive(msg)
-	runtime.KeepAlive(header)
-	runtime.KeepAlive(value)
-
-	var goret RTSPResult
-
-	goret = RTSPResult(cret)
-
-	return goret
-}
-
 // Unset wraps gst_rtsp_message_unset
 // 
 // see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_unset
@@ -4678,7 +4598,7 @@ func RTSPRangeString(_range *RTSPTimeRange) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -5038,26 +4958,6 @@ func RTSPTransportGetManager(trans RTSPTransMode, option uint) (string, RTSPResu
 	return manager, goret
 }
 
-// RTSPTransportInit wraps gst_rtsp_transport_init
-// 
-// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_transport_init
-func RTSPTransportInit() (RTSPTransport, RTSPResult) {
-	var carg1 C.GstRTSPTransport // out, transfer: none, C Pointers: 0, Name: RTSPTransport, caller-allocates
-	var cret  C.GstRTSPResult    // return, none, casted
-
-	cret = C.gst_rtsp_transport_init(&carg1)
-
-	var transport RTSPTransport
-	var goret     RTSPResult
-
-	_ = transport
-	_ = carg1
-	panic("unimplemented conversion of RTSPTransport (GstRTSPTransport) because of unknown reason")
-	goret = RTSPResult(cret)
-
-	return transport, goret
-}
-
 // NewRTSPTransport wraps gst_rtsp_transport_new
 // 
 // see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_transport_new
@@ -5071,31 +4971,6 @@ func NewRTSPTransport() (*RTSPTransport, RTSPResult) {
 	var goret     RTSPResult
 
 	transport = UnsafeRTSPTransportFromGlibFull(unsafe.Pointer(carg1))
-	goret = RTSPResult(cret)
-
-	return transport, goret
-}
-
-// RTSPTransportParse wraps gst_rtsp_transport_parse
-// 
-// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_transport_parse
-func RTSPTransportParse(str string) (RTSPTransport, RTSPResult) {
-	var carg1 *C.gchar           // in, none, string
-	var carg2 C.GstRTSPTransport // out, transfer: none, C Pointers: 0, Name: RTSPTransport, caller-allocates
-	var cret  C.GstRTSPResult    // return, none, casted
-
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
-
-	cret = C.gst_rtsp_transport_parse(carg1, &carg2)
-	runtime.KeepAlive(str)
-
-	var transport RTSPTransport
-	var goret     RTSPResult
-
-	_ = transport
-	_ = carg2
-	panic("unimplemented conversion of RTSPTransport (GstRTSPTransport) because of unknown reason")
 	goret = RTSPResult(cret)
 
 	return transport, goret
@@ -5117,7 +4992,7 @@ func (transport *RTSPTransport) AsText() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -5344,7 +5219,7 @@ func (url *RTSPUrl) GetRequestURI() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -5368,7 +5243,7 @@ func (url *RTSPUrl) GetRequestURIWithControl(controlPath string) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -5555,35 +5430,6 @@ func (watch *RTSPWatch) SendMessage(message *RTSPMessage) (uint, RTSPResult) {
 	var goret RTSPResult
 
 	id = uint(carg2)
-	goret = RTSPResult(cret)
-
-	return id, goret
-}
-
-// SendMessages wraps gst_rtsp_watch_send_messages
-// 
-// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_watch_send_messages
-func (watch *RTSPWatch) SendMessages(messages []RTSPMessage) (uint, RTSPResult) {
-	var carg0 *C.GstRTSPWatch   // in, none, converted
-	var carg1 *C.GstRTSPMessage // in, transfer: none, C Pointers: 1, Name: array[RTSPMessage], array (inner GstRTSPMessage (*typesystem.Record), length-by: carg2)
-	var carg2 C.guint           // implicit
-	var carg3 C.guint           // out, full, casted
-	var cret  C.GstRTSPResult   // return, none, casted
-
-	carg0 = (*C.GstRTSPWatch)(UnsafeRTSPWatchToGlibNone(watch))
-	_ = messages
-	_ = carg1
-	_ = carg2
-	panic("unimplemented conversion of []RTSPMessage (GstRTSPMessage*) because of unimplemented: non-fixed size array")
-
-	cret = C.gst_rtsp_watch_send_messages(carg0, carg1, carg2, &carg3)
-	runtime.KeepAlive(watch)
-	runtime.KeepAlive(messages)
-
-	var id    uint
-	var goret RTSPResult
-
-	id = uint(carg3)
 	goret = RTSPResult(cret)
 
 	return id, goret

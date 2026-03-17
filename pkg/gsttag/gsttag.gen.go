@@ -412,7 +412,7 @@ func TagFreeformStringToUTF8(data string, envVars []string) string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -947,7 +947,7 @@ func TagListFromVorbiscomment(data []uint8, idData []uint8) (string, *gst.TagLis
 	var goret        *gst.TagList
 
 	vendorString = C.GoString((*C.char)(unsafe.Pointer(carg5)))
-	defer C.free(unsafe.Pointer(carg5))
+	defer C.g_free(C.gpointer(carg5))
 	if cret != nil {
 		goret = gst.UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
 	}
@@ -979,7 +979,7 @@ func TagListFromVorbiscommentBuffer(buffer *gst.Buffer, idData []uint8) (string,
 	var goret        *gst.TagList
 
 	vendorString = C.GoString((*C.char)(unsafe.Pointer(carg4)))
-	defer C.free(unsafe.Pointer(carg4))
+	defer C.g_free(C.gpointer(carg4))
 	if cret != nil {
 		goret = gst.UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
 	}
@@ -1170,14 +1170,14 @@ func TagParseExtendedComment(extComment string, failIfNoKey bool) (string, strin
 
 	if carg2 != nil {
 		key = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-		defer C.free(unsafe.Pointer(carg2))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	if carg3 != nil {
 		lang = C.GoString((*C.char)(unsafe.Pointer(carg3)))
-		defer C.free(unsafe.Pointer(carg3))
+		defer C.g_free(C.gpointer(carg3))
 	}
 	value = C.GoString((*C.char)(unsafe.Pointer(carg4)))
-	defer C.free(unsafe.Pointer(carg4))
+	defer C.g_free(C.gpointer(carg4))
 	if cret != 0 {
 		goret = true
 	}

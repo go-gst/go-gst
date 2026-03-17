@@ -1607,32 +1607,6 @@ func (h *Harness) FindElement(elementName string) gst.Element {
 	return goret
 }
 
-// GetAllocator wraps gst_harness_get_allocator
-// 
-// see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_get_allocator
-func (h *Harness) GetAllocator() (gst.Allocator, gst.AllocationParams) {
-	var carg0 *C.GstHarness         // in, none, converted
-	var carg1 *C.GstAllocator       // out, none, converted, nullable
-	var carg2 C.GstAllocationParams // out, transfer: none, C Pointers: 0, Name: AllocationParams, optional, caller-allocates
-
-	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
-
-	C.gst_harness_get_allocator(carg0, &carg1, &carg2)
-	runtime.KeepAlive(h)
-
-	var allocator gst.Allocator
-	var params    gst.AllocationParams
-
-	if carg1 != nil {
-		allocator = gst.UnsafeAllocatorFromGlibNone(unsafe.Pointer(carg1))
-	}
-	_ = params
-	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
-
-	return allocator, params
-}
-
 // GetLastPushedTimestamp wraps gst_harness_get_last_pushed_timestamp
 // 
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_get_last_pushed_timestamp

@@ -25,11 +25,8 @@ import (
 // extern gboolean _goglib_gstwebrtc1_WebRTCICE_add_turn_server(GstWebRTCICE*, const gchar*);
 // extern GstWebRTCICETransport* _goglib_gstwebrtc1_WebRTCICE_find_transport(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICEComponent);
 // extern gboolean _goglib_gstwebrtc1_WebRTCICE_gather_candidates(GstWebRTCICE*, GstWebRTCICEStream*);
-// extern gchar* _goglib_gstwebrtc1_WebRTCICE_get_http_proxy(GstWebRTCICE*);
 // extern gboolean _goglib_gstwebrtc1_WebRTCICE_get_is_controller(GstWebRTCICE*);
 // extern gboolean _goglib_gstwebrtc1_WebRTCICE_get_selected_pair(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICECandidateStats*, GstWebRTCICECandidateStats*);
-// extern gchar* _goglib_gstwebrtc1_WebRTCICE_get_stun_server(GstWebRTCICE*);
-// extern gchar* _goglib_gstwebrtc1_WebRTCICE_get_turn_server(GstWebRTCICE*);
 // extern void _goglib_gstwebrtc1_WebRTCICE_set_force_relay(GstWebRTCICE*, gboolean);
 // extern void _goglib_gstwebrtc1_WebRTCICE_set_http_proxy(GstWebRTCICE*, const gchar*);
 // extern void _goglib_gstwebrtc1_WebRTCICE_set_is_controller(GstWebRTCICE*, gboolean);
@@ -53,20 +50,11 @@ import (
 // gboolean _goglib_gstwebrtc1_WebRTCICE_virtual_gather_candidates(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1) {
 // 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*))(fnptr))(carg0, carg1);
 // }
-// gchar* _goglib_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(void* fnptr, GstWebRTCICE* carg0) {
-// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
-// }
 // gboolean _goglib_gstwebrtc1_WebRTCICE_virtual_get_is_controller(void* fnptr, GstWebRTCICE* carg0) {
 // 	return ((gboolean (*) (GstWebRTCICE*))(fnptr))(carg0);
 // }
 // gboolean _goglib_gstwebrtc1_WebRTCICE_virtual_get_selected_pair(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, GstWebRTCICECandidateStats** carg2, GstWebRTCICECandidateStats** carg3) {
 // 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICECandidateStats**, GstWebRTCICECandidateStats**))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// gchar* _goglib_gstwebrtc1_WebRTCICE_virtual_get_stun_server(void* fnptr, GstWebRTCICE* carg0) {
-// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
-// }
-// gchar* _goglib_gstwebrtc1_WebRTCICE_virtual_get_turn_server(void* fnptr, GstWebRTCICE* carg0) {
-// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
 // }
 // void _goglib_gstwebrtc1_WebRTCICE_virtual_set_force_relay(void* fnptr, GstWebRTCICE* carg0, gboolean carg1) {
 // 	return ((void (*) (GstWebRTCICE*, gboolean))(fnptr))(carg0, carg1);
@@ -1320,7 +1308,7 @@ type WebRTCDataChannel interface {
 	// ConnectOnMessageData connects the provided callback to the "on-message-data" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
-	ConnectOnMessageData(func(WebRTCDataChannel, glib.Bytes)) gobject.SignalHandle
+	ConnectOnMessageData(func(WebRTCDataChannel, *glib.Bytes)) gobject.SignalHandle
 	// ConnectOnMessageString connects the provided callback to the "on-message-string" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
@@ -1332,7 +1320,7 @@ type WebRTCDataChannel interface {
 	// EmitSendData emits the "send-data" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
-	EmitSendData(glib.Bytes)
+	EmitSendData(*glib.Bytes)
 	// EmitSendString emits the "send-string" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
@@ -1493,7 +1481,7 @@ func (o *WebRTCDataChannelInstance) ConnectOnError(fn func(WebRTCDataChannel, er
 // ConnectOnMessageData connects the provided callback to the "on-message-data" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/webrtc
-func (o *WebRTCDataChannelInstance) ConnectOnMessageData(fn func(WebRTCDataChannel, glib.Bytes)) gobject.SignalHandle {
+func (o *WebRTCDataChannelInstance) ConnectOnMessageData(fn func(WebRTCDataChannel, *glib.Bytes)) gobject.SignalHandle {
 	return o.Connect("on-message-data", fn)
 }
 
@@ -1514,7 +1502,7 @@ func (o *WebRTCDataChannelInstance) ConnectOnOpen(fn func(WebRTCDataChannel)) go
 // EmitSendData emits the "send-data" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/webrtc
-func (o *WebRTCDataChannelInstance) EmitSendData(arg0 glib.Bytes) {
+func (o *WebRTCDataChannelInstance) EmitSendData(arg0 *glib.Bytes) {
 	o.Emit("send-data", arg0)
 }
 
@@ -1656,11 +1644,6 @@ type WebRTCICE interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gather_candidates
 	ParentGatherCandidates(stream WebRTCICEStream) bool
-	// ParentGetHttpProxy calls the default implementations of the `GstWebRTCICE.get_http_proxy` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_http_proxy
-	ParentGetHttpProxy() string
 	// ParentGetIsController calls the default implementations of the `GstWebRTCICE.get_is_controller` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
@@ -1671,16 +1654,6 @@ type WebRTCICE interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_selected_pair
 	ParentGetSelectedPair(stream WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool)
-	// ParentGetStunServer calls the default implementations of the `GstWebRTCICE.get_stun_server` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_stun_server
-	ParentGetStunServer() string
-	// ParentGetTurnServer calls the default implementations of the `GstWebRTCICE.get_turn_server` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_turn_server
-	ParentGetTurnServer() string
 	// ParentSetForceRelay calls the default implementations of the `GstWebRTCICE.set_force_relay` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
@@ -1914,7 +1887,7 @@ func (ice *WebRTCICEInstance) GetHttpProxy() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -2034,7 +2007,7 @@ func (ice *WebRTCICEInstance) GetStunServer() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -2056,7 +2029,7 @@ func (ice *WebRTCICEInstance) GetTurnServer() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -2282,10 +2255,6 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gather_candidates
 	GatherCandidates func(Instance, WebRTCICEStream) bool
-	// // GetHttpProxy allows you to override the implementation of the virtual method get_http_proxy.
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_http_proxy
-	GetHttpProxy func(Instance) string
 	// // GetIsController allows you to override the implementation of the virtual method get_is_controller.
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_is_controller
@@ -2294,14 +2263,6 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_selected_pair
 	GetSelectedPair func(Instance, WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool)
-	// // GetStunServer allows you to override the implementation of the virtual method get_stun_server.
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_stun_server
-	GetStunServer func(Instance) string
-	// // GetTurnServer allows you to override the implementation of the virtual method get_turn_server.
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_turn_server
-	GetTurnServer func(Instance) string
 	// // SetForceRelay allows you to override the implementation of the virtual method set_force_relay.
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_force_relay
@@ -2464,26 +2425,6 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 		)
 	}
 
-	if overrides.GetHttpProxy != nil {
-		pclass.get_http_proxy = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_get_http_proxy)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_goglib_gstwebrtc1_WebRTCICE_get_http_proxy",
-			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
-				var ice   Instance // go GstWebRTCICE subclass
-				var goret string   // return, full, string
-
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
-
-				goret = overrides.GetHttpProxy(ice)
-
-				cret = (*C.gchar)(unsafe.Pointer(C.CString(goret)))
-
-				return cret
-			},
-		)
-	}
-
 	if overrides.GetIsController != nil {
 		pclass.get_is_controller = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_get_is_controller)
 		classdata.StoreVirtualMethod(
@@ -2527,50 +2468,6 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				*carg3 = (*C.GstWebRTCICECandidateStats)(UnsafeWebRTCICECandidateStatsToGlibFull(remoteStats))
 				if goret {
 					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.GetStunServer != nil {
-		pclass.get_stun_server = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_get_stun_server)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_goglib_gstwebrtc1_WebRTCICE_get_stun_server",
-			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
-				var ice   Instance // go GstWebRTCICE subclass
-				var goret string   // return, full, string, nullable-string
-
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
-
-				goret = overrides.GetStunServer(ice)
-
-				if goret != "" {
-					cret = (*C.gchar)(unsafe.Pointer(C.CString(goret)))
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.GetTurnServer != nil {
-		pclass.get_turn_server = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_get_turn_server)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_goglib_gstwebrtc1_WebRTCICE_get_turn_server",
-			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
-				var ice   Instance // go GstWebRTCICE subclass
-				var goret string   // return, full, string, nullable-string
-
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
-
-				goret = overrides.GetTurnServer(ice)
-
-				if goret != "" {
-					cret = (*C.gchar)(unsafe.Pointer(C.CString(goret)))
 				}
 
 				return cret
@@ -2886,29 +2783,6 @@ func (ice *WebRTCICEInstance) ParentGatherCandidates(stream WebRTCICEStream) boo
 	return goret
 }
 
-// ParentGetHttpProxy calls the default implementations of the `GstWebRTCICE.get_http_proxy` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_http_proxy
-func (ice *WebRTCICEInstance) ParentGetHttpProxy() string {
-	var carg0 *C.GstWebRTCICE
-	var cret  *C.gchar // return, full, string
-
-	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
-
-	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
-
-	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(unsafe.Pointer(parentclass.get_http_proxy), carg0)
-	runtime.KeepAlive(ice)
-
-	var goret string
-
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
-
-	return goret
-}
-
 // ParentGetIsController calls the default implementations of the `GstWebRTCICE.get_is_controller` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
@@ -2964,56 +2838,6 @@ func (ice *WebRTCICEInstance) ParentGetSelectedPair(stream WebRTCICEStream) (*We
 	}
 
 	return localStats, remoteStats, goret
-}
-
-// ParentGetStunServer calls the default implementations of the `GstWebRTCICE.get_stun_server` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_stun_server
-func (ice *WebRTCICEInstance) ParentGetStunServer() string {
-	var carg0 *C.GstWebRTCICE
-	var cret  *C.gchar // return, full, string, nullable-string
-
-	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
-
-	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
-
-	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_get_stun_server(unsafe.Pointer(parentclass.get_stun_server), carg0)
-	runtime.KeepAlive(ice)
-
-	var goret string
-
-	if cret != nil {
-		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
-// ParentGetTurnServer calls the default implementations of the `GstWebRTCICE.get_turn_server` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_turn_server
-func (ice *WebRTCICEInstance) ParentGetTurnServer() string {
-	var carg0 *C.GstWebRTCICE
-	var cret  *C.gchar // return, full, string, nullable-string
-
-	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
-
-	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
-
-	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_get_turn_server(unsafe.Pointer(parentclass.get_turn_server), carg0)
-	runtime.KeepAlive(ice)
-
-	var goret string
-
-	if cret != nil {
-		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
-	}
-
-	return goret
 }
 
 // ParentSetForceRelay calls the default implementations of the `GstWebRTCICE.set_force_relay` virtual method.

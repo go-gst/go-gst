@@ -792,7 +792,7 @@ func PlayerConfigGetUserAgent(config *gst.Structure) string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -922,6 +922,23 @@ func PlayerGetVideoStreams(info PlayerMediaInfo) []PlayerVideoInfo {
 			return dst
 		},
 	)
+
+	return goret
+}
+
+// PlayerVisualizationsGet wraps gst_player_visualizations_get
+// 
+// see also https://gstreamer.freedesktop.org/documentation/player/gstplayer-types.html#gst_player_visualizations_get
+func PlayerVisualizationsGet() []*PlayerVisualization {
+	var cret **C.GstPlayerVisualization // return, transfer: full, C Pointers: 2, Name: array[PlayerVisualization], scope: , array (inner GstPlayerVisualization* (*typesystem.Record), zero-terminated)
+
+	cret = C.gst_player_visualizations_get()
+
+	var goret []*PlayerVisualization
+
+	_ = goret
+	_ = cret
+	panic("unimplemented conversion of []*PlayerVisualization (GstPlayerVisualization**) because of unknown reason")
 
 	return goret
 }
@@ -1065,7 +1082,7 @@ func (player *PlayerInstance) GetCurrentVisualization() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -1243,7 +1260,7 @@ func (player *PlayerInstance) GetSubtitleURI() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -1284,7 +1301,7 @@ func (player *PlayerInstance) GetURI() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret

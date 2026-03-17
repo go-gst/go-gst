@@ -1774,10 +1774,6 @@ type Aggregator interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_finish_buffer_list
 	FinishBufferList(*gst.BufferList) gst.FlowReturn
-	// GetAllocator wraps gst_aggregator_get_allocator
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_get_allocator
-	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBufferPool wraps gst_aggregator_get_buffer_pool
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_get_buffer_pool
@@ -1837,7 +1833,7 @@ type Aggregator interface {
 	// ConnectSamplesSelected connects the provided callback to the "samples-selected" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html
-	ConnectSamplesSelected(func(Aggregator, gst.Segment, uint64, uint64, uint64, gst.Structure)) gobject.SignalHandle
+	ConnectSamplesSelected(func(Aggregator, *gst.Segment, uint64, uint64, uint64, *gst.Structure)) gobject.SignalHandle
 
 	// chain up virtual methods:
 
@@ -2049,32 +2045,6 @@ func (aggregator *AggregatorInstance) FinishBufferList(bufferlist *gst.BufferLis
 	goret = gst.FlowReturn(cret)
 
 	return goret
-}
-
-// GetAllocator wraps gst_aggregator_get_allocator
-// 
-// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_get_allocator
-func (self *AggregatorInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
-	var carg0 *C.GstAggregator      // in, none, converted
-	var carg1 *C.GstAllocator       // out, full, converted, nullable
-	var carg2 C.GstAllocationParams // out, transfer: none, C Pointers: 0, Name: AllocationParams, optional, caller-allocates
-
-	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
-
-	C.gst_aggregator_get_allocator(carg0, &carg1, &carg2)
-	runtime.KeepAlive(self)
-
-	var allocator gst.Allocator
-	var params    gst.AllocationParams
-
-	if carg1 != nil {
-		allocator = gst.UnsafeAllocatorFromGlibFull(unsafe.Pointer(carg1))
-	}
-	_ = params
-	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
-
-	return allocator, params
 }
 
 // GetBufferPool wraps gst_aggregator_get_buffer_pool
@@ -2358,7 +2328,7 @@ func (self *AggregatorInstance) UpdateSegment(segment *gst.Segment) {
 // ConnectSamplesSelected connects the provided callback to the "samples-selected" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html
-func (o *AggregatorInstance) ConnectSamplesSelected(fn func(Aggregator, gst.Segment, uint64, uint64, uint64, gst.Structure)) gobject.SignalHandle {
+func (o *AggregatorInstance) ConnectSamplesSelected(fn func(Aggregator, *gst.Segment, uint64, uint64, uint64, *gst.Structure)) gobject.SignalHandle {
 	return o.Connect("samples-selected", fn)
 }
 
@@ -3648,7 +3618,7 @@ type AggregatorPad interface {
 	// ConnectBufferConsumed connects the provided callback to the "buffer-consumed" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/base
-	ConnectBufferConsumed(func(AggregatorPad, gst.Buffer)) gobject.SignalHandle
+	ConnectBufferConsumed(func(AggregatorPad, *gst.Buffer)) gobject.SignalHandle
 
 	// chain up virtual methods:
 
@@ -3847,7 +3817,7 @@ func (pad *AggregatorPadInstance) PopBuffer() *gst.Buffer {
 // ConnectBufferConsumed connects the provided callback to the "buffer-consumed" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/base
-func (o *AggregatorPadInstance) ConnectBufferConsumed(fn func(AggregatorPad, gst.Buffer)) gobject.SignalHandle {
+func (o *AggregatorPadInstance) ConnectBufferConsumed(fn func(AggregatorPad, *gst.Buffer)) gobject.SignalHandle {
 	return o.Connect("buffer-consumed", fn)
 }
 
@@ -7157,10 +7127,6 @@ type BaseSrc interface {
 	gst.Element
 	upcastToGstBaseSrc() *BaseSrcInstance
 
-	// GetAllocator wraps gst_base_src_get_allocator
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_get_allocator
-	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBlocksize wraps gst_base_src_get_blocksize
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_get_blocksize
@@ -7392,32 +7358,6 @@ func UnsafeBaseSrcToGlibNone(c BaseSrc) unsafe.Pointer {
 // UnsafeBaseSrcToGlibFull is used to convert the instance to it's C value GstBaseSrc, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeBaseSrcToGlibFull(c BaseSrc) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
-}
-
-// GetAllocator wraps gst_base_src_get_allocator
-// 
-// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_get_allocator
-func (src *BaseSrcInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
-	var carg0 *C.GstBaseSrc         // in, none, converted
-	var carg1 *C.GstAllocator       // out, full, converted, nullable
-	var carg2 C.GstAllocationParams // out, transfer: none, C Pointers: 0, Name: AllocationParams, optional, caller-allocates
-
-	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
-
-	C.gst_base_src_get_allocator(carg0, &carg1, &carg2)
-	runtime.KeepAlive(src)
-
-	var allocator gst.Allocator
-	var params    gst.AllocationParams
-
-	if carg1 != nil {
-		allocator = gst.UnsafeAllocatorFromGlibFull(unsafe.Pointer(carg1))
-	}
-	_ = params
-	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
-
-	return allocator, params
 }
 
 // GetBlocksize wraps gst_base_src_get_blocksize
@@ -8862,10 +8802,6 @@ type BaseTransform interface {
 	gst.Element
 	upcastToGstBaseTransform() *BaseTransformInstance
 
-	// GetAllocator wraps gst_base_transform_get_allocator
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_get_allocator
-	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBufferPool wraps gst_base_transform_get_buffer_pool
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_get_buffer_pool
@@ -9089,32 +9025,6 @@ func UnsafeBaseTransformToGlibNone(c BaseTransform) unsafe.Pointer {
 // UnsafeBaseTransformToGlibFull is used to convert the instance to it's C value GstBaseTransform, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeBaseTransformToGlibFull(c BaseTransform) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
-}
-
-// GetAllocator wraps gst_base_transform_get_allocator
-// 
-// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_get_allocator
-func (trans *BaseTransformInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
-	var carg0 *C.GstBaseTransform   // in, none, converted
-	var carg1 *C.GstAllocator       // out, full, converted, nullable
-	var carg2 C.GstAllocationParams // out, transfer: none, C Pointers: 0, Name: AllocationParams, optional, caller-allocates
-
-	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
-
-	C.gst_base_transform_get_allocator(carg0, &carg1, &carg2)
-	runtime.KeepAlive(trans)
-
-	var allocator gst.Allocator
-	var params    gst.AllocationParams
-
-	if carg1 != nil {
-		allocator = gst.UnsafeAllocatorFromGlibFull(unsafe.Pointer(carg1))
-	}
-	_ = params
-	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
-
-	return allocator, params
 }
 
 // GetBufferPool wraps gst_base_transform_get_buffer_pool

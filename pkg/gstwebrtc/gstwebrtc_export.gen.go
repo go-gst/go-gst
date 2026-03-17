@@ -94,18 +94,6 @@ func _goglib_gstwebrtc1_WebRTCICE_gather_candidates(carg0 *C.GstWebRTCICE, carg1
 	return fn(carg0, carg1)
 }
 
-//export _goglib_gstwebrtc1_WebRTCICE_get_http_proxy
-func _goglib_gstwebrtc1_WebRTCICE_get_http_proxy(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
-	var fn func(carg0 *C.GstWebRTCICE) (cret *C.gchar)
-	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstwebrtc1_WebRTCICE_get_http_proxy").(func(carg0 *C.GstWebRTCICE) (cret *C.gchar))
-		if fn == nil {
-			panic("_goglib_gstwebrtc1_WebRTCICE_get_http_proxy: no function pointer found")
-		}
-	}
-	return fn(carg0)
-}
-
 //export _goglib_gstwebrtc1_WebRTCICE_get_is_controller
 func _goglib_gstwebrtc1_WebRTCICE_get_is_controller(carg0 *C.GstWebRTCICE) (cret C.gboolean) {
 	var fn func(carg0 *C.GstWebRTCICE) (cret C.gboolean)
@@ -128,30 +116,6 @@ func _goglib_gstwebrtc1_WebRTCICE_get_selected_pair(carg0 *C.GstWebRTCICE, carg1
 		}
 	}
 	return fn(carg0, carg1, carg2, carg3)
-}
-
-//export _goglib_gstwebrtc1_WebRTCICE_get_stun_server
-func _goglib_gstwebrtc1_WebRTCICE_get_stun_server(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
-	var fn func(carg0 *C.GstWebRTCICE) (cret *C.gchar)
-	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstwebrtc1_WebRTCICE_get_stun_server").(func(carg0 *C.GstWebRTCICE) (cret *C.gchar))
-		if fn == nil {
-			panic("_goglib_gstwebrtc1_WebRTCICE_get_stun_server: no function pointer found")
-		}
-	}
-	return fn(carg0)
-}
-
-//export _goglib_gstwebrtc1_WebRTCICE_get_turn_server
-func _goglib_gstwebrtc1_WebRTCICE_get_turn_server(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
-	var fn func(carg0 *C.GstWebRTCICE) (cret *C.gchar)
-	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstwebrtc1_WebRTCICE_get_turn_server").(func(carg0 *C.GstWebRTCICE) (cret *C.gchar))
-		if fn == nil {
-			panic("_goglib_gstwebrtc1_WebRTCICE_get_turn_server: no function pointer found")
-		}
-	}
-	return fn(carg0)
 }
 
 //export _goglib_gstwebrtc1_WebRTCICE_set_force_relay

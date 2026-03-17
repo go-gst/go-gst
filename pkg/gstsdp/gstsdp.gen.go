@@ -577,7 +577,7 @@ func SdpMakeKeymgmt(uri string, base64 string) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -1161,7 +1161,7 @@ func (msg *MIKEYMessage) Base64Encode() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -3202,26 +3202,6 @@ func UnsafeSDPMediaToGlibFull(s *SDPMedia) unsafe.Pointer {
 	return _p
 }
 
-// SDPMediaInit wraps gst_sdp_media_init
-// 
-// see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_init
-func SDPMediaInit() (SDPMedia, SDPResult) {
-	var carg1 C.GstSDPMedia  // out, transfer: none, C Pointers: 0, Name: SDPMedia, caller-allocates
-	var cret  C.GstSDPResult // return, none, casted
-
-	cret = C.gst_sdp_media_init(&carg1)
-
-	var media SDPMedia
-	var goret SDPResult
-
-	_ = media
-	_ = carg1
-	panic("unimplemented conversion of SDPMedia (GstSDPMedia) because of unknown reason")
-	goret = SDPResult(cret)
-
-	return media, goret
-}
-
 // NewSDPMedia wraps gst_sdp_media_new
 // 
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_new
@@ -3235,30 +3215,6 @@ func NewSDPMedia() (*SDPMedia, SDPResult) {
 	var goret SDPResult
 
 	media = UnsafeSDPMediaFromGlibFull(unsafe.Pointer(carg1))
-	goret = SDPResult(cret)
-
-	return media, goret
-}
-
-// SDPMediaSetMediaFromCaps wraps gst_sdp_media_set_media_from_caps
-// 
-// see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_set_media_from_caps
-func SDPMediaSetMediaFromCaps(caps *gst.Caps) (SDPMedia, SDPResult) {
-	var carg1 *C.GstCaps     // in, none, converted
-	var carg2 C.GstSDPMedia  // out, transfer: none, C Pointers: 0, Name: SDPMedia, caller-allocates
-	var cret  C.GstSDPResult // return, none, casted
-
-	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
-
-	cret = C.gst_sdp_media_set_media_from_caps(carg1, &carg2)
-	runtime.KeepAlive(caps)
-
-	var media SDPMedia
-	var goret SDPResult
-
-	_ = media
-	_ = carg2
-	panic("unimplemented conversion of SDPMedia (GstSDPMedia) because of unknown reason")
 	goret = SDPResult(cret)
 
 	return media, goret
@@ -3394,7 +3350,7 @@ func (media *SDPMedia) AsText() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -4369,29 +4325,9 @@ func SDPMessageAsURI(scheme string, msg *SDPMessage) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
-}
-
-// SDPMessageInit wraps gst_sdp_message_init
-// 
-// see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_init
-func SDPMessageInit() (SDPMessage, SDPResult) {
-	var carg1 C.GstSDPMessage // out, transfer: none, C Pointers: 0, Name: SDPMessage, caller-allocates
-	var cret  C.GstSDPResult  // return, none, casted
-
-	cret = C.gst_sdp_message_init(&carg1)
-
-	var msg   SDPMessage
-	var goret SDPResult
-
-	_ = msg
-	_ = carg1
-	panic("unimplemented conversion of SDPMessage (GstSDPMessage) because of unknown reason")
-	goret = SDPResult(cret)
-
-	return msg, goret
 }
 
 // NewSDPMessage wraps gst_sdp_message_new
@@ -4681,7 +4617,7 @@ func (msg *SDPMessage) AsText() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
