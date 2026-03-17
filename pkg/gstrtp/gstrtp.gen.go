@@ -2825,7 +2825,7 @@ func (ext *RTPHeaderExtensionInstance) GetSdpCapsFieldName() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -4653,7 +4653,7 @@ func (packet *RTCPPacket) ByeGetReason() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -6508,35 +6508,6 @@ func RTPBufferDefaultClockRate(payloadType uint8) uint32 {
 	goret = uint32(cret)
 
 	return goret
-}
-
-// RTPBufferMap wraps gst_rtp_buffer_map
-// 
-// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_map
-func RTPBufferMap(buffer *gst.Buffer, flags gst.MapFlags) (RTPBuffer, bool) {
-	var carg1 *C.GstBuffer   // in, none, converted
-	var carg2 C.GstMapFlags  // in, none, casted
-	var carg3 C.GstRTPBuffer // out, transfer: none, C Pointers: 0, Name: RTPBuffer, caller-allocates
-	var cret  C.gboolean     // return
-
-	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
-	carg2 = C.GstMapFlags(flags)
-
-	cret = C.gst_rtp_buffer_map(carg1, carg2, &carg3)
-	runtime.KeepAlive(buffer)
-	runtime.KeepAlive(flags)
-
-	var rtp   RTPBuffer
-	var goret bool
-
-	_ = rtp
-	_ = carg3
-	panic("unimplemented conversion of RTPBuffer (GstRTPBuffer) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return rtp, goret
 }
 
 // NewRTPBufferAllocate wraps gst_rtp_buffer_new_allocate

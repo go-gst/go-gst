@@ -7285,7 +7285,7 @@ func DebugBinToDotData(bin Bin, details DebugGraphDetails) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -7343,7 +7343,7 @@ func DebugConstructTermColor(colorinfo uint) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -7435,7 +7435,7 @@ func DebugGetStackTrace(flags StackTraceFlags) string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -7512,7 +7512,7 @@ func DebugLogGetLine(category *DebugCategory, level DebugLevel, file string, fun
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -7605,7 +7605,7 @@ func DebugPrintSegment(segment *Segment) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -7805,7 +7805,7 @@ func ErrorGetMessage(domain glib.Quark, code int32) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -7829,7 +7829,7 @@ func FilenameToURI(filename string) (string, error) {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
@@ -8421,48 +8421,6 @@ func TagIsFixed(tag string) bool {
 	}
 
 	return goret
-}
-
-// TagMergeStringsWithComma wraps gst_tag_merge_strings_with_comma
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
-func TagMergeStringsWithComma(src *gobject.Value) gobject.Value {
-	var carg2 *C.GValue // in, none, converted
-	var carg1 C.GValue  // out, transfer: none, C Pointers: 0, Name: Value, caller-allocates
-
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(src))
-
-	C.gst_tag_merge_strings_with_comma(&carg1, carg2)
-	runtime.KeepAlive(src)
-
-	var dest gobject.Value
-
-	_ = dest
-	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue) because of unknown reason")
-
-	return dest
-}
-
-// TagMergeUseFirst wraps gst_tag_merge_use_first
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
-func TagMergeUseFirst(src *gobject.Value) gobject.Value {
-	var carg2 *C.GValue // in, none, converted
-	var carg1 C.GValue  // out, transfer: none, C Pointers: 0, Name: Value, caller-allocates
-
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(src))
-
-	C.gst_tag_merge_use_first(&carg1, carg2)
-	runtime.KeepAlive(src)
-
-	var dest gobject.Value
-
-	_ = dest
-	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue) because of unknown reason")
-
-	return dest
 }
 
 // TracingGetActiveTracers wraps gst_tracing_get_active_tracers
@@ -9265,65 +9223,6 @@ func ValueCompare(value1 *gobject.Value, value2 *gobject.Value) int32 {
 	return goret
 }
 
-// ValueDeserialize wraps gst_value_deserialize
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
-func ValueDeserialize(src string) (gobject.Value, bool) {
-	var carg2 *C.gchar   // in, none, string
-	var carg1 C.GValue   // out, transfer: none, C Pointers: 0, Name: Value, caller-allocates
-	var cret  C.gboolean // return
-
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(src)))
-	defer C.free(unsafe.Pointer(carg2))
-
-	cret = C.gst_value_deserialize(&carg1, carg2)
-	runtime.KeepAlive(src)
-
-	var dest  gobject.Value
-	var goret bool
-
-	_ = dest
-	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return dest, goret
-}
-
-// ValueDeserializeWithPspec wraps gst_value_deserialize_with_pspec
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
-func ValueDeserializeWithPspec(src string, pspec *gobject.ParamSpec) (gobject.Value, bool) {
-	var carg2 *C.gchar      // in, none, string
-	var carg3 *C.GParamSpec // in, none, converted, nullable
-	var carg1 C.GValue      // out, transfer: none, C Pointers: 0, Name: Value, caller-allocates
-	var cret  C.gboolean    // return
-
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(src)))
-	defer C.free(unsafe.Pointer(carg2))
-	if pspec != nil {
-		carg3 = (*C.GParamSpec)(gobject.UnsafeParamSpecToGlibNone(pspec))
-	}
-
-	cret = C.gst_value_deserialize_with_pspec(&carg1, carg2, carg3)
-	runtime.KeepAlive(src)
-	runtime.KeepAlive(pspec)
-
-	var dest  gobject.Value
-	var goret bool
-
-	_ = dest
-	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return dest, goret
-}
-
 // ValueFixate wraps gst_value_fixate
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer
@@ -9748,56 +9647,6 @@ func ValueGetStructure(value *gobject.Value) *Structure {
 	return goret
 }
 
-// ValueInitAndCopy wraps gst_value_init_and_copy
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
-func ValueInitAndCopy(src *gobject.Value) gobject.Value {
-	var carg2 *C.GValue // in, none, converted
-	var carg1 C.GValue  // out, transfer: none, C Pointers: 0, Name: Value, caller-allocates
-
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(src))
-
-	C.gst_value_init_and_copy(&carg1, carg2)
-	runtime.KeepAlive(src)
-
-	var dest gobject.Value
-
-	_ = dest
-	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue) because of unknown reason")
-
-	return dest
-}
-
-// ValueIntersect wraps gst_value_intersect
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
-func ValueIntersect(value1 *gobject.Value, value2 *gobject.Value) (gobject.Value, bool) {
-	var carg2 *C.GValue  // in, none, converted
-	var carg3 *C.GValue  // in, none, converted
-	var carg1 C.GValue   // out, transfer: full, C Pointers: 0, Name: Value, optional, caller-allocates
-	var cret  C.gboolean // return
-
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value1))
-	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value2))
-
-	cret = C.gst_value_intersect(&carg1, carg2, carg3)
-	runtime.KeepAlive(value1)
-	runtime.KeepAlive(value2)
-
-	var dest  gobject.Value
-	var goret bool
-
-	_ = dest
-	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return dest, goret
-}
-
 // ValueIsFixed wraps gst_value_is_fixed
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer
@@ -9871,7 +9720,7 @@ func ValueSerialize(value *gobject.Value) string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -10111,64 +9960,6 @@ func ValueSetStructure(value *gobject.Value, structure *Structure) {
 	runtime.KeepAlive(structure)
 }
 
-// ValueSubtract wraps gst_value_subtract
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
-func ValueSubtract(minuend *gobject.Value, subtrahend *gobject.Value) (gobject.Value, bool) {
-	var carg2 *C.GValue  // in, none, converted
-	var carg3 *C.GValue  // in, none, converted
-	var carg1 C.GValue   // out, transfer: none, C Pointers: 0, Name: Value, optional, caller-allocates
-	var cret  C.gboolean // return
-
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(minuend))
-	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(subtrahend))
-
-	cret = C.gst_value_subtract(&carg1, carg2, carg3)
-	runtime.KeepAlive(minuend)
-	runtime.KeepAlive(subtrahend)
-
-	var dest  gobject.Value
-	var goret bool
-
-	_ = dest
-	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return dest, goret
-}
-
-// ValueUnion wraps gst_value_union
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
-func ValueUnion(value1 *gobject.Value, value2 *gobject.Value) (gobject.Value, bool) {
-	var carg2 *C.GValue  // in, none, converted
-	var carg3 *C.GValue  // in, none, converted
-	var carg1 C.GValue   // out, transfer: none, C Pointers: 0, Name: Value, caller-allocates
-	var cret  C.gboolean // return
-
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value1))
-	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value2))
-
-	cret = C.gst_value_union(&carg1, carg2, carg3)
-	runtime.KeepAlive(value1)
-	runtime.KeepAlive(value2)
-
-	var dest  gobject.Value
-	var goret bool
-
-	_ = dest
-	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return dest, goret
-}
-
 // Version wraps gst_version
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer
@@ -10204,7 +9995,7 @@ func VersionString() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -10665,7 +10456,7 @@ func (preset *PresetInstance) GetMeta(name string, tag string) (string, bool) {
 	var goret bool
 
 	value = C.GoString((*C.char)(unsafe.Pointer(carg3)))
-	defer C.free(unsafe.Pointer(carg3))
+	defer C.g_free(C.gpointer(carg3))
 	if cret != 0 {
 		goret = true
 	}
@@ -10962,7 +10753,7 @@ func (handler *URIHandlerInstance) GetURI() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -11394,7 +11185,7 @@ type Object interface {
 	// ConnectDeepNotify connects the provided callback to the "deep-notify" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstobject.html
-	ConnectDeepNotify(func(Object, Object, gobject.ParamSpec)) gobject.SignalHandle
+	ConnectDeepNotify(func(Object, Object, *gobject.ParamSpec)) gobject.SignalHandle
 
 	// chain up virtual methods:
 
@@ -11562,7 +11353,7 @@ func (object *ObjectInstance) GetName() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -11604,7 +11395,7 @@ func (object *ObjectInstance) GetPathString() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -11864,7 +11655,7 @@ func (object *ObjectInstance) Unparent() {
 // ConnectDeepNotify connects the provided callback to the "deep-notify" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstobject.html
-func (o *ObjectInstance) ConnectDeepNotify(fn func(Object, Object, gobject.ParamSpec)) gobject.SignalHandle {
+func (o *ObjectInstance) ConnectDeepNotify(fn func(Object, Object, *gobject.ParamSpec)) gobject.SignalHandle {
 	return o.Connect("deep-notify", fn)
 }
 
@@ -12571,7 +12362,7 @@ func (pad *PadInstance) CreateStreamID(parent Element, streamId string) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -12926,7 +12717,7 @@ func (pad *PadInstance) GetStreamID() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -16603,7 +16394,7 @@ type StreamCollection interface {
 	// ConnectStreamNotify connects the provided callback to the "stream-notify" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststreamcollection.html
-	ConnectStreamNotify(func(StreamCollection, Stream, gobject.ParamSpec)) gobject.SignalHandle
+	ConnectStreamNotify(func(StreamCollection, Stream, *gobject.ParamSpec)) gobject.SignalHandle
 
 	// chain up virtual methods:
 
@@ -16779,7 +16570,7 @@ func (collection *StreamCollectionInstance) GetUpstreamID() string {
 // ConnectStreamNotify connects the provided callback to the "stream-notify" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststreamcollection.html
-func (o *StreamCollectionInstance) ConnectStreamNotify(fn func(StreamCollection, Stream, gobject.ParamSpec)) gobject.SignalHandle {
+func (o *StreamCollectionInstance) ConnectStreamNotify(fn func(StreamCollection, Stream, *gobject.ParamSpec)) gobject.SignalHandle {
 	return o.Connect("stream-notify", fn)
 }
 
@@ -18548,37 +18339,6 @@ func BufferPoolConfigAddOption(config *Structure, option string) {
 	runtime.KeepAlive(option)
 }
 
-// BufferPoolConfigGetAllocator wraps gst_buffer_pool_config_get_allocator
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbufferpool.html#gst_buffer_pool_config_get_allocator
-func BufferPoolConfigGetAllocator(config *Structure) (Allocator, AllocationParams, bool) {
-	var carg1 *C.GstStructure       // in, none, converted
-	var carg2 *C.GstAllocator       // out, none, converted, nullable
-	var carg3 C.GstAllocationParams // out, transfer: none, C Pointers: 0, Name: AllocationParams, optional, caller-allocates
-	var cret  C.gboolean            // return
-
-	carg1 = (*C.GstStructure)(UnsafeStructureToGlibNone(config))
-
-	cret = C.gst_buffer_pool_config_get_allocator(carg1, &carg2, &carg3)
-	runtime.KeepAlive(config)
-
-	var allocator Allocator
-	var params    AllocationParams
-	var goret     bool
-
-	if carg2 != nil {
-		allocator = UnsafeAllocatorFromGlibNone(unsafe.Pointer(carg2))
-	}
-	_ = params
-	_ = carg3
-	panic("unimplemented conversion of AllocationParams (GstAllocationParams) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return allocator, params, goret
-}
-
 // BufferPoolConfigGetOption wraps gst_buffer_pool_config_get_option
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbufferpool.html#gst_buffer_pool_config_get_option
@@ -19554,10 +19314,6 @@ type Bus interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html#gst_bus_enable_sync_message_emission
 	EnableSyncMessageEmission()
-	// GetPollfd wraps gst_bus_get_pollfd
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html#gst_bus_get_pollfd
-	GetPollfd() glib.PollFD
 	// HavePending wraps gst_bus_have_pending
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html#gst_bus_have_pending
@@ -19605,11 +19361,11 @@ type Bus interface {
 	// ConnectMessage connects the provided callback to the "message" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html
-	ConnectMessage(func(Bus, Message)) gobject.SignalHandle
+	ConnectMessage(func(Bus, *Message)) gobject.SignalHandle
 	// ConnectSyncMessage connects the provided callback to the "sync-message" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html
-	ConnectSyncMessage(func(Bus, Message)) gobject.SignalHandle
+	ConnectSyncMessage(func(Bus, *Message)) gobject.SignalHandle
 
 	// chain up virtual methods:
 
@@ -19770,27 +19526,6 @@ func (bus *BusInstance) EnableSyncMessageEmission() {
 
 	C.gst_bus_enable_sync_message_emission(carg0)
 	runtime.KeepAlive(bus)
-}
-
-// GetPollfd wraps gst_bus_get_pollfd
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html#gst_bus_get_pollfd
-func (bus *BusInstance) GetPollfd() glib.PollFD {
-	var carg0 *C.GstBus // in, none, converted
-	var carg1 C.GPollFD // out, transfer: none, C Pointers: 0, Name: PollFD, caller-allocates
-
-	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
-
-	C.gst_bus_get_pollfd(carg0, &carg1)
-	runtime.KeepAlive(bus)
-
-	var fd glib.PollFD
-
-	_ = fd
-	_ = carg1
-	panic("unimplemented conversion of glib.PollFD (GPollFD) because of unknown reason")
-
-	return fd
 }
 
 // HavePending wraps gst_bus_have_pending
@@ -20035,14 +19770,14 @@ func (bus *BusInstance) TimedPopFiltered(timeout ClockTime, types MessageType) *
 // ConnectMessage connects the provided callback to the "message" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html
-func (o *BusInstance) ConnectMessage(fn func(Bus, Message)) gobject.SignalHandle {
+func (o *BusInstance) ConnectMessage(fn func(Bus, *Message)) gobject.SignalHandle {
 	return o.Connect("message", fn)
 }
 
 // ConnectSyncMessage connects the provided callback to the "sync-message" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html
-func (o *BusInstance) ConnectSyncMessage(fn func(Bus, Message)) gobject.SignalHandle {
+func (o *BusInstance) ConnectSyncMessage(fn func(Bus, *Message)) gobject.SignalHandle {
 	return o.Connect("sync-message", fn)
 }
 
@@ -22049,7 +21784,7 @@ func (device *DeviceInstance) GetDeviceClass() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -22069,7 +21804,7 @@ func (device *DeviceInstance) GetDisplayName() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -23837,14 +23572,6 @@ type Element interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#gst_element_lost_state
 	LostState()
-	// MessageFull wraps gst_element_message_full
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#gst_element_message_full
-	MessageFull(MessageType, glib.Quark, int32, string, string, string, string, int32)
-	// MessageFullWithDetails wraps gst_element_message_full_with_details
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#gst_element_message_full_with_details
-	MessageFullWithDetails(MessageType, glib.Quark, int32, string, string, string, string, int32, *Structure)
 	// NoMorePads wraps gst_element_no_more_pads
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#gst_element_no_more_pads
@@ -24405,7 +24132,7 @@ func (element *ElementInstance) DecorateStreamID(streamId string) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -25143,93 +24870,6 @@ func (element *ElementInstance) LostState() {
 
 	C.gst_element_lost_state(carg0)
 	runtime.KeepAlive(element)
-}
-
-// MessageFull wraps gst_element_message_full
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#gst_element_message_full
-func (element *ElementInstance) MessageFull(typ MessageType, domain glib.Quark, code int32, text string, debug string, file string, function string, line int32) {
-	var carg0 *C.GstElement    // in, none, converted
-	var carg1 C.GstMessageType // in, none, casted
-	var carg2 C.GQuark         // in, none, casted, alias
-	var carg3 C.gint           // in, none, casted
-	var carg4 *C.gchar         // in, full, string, nullable-string
-	var carg5 *C.gchar         // in, full, string, nullable-string
-	var carg6 *C.gchar         // in, none, string
-	var carg7 *C.gchar         // in, none, string
-	var carg8 C.gint           // in, none, casted
-
-	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
-	carg1 = C.GstMessageType(typ)
-	carg2 = C.GQuark(domain)
-	carg3 = C.gint(code)
-	if text != "" {
-		carg4 = (*C.gchar)(unsafe.Pointer(C.CString(text)))
-	}
-	if debug != "" {
-		carg5 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
-	}
-	carg6 = (*C.gchar)(unsafe.Pointer(C.CString(file)))
-	defer C.free(unsafe.Pointer(carg6))
-	carg7 = (*C.gchar)(unsafe.Pointer(C.CString(function)))
-	defer C.free(unsafe.Pointer(carg7))
-	carg8 = C.gint(line)
-
-	C.gst_element_message_full(carg0, carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8)
-	runtime.KeepAlive(element)
-	runtime.KeepAlive(typ)
-	runtime.KeepAlive(domain)
-	runtime.KeepAlive(code)
-	runtime.KeepAlive(text)
-	runtime.KeepAlive(debug)
-	runtime.KeepAlive(file)
-	runtime.KeepAlive(function)
-	runtime.KeepAlive(line)
-}
-
-// MessageFullWithDetails wraps gst_element_message_full_with_details
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#gst_element_message_full_with_details
-func (element *ElementInstance) MessageFullWithDetails(typ MessageType, domain glib.Quark, code int32, text string, debug string, file string, function string, line int32, structure *Structure) {
-	var carg0 *C.GstElement    // in, none, converted
-	var carg1 C.GstMessageType // in, none, casted
-	var carg2 C.GQuark         // in, none, casted, alias
-	var carg3 C.gint           // in, none, casted
-	var carg4 *C.gchar         // in, full, string, nullable-string
-	var carg5 *C.gchar         // in, full, string, nullable-string
-	var carg6 *C.gchar         // in, none, string
-	var carg7 *C.gchar         // in, none, string
-	var carg8 C.gint           // in, none, casted
-	var carg9 *C.GstStructure  // in, full, converted
-
-	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
-	carg1 = C.GstMessageType(typ)
-	carg2 = C.GQuark(domain)
-	carg3 = C.gint(code)
-	if text != "" {
-		carg4 = (*C.gchar)(unsafe.Pointer(C.CString(text)))
-	}
-	if debug != "" {
-		carg5 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
-	}
-	carg6 = (*C.gchar)(unsafe.Pointer(C.CString(file)))
-	defer C.free(unsafe.Pointer(carg6))
-	carg7 = (*C.gchar)(unsafe.Pointer(C.CString(function)))
-	defer C.free(unsafe.Pointer(carg7))
-	carg8 = C.gint(line)
-	carg9 = (*C.GstStructure)(UnsafeStructureToGlibFull(structure))
-
-	C.gst_element_message_full_with_details(carg0, carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8, carg9)
-	runtime.KeepAlive(element)
-	runtime.KeepAlive(typ)
-	runtime.KeepAlive(domain)
-	runtime.KeepAlive(code)
-	runtime.KeepAlive(text)
-	runtime.KeepAlive(debug)
-	runtime.KeepAlive(file)
-	runtime.KeepAlive(function)
-	runtime.KeepAlive(line)
-	runtime.KeepAlive(structure)
 }
 
 // NoMorePads wraps gst_element_no_more_pads
@@ -26696,10 +26336,6 @@ type ElementFactory interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelementfactory.html#gst_element_factory_create
 	Create(string) Element
-	// CreateWithProperties wraps gst_element_factory_create_with_properties
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelementfactory.html#gst_element_factory_create_with_properties
-	CreateWithProperties([]string, []gobject.Value) Element
 	// GetElementType wraps gst_element_factory_get_element_type
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelementfactory.html#gst_element_factory_get_element_type
@@ -26988,40 +26624,6 @@ func (factory *ElementFactoryInstance) Create(name string) Element {
 	cret = C.gst_element_factory_create(carg0, carg1)
 	runtime.KeepAlive(factory)
 	runtime.KeepAlive(name)
-
-	var goret Element
-
-	if cret != nil {
-		goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
-// CreateWithProperties wraps gst_element_factory_create_with_properties
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelementfactory.html#gst_element_factory_create_with_properties
-func (factory *ElementFactoryInstance) CreateWithProperties(names []string, values []gobject.Value) Element {
-	var carg0 *C.GstElementFactory // in, none, converted
-	var carg1 C.guint              // implicit
-	var carg2 **C.gchar            // in, transfer: none, C Pointers: 2, Name: array[utf8], nullable, array (inner gchar* (*typesystem.StringPrimitive), length-by: carg1)
-	var carg3 *C.GValue            // in, transfer: none, C Pointers: 1, Name: array[Value], nullable, array (inner GValue (*typesystem.Record), length-by: carg1)
-	var cret  *C.GstElement        // return, none, converted, nullable
-
-	carg0 = (*C.GstElementFactory)(UnsafeElementFactoryToGlibNone(factory))
-	_ = names
-	_ = carg2
-	_ = carg1
-	panic("unimplemented conversion of []string (const gchar**) because of unimplemented: inner pointers in array")
-	_ = values
-	_ = carg3
-	_ = carg1
-	panic("unimplemented conversion of []gobject.Value (const GValue*) because of unimplemented: non-fixed size array")
-
-	cret = C.gst_element_factory_create_with_properties(carg0, carg1, carg2, carg3)
-	runtime.KeepAlive(factory)
-	runtime.KeepAlive(names)
-	runtime.KeepAlive(values)
 
 	var goret Element
 
@@ -32446,7 +32048,7 @@ func (caps *Caps) Serialize(flags SerializeFlags) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -32606,7 +32208,7 @@ func (caps *Caps) String() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -33090,7 +32692,7 @@ func (features *CapsFeatures) String() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -34477,7 +34079,7 @@ func (datetime *DateTime) ToIso8601String() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -34977,25 +34579,6 @@ func (klass *DeviceProviderClass) AddMetadata(key string, value string) {
 	runtime.KeepAlive(value)
 }
 
-// AddStaticMetadata wraps gst_device_provider_class_add_static_metadata
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstdeviceprovider.html#gst_device_provider_class_add_static_metadata
-func (klass *DeviceProviderClass) AddStaticMetadata(key string, value string) {
-	var carg0 *C.GstDeviceProviderClass // in, none, converted
-	var carg1 *C.gchar                  // in, none, string
-	var carg2 *C.gchar                  // in, full, string
-
-	carg0 = (*C.GstDeviceProviderClass)(UnsafeDeviceProviderClassToGlibNone(klass))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-
-	C.gst_device_provider_class_add_static_metadata(carg0, carg1, carg2)
-	runtime.KeepAlive(klass)
-	runtime.KeepAlive(key)
-	runtime.KeepAlive(value)
-}
-
 // GetMetadata wraps gst_device_provider_class_get_metadata
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstdeviceprovider.html#gst_device_provider_class_get_metadata
@@ -35042,30 +34625,6 @@ func (klass *DeviceProviderClass) SetMetadata(longname string, classification st
 	defer C.free(unsafe.Pointer(carg4))
 
 	C.gst_device_provider_class_set_metadata(carg0, carg1, carg2, carg3, carg4)
-	runtime.KeepAlive(klass)
-	runtime.KeepAlive(longname)
-	runtime.KeepAlive(classification)
-	runtime.KeepAlive(description)
-	runtime.KeepAlive(author)
-}
-
-// SetStaticMetadata wraps gst_device_provider_class_set_static_metadata
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstdeviceprovider.html#gst_device_provider_class_set_static_metadata
-func (klass *DeviceProviderClass) SetStaticMetadata(longname string, classification string, description string, author string) {
-	var carg0 *C.GstDeviceProviderClass // in, none, converted
-	var carg1 *C.gchar                  // in, full, string
-	var carg2 *C.gchar                  // in, full, string
-	var carg3 *C.gchar                  // in, full, string
-	var carg4 *C.gchar                  // in, full, string
-
-	carg0 = (*C.GstDeviceProviderClass)(UnsafeDeviceProviderClassToGlibNone(klass))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(longname)))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(classification)))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(description)))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(author)))
-
-	C.gst_device_provider_class_set_static_metadata(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(klass)
 	runtime.KeepAlive(longname)
 	runtime.KeepAlive(classification)
@@ -36834,7 +36393,7 @@ func (event *Event) ParseTocSelect() string {
 	var uid string
 
 	uid = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-	defer C.free(unsafe.Pointer(carg1))
+	defer C.g_free(C.gpointer(carg1))
 
 	return uid
 }
@@ -39384,7 +38943,7 @@ func (message *Message) ParseError() (string, error) {
 
 	if carg2 != nil {
 		debug = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-		defer C.free(unsafe.Pointer(carg2))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	gerror = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(carg1))
 
@@ -39494,7 +39053,7 @@ func (message *Message) ParseInfo() (string, error) {
 
 	if carg2 != nil {
 		debug = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-		defer C.free(unsafe.Pointer(carg2))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	gerror = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(carg1))
 
@@ -39601,9 +39160,9 @@ func (message *Message) ParseProgress() (ProgressType, string, string) {
 
 	typ = ProgressType(carg1)
 	code = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-	defer C.free(unsafe.Pointer(carg2))
+	defer C.g_free(C.gpointer(carg2))
 	text = C.GoString((*C.char)(unsafe.Pointer(carg3)))
-	defer C.free(unsafe.Pointer(carg3))
+	defer C.g_free(C.gpointer(carg3))
 
 	return typ, code, text
 }
@@ -40061,7 +39620,7 @@ func (message *Message) ParseWarning() (string, error) {
 
 	if carg2 != nil {
 		debug = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-		defer C.free(unsafe.Pointer(carg2))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	gerror = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(carg1))
 
@@ -43794,35 +43353,6 @@ func (query *Query) ParseNthAllocationMeta(index uint) (*Structure, gobject.Type
 	return params, goret
 }
 
-// ParseNthAllocationParam wraps gst_query_parse_nth_allocation_param
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#gst_query_parse_nth_allocation_param
-func (query *Query) ParseNthAllocationParam(index uint) (Allocator, AllocationParams) {
-	var carg0 *C.GstQuery           // in, none, converted
-	var carg1 C.guint               // in, none, casted
-	var carg2 *C.GstAllocator       // out, full, converted, nullable
-	var carg3 C.GstAllocationParams // out, transfer: none, C Pointers: 0, Name: AllocationParams, optional, caller-allocates
-
-	carg0 = (*C.GstQuery)(UnsafeQueryToGlibNone(query))
-	carg1 = C.guint(index)
-
-	C.gst_query_parse_nth_allocation_param(carg0, carg1, &carg2, &carg3)
-	runtime.KeepAlive(query)
-	runtime.KeepAlive(index)
-
-	var allocator Allocator
-	var params    AllocationParams
-
-	if carg2 != nil {
-		allocator = UnsafeAllocatorFromGlibFull(unsafe.Pointer(carg2))
-	}
-	_ = params
-	_ = carg3
-	panic("unimplemented conversion of AllocationParams (GstAllocationParams) because of unknown reason")
-
-	return allocator, params
-}
-
 // ParseNthAllocationPool wraps gst_query_parse_nth_allocation_pool
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#gst_query_parse_nth_allocation_pool
@@ -44075,7 +43605,7 @@ func (query *Query) ParseURI() string {
 
 	if carg1 != nil {
 		uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-		defer C.free(unsafe.Pointer(carg1))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	return uri
@@ -44097,7 +43627,7 @@ func (query *Query) ParseURIRedirection() string {
 
 	if carg1 != nil {
 		uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-		defer C.free(unsafe.Pointer(carg1))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	return uri
@@ -47391,7 +46921,7 @@ func (structure *Structure) SerializeFull(flags SerializeFlags) string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -47497,7 +47027,7 @@ func (structure *Structure) String() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -47702,36 +47232,6 @@ func NewTagListFromString(str string) *TagList {
 	}
 
 	return goret
-}
-
-// TagListCopyValue wraps gst_tag_list_copy_value
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#gst_tag_list_copy_value
-func TagListCopyValue(list *TagList, tag string) (gobject.Value, bool) {
-	var carg2 *C.GstTagList // in, none, converted
-	var carg3 *C.gchar      // in, none, string
-	var carg1 C.GValue      // out, transfer: none, C Pointers: 0, Name: Value, caller-allocates
-	var cret  C.gboolean    // return
-
-	carg2 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg3))
-
-	cret = C.gst_tag_list_copy_value(&carg1, carg2, carg3)
-	runtime.KeepAlive(list)
-	runtime.KeepAlive(tag)
-
-	var dest  gobject.Value
-	var goret bool
-
-	_ = dest
-	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return dest, goret
 }
 
 // AddValue wraps gst_tag_list_add_value
@@ -48250,7 +47750,7 @@ func (list *TagList) GetString(tag string) (string, bool) {
 	var goret bool
 
 	value = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-	defer C.free(unsafe.Pointer(carg2))
+	defer C.g_free(C.gpointer(carg2))
 	if cret != 0 {
 		goret = true
 	}
@@ -48282,7 +47782,7 @@ func (list *TagList) GetStringIndex(tag string, index uint) (string, bool) {
 	var goret bool
 
 	value = C.GoString((*C.char)(unsafe.Pointer(carg3)))
-	defer C.free(unsafe.Pointer(carg3))
+	defer C.g_free(C.gpointer(carg3))
 	if cret != 0 {
 		goret = true
 	}
@@ -48641,7 +48141,7 @@ func (list *TagList) String() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -50487,7 +49987,7 @@ func UriGetLocation(uri string) string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -50510,7 +50010,7 @@ func UriGetProtocol(uri string) string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -50585,7 +50085,7 @@ func UriJoinStrings(baseUri string, refUri string) string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -50818,7 +50318,7 @@ func (uri *Uri) GetPath() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -50867,7 +50367,7 @@ func (uri *Uri) GetPathString() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -50934,7 +50434,7 @@ func (uri *Uri) GetQueryString() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -51474,7 +50974,7 @@ func (uri *Uri) String() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }

@@ -781,15 +781,15 @@ type TimedValueControlSource interface {
 	// ConnectValueAdded connects the provided callback to the "value-added" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/controller/gsttimedvaluecontrolsource.html
-	ConnectValueAdded(func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle
+	ConnectValueAdded(func(TimedValueControlSource, *ControlPoint)) gobject.SignalHandle
 	// ConnectValueChanged connects the provided callback to the "value-changed" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/controller/gsttimedvaluecontrolsource.html
-	ConnectValueChanged(func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle
+	ConnectValueChanged(func(TimedValueControlSource, *ControlPoint)) gobject.SignalHandle
 	// ConnectValueRemoved connects the provided callback to the "value-removed" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/controller/gsttimedvaluecontrolsource.html
-	ConnectValueRemoved(func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle
+	ConnectValueRemoved(func(TimedValueControlSource, *ControlPoint)) gobject.SignalHandle
 
 	// chain up virtual methods:
 }
@@ -983,21 +983,21 @@ func (self *TimedValueControlSourceInstance) UnsetAll() {
 // ConnectValueAdded connects the provided callback to the "value-added" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/controller/gsttimedvaluecontrolsource.html
-func (o *TimedValueControlSourceInstance) ConnectValueAdded(fn func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle {
+func (o *TimedValueControlSourceInstance) ConnectValueAdded(fn func(TimedValueControlSource, *ControlPoint)) gobject.SignalHandle {
 	return o.Connect("value-added", fn)
 }
 
 // ConnectValueChanged connects the provided callback to the "value-changed" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/controller/gsttimedvaluecontrolsource.html
-func (o *TimedValueControlSourceInstance) ConnectValueChanged(fn func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle {
+func (o *TimedValueControlSourceInstance) ConnectValueChanged(fn func(TimedValueControlSource, *ControlPoint)) gobject.SignalHandle {
 	return o.Connect("value-changed", fn)
 }
 
 // ConnectValueRemoved connects the provided callback to the "value-removed" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/controller/gsttimedvaluecontrolsource.html
-func (o *TimedValueControlSourceInstance) ConnectValueRemoved(fn func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle {
+func (o *TimedValueControlSourceInstance) ConnectValueRemoved(fn func(TimedValueControlSource, *ControlPoint)) gobject.SignalHandle {
 	return o.Connect("value-removed", fn)
 }
 

@@ -1032,7 +1032,7 @@ func GLSLVersionProfileToString(version GLSLVersion, profile GLSLProfile) string
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -1473,7 +1473,7 @@ func GLAPIString(api GLAPI) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -1926,7 +1926,7 @@ func GLPlatformString(platform GLPlatform) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -2041,11 +2041,6 @@ func GLSLProfileString(profile GLSLProfile) string {
 
 	return goret
 }
-
-// GLAsyncDebugLogGetMessage wraps GstGLAsyncDebugLogGetMessage
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldebug.html#GstGLAsyncDebugLogGetMessage
-type GLAsyncDebugLogGetMessage func() (goret string)
 
 // GLFilterRenderFunc wraps GstGLFilterRenderFunc
 // 
@@ -4196,7 +4191,7 @@ func GLColorConvertSwizzleShaderString(_context GLContext) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -4244,7 +4239,7 @@ func GLColorConvertYuvToRgbShaderString(_context GLContext) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -8699,7 +8694,7 @@ func GLShaderStringFragmentExternalOesGetDefault(_context GLContext, version GLS
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -8725,7 +8720,7 @@ func GLShaderStringFragmentGetDefault(_context GLContext, version GLSLVersion, p
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }

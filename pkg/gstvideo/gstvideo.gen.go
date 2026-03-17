@@ -4127,7 +4127,7 @@ func VideoChromaSiteString(site VideoChromaSite) string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -5579,39 +5579,6 @@ func VideoBlend(dest *VideoFrame, src *VideoFrame, x int32, y int32, globalAlpha
 	return goret
 }
 
-// VideoBlendScaleLinearRgba wraps gst_video_blend_scale_linear_RGBA
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video
-func VideoBlendScaleLinearRgba(src *VideoInfo, srcBuffer *gst.Buffer, destHeight int32, destWidth int32) (VideoInfo, *gst.Buffer) {
-	var carg1 *C.GstVideoInfo // in, none, converted
-	var carg2 *C.GstBuffer    // in, none, converted
-	var carg3 C.gint          // in, none, casted
-	var carg4 C.gint          // in, none, casted
-	var carg5 C.GstVideoInfo  // out, transfer: none, C Pointers: 0, Name: VideoInfo, caller-allocates
-	var carg6 *C.GstBuffer    // out, full, converted
-
-	carg1 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(src))
-	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(srcBuffer))
-	carg3 = C.gint(destHeight)
-	carg4 = C.gint(destWidth)
-
-	C.gst_video_blend_scale_linear_RGBA(carg1, carg2, carg3, carg4, &carg5, &carg6)
-	runtime.KeepAlive(src)
-	runtime.KeepAlive(srcBuffer)
-	runtime.KeepAlive(destHeight)
-	runtime.KeepAlive(destWidth)
-
-	var dest       VideoInfo
-	var destBuffer *gst.Buffer
-
-	_ = dest
-	_ = carg5
-	panic("unimplemented conversion of VideoInfo (GstVideoInfo) because of unknown reason")
-	destBuffer = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg6))
-
-	return dest, destBuffer
-}
-
 // VideoCalculateDisplayRatio wraps gst_video_calculate_display_ratio
 // 
 // see also https://gstreamer.freedesktop.org/documentation/video
@@ -5667,35 +5634,6 @@ func VideoCaptionMetaAPIGetType() gobject.Type {
 	goret = gobject.Type(cret)
 
 	return goret
-}
-
-// VideoCenterRect wraps gst_video_center_rect
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video
-func VideoCenterRect(src *VideoRectangle, dst *VideoRectangle, scaling bool) VideoRectangle {
-	var carg1 *C.GstVideoRectangle // in, none, converted
-	var carg2 *C.GstVideoRectangle // in, none, converted
-	var carg4 C.gboolean           // in
-	var carg3 C.GstVideoRectangle  // out, transfer: none, C Pointers: 0, Name: VideoRectangle, caller-allocates
-
-	carg1 = (*C.GstVideoRectangle)(UnsafeVideoRectangleToGlibNone(src))
-	carg2 = (*C.GstVideoRectangle)(UnsafeVideoRectangleToGlibNone(dst))
-	if scaling {
-		carg4 = C.TRUE
-	}
-
-	C.gst_video_center_rect(carg1, carg2, &carg3, carg4)
-	runtime.KeepAlive(src)
-	runtime.KeepAlive(dst)
-	runtime.KeepAlive(scaling)
-
-	var result VideoRectangle
-
-	_ = result
-	_ = carg3
-	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle) because of unknown reason")
-
-	return result
 }
 
 // VideoCodecAlphaMetaAPIGetType wraps gst_video_codec_alpha_meta_api_get_type
@@ -5888,7 +5826,7 @@ func VideoDmaDrmFourccToString(fourcc uint32, modifier uint64) string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -9560,10 +9498,6 @@ type VideoDecoder interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_finish_subframe
 	FinishSubframe(*VideoCodecFrame) gst.FlowReturn
-	// GetAllocator wraps gst_video_decoder_get_allocator
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_allocator
-	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBufferPool wraps gst_video_decoder_get_buffer_pool
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_buffer_pool
@@ -10033,32 +9967,6 @@ func (decoder *VideoDecoderInstance) FinishSubframe(frame *VideoCodecFrame) gst.
 	goret = gst.FlowReturn(cret)
 
 	return goret
-}
-
-// GetAllocator wraps gst_video_decoder_get_allocator
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_allocator
-func (decoder *VideoDecoderInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
-	var carg0 *C.GstVideoDecoder    // in, none, converted
-	var carg1 *C.GstAllocator       // out, full, converted, nullable
-	var carg2 C.GstAllocationParams // out, transfer: full, C Pointers: 0, Name: AllocationParams, optional, caller-allocates
-
-	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
-
-	C.gst_video_decoder_get_allocator(carg0, &carg1, &carg2)
-	runtime.KeepAlive(decoder)
-
-	var allocator gst.Allocator
-	var params    gst.AllocationParams
-
-	if carg1 != nil {
-		allocator = gst.UnsafeAllocatorFromGlibFull(unsafe.Pointer(carg1))
-	}
-	_ = params
-	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
-
-	return allocator, params
 }
 
 // GetBufferPool wraps gst_video_decoder_get_buffer_pool
@@ -11977,10 +11885,6 @@ type VideoEncoder interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_finish_subframe
 	FinishSubframe(*VideoCodecFrame) gst.FlowReturn
-	// GetAllocator wraps gst_video_encoder_get_allocator
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_allocator
-	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetFrame wraps gst_video_encoder_get_frame
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_frame
@@ -12310,32 +12214,6 @@ func (encoder *VideoEncoderInstance) FinishSubframe(frame *VideoCodecFrame) gst.
 	goret = gst.FlowReturn(cret)
 
 	return goret
-}
-
-// GetAllocator wraps gst_video_encoder_get_allocator
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_allocator
-func (encoder *VideoEncoderInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
-	var carg0 *C.GstVideoEncoder    // in, none, converted
-	var carg1 *C.GstAllocator       // out, full, converted, nullable
-	var carg2 C.GstAllocationParams // out, transfer: full, C Pointers: 0, Name: AllocationParams, optional, caller-allocates
-
-	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
-
-	C.gst_video_encoder_get_allocator(carg0, &carg1, &carg2)
-	runtime.KeepAlive(encoder)
-
-	var allocator gst.Allocator
-	var params    gst.AllocationParams
-
-	if carg1 != nil {
-		allocator = gst.UnsafeAllocatorFromGlibFull(unsafe.Pointer(carg1))
-	}
-	_ = params
-	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
-
-	return allocator, params
 }
 
 // GetFrame wraps gst_video_encoder_get_frame
@@ -16447,7 +16325,7 @@ func (cinfo *VideoColorimetry) String() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -16659,7 +16537,7 @@ func (linfo *VideoContentLightLevel) String() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -17494,73 +17372,6 @@ func UnsafeVideoFrameToGlibFull(v *VideoFrame) unsafe.Pointer {
 	return _p
 }
 
-// VideoFrameMap wraps gst_video_frame_map
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video/video-frame.html#gst_video_frame_map
-func VideoFrameMap(info *VideoInfo, buffer *gst.Buffer, flags gst.MapFlags) (VideoFrame, bool) {
-	var carg2 *C.GstVideoInfo // in, none, converted
-	var carg3 *C.GstBuffer    // in, none, converted
-	var carg4 C.GstMapFlags   // in, none, casted
-	var carg1 C.GstVideoFrame // out, transfer: none, C Pointers: 0, Name: VideoFrame, caller-allocates
-	var cret  C.gboolean      // return
-
-	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(info))
-	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
-	carg4 = C.GstMapFlags(flags)
-
-	cret = C.gst_video_frame_map(&carg1, carg2, carg3, carg4)
-	runtime.KeepAlive(info)
-	runtime.KeepAlive(buffer)
-	runtime.KeepAlive(flags)
-
-	var frame VideoFrame
-	var goret bool
-
-	_ = frame
-	_ = carg1
-	panic("unimplemented conversion of VideoFrame (GstVideoFrame) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return frame, goret
-}
-
-// VideoFrameMapID wraps gst_video_frame_map_id
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video/video-frame.html#gst_video_frame_map_id
-func VideoFrameMapID(info *VideoInfo, buffer *gst.Buffer, id int32, flags gst.MapFlags) (VideoFrame, bool) {
-	var carg2 *C.GstVideoInfo // in, none, converted
-	var carg3 *C.GstBuffer    // in, none, converted
-	var carg4 C.gint          // in, none, casted
-	var carg5 C.GstMapFlags   // in, none, casted
-	var carg1 C.GstVideoFrame // out, transfer: none, C Pointers: 0, Name: VideoFrame, caller-allocates
-	var cret  C.gboolean      // return
-
-	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(info))
-	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
-	carg4 = C.gint(id)
-	carg5 = C.GstMapFlags(flags)
-
-	cret = C.gst_video_frame_map_id(&carg1, carg2, carg3, carg4, carg5)
-	runtime.KeepAlive(info)
-	runtime.KeepAlive(buffer)
-	runtime.KeepAlive(id)
-	runtime.KeepAlive(flags)
-
-	var frame VideoFrame
-	var goret bool
-
-	_ = frame
-	_ = carg1
-	panic("unimplemented conversion of VideoFrame (GstVideoFrame) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return frame, goret
-}
-
 // Copy wraps gst_video_frame_copy
 // 
 // see also https://gstreamer.freedesktop.org/documentation/video/video-frame.html#gst_video_frame_copy
@@ -17878,49 +17689,6 @@ func NewVideoInfoFromCaps(caps *gst.Caps) *VideoInfo {
 	}
 
 	return goret
-}
-
-// VideoInfoFromCaps wraps gst_video_info_from_caps
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_from_caps
-func VideoInfoFromCaps(caps *gst.Caps) (VideoInfo, bool) {
-	var carg2 *C.GstCaps     // in, none, converted
-	var carg1 C.GstVideoInfo // out, transfer: none, C Pointers: 0, Name: VideoInfo, caller-allocates
-	var cret  C.gboolean     // return
-
-	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
-
-	cret = C.gst_video_info_from_caps(&carg1, carg2)
-	runtime.KeepAlive(caps)
-
-	var info  VideoInfo
-	var goret bool
-
-	_ = info
-	_ = carg1
-	panic("unimplemented conversion of VideoInfo (GstVideoInfo) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return info, goret
-}
-
-// VideoInfoInit wraps gst_video_info_init
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_init
-func VideoInfoInit() VideoInfo {
-	var carg1 C.GstVideoInfo // out, transfer: none, C Pointers: 0, Name: VideoInfo, caller-allocates
-
-	C.gst_video_info_init(&carg1)
-
-	var info VideoInfo
-
-	_ = info
-	_ = carg1
-	panic("unimplemented conversion of VideoInfo (GstVideoInfo) because of unknown reason")
-
-	return info
 }
 
 // Align wraps gst_video_info_align
@@ -18265,78 +18033,6 @@ func NewVideoInfoDmaDrmFromCaps(caps *gst.Caps) *VideoInfoDmaDrm {
 	return goret
 }
 
-// VideoInfoDmaDrmFromCaps wraps gst_video_info_dma_drm_from_caps
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video/video-info-dma.html#gst_video_info_dma_drm_from_caps
-func VideoInfoDmaDrmFromCaps(caps *gst.Caps) (VideoInfoDmaDrm, bool) {
-	var carg2 *C.GstCaps           // in, none, converted
-	var carg1 C.GstVideoInfoDmaDrm // out, transfer: none, C Pointers: 0, Name: VideoInfoDmaDrm, caller-allocates
-	var cret  C.gboolean           // return
-
-	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
-
-	cret = C.gst_video_info_dma_drm_from_caps(&carg1, carg2)
-	runtime.KeepAlive(caps)
-
-	var drmInfo VideoInfoDmaDrm
-	var goret   bool
-
-	_ = drmInfo
-	_ = carg1
-	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return drmInfo, goret
-}
-
-// VideoInfoDmaDrmFromVideoInfo wraps gst_video_info_dma_drm_from_video_info
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video/video-info-dma.html#gst_video_info_dma_drm_from_video_info
-func VideoInfoDmaDrmFromVideoInfo(info *VideoInfo, modifier uint64) (VideoInfoDmaDrm, bool) {
-	var carg2 *C.GstVideoInfo      // in, none, converted
-	var carg3 C.guint64            // in, none, casted
-	var carg1 C.GstVideoInfoDmaDrm // out, transfer: none, C Pointers: 0, Name: VideoInfoDmaDrm, caller-allocates
-	var cret  C.gboolean           // return
-
-	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(info))
-	carg3 = C.guint64(modifier)
-
-	cret = C.gst_video_info_dma_drm_from_video_info(&carg1, carg2, carg3)
-	runtime.KeepAlive(info)
-	runtime.KeepAlive(modifier)
-
-	var drmInfo VideoInfoDmaDrm
-	var goret   bool
-
-	_ = drmInfo
-	_ = carg1
-	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return drmInfo, goret
-}
-
-// VideoInfoDmaDrmInit wraps gst_video_info_dma_drm_init
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video/video-info-dma.html#gst_video_info_dma_drm_init
-func VideoInfoDmaDrmInit() VideoInfoDmaDrm {
-	var carg1 C.GstVideoInfoDmaDrm // out, transfer: none, C Pointers: 0, Name: VideoInfoDmaDrm, caller-allocates
-
-	C.gst_video_info_dma_drm_init(&carg1)
-
-	var drmInfo VideoInfoDmaDrm
-
-	_ = drmInfo
-	_ = carg1
-	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm) because of unknown reason")
-
-	return drmInfo
-}
-
 // ToCaps wraps gst_video_info_dma_drm_to_caps
 // 
 // see also https://gstreamer.freedesktop.org/documentation/video/video-info-dma.html#gst_video_info_dma_drm_to_caps
@@ -18356,32 +18052,6 @@ func (drmInfo *VideoInfoDmaDrm) ToCaps() *gst.Caps {
 	}
 
 	return goret
-}
-
-// ToVideoInfo wraps gst_video_info_dma_drm_to_video_info
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video/video-info-dma.html#gst_video_info_dma_drm_to_video_info
-func (drmInfo *VideoInfoDmaDrm) ToVideoInfo() (VideoInfo, bool) {
-	var carg0 *C.GstVideoInfoDmaDrm // in, none, converted
-	var carg1 C.GstVideoInfo        // out, transfer: none, C Pointers: 0, Name: VideoInfo, caller-allocates
-	var cret  C.gboolean            // return
-
-	carg0 = (*C.GstVideoInfoDmaDrm)(UnsafeVideoInfoDmaDrmToGlibNone(drmInfo))
-
-	cret = C.gst_video_info_dma_drm_to_video_info(carg0, &carg1)
-	runtime.KeepAlive(drmInfo)
-
-	var info  VideoInfo
-	var goret bool
-
-	_ = info
-	_ = carg1
-	panic("unimplemented conversion of VideoInfo (GstVideoInfo) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return info, goret
 }
 
 // VideoMasteringDisplayInfo wraps GstVideoMasteringDisplayInfo
@@ -18464,33 +18134,6 @@ func UnsafeVideoMasteringDisplayInfoToGlibFull(v *VideoMasteringDisplayInfo) uns
 	_p := unsafe.Pointer(v.native)
 	v.native = nil // VideoMasteringDisplayInfo is invalid from here on
 	return _p
-}
-
-// VideoMasteringDisplayInfoFromString wraps gst_video_mastering_display_info_from_string
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#gst_video_mastering_display_info_from_string
-func VideoMasteringDisplayInfoFromString(mastering string) (VideoMasteringDisplayInfo, bool) {
-	var carg2 *C.gchar                       // in, none, string
-	var carg1 C.GstVideoMasteringDisplayInfo // out, transfer: none, C Pointers: 0, Name: VideoMasteringDisplayInfo, caller-allocates
-	var cret  C.gboolean                     // return
-
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(mastering)))
-	defer C.free(unsafe.Pointer(carg2))
-
-	cret = C.gst_video_mastering_display_info_from_string(&carg1, carg2)
-	runtime.KeepAlive(mastering)
-
-	var minfo VideoMasteringDisplayInfo
-	var goret bool
-
-	_ = minfo
-	_ = carg1
-	panic("unimplemented conversion of VideoMasteringDisplayInfo (GstVideoMasteringDisplayInfo) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return minfo, goret
 }
 
 // AddToCaps wraps gst_video_mastering_display_info_add_to_caps
@@ -18592,7 +18235,7 @@ func (minfo *VideoMasteringDisplayInfo) String() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -18772,32 +18415,6 @@ func VideoMetaGetInfo() *gst.MetaInfo {
 	var goret *gst.MetaInfo
 
 	goret = gst.UnsafeMetaInfoFromGlibNone(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// SetAlignment wraps gst_video_meta_set_alignment
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#gst_video_meta_set_alignment
-func (meta *VideoMeta) SetAlignment(alignment VideoAlignment) bool {
-	var carg0 *C.GstVideoMeta     // in, none, converted
-	var carg1 C.GstVideoAlignment // in, transfer: none, C Pointers: 0, Name: VideoAlignment
-	var cret  C.gboolean          // return
-
-	carg0 = (*C.GstVideoMeta)(UnsafeVideoMetaToGlibNone(meta))
-	_ = alignment
-	_ = carg1
-	panic("unimplemented conversion of VideoAlignment (GstVideoAlignment) because of no basic converter found")
-
-	cret = C.gst_video_meta_set_alignment(carg0, carg1)
-	runtime.KeepAlive(meta)
-	runtime.KeepAlive(alignment)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
 
 	return goret
 }
@@ -20848,7 +20465,7 @@ func (tc *VideoTimeCode) String() string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -21568,29 +21185,5 @@ func (parser *VideoVBIParser) Copy() *VideoVBIParser {
 	goret = UnsafeVideoVBIParserFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
-}
-
-// GetAncillary wraps gst_video_vbi_parser_get_ancillary
-// 
-// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#gst_video_vbi_parser_get_ancillary
-func (parser *VideoVBIParser) GetAncillary() (VideoAncillary, VideoVBIParserResult) {
-	var carg0 *C.GstVideoVBIParser      // in, none, converted
-	var carg1 C.GstVideoAncillary       // out, transfer: none, C Pointers: 0, Name: VideoAncillary, caller-allocates
-	var cret  C.GstVideoVBIParserResult // return, none, casted
-
-	carg0 = (*C.GstVideoVBIParser)(UnsafeVideoVBIParserToGlibNone(parser))
-
-	cret = C.gst_video_vbi_parser_get_ancillary(carg0, &carg1)
-	runtime.KeepAlive(parser)
-
-	var anc   VideoAncillary
-	var goret VideoVBIParserResult
-
-	_ = anc
-	_ = carg1
-	panic("unimplemented conversion of VideoAncillary (GstVideoAncillary) because of unknown reason")
-	goret = VideoVBIParserResult(cret)
-
-	return anc, goret
 }
 

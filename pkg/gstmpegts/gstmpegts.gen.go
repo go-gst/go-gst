@@ -6947,32 +6947,6 @@ func (desc *Descriptor) Copy() *Descriptor {
 	return goret
 }
 
-// ParseCableDeliverySystem wraps gst_mpegts_descriptor_parse_cable_delivery_system
-// 
-// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_cable_delivery_system
-func (descriptor *Descriptor) ParseCableDeliverySystem() (CableDeliverySystemDescriptor, bool) {
-	var carg0 *C.GstMpegtsDescriptor                   // in, none, converted
-	var carg1 C.GstMpegtsCableDeliverySystemDescriptor // out, transfer: none, C Pointers: 0, Name: CableDeliverySystemDescriptor, caller-allocates
-	var cret  C.gboolean                               // return
-
-	carg0 = (*C.GstMpegtsDescriptor)(UnsafeDescriptorToGlibNone(descriptor))
-
-	cret = C.gst_mpegts_descriptor_parse_cable_delivery_system(carg0, &carg1)
-	runtime.KeepAlive(descriptor)
-
-	var res   CableDeliverySystemDescriptor
-	var goret bool
-
-	_ = res
-	_ = carg1
-	panic("unimplemented conversion of CableDeliverySystemDescriptor (GstMpegtsCableDeliverySystemDescriptor) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return res, goret
-}
-
 // ParseDvbBouquetName wraps gst_mpegts_descriptor_parse_dvb_bouquet_name
 // 
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_bouquet_name
@@ -6990,7 +6964,7 @@ func (descriptor *Descriptor) ParseDvbBouquetName() (string, bool) {
 	var goret       bool
 
 	bouquetName = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-	defer C.free(unsafe.Pointer(carg1))
+	defer C.g_free(C.gpointer(carg1))
 	if cret != 0 {
 		goret = true
 	}
@@ -7111,7 +7085,7 @@ func (descriptor *Descriptor) ParseDvbNetworkName() (string, bool) {
 	var goret bool
 
 	name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-	defer C.free(unsafe.Pointer(carg1))
+	defer C.g_free(C.gpointer(carg1))
 	if cret != 0 {
 		goret = true
 	}
@@ -7165,9 +7139,9 @@ func (descriptor *Descriptor) ParseDvbService() (DVBServiceType, string, string,
 
 	serviceType = DVBServiceType(carg1)
 	serviceName = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-	defer C.free(unsafe.Pointer(carg2))
+	defer C.g_free(C.gpointer(carg2))
 	providerName = C.GoString((*C.char)(unsafe.Pointer(carg3)))
-	defer C.free(unsafe.Pointer(carg3))
+	defer C.g_free(C.gpointer(carg3))
 	if cret != 0 {
 		goret = true
 	}
@@ -7196,11 +7170,11 @@ func (descriptor *Descriptor) ParseDvbShortEvent() (string, string, string, bool
 	var goret        bool
 
 	languageCode = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-	defer C.free(unsafe.Pointer(carg1))
+	defer C.g_free(C.gpointer(carg1))
 	eventName = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-	defer C.free(unsafe.Pointer(carg2))
+	defer C.g_free(C.gpointer(carg2))
 	text = C.GoString((*C.char)(unsafe.Pointer(carg3)))
-	defer C.free(unsafe.Pointer(carg3))
+	defer C.g_free(C.gpointer(carg3))
 	if cret != 0 {
 		goret = true
 	}
@@ -7284,7 +7258,7 @@ func (descriptor *Descriptor) ParseDvbSubtitlingIdx(idx uint) (string, uint8, ui
 	var goret             bool
 
 	lang = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-	defer C.free(unsafe.Pointer(carg2))
+	defer C.g_free(C.gpointer(carg2))
 	typ = uint8(carg3)
 	compositionPageId = uint16(carg4)
 	ancillaryPageId = uint16(carg5)
@@ -7364,7 +7338,7 @@ func (descriptor *Descriptor) ParseDvbTeletextIdx(idx uint) (string, DVBTeletext
 	var goret          bool
 
 	languageCode = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-	defer C.free(unsafe.Pointer(carg2))
+	defer C.g_free(C.gpointer(carg2))
 	teletextType = DVBTeletextType(carg3)
 	magazineNumber = uint8(carg4)
 	pageNumber = uint8(carg5)
@@ -7440,7 +7414,7 @@ func (descriptor *Descriptor) ParseIso639LanguageIdx(idx uint) (string, Iso639Au
 	var goret     bool
 
 	lang = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-	defer C.free(unsafe.Pointer(carg2))
+	defer C.g_free(C.gpointer(carg2))
 	audioType = Iso639AudioType(carg3)
 	if cret != 0 {
 		goret = true
@@ -7466,58 +7440,6 @@ func (descriptor *Descriptor) ParseIso639LanguageNb() uint {
 	goret = uint(cret)
 
 	return goret
-}
-
-// ParseJpegXs wraps gst_mpegts_descriptor_parse_jpeg_xs
-// 
-// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_jpeg_xs
-func (descriptor *Descriptor) ParseJpegXs() (JpegXsDescriptor, bool) {
-	var carg0 *C.GstMpegtsDescriptor      // in, none, converted
-	var carg1 C.GstMpegtsJpegXsDescriptor // out, transfer: none, C Pointers: 0, Name: JpegXsDescriptor, caller-allocates
-	var cret  C.gboolean                  // return
-
-	carg0 = (*C.GstMpegtsDescriptor)(UnsafeDescriptorToGlibNone(descriptor))
-
-	cret = C.gst_mpegts_descriptor_parse_jpeg_xs(carg0, &carg1)
-	runtime.KeepAlive(descriptor)
-
-	var res   JpegXsDescriptor
-	var goret bool
-
-	_ = res
-	_ = carg1
-	panic("unimplemented conversion of JpegXsDescriptor (GstMpegtsJpegXsDescriptor) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return res, goret
-}
-
-// ParseLogicalChannel wraps gst_mpegts_descriptor_parse_logical_channel
-// 
-// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_logical_channel
-func (descriptor *Descriptor) ParseLogicalChannel() (LogicalChannelDescriptor, bool) {
-	var carg0 *C.GstMpegtsDescriptor              // in, none, converted
-	var carg1 C.GstMpegtsLogicalChannelDescriptor // out, transfer: none, C Pointers: 0, Name: LogicalChannelDescriptor, caller-allocates
-	var cret  C.gboolean                          // return
-
-	carg0 = (*C.GstMpegtsDescriptor)(UnsafeDescriptorToGlibNone(descriptor))
-
-	cret = C.gst_mpegts_descriptor_parse_logical_channel(carg0, &carg1)
-	runtime.KeepAlive(descriptor)
-
-	var res   LogicalChannelDescriptor
-	var goret bool
-
-	_ = res
-	_ = carg1
-	panic("unimplemented conversion of LogicalChannelDescriptor (GstMpegtsLogicalChannelDescriptor) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return res, goret
 }
 
 // ParseMetadata wraps gst_mpegts_descriptor_parse_metadata
@@ -7578,58 +7500,6 @@ func (descriptor *Descriptor) ParseMetadataStd(metadataInputLeakRate *uint32, me
 	}
 
 	return goret
-}
-
-// ParseSatelliteDeliverySystem wraps gst_mpegts_descriptor_parse_satellite_delivery_system
-// 
-// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_satellite_delivery_system
-func (descriptor *Descriptor) ParseSatelliteDeliverySystem() (SatelliteDeliverySystemDescriptor, bool) {
-	var carg0 *C.GstMpegtsDescriptor                       // in, none, converted
-	var carg1 C.GstMpegtsSatelliteDeliverySystemDescriptor // out, transfer: none, C Pointers: 0, Name: SatelliteDeliverySystemDescriptor, caller-allocates
-	var cret  C.gboolean                                   // return
-
-	carg0 = (*C.GstMpegtsDescriptor)(UnsafeDescriptorToGlibNone(descriptor))
-
-	cret = C.gst_mpegts_descriptor_parse_satellite_delivery_system(carg0, &carg1)
-	runtime.KeepAlive(descriptor)
-
-	var res   SatelliteDeliverySystemDescriptor
-	var goret bool
-
-	_ = res
-	_ = carg1
-	panic("unimplemented conversion of SatelliteDeliverySystemDescriptor (GstMpegtsSatelliteDeliverySystemDescriptor) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return res, goret
-}
-
-// ParseTerrestrialDeliverySystem wraps gst_mpegts_descriptor_parse_terrestrial_delivery_system
-// 
-// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_terrestrial_delivery_system
-func (descriptor *Descriptor) ParseTerrestrialDeliverySystem() (TerrestrialDeliverySystemDescriptor, bool) {
-	var carg0 *C.GstMpegtsDescriptor                         // in, none, converted
-	var carg1 C.GstMpegtsTerrestrialDeliverySystemDescriptor // out, transfer: none, C Pointers: 0, Name: TerrestrialDeliverySystemDescriptor, caller-allocates
-	var cret  C.gboolean                                     // return
-
-	carg0 = (*C.GstMpegtsDescriptor)(UnsafeDescriptorToGlibNone(descriptor))
-
-	cret = C.gst_mpegts_descriptor_parse_terrestrial_delivery_system(carg0, &carg1)
-	runtime.KeepAlive(descriptor)
-
-	var res   TerrestrialDeliverySystemDescriptor
-	var goret bool
-
-	_ = res
-	_ = carg1
-	panic("unimplemented conversion of TerrestrialDeliverySystemDescriptor (GstMpegtsTerrestrialDeliverySystemDescriptor) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return res, goret
 }
 
 // DvbMultilingualBouquetNameItem wraps GstMpegtsDvbMultilingualBouquetNameItem

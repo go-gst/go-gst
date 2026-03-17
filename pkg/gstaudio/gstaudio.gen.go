@@ -2256,7 +2256,7 @@ func AudioChannelPositionsToString(position []AudioChannelPosition) string {
 	var goret string
 
 	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	defer C.g_free(C.gpointer(cret))
 
 	return goret
 }
@@ -4843,10 +4843,6 @@ type AudioDecoder interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_finish_subframe
 	FinishSubframe(*gst.Buffer) gst.FlowReturn
-	// GetAllocator wraps gst_audio_decoder_get_allocator
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_allocator
-	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetAudioInfo wraps gst_audio_decoder_get_audio_info
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_audio_info
@@ -5174,32 +5170,6 @@ func (dec *AudioDecoderInstance) FinishSubframe(buf *gst.Buffer) gst.FlowReturn 
 	goret = gst.FlowReturn(cret)
 
 	return goret
-}
-
-// GetAllocator wraps gst_audio_decoder_get_allocator
-// 
-// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_allocator
-func (dec *AudioDecoderInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
-	var carg0 *C.GstAudioDecoder    // in, none, converted
-	var carg1 *C.GstAllocator       // out, full, converted, nullable
-	var carg2 C.GstAllocationParams // out, transfer: full, C Pointers: 0, Name: AllocationParams, optional, caller-allocates
-
-	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
-
-	C.gst_audio_decoder_get_allocator(carg0, &carg1, &carg2)
-	runtime.KeepAlive(dec)
-
-	var allocator gst.Allocator
-	var params    gst.AllocationParams
-
-	if carg1 != nil {
-		allocator = gst.UnsafeAllocatorFromGlibFull(unsafe.Pointer(carg1))
-	}
-	_ = params
-	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
-
-	return allocator, params
 }
 
 // GetAudioInfo wraps gst_audio_decoder_get_audio_info
@@ -6720,10 +6690,6 @@ type AudioEncoder interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_finish_frame
 	FinishFrame(*gst.Buffer, int32) gst.FlowReturn
-	// GetAllocator wraps gst_audio_encoder_get_allocator
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_allocator
-	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetAudioInfo wraps gst_audio_encoder_get_audio_info
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_audio_info
@@ -7025,32 +6991,6 @@ func (enc *AudioEncoderInstance) FinishFrame(buffer *gst.Buffer, samples int32) 
 	goret = gst.FlowReturn(cret)
 
 	return goret
-}
-
-// GetAllocator wraps gst_audio_encoder_get_allocator
-// 
-// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_allocator
-func (enc *AudioEncoderInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
-	var carg0 *C.GstAudioEncoder    // in, none, converted
-	var carg1 *C.GstAllocator       // out, full, converted, nullable
-	var carg2 C.GstAllocationParams // out, transfer: full, C Pointers: 0, Name: AllocationParams, optional, caller-allocates
-
-	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
-
-	C.gst_audio_encoder_get_allocator(carg0, &carg1, &carg2)
-	runtime.KeepAlive(enc)
-
-	var allocator gst.Allocator
-	var params    gst.AllocationParams
-
-	if carg1 != nil {
-		allocator = gst.UnsafeAllocatorFromGlibFull(unsafe.Pointer(carg1))
-	}
-	_ = params
-	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
-
-	return allocator, params
 }
 
 // GetAudioInfo wraps gst_audio_encoder_get_audio_info
@@ -11559,38 +11499,6 @@ func AudioBufferClip(buffer *gst.Buffer, segment *gst.Segment, rate int32, bpf i
 	return goret
 }
 
-// AudioBufferMap wraps gst_audio_buffer_map
-// 
-// see also https://gstreamer.freedesktop.org/documentation/audio/audio-buffer.html#gst_audio_buffer_map
-func AudioBufferMap(info *AudioInfo, gstbuffer *gst.Buffer, flags gst.MapFlags) (AudioBuffer, bool) {
-	var carg2 *C.GstAudioInfo  // in, none, converted
-	var carg3 *C.GstBuffer     // in, none, converted
-	var carg4 C.GstMapFlags    // in, none, casted
-	var carg1 C.GstAudioBuffer // out, transfer: none, C Pointers: 0, Name: AudioBuffer, caller-allocates
-	var cret  C.gboolean       // return
-
-	carg2 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(info))
-	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(gstbuffer))
-	carg4 = C.GstMapFlags(flags)
-
-	cret = C.gst_audio_buffer_map(&carg1, carg2, carg3, carg4)
-	runtime.KeepAlive(info)
-	runtime.KeepAlive(gstbuffer)
-	runtime.KeepAlive(flags)
-
-	var buffer AudioBuffer
-	var goret  bool
-
-	_ = buffer
-	_ = carg1
-	panic("unimplemented conversion of AudioBuffer (GstAudioBuffer) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return buffer, goret
-}
-
 // AudioBufferReorderChannels wraps gst_audio_buffer_reorder_channels
 // 
 // see also https://gstreamer.freedesktop.org/documentation/audio/audio-buffer.html#gst_audio_buffer_reorder_channels
@@ -12853,49 +12761,6 @@ func NewAudioInfoFromCaps(caps *gst.Caps) *AudioInfo {
 	}
 
 	return goret
-}
-
-// AudioInfoFromCaps wraps gst_audio_info_from_caps
-// 
-// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#gst_audio_info_from_caps
-func AudioInfoFromCaps(caps *gst.Caps) (AudioInfo, bool) {
-	var carg2 *C.GstCaps     // in, none, converted
-	var carg1 C.GstAudioInfo // out, transfer: none, C Pointers: 0, Name: AudioInfo, caller-allocates
-	var cret  C.gboolean     // return
-
-	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
-
-	cret = C.gst_audio_info_from_caps(&carg1, carg2)
-	runtime.KeepAlive(caps)
-
-	var info  AudioInfo
-	var goret bool
-
-	_ = info
-	_ = carg1
-	panic("unimplemented conversion of AudioInfo (GstAudioInfo) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return info, goret
-}
-
-// AudioInfoInit wraps gst_audio_info_init
-// 
-// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#gst_audio_info_init
-func AudioInfoInit() AudioInfo {
-	var carg1 C.GstAudioInfo // out, transfer: none, C Pointers: 0, Name: AudioInfo, caller-allocates
-
-	C.gst_audio_info_init(&carg1)
-
-	var info AudioInfo
-
-	_ = info
-	_ = carg1
-	panic("unimplemented conversion of AudioInfo (GstAudioInfo) because of unknown reason")
-
-	return info
 }
 
 // Convert wraps gst_audio_info_convert
@@ -14351,49 +14216,6 @@ func NewDsdInfoFromCaps(caps *gst.Caps) *DsdInfo {
 	goret = UnsafeDsdInfoFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
-}
-
-// DsdInfoFromCaps wraps gst_dsd_info_from_caps
-// 
-// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#gst_dsd_info_from_caps
-func DsdInfoFromCaps(caps *gst.Caps) (DsdInfo, bool) {
-	var carg2 *C.GstCaps   // in, none, converted
-	var carg1 C.GstDsdInfo // out, transfer: none, C Pointers: 0, Name: DsdInfo, caller-allocates
-	var cret  C.gboolean   // return
-
-	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
-
-	cret = C.gst_dsd_info_from_caps(&carg1, carg2)
-	runtime.KeepAlive(caps)
-
-	var info  DsdInfo
-	var goret bool
-
-	_ = info
-	_ = carg1
-	panic("unimplemented conversion of DsdInfo (GstDsdInfo) because of unknown reason")
-	if cret != 0 {
-		goret = true
-	}
-
-	return info, goret
-}
-
-// DsdInfoInit wraps gst_dsd_info_init
-// 
-// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#gst_dsd_info_init
-func DsdInfoInit() DsdInfo {
-	var carg1 C.GstDsdInfo // out, transfer: none, C Pointers: 0, Name: DsdInfo, caller-allocates
-
-	C.gst_dsd_info_init(&carg1)
-
-	var info DsdInfo
-
-	_ = info
-	_ = carg1
-	panic("unimplemented conversion of DsdInfo (GstDsdInfo) because of unknown reason")
-
-	return info
 }
 
 // Copy wraps gst_dsd_info_copy

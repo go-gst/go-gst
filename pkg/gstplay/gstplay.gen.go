@@ -535,7 +535,7 @@ func PlayMessageParseURILoaded(msg *gst.Message) string {
 	var uri string
 
 	uri = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-	defer C.free(unsafe.Pointer(carg2))
+	defer C.g_free(C.gpointer(carg2))
 
 	return uri
 }
@@ -1121,7 +1121,7 @@ func PlayConfigGetUserAgent(config *gst.Structure) string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -1293,6 +1293,23 @@ func PlayIsPlayMessage(msg *gst.Message) bool {
 	return goret
 }
 
+// PlayVisualizationsGet wraps gst_play_visualizations_get
+// 
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_visualizations_get
+func PlayVisualizationsGet() []*PlayVisualization {
+	var cret **C.GstPlayVisualization // return, transfer: full, C Pointers: 2, Name: array[PlayVisualization], scope: , array (inner GstPlayVisualization* (*typesystem.Record), zero-terminated)
+
+	cret = C.gst_play_visualizations_get()
+
+	var goret []*PlayVisualization
+
+	_ = goret
+	_ = cret
+	panic("unimplemented conversion of []*PlayVisualization (GstPlayVisualization**) because of unknown reason")
+
+	return goret
+}
+
 // GetAudioVideoOffset wraps gst_play_get_audio_video_offset
 // 
 // see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_audio_video_offset
@@ -1432,7 +1449,7 @@ func (play *PlayInstance) GetCurrentVisualization() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -1629,7 +1646,7 @@ func (play *PlayInstance) GetSubtitleURI() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -1670,7 +1687,7 @@ func (play *PlayInstance) GetURI() string {
 
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
+		defer C.g_free(C.gpointer(cret))
 	}
 
 	return goret
@@ -2703,7 +2720,7 @@ type PlaySignalAdapter interface {
 	// ConnectError connects the provided callback to the "error" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-signal-adapter.html
-	ConnectError(func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle
+	ConnectError(func(PlaySignalAdapter, error, *gst.Structure)) gobject.SignalHandle
 	// ConnectMediaInfoUpdated connects the provided callback to the "media-info-updated" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/play
@@ -2739,7 +2756,7 @@ type PlaySignalAdapter interface {
 	// ConnectWarning connects the provided callback to the "warning" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-signal-adapter.html
-	ConnectWarning(func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle
+	ConnectWarning(func(PlaySignalAdapter, error, *gst.Structure)) gobject.SignalHandle
 }
 
 func unsafeWrapPlaySignalAdapter(base *gobject.ObjectInstance) *PlaySignalAdapterInstance {
@@ -2893,7 +2910,7 @@ func (o *PlaySignalAdapterInstance) ConnectEndOfStream(fn func(PlaySignalAdapter
 // ConnectError connects the provided callback to the "error" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/play/gstplay-signal-adapter.html
-func (o *PlaySignalAdapterInstance) ConnectError(fn func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle {
+func (o *PlaySignalAdapterInstance) ConnectError(fn func(PlaySignalAdapter, error, *gst.Structure)) gobject.SignalHandle {
 	return o.Connect("error", fn)
 }
 
@@ -2956,7 +2973,7 @@ func (o *PlaySignalAdapterInstance) ConnectVolumeChanged(fn func(PlaySignalAdapt
 // ConnectWarning connects the provided callback to the "warning" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/play/gstplay-signal-adapter.html
-func (o *PlaySignalAdapterInstance) ConnectWarning(fn func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle {
+func (o *PlaySignalAdapterInstance) ConnectWarning(fn func(PlaySignalAdapter, error, *gst.Structure)) gobject.SignalHandle {
 	return o.Connect("warning", fn)
 }
 

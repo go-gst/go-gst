@@ -314,7 +314,7 @@ type AppSink interface {
 	// ConnectProposeAllocation connects the provided callback to the "propose-allocation" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
-	ConnectProposeAllocation(func(AppSink, gst.Query) bool) gobject.SignalHandle
+	ConnectProposeAllocation(func(AppSink, *gst.Query) bool) gobject.SignalHandle
 	// EmitPullPreroll emits the "pull-preroll" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
@@ -922,7 +922,7 @@ func (o *AppSinkInstance) ConnectNewSerializedEvent(fn func(AppSink) bool) gobje
 // ConnectProposeAllocation connects the provided callback to the "propose-allocation" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
-func (o *AppSinkInstance) ConnectProposeAllocation(fn func(AppSink, gst.Query) bool) gobject.SignalHandle {
+func (o *AppSinkInstance) ConnectProposeAllocation(fn func(AppSink, *gst.Query) bool) gobject.SignalHandle {
 	return o.Connect("propose-allocation", fn)
 }
 
@@ -1535,15 +1535,15 @@ type AppSrc interface {
 	// EmitPushBuffer emits the "push-buffer" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
-	EmitPushBuffer(gst.Buffer) gst.FlowReturn
+	EmitPushBuffer(*gst.Buffer) gst.FlowReturn
 	// EmitPushBufferList emits the "push-buffer-list" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
-	EmitPushBufferList(gst.BufferList) gst.FlowReturn
+	EmitPushBufferList(*gst.BufferList) gst.FlowReturn
 	// EmitPushSample emits the "push-sample" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
-	EmitPushSample(gst.Sample) gst.FlowReturn
+	EmitPushSample(*gst.Sample) gst.FlowReturn
 	// ConnectSeekData connects the provided callback to the "seek-data" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
@@ -2167,21 +2167,21 @@ func (o *AppSrcInstance) ConnectNeedData(fn func(AppSrc, uint)) gobject.SignalHa
 // EmitPushBuffer emits the "push-buffer" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
-func (o *AppSrcInstance) EmitPushBuffer(arg0 gst.Buffer) gst.FlowReturn {
+func (o *AppSrcInstance) EmitPushBuffer(arg0 *gst.Buffer) gst.FlowReturn {
 	return o.Emit("push-buffer", arg0).(gst.FlowReturn)
 }
 
 // EmitPushBufferList emits the "push-buffer-list" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
-func (o *AppSrcInstance) EmitPushBufferList(arg0 gst.BufferList) gst.FlowReturn {
+func (o *AppSrcInstance) EmitPushBufferList(arg0 *gst.BufferList) gst.FlowReturn {
 	return o.Emit("push-buffer-list", arg0).(gst.FlowReturn)
 }
 
 // EmitPushSample emits the "push-sample" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
-func (o *AppSrcInstance) EmitPushSample(arg0 gst.Sample) gst.FlowReturn {
+func (o *AppSrcInstance) EmitPushSample(arg0 *gst.Sample) gst.FlowReturn {
 	return o.Emit("push-sample", arg0).(gst.FlowReturn)
 }
 
