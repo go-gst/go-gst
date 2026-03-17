@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/core/userdata"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -1140,8 +1141,8 @@ func AudioFormatFromString(format string) AudioFormat {
 	var carg1 *C.gchar         // in, none, string
 	var cret  C.GstAudioFormat // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(format)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(format))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_audio_format_from_string(carg1)
 	runtime.KeepAlive(format)
@@ -1655,8 +1656,8 @@ func DsdFormatFromString(str string) DsdFormat {
 	var carg1 *C.gchar       // in, none, string
 	var cret  C.GstDsdFormat // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_dsd_format_from_string(carg1)
 	runtime.KeepAlive(str)
@@ -4523,8 +4524,8 @@ func (src *AudioCdSrcInstance) ParentOpen(device string) bool {
 	parentclass := (*C.GstAudioCdSrcClass)(classdata.PeekParentClass(UnsafeAudioCdSrcToGlibNone(src)))
 
 	carg0 = (*C.GstAudioCdSrc)(UnsafeAudioCdSrcToGlibNone(src))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(device)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(device))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C._goglib_gstaudio1_AudioCdSrc_virtual_open(unsafe.Pointer(parentclass.open), carg0, carg1)
 	runtime.KeepAlive(src)
@@ -4691,8 +4692,8 @@ func NewAudioClock(name string, fn AudioClockGetTimeFunc) gst.Clock {
 	var carg4 C.GDestroyNotify           // implicit
 	var cret  *C.GstClock                // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = (*[0]byte)(C._goglib_gstaudio1_AudioClockGetTimeFunc)
 	carg3 = C.gpointer(userdata.Register(fn))
 	carg4 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))

@@ -6,11 +6,32 @@ import (
 	"unsafe"
 
 	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/core/userdata"
 )
 
 // #include <gst/gl/gl.h>
 import "C"
+
+//export _goglib_gstgl1_GLAsyncDebugLogGetMessage
+func _goglib_gstgl1_GLAsyncDebugLogGetMessage(carg1 C.gpointer) (cret *C.gchar) {
+	var fn GLAsyncDebugLogGetMessage
+	{
+		v := userdata.Load(unsafe.Pointer(carg1))
+		if v == nil {
+			panic(`callback not found`)
+		}
+		fn = v.(GLAsyncDebugLogGetMessage)
+	}
+
+	var goret string // return, full, string
+
+	goret = fn()
+
+	cret = (*C.gchar)(transfer.GLibString(goret))
+
+	return cret
+}
 
 //export _goglib_gstgl1_GLFilterRenderFunc
 func _goglib_gstgl1_GLFilterRenderFunc(carg1 *C.GstGLFilter, carg2 *C.GstGLMemory, carg3 C.gpointer) (cret C.gboolean) {

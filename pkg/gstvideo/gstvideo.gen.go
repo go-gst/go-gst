@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -1771,8 +1772,8 @@ func VideoFieldOrderFromString(order string) VideoFieldOrder {
 	var carg1 *C.gchar             // in, none, string
 	var cret  C.GstVideoFieldOrder // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(order)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(order))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_video_field_order_from_string(carg1)
 	runtime.KeepAlive(order)
@@ -2589,8 +2590,8 @@ func VideoFormatFromString(format string) VideoFormat {
 	var carg1 *C.gchar         // in, none, string
 	var cret  C.GstVideoFormat // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(format)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(format))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_video_format_from_string(carg1)
 	runtime.KeepAlive(format)
@@ -2868,8 +2869,8 @@ func VideoInterlaceModeFromString(mode string) VideoInterlaceMode {
 	var carg1 *C.gchar                // in, none, string
 	var cret  C.GstVideoInterlaceMode // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(mode)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(mode))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_video_interlace_mode_from_string(carg1)
 	runtime.KeepAlive(mode)
@@ -3126,8 +3127,8 @@ func VideoMultiviewModeFromCapsString(capsMviewMode string) VideoMultiviewMode {
 	var carg1 *C.gchar                // in, none, string
 	var cret  C.GstVideoMultiviewMode // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(capsMviewMode)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(capsMviewMode))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_video_multiview_mode_from_caps_string(carg1)
 	runtime.KeepAlive(capsMviewMode)
@@ -4098,8 +4099,8 @@ func VideoChromaSiteFromString(s string) VideoChromaSite {
 	var carg1 *C.gchar             // in, none, string
 	var cret  C.GstVideoChromaSite // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(s)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(s))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_video_chroma_site_from_string(carg1)
 	runtime.KeepAlive(s)
@@ -5258,8 +5259,8 @@ func BufferAddVideoRegionOfInterestMeta(buffer *gst.Buffer, roiType string, x ui
 	var cret  *C.GstVideoRegionOfInterestMeta // return, none, converted
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(roiType)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(roiType))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = C.guint(x)
 	carg4 = C.guint(y)
 	carg5 = C.guint(w)
@@ -5773,8 +5774,8 @@ func VideoDmaDrmFourccFromString(formatStr string) (uint64, uint32) {
 	var carg2 C.guint64 // out, full, casted
 	var cret  C.guint32 // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(formatStr)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(formatStr))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_video_dma_drm_fourcc_from_string(carg1, &carg2)
 	runtime.KeepAlive(formatStr)
@@ -6822,8 +6823,8 @@ func NavigationEventNewKeyPress(key string, state NavigationModifierType) *gst.E
 	var carg2 C.GstNavigationModifierType // in, none, casted
 	var cret  *C.GstEvent                 // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.GstNavigationModifierType(state)
 
 	cret = C.gst_navigation_event_new_key_press(carg1, carg2)
@@ -6845,8 +6846,8 @@ func NavigationEventNewKeyRelease(key string, state NavigationModifierType) *gst
 	var carg2 C.GstNavigationModifierType // in, none, casted
 	var cret  *C.GstEvent                 // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.GstNavigationModifierType(state)
 
 	cret = C.gst_navigation_event_new_key_release(carg1, carg2)
@@ -7760,10 +7761,10 @@ func (navigation *NavigationInstance) SendKeyEvent(event string, key string) {
 	var carg2 *C.char          // in, none, string
 
 	carg0 = (*C.GstNavigation)(UnsafeNavigationToGlibNone(navigation))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(event)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.char)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.char)(transfer.GLibString(event))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.char)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_navigation_send_key_event(carg0, carg1, carg2)
 	runtime.KeepAlive(navigation)
@@ -7782,8 +7783,8 @@ func (navigation *NavigationInstance) SendMouseEvent(event string, button int32,
 	var carg4 C.double         // in, none, casted
 
 	carg0 = (*C.GstNavigation)(UnsafeNavigationToGlibNone(navigation))
-	carg1 = (*C.char)(unsafe.Pointer(C.CString(event)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.char)(transfer.GLibString(event))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.int(button)
 	carg3 = C.double(x)
 	carg4 = C.double(y)
@@ -16214,8 +16215,8 @@ func (cinfo *VideoColorimetry) FromString(color string) bool {
 	var cret  C.gboolean             // return
 
 	carg0 = (*C.GstVideoColorimetry)(UnsafeVideoColorimetryToGlibNone(cinfo))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(color)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(color))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_video_colorimetry_from_string(carg0, carg1)
 	runtime.KeepAlive(cinfo)
@@ -16293,8 +16294,8 @@ func (cinfo *VideoColorimetry) Matches(color string) bool {
 	var cret  C.gboolean             // return
 
 	carg0 = (*C.GstVideoColorimetry)(UnsafeVideoColorimetryToGlibNone(cinfo))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(color)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(color))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_video_colorimetry_matches(carg0, carg1)
 	runtime.KeepAlive(cinfo)
@@ -16470,8 +16471,8 @@ func (linfo *VideoContentLightLevel) FromString(level string) bool {
 	var cret  C.gboolean                   // return
 
 	carg0 = (*C.GstVideoContentLightLevel)(UnsafeVideoContentLightLevelToGlibNone(linfo))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(level)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(level))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_video_content_light_level_from_string(carg0, carg1)
 	runtime.KeepAlive(linfo)
@@ -19648,8 +19649,8 @@ func (meta *VideoRegionOfInterestMeta) GetParam(name string) *gst.Structure {
 	var cret  *C.GstStructure                 // return, none, converted, nullable
 
 	carg0 = (*C.GstVideoRegionOfInterestMeta)(UnsafeVideoRegionOfInterestMetaToGlibNone(meta))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_video_region_of_interest_meta_get_param(carg0, carg1)
 	runtime.KeepAlive(meta)
@@ -20272,8 +20273,8 @@ func NewVideoTimeCodeFromString(tcStr string) *VideoTimeCode {
 	var carg1 *C.gchar            // in, none, string
 	var cret  *C.GstVideoTimeCode // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tcStr)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tcStr))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_video_time_code_new_from_string(carg1)
 	runtime.KeepAlive(tcStr)
@@ -20684,8 +20685,8 @@ func NewVideoTimeCodeIntervalFromString(tcInterStr string) *VideoTimeCodeInterva
 	var carg1 *C.gchar                    // in, none, string
 	var cret  *C.GstVideoTimeCodeInterval // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tcInterStr)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(tcInterStr))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_video_time_code_interval_new_from_string(carg1)
 	runtime.KeepAlive(tcInterStr)

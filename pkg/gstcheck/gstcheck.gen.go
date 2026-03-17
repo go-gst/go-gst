@@ -7,6 +7,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/core/userdata"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
@@ -171,8 +172,8 @@ func CheckElementPushBuffer(elementName string, bufferIn *gst.Buffer, capsIn *gs
 	var carg4 *C.GstBuffer // in, none, converted
 	var carg5 *C.GstCaps   // in, none, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(elementName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(elementName))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(bufferIn))
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(capsIn))
 	carg4 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(bufferOut))
@@ -226,8 +227,8 @@ func CheckSetupElement(factory string) gst.Element {
 	var carg1 *C.gchar      // in, none, string
 	var cret  *C.GstElement // return, full, converted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(factory)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(factory))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_check_setup_element(carg1)
 	runtime.KeepAlive(factory)
@@ -278,8 +279,8 @@ func CheckSetupEventsWithStreamID(srcpad gst.Pad, element gst.Element, caps *gst
 		carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 	}
 	carg4 = C.GstFormat(format)
-	carg5 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
-	defer C.free(unsafe.Pointer(carg5))
+	carg5 = (*C.gchar)(transfer.GLibString(streamId))
+	defer C.g_free(C.gpointer(carg5))
 
 	C.gst_check_setup_events_with_stream_id(carg1, carg2, carg3, carg4, carg5)
 	runtime.KeepAlive(srcpad)
@@ -322,8 +323,8 @@ func CheckSetupSinkPadByName(element gst.Element, tmpl *gst.StaticPadTemplate, n
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
 	carg2 = (*C.GstStaticPadTemplate)(gst.UnsafeStaticPadTemplateToGlibNone(tmpl))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg3 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg3))
 
 	cret = C.gst_check_setup_sink_pad_by_name(carg1, carg2, carg3)
 	runtime.KeepAlive(element)
@@ -348,8 +349,8 @@ func CheckSetupSinkPadByNameFromTemplate(element gst.Element, tmpl gst.PadTempla
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
 	carg2 = (*C.GstPadTemplate)(gst.UnsafePadTemplateToGlibNone(tmpl))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg3 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg3))
 
 	cret = C.gst_check_setup_sink_pad_by_name_from_template(carg1, carg2, carg3)
 	runtime.KeepAlive(element)
@@ -418,8 +419,8 @@ func CheckSetupSrcPadByName(element gst.Element, tmpl *gst.StaticPadTemplate, na
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
 	carg2 = (*C.GstStaticPadTemplate)(gst.UnsafeStaticPadTemplateToGlibNone(tmpl))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg3 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg3))
 
 	cret = C.gst_check_setup_src_pad_by_name(carg1, carg2, carg3)
 	runtime.KeepAlive(element)
@@ -444,8 +445,8 @@ func CheckSetupSrcPadByNameFromTemplate(element gst.Element, tmpl gst.PadTemplat
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
 	carg2 = (*C.GstPadTemplate)(gst.UnsafePadTemplateToGlibNone(tmpl))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg3 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg3))
 
 	cret = C.gst_check_setup_src_pad_by_name_from_template(carg1, carg2, carg3)
 	runtime.KeepAlive(element)
@@ -501,8 +502,8 @@ func CheckTeardownPadByName(element gst.Element, name string) {
 	var carg2 *C.gchar      // in, none, string
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_check_teardown_pad_by_name(carg1, carg2)
 	runtime.KeepAlive(element)
@@ -1277,10 +1278,10 @@ func (h *Harness) AddProbe(elementName string, padName string, mask gst.PadProbe
 	var carg6 C.GDestroyNotify      // implicit
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(elementName)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(padName)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(elementName))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(padName))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = C.GstPadProbeType(mask)
 	carg4 = (*[0]byte)(C._goglib_gst1_PadProbeCallback)
 	carg5 = C.gpointer(userdata.Register(callback))
@@ -1322,8 +1323,8 @@ func (h *Harness) AddSink(sinkElementName string) {
 	var carg1 *C.gchar      // in, none, string
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(sinkElementName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(sinkElementName))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_harness_add_sink(carg0, carg1)
 	runtime.KeepAlive(h)
@@ -1353,8 +1354,8 @@ func (h *Harness) AddSinkParse(launchline string) {
 	var carg1 *C.gchar      // in, none, string
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(launchline)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(launchline))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_harness_add_sink_parse(carg0, carg1)
 	runtime.KeepAlive(h)
@@ -1370,8 +1371,8 @@ func (h *Harness) AddSrc(srcElementName string, hasClockWait bool) {
 	var carg2 C.gboolean    // in
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(srcElementName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(srcElementName))
+	defer C.g_free(C.gpointer(carg1))
 	if hasClockWait {
 		carg2 = C.TRUE
 	}
@@ -1411,8 +1412,8 @@ func (h *Harness) AddSrcParse(launchline string, hasClockWait bool) {
 	var carg2 C.gboolean    // in
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(launchline)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(launchline))
+	defer C.g_free(C.gpointer(carg1))
 	if hasClockWait {
 		carg2 = C.TRUE
 	}
@@ -1536,8 +1537,8 @@ func (h *Harness) DumpToFile(filename string) {
 	var carg1 *C.gchar      // in, none, string
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(filename)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(filename))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_harness_dump_to_file(carg0, carg1)
 	runtime.KeepAlive(h)
@@ -1591,8 +1592,8 @@ func (h *Harness) FindElement(elementName string) gst.Element {
 	var cret  *C.GstElement // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(elementName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(elementName))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_harness_find_element(carg0, carg1)
 	runtime.KeepAlive(h)
@@ -1938,10 +1939,10 @@ func (h *Harness) SetCapsStr(in string, out string) {
 	var carg2 *C.gchar      // in, none, string
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(in)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(out)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(in))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(out))
+	defer C.g_free(C.gpointer(carg2))
 
 	C.gst_harness_set_caps_str(carg0, carg1, carg2)
 	runtime.KeepAlive(h)
@@ -2045,8 +2046,8 @@ func (h *Harness) SetSinkCapsStr(str string) {
 	var carg1 *C.gchar      // in, none, string
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_harness_set_sink_caps_str(carg0, carg1)
 	runtime.KeepAlive(h)
@@ -2076,8 +2077,8 @@ func (h *Harness) SetSrcCapsStr(str string) {
 	var carg1 *C.gchar      // in, none, string
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(str))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_harness_set_src_caps_str(carg0, carg1)
 	runtime.KeepAlive(h)

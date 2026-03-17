@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -1060,8 +1061,8 @@ func RtcpSdesNameToType(name string) RTCPSDESType {
 	var carg1 *C.gchar          // in, none, string
 	var cret  C.GstRTCPSDESType // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_rtcp_sdes_name_to_type(carg1)
 	runtime.KeepAlive(name)
@@ -2091,13 +2092,13 @@ func (payload *RTPBasePayloadInstance) SetOptions(media string, dynamic bool, en
 	var carg4 C.guint32            // in, none, casted
 
 	carg0 = (*C.GstRTPBasePayload)(UnsafeRTPBasePayloadToGlibNone(payload))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(media)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(media))
+	defer C.g_free(C.gpointer(carg1))
 	if dynamic {
 		carg2 = C.TRUE
 	}
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(encodingName)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg3 = (*C.gchar)(transfer.GLibString(encodingName))
+	defer C.g_free(C.gpointer(carg3))
 	carg4 = C.guint32(clockRate)
 
 	C.gst_rtp_base_payload_set_options(carg0, carg1, carg2, carg3, carg4)
@@ -2735,8 +2736,8 @@ func RTPHeaderExtensionCreateFromURI(uri string) RTPHeaderExtension {
 	var carg1 *C.gchar                 // in, none, string
 	var cret  *C.GstRTPHeaderExtension // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_rtp_header_extension_create_from_uri(carg1)
 	runtime.KeepAlive(uri)
@@ -2963,8 +2964,8 @@ func (ext *RTPHeaderExtensionInstance) SetCapsFromAttributesHelper(caps *gst.Cap
 
 	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(attributes)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(attributes))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_rtp_header_extension_set_caps_from_attributes_helper(carg0, carg1, carg2)
 	runtime.KeepAlive(ext)
@@ -3479,8 +3480,8 @@ func (ext *RTPHeaderExtensionInstance) ParentSetAttributes(direction RTPHeaderEx
 
 	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 	carg1 = C.GstRTPHeaderExtensionDirection(direction)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(attributes)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(attributes))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C._goglib_gstrtp1_RTPHeaderExtension_virtual_set_attributes(unsafe.Pointer(parentclass.set_attributes), carg0, carg1, carg2)
 	runtime.KeepAlive(ext)
@@ -4525,8 +4526,8 @@ func (packet *RTCPPacket) AppSetName(name string) {
 	var carg1 *C.gchar         // in, none, string
 
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(name))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_rtcp_packet_app_set_name(carg0, carg1)
 	runtime.KeepAlive(packet)
@@ -4706,8 +4707,8 @@ func (packet *RTCPPacket) ByeSetReason(reason string) bool {
 	var cret  C.gboolean       // return
 
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(reason)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(reason))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_rtcp_packet_bye_set_reason(carg0, carg1)
 	runtime.KeepAlive(packet)
@@ -7193,8 +7194,8 @@ func (klass *RTPHeaderExtensionClass) SetURI(uri string) {
 	var carg1 *C.gchar                      // in, none, string
 
 	carg0 = (*C.GstRTPHeaderExtensionClass)(UnsafeRTPHeaderExtensionClassToGlibNone(klass))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	C.gst_rtp_header_extension_class_set_uri(carg0, carg1)
 	runtime.KeepAlive(klass)
@@ -7291,10 +7292,10 @@ func RTPPayloadInfoForName(media string, encodingName string) *RTPPayloadInfo {
 	var carg2 *C.gchar             // in, none, string
 	var cret  *C.GstRTPPayloadInfo // return, none, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(media)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(encodingName)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(media))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(encodingName))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_rtp_payload_info_for_name(carg1, carg2)
 	runtime.KeepAlive(media)

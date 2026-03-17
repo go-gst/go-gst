@@ -8,6 +8,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -536,12 +537,12 @@ func SdpAddressIsMulticast(nettype string, addrtype string, addr string) bool {
 	var carg3 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(nettype)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(addrtype)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(addr)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg1 = (*C.gchar)(transfer.GLibString(nettype))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(addrtype))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(addr))
+	defer C.g_free(C.gpointer(carg3))
 
 	cret = C.gst_sdp_address_is_multicast(carg1, carg2, carg3)
 	runtime.KeepAlive(nettype)
@@ -565,10 +566,10 @@ func SdpMakeKeymgmt(uri string, base64 string) string {
 	var carg2 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(base64)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(base64))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_sdp_make_keymgmt(carg1, carg2)
 	runtime.KeepAlive(uri)
@@ -2754,11 +2755,11 @@ func (attr *SDPAttribute) Set(key string, value string) SDPResult {
 	var cret  C.GstSDPResult     // return, none, casted
 
 	carg0 = (*C.GstSDPAttribute)(UnsafeSDPAttributeToGlibNone(attr))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 	if value != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(value))
+		defer C.g_free(C.gpointer(carg2))
 	}
 
 	cret = C.gst_sdp_attribute_set(carg0, carg1, carg2)
@@ -2884,8 +2885,8 @@ func (bw *SDPBandwidth) Set(bwtype string, bandwidth uint) SDPResult {
 	var cret  C.GstSDPResult     // return, none, casted
 
 	carg0 = (*C.GstSDPBandwidth)(UnsafeSDPBandwidthToGlibNone(bw))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(bwtype)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(bwtype))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(bandwidth)
 
 	cret = C.gst_sdp_bandwidth_set(carg0, carg1, carg2)
@@ -3014,12 +3015,12 @@ func (conn *SDPConnection) Set(nettype string, addrtype string, address string, 
 	var cret  C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPConnection)(UnsafeSDPConnectionToGlibNone(conn))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(nettype)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(addrtype)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(address)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg1 = (*C.gchar)(transfer.GLibString(nettype))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(addrtype))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(address))
+	defer C.g_free(C.gpointer(carg3))
 	carg4 = C.guint(ttl)
 	carg5 = C.guint(addrNumber)
 
@@ -3230,11 +3231,11 @@ func (media *SDPMedia) AddAttribute(key string, value string) SDPResult {
 	var cret  C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 	if value != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(value))
+		defer C.g_free(C.gpointer(carg2))
 	}
 
 	cret = C.gst_sdp_media_add_attribute(carg0, carg1, carg2)
@@ -3259,8 +3260,8 @@ func (media *SDPMedia) AddBandwidth(bwtype string, bandwidth uint) SDPResult {
 	var cret  C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(bwtype)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(bwtype))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(bandwidth)
 
 	cret = C.gst_sdp_media_add_bandwidth(carg0, carg1, carg2)
@@ -3288,12 +3289,12 @@ func (media *SDPMedia) AddConnection(nettype string, addrtype string, address st
 	var cret  C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(nettype)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(addrtype)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(address)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg1 = (*C.gchar)(transfer.GLibString(nettype))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(addrtype))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(address))
+	defer C.g_free(C.gpointer(carg3))
 	carg4 = C.guint(ttl)
 	carg5 = C.guint(addrNumber)
 
@@ -3321,8 +3322,8 @@ func (media *SDPMedia) AddFormat(format string) SDPResult {
 	var cret  C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(format)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(format))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_sdp_media_add_format(carg0, carg1)
 	runtime.KeepAlive(media)
@@ -3507,8 +3508,8 @@ func (media *SDPMedia) GetAttributeVal(key string) string {
 	var cret  *C.gchar       // return, none, string, nullable-string
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_sdp_media_get_attribute_val(carg0, carg1)
 	runtime.KeepAlive(media)
@@ -3533,8 +3534,8 @@ func (media *SDPMedia) GetAttributeValN(key string, nth uint) string {
 	var cret  *C.gchar       // return, none, string, nullable-string
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(nth)
 
 	cret = C.gst_sdp_media_get_attribute_val_n(carg0, carg1, carg2)
@@ -3843,8 +3844,8 @@ func (media *SDPMedia) InsertFormat(idx int32, format string) SDPResult {
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.gint(idx)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(format)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(format))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_sdp_media_insert_format(carg0, carg1, carg2)
 	runtime.KeepAlive(media)
@@ -4054,8 +4055,8 @@ func (media *SDPMedia) ReplaceFormat(idx uint, format string) SDPResult {
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(format)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(format))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_sdp_media_replace_format(carg0, carg1, carg2)
 	runtime.KeepAlive(media)
@@ -4078,8 +4079,8 @@ func (media *SDPMedia) SetInformation(information string) SDPResult {
 	var cret  C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(information)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(information))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_sdp_media_set_information(carg0, carg1)
 	runtime.KeepAlive(media)
@@ -4102,10 +4103,10 @@ func (media *SDPMedia) SetKey(typ string, data string) SDPResult {
 	var cret  C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(typ)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(data)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(typ))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(data))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_sdp_media_set_key(carg0, carg1, carg2)
 	runtime.KeepAlive(media)
@@ -4128,8 +4129,8 @@ func (media *SDPMedia) SetMedia(med string) SDPResult {
 	var cret  C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(med)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(med))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_sdp_media_set_media(carg0, carg1)
 	runtime.KeepAlive(media)
@@ -4176,8 +4177,8 @@ func (media *SDPMedia) SetProto(proto string) SDPResult {
 	var cret  C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(proto)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(proto))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_sdp_media_set_proto(carg0, carg1)
 	runtime.KeepAlive(media)
@@ -4314,8 +4315,8 @@ func SDPMessageAsURI(scheme string, msg *SDPMessage) string {
 	var carg2 *C.GstSDPMessage // in, none, converted
 	var cret  *C.gchar         // return, full, string
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(scheme)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(scheme))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
 	cret = C.gst_sdp_message_as_uri(carg1, carg2)
@@ -4356,8 +4357,8 @@ func NewSDPMessageFromText(text string) (*SDPMessage, SDPResult) {
 	var carg2 *C.GstSDPMessage // out, full, converted
 	var cret  C.GstSDPResult   // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(text)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(text))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_sdp_message_new_from_text(carg1, &carg2)
 	runtime.KeepAlive(text)
@@ -4405,8 +4406,8 @@ func SDPMessageParseURI(uri string, msg *SDPMessage) SDPResult {
 	var carg2 *C.GstSDPMessage // in, none, converted
 	var cret  C.GstSDPResult   // return, none, casted
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
 	cret = C.gst_sdp_message_parse_uri(carg1, carg2)
@@ -4430,11 +4431,11 @@ func (msg *SDPMessage) AddAttribute(key string, value string) SDPResult {
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 	if value != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(value))
+		defer C.g_free(C.gpointer(carg2))
 	}
 
 	cret = C.gst_sdp_message_add_attribute(carg0, carg1, carg2)
@@ -4459,8 +4460,8 @@ func (msg *SDPMessage) AddBandwidth(bwtype string, bandwidth uint) SDPResult {
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(bwtype)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(bwtype))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(bandwidth)
 
 	cret = C.gst_sdp_message_add_bandwidth(carg0, carg1, carg2)
@@ -4484,8 +4485,8 @@ func (msg *SDPMessage) AddEmail(email string) SDPResult {
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(email)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(email))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_sdp_message_add_email(carg0, carg1)
 	runtime.KeepAlive(msg)
@@ -4529,8 +4530,8 @@ func (msg *SDPMessage) AddPhone(phone string) SDPResult {
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(phone)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(phone))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_sdp_message_add_phone(carg0, carg1)
 	runtime.KeepAlive(msg)
@@ -4554,10 +4555,10 @@ func (msg *SDPMessage) AddTime(start string, stop string, repeat []string) SDPRe
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(start)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(stop)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(start))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(stop))
+	defer C.g_free(C.gpointer(carg2))
 	_ = repeat
 	_ = carg3
 	panic("unimplemented conversion of []string (const gchar**) because of unimplemented: inner pointers in array")
@@ -4585,10 +4586,10 @@ func (msg *SDPMessage) AddZone(adjTime string, typedTime string) SDPResult {
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(adjTime)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(typedTime)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(adjTime))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(typedTime))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_sdp_message_add_zone(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -4774,8 +4775,8 @@ func (msg *SDPMessage) GetAttributeVal(key string) string {
 	var cret  *C.gchar         // return, none, string, nullable-string
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_sdp_message_get_attribute_val(carg0, carg1)
 	runtime.KeepAlive(msg)
@@ -4800,8 +4801,8 @@ func (msg *SDPMessage) GetAttributeValN(key string, nth uint) string {
 	var cret  *C.gchar         // return, none, string, nullable-string
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(key))
+	defer C.g_free(C.gpointer(carg1))
 	carg2 = C.guint(nth)
 
 	cret = C.gst_sdp_message_get_attribute_val_n(carg0, carg1, carg2)
@@ -5148,8 +5149,8 @@ func (msg *SDPMessage) InsertEmail(idx int32, email string) SDPResult {
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.gint(idx)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(email)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(email))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_sdp_message_insert_email(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -5174,8 +5175,8 @@ func (msg *SDPMessage) InsertPhone(idx int32, phone string) SDPResult {
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.gint(idx)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(phone)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(phone))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_sdp_message_insert_phone(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -5514,8 +5515,8 @@ func (msg *SDPMessage) ReplaceEmail(idx uint, email string) SDPResult {
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(email)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(email))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_sdp_message_replace_email(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -5540,8 +5541,8 @@ func (msg *SDPMessage) ReplacePhone(idx uint, phone string) SDPResult {
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(phone)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(phone))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_sdp_message_replace_phone(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -5618,12 +5619,12 @@ func (msg *SDPMessage) SetConnection(nettype string, addrtype string, address st
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(nettype)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(addrtype)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(address)))
-	defer C.free(unsafe.Pointer(carg3))
+	carg1 = (*C.gchar)(transfer.GLibString(nettype))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(addrtype))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(address))
+	defer C.g_free(C.gpointer(carg3))
 	carg4 = C.guint(ttl)
 	carg5 = C.guint(addrNumber)
 
@@ -5651,8 +5652,8 @@ func (msg *SDPMessage) SetInformation(information string) SDPResult {
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(information)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(information))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_sdp_message_set_information(carg0, carg1)
 	runtime.KeepAlive(msg)
@@ -5675,10 +5676,10 @@ func (msg *SDPMessage) SetKey(typ string, data string) SDPResult {
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(typ)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(data)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(typ))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(data))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_sdp_message_set_key(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -5706,18 +5707,18 @@ func (msg *SDPMessage) SetOrigin(username string, sessId string, sessVersion str
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(username)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(sessId)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(sessVersion)))
-	defer C.free(unsafe.Pointer(carg3))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(nettype)))
-	defer C.free(unsafe.Pointer(carg4))
-	carg5 = (*C.gchar)(unsafe.Pointer(C.CString(addrtype)))
-	defer C.free(unsafe.Pointer(carg5))
-	carg6 = (*C.gchar)(unsafe.Pointer(C.CString(addr)))
-	defer C.free(unsafe.Pointer(carg6))
+	carg1 = (*C.gchar)(transfer.GLibString(username))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(sessId))
+	defer C.g_free(C.gpointer(carg2))
+	carg3 = (*C.gchar)(transfer.GLibString(sessVersion))
+	defer C.g_free(C.gpointer(carg3))
+	carg4 = (*C.gchar)(transfer.GLibString(nettype))
+	defer C.g_free(C.gpointer(carg4))
+	carg5 = (*C.gchar)(transfer.GLibString(addrtype))
+	defer C.g_free(C.gpointer(carg5))
+	carg6 = (*C.gchar)(transfer.GLibString(addr))
+	defer C.g_free(C.gpointer(carg6))
 
 	cret = C.gst_sdp_message_set_origin(carg0, carg1, carg2, carg3, carg4, carg5, carg6)
 	runtime.KeepAlive(msg)
@@ -5744,8 +5745,8 @@ func (msg *SDPMessage) SetSessionName(sessionName string) SDPResult {
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(sessionName)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(sessionName))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_sdp_message_set_session_name(carg0, carg1)
 	runtime.KeepAlive(msg)
@@ -5767,8 +5768,8 @@ func (msg *SDPMessage) SetURI(uri string) SDPResult {
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(uri))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_sdp_message_set_uri(carg0, carg1)
 	runtime.KeepAlive(msg)
@@ -5790,8 +5791,8 @@ func (msg *SDPMessage) SetVersion(version string) SDPResult {
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(version)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(version))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_sdp_message_set_version(carg0, carg1)
 	runtime.KeepAlive(msg)
@@ -6055,10 +6056,10 @@ func (t *SDPTime) Set(start string, stop string, repeat []string) SDPResult {
 	var cret  C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPTime)(UnsafeSDPTimeToGlibNone(t))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(start)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(stop)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(start))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(stop))
+	defer C.g_free(C.gpointer(carg2))
 	_ = repeat
 	_ = carg3
 	panic("unimplemented conversion of []string (const gchar**) because of unimplemented: inner pointers in array")
@@ -6187,10 +6188,10 @@ func (zone *SDPZone) Set(adjTime string, typedTime string) SDPResult {
 	var cret  C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPZone)(UnsafeSDPZoneToGlibNone(zone))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(adjTime)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(typedTime)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg1 = (*C.gchar)(transfer.GLibString(adjTime))
+	defer C.g_free(C.gpointer(carg1))
+	carg2 = (*C.gchar)(transfer.GLibString(typedTime))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_sdp_zone_set(carg0, carg1, carg2)
 	runtime.KeepAlive(zone)

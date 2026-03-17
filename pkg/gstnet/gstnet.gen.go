@@ -7,6 +7,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/core/userdata"
 	"github.com/go-gst/go-glib/pkg/gio/v2"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
@@ -381,11 +382,11 @@ func NewNetClientClock(name string, remoteAddress string, remotePort int32, base
 	var cret  *C.GstClock    // return, full, converted
 
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(remoteAddress)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(remoteAddress))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = C.gint(remotePort)
 	carg4 = C.GstClockTime(baseTime)
 
@@ -529,8 +530,8 @@ func NewNetTimeProvider(clock gst.Clock, address string, port int32) NetTimeProv
 
 	carg1 = (*C.GstClock)(gst.UnsafeClockToGlibNone(clock))
 	if address != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(address)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(address))
+		defer C.g_free(C.gpointer(carg2))
 	}
 	carg3 = C.gint(port)
 
@@ -675,11 +676,11 @@ func NewNtpClock(name string, remoteAddress string, remotePort int32, baseTime g
 	var cret  *C.GstClock    // return, full, converted
 
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(remoteAddress)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(remoteAddress))
+	defer C.g_free(C.gpointer(carg2))
 	carg3 = C.gint(remotePort)
 	carg4 = C.GstClockTime(baseTime)
 
@@ -819,8 +820,8 @@ func NewPtpClock(name string, domain uint) gst.Clock {
 	var cret  *C.GstClock // return, full, converted, nullable
 
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 	carg2 = C.guint(domain)
 

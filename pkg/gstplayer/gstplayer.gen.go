@@ -8,6 +8,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -839,8 +840,8 @@ func PlayerConfigSetUserAgent(config *gst.Structure, agent string) {
 
 	carg1 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(config))
 	if agent != "" {
-		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(agent)))
-		defer C.free(unsafe.Pointer(carg2))
+		carg2 = (*C.gchar)(transfer.GLibString(agent))
+		defer C.g_free(C.gpointer(carg2))
 	}
 
 	C.gst_player_config_set_user_agent(carg1, carg2)
@@ -1625,8 +1626,8 @@ func (player *PlayerInstance) SetSubtitleURI(uri string) {
 
 	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
 	if uri != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(uri))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C.gst_player_set_subtitle_uri(carg0, carg1)
@@ -1658,8 +1659,8 @@ func (player *PlayerInstance) SetURI(uri string) {
 
 	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
 	if uri != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(uri))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	C.gst_player_set_uri(carg0, carg1)
@@ -1718,8 +1719,8 @@ func (player *PlayerInstance) SetVisualization(name string) bool {
 
 	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
 	if name != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-		defer C.free(unsafe.Pointer(carg1))
+		carg1 = (*C.gchar)(transfer.GLibString(name))
+		defer C.g_free(C.gpointer(carg1))
 	}
 
 	cret = C.gst_player_set_visualization(carg0, carg1)

@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/transfer"
 	"github.com/go-gst/go-glib/pkg/core/userdata"
 	"github.com/go-gst/go-glib/pkg/glib/v2"
 	"github.com/go-gst/go-glib/pkg/gobject/v2"
@@ -805,8 +806,8 @@ func TypeFindHelperForBufferWithExtension(obj gst.Object, buf *gst.Buffer, exten
 	}
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
 	if extension != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(extension)))
-		defer C.free(unsafe.Pointer(carg3))
+		carg3 = (*C.gchar)(transfer.GLibString(extension))
+		defer C.g_free(C.gpointer(carg3))
 	}
 
 	cret = C.gst_type_find_helper_for_buffer_with_extension(carg1, carg2, carg3, &carg4)
@@ -913,8 +914,8 @@ func TypeFindHelperForDataWithExtension(obj gst.Object, data []uint8, extension 
 	_ = carg3
 	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 	if extension != "" {
-		carg4 = (*C.gchar)(unsafe.Pointer(C.CString(extension)))
-		defer C.free(unsafe.Pointer(carg4))
+		carg4 = (*C.gchar)(transfer.GLibString(extension))
+		defer C.g_free(C.gpointer(carg4))
 	}
 
 	cret = C.gst_type_find_helper_for_data_with_extension(carg1, carg2, carg3, carg4, &carg5)
@@ -944,8 +945,8 @@ func TypeFindHelperForExtension(obj gst.Object, extension string) *gst.Caps {
 	if obj != nil {
 		carg1 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(obj))
 	}
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(extension)))
-	defer C.free(unsafe.Pointer(carg2))
+	carg2 = (*C.gchar)(transfer.GLibString(extension))
+	defer C.g_free(C.gpointer(carg2))
 
 	cret = C.gst_type_find_helper_for_extension(carg1, carg2)
 	runtime.KeepAlive(obj)
@@ -15146,8 +15147,8 @@ func (writer *ByteWriter) PutStringUTF8(data string) bool {
 	var cret  C.gboolean       // return
 
 	carg0 = (*C.GstByteWriter)(UnsafeByteWriterToGlibNone(writer))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(data)))
-	defer C.free(unsafe.Pointer(carg1))
+	carg1 = (*C.gchar)(transfer.GLibString(data))
+	defer C.g_free(C.gpointer(carg1))
 
 	cret = C.gst_byte_writer_put_string_utf8(carg0, carg1)
 	runtime.KeepAlive(writer)
