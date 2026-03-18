@@ -8043,7 +8043,7 @@ func ParentBufferMetaAPIGetType() gobject.Type {
 func ParseBinFromDescription(binDescription string, ghostUnlinkedPads bool) (Bin, error) {
 	var carg1 *C.gchar      // in, none, string
 	var carg2 C.gboolean    // in
-	var cret  *C.GstElement // return, none, converted
+	var cret  *C.GstElement // return, none, converted, nullable
 	var _cerr *C.GError     // out, full, converted, nullable
 
 	carg1 = (*C.gchar)(transfer.GLibString(binDescription))
@@ -8059,7 +8059,9 @@ func ParseBinFromDescription(binDescription string, ghostUnlinkedPads bool) (Bin
 	var goret  Bin
 	var _goerr error
 
-	goret = UnsafeBinFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeBinFromGlibNone(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}
@@ -8075,7 +8077,7 @@ func ParseBinFromDescriptionFull(binDescription string, ghostUnlinkedPads bool, 
 	var carg2 C.gboolean         // in
 	var carg3 *C.GstParseContext // in, none, converted, nullable
 	var carg4 C.GstParseFlags    // in, none, casted
-	var cret  *C.GstElement      // return, none, converted
+	var cret  *C.GstElement      // return, none, converted, nullable
 	var _cerr *C.GError          // out, full, converted, nullable
 
 	carg1 = (*C.gchar)(transfer.GLibString(binDescription))
@@ -8097,7 +8099,9 @@ func ParseBinFromDescriptionFull(binDescription string, ghostUnlinkedPads bool, 
 	var goret  Element
 	var _goerr error
 
-	goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}

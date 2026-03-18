@@ -101,6 +101,16 @@ var Data = genmain.Data{
 			panic("PadProbeCallback does not have an info parameter")
 		}),
 
+		// gst_parse_bin_from_description can return null:
+		gir.ModifyCallable("Gst-1.parse_bin_from_description", func(c *gir.CallableAttrs) {
+			c.ReturnValue.Nullable = true
+		}),
+
+		// gst_parse_bin_from_description_full can return null:
+		gir.ModifyCallable("Gst-1.parse_bin_from_description_full", func(c *gir.CallableAttrs) {
+			c.ReturnValue.Nullable = true
+		}),
+
 		MarkSDPMessageGettersAsBorrowed(),
 
 		GstLogFunctionDebugBorrows(),
