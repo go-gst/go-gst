@@ -1,116 +1,107 @@
 // This example shows how to use the appsink element.
+//
+// Also see: https://gstreamer.freedesktop.org/documentation/tutorials/basic/short-cutting-the-pipeline.html?gi-language=c
 package main
 
 import (
+	"encoding/binary"
 	"fmt"
 	"math"
 	"os"
 	"os/signal"
 
-	"github.com/go-gst/go-gst/examples"
-	"github.com/go-gst/go-gst/gst"
-	"github.com/go-gst/go-gst/gst/app"
+	"github.com/go-gst/go-gst/pkg/gst"
+	"github.com/go-gst/go-gst/pkg/gstapp"
 )
 
-func createPipeline() (*gst.Pipeline, error) {
-	gst.Init(nil)
+func createPipeline() (gst.Pipeline, error) {
+	gst.Init()
 
-	pipeline, err := gst.NewPipeline("")
-	if err != nil {
-		return nil, err
-	}
+	pipeline := gst.NewPipeline("").(gst.Pipeline)
 
-	src, err := gst.NewElement("audiotestsrc")
-	if err != nil {
-		return nil, err
-	}
+	src := gst.ElementFactoryMake("audiotestsrc", "")
+	sink := gst.ElementFactoryMake("appsink", "").(gstapp.AppSink)
 
-	// Should this actually be a *gst.Element that produces an Appsink interface like the
-	// rust examples?
-	sink, err := app.NewAppSink()
-	if err != nil {
-		return nil, err
-	}
-
-	pipeline.AddMany(src, sink.Element)
-	src.Link(sink.Element)
+	pipeline.AddMany(src, sink)
+	src.Link(sink)
 
 	// Tell the appsink what format we want. It will then be the audiotestsrc's job to
 	// provide the format we request.
 	// This can be set after linking the two objects, because format negotiation between
 	// both elements will happen during pre-rolling of the pipeline.
-	sink.SetCaps(gst.NewCapsFromString(
+	sink.SetCaps(gst.CapsFromString(
 		"audio/x-raw, format=S16LE, layout=interleaved, channels=1",
 	))
 
-	// Getting data out of the appsink is done by setting callbacks on it.
-	// The appsink will then call those handlers, as soon as data is available.
-	sink.SetCallbacks(&app.SinkCallbacks{
-		// Add a "new-sample" callback
-		NewSampleFunc: func(sink *app.Sink) gst.FlowReturn {
+	sink.ConnectNewSample(func(sink gstapp.AppSink) gst.FlowReturn {
+		// Pull the sample that triggered this callback
+		sample := sink.PullSample()
+		if sample == nil {
+			return gst.FlowEOS
+		}
 
-			// Pull the sample that triggered this callback
-			sample := sink.PullSample()
-			if sample == nil {
-				return gst.FlowEOS
-			}
+		// Retrieve the buffer from the sample
+		buffer := sample.GetBuffer()
+		if buffer == nil {
+			return gst.FlowError
+		}
 
-			// Retrieve the buffer from the sample
-			buffer := sample.GetBuffer()
-			if buffer == nil {
-				return gst.FlowError
-			}
+		// At this point, buffer is only a reference to an existing memory region somewhere.
+		// When we want to access its content, we have to map it while requesting the required
+		// mode of access (read, read/write).
+		//
+		// We also know what format to expect because we set it with the caps. So we convert
+		// the map directly to signed 16-bit little-endian integers.
+		mapInfo, ok := buffer.Map(gst.MapRead)
+		if !ok {
+			return gst.FlowError
+		}
+		defer mapInfo.Unmap()
 
-			// At this point, buffer is only a reference to an existing memory region somewhere.
-			// When we want to access its content, we have to map it while requesting the required
-			// mode of access (read, read/write).
-			//
-			// We also know what format to expect because we set it with the caps. So we convert
-			// the map directly to signed 16-bit little-endian integers.
-			samples := buffer.Map(gst.MapRead).AsInt16LESlice()
-			defer buffer.Unmap()
+		// Calculate the root mean square for the buffer
+		// (https://en.wikipedia.org/wiki/Root_mean_square)
 
-			// Calculate the root mean square for the buffer
-			// (https://en.wikipedia.org/wiki/Root_mean_square)
-			var square float64
-			for _, i := range samples {
-				square += float64(i * i)
-			}
-			rms := math.Sqrt(square / float64(len(samples)))
-			fmt.Println("rms:", rms)
+		samples := mapInfo.Int16Data(binary.LittleEndian)
+		var square float64
+		for _, i := range samples {
+			square += float64(i * i)
+		}
+		rms := math.Sqrt(square / float64(len(samples)))
+		fmt.Println("rms:", rms)
 
-			return gst.FlowOK
-		},
+		return gst.FlowOK
 	})
 
 	return pipeline, nil
 }
 
 func handleMessage(msg *gst.Message) error {
-
 	switch msg.Type() {
 	case gst.MessageEOS:
-		return app.ErrEOS
+		return fmt.Errorf("end of stream")
 	case gst.MessageError:
-		return msg.ParseError()
+		debug, gerr := msg.ParseError()
+		if debug != "" {
+			fmt.Println(debug)
+		}
+		return gerr
 	}
-
 	return nil
 }
 
-func mainLoop(pipeline *gst.Pipeline) error {
+func runPipeline(pipeline gst.Pipeline) error {
 
 	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
 
 	// Retrieve the bus from the pipeline
-	bus := pipeline.GetPipelineBus()
+	bus := pipeline.GetBus()
 
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 	go func() {
 		<-c
-		pipeline.SendEvent(gst.NewEOSEvent())
+		pipeline.SendEvent(gst.NewEventEOS())
 	}()
 
 	// Loop over messsages from the pipeline
@@ -128,12 +119,13 @@ func mainLoop(pipeline *gst.Pipeline) error {
 }
 
 func main() {
-	examples.Run(func() error {
-		var pipeline *gst.Pipeline
-		var err error
-		if pipeline, err = createPipeline(); err != nil {
-			return err
-		}
-		return mainLoop(pipeline)
-	})
+	pipeline, err := createPipeline()
+	if err != nil {
+		println(err)
+		return
+	}
+
+	err = runPipeline(pipeline)
+
+	println(err)
 }

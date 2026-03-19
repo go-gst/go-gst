@@ -4,57 +4,27 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 
-	"github.com/go-gst/go-glib/glib"
-	"github.com/go-gst/go-gst/examples"
-	"github.com/go-gst/go-gst/gst"
+	"github.com/go-gst/go-gst/pkg/gst"
 )
 
-func runPipeline(loop *glib.MainLoop) error {
+func runPipeline() error {
 
-	gst.Init(nil)
+	gst.Init()
 	fmt.Println("Running device provider")
-	// if len(os.Args) < 2 {
-	// 	fmt.Printf("USAGE: %s <uri>\n", os.Args[0])
-	// 	os.Exit(1)
-	// }
 
-	// uri := os.Args[1]
 	fmt.Println("Creating device monitor")
 
-	// provider := gst.FindDeviceProviderByName("foo")
-	// fmt.Println("Created device provider", provider)
-
-	provider := gst.FindDeviceProviderByName("avfdeviceprovider")
-	fmt.Println("Created device provider", provider)
+	provider := gst.DeviceProviderFactoryGetByName("avfdeviceprovider")
+	fmt.Println("Created device provider")
 
 	if provider == nil {
 		fmt.Println("No provider found")
 		os.Exit(2)
 	}
-
-	fmt.Println("Getting device provider bus")
-	bus := provider.GetBus()
-	fmt.Println("Got device provider bus", bus)
-
-	bus.AddWatch(func(msg *gst.Message) bool {
-		switch msg.Type() {
-		case gst.MessageDeviceAdded:
-			message := msg.ParseDeviceAdded().GetDisplayName()
-			fmt.Println("Added: ", message)
-		case gst.MessageDeviceRemoved:
-			message := msg.ParseDeviceRemoved().GetDisplayName()
-			fmt.Println("Removed: ", message)
-		default:
-			// All messages implement a Stringer. However, this is
-			// typically an expensive thing to do and should be avoided.
-			fmt.Println("Type: ", msg.Type())
-			fmt.Println("Message: ", msg)
-		}
-		return true
-	})
 
 	fmt.Println("Starting device monitor")
 	provider.Start()
@@ -66,13 +36,29 @@ func runPipeline(loop *glib.MainLoop) error {
 		fmt.Printf("Device: %d %s\n", i, v.GetDisplayName())
 	}
 
-	loop.Run()
+	fmt.Println("Getting device provider bus")
+	bus := provider.GetBus()
+	fmt.Println("Got device provider bus")
+
+	for msg := range bus.Messages(context.Background()) {
+		switch msg.Type() {
+		case gst.MessageDeviceAdded:
+			message := msg.ParseDeviceAdded().GetDisplayName()
+			fmt.Println("Added: ", message)
+		case gst.MessageDeviceRemoved:
+			message := msg.ParseDeviceRemoved().GetDisplayName()
+			fmt.Println("Removed: ", message)
+		default:
+			// All messages implement a Stringer. However, this is
+			// typically an expensive thing to do and should be avoided.
+			fmt.Println("Type: ", msg.Type())
+			fmt.Println("Message: ", msg.String())
+		}
+	}
 
 	return nil
 }
 
 func main() {
-	examples.RunLoop(func(loop *glib.MainLoop) error {
-		return runPipeline(loop)
-	})
+	runPipeline()
 }

@@ -1,58 +1,62 @@
 // This example shows how to use the appsrc element.
+//
+// Also see: https://gstreamer.freedesktop.org/documentation/tutorials/basic/short-cutting-the-pipeline.html?gi-language=c
 package main
 
 import (
+	"context"
 	"fmt"
 	"image"
 	"image/color"
 	"time"
 
-	"github.com/go-gst/go-glib/glib"
-	"github.com/go-gst/go-gst/examples"
-	"github.com/go-gst/go-gst/gst"
-	"github.com/go-gst/go-gst/gst/app"
-	"github.com/go-gst/go-gst/gst/video"
+	"github.com/go-gst/go-gst/pkg/gst"
+	"github.com/go-gst/go-gst/pkg/gstapp"
+	"github.com/go-gst/go-gst/pkg/gstvideo"
 )
 
 const width = 320
 const height = 240
 
-func createPipeline() (*gst.Pipeline, error) {
-	gst.Init(nil)
+func createPipeline() (gst.Pipeline, error) {
+	println("Creating pipeline")
+	gst.Init()
 
 	// Create a pipeline
-	pipeline, err := gst.NewPipeline("")
-	if err != nil {
-		return nil, err
-	}
+	pipeline := gst.NewPipeline("").(gst.Pipeline)
 
-	// Create the elements
-	elems, err := gst.NewElementMany("appsrc", "videoconvert", "autovideosink")
-	if err != nil {
-		return nil, err
-	}
+	src := gst.ElementFactoryMake("appsrc", "").(gstapp.AppSrc)
+	conv := gst.ElementFactoryMake("videoconvert", "")
+	sink := gst.ElementFactoryMake("autovideosink", "")
 
 	// Add the elements to the pipeline and link them
-	pipeline.AddMany(elems...)
-	gst.ElementLinkMany(elems...)
-
-	// Get the app sourrce from the first element returned
-	src := app.SrcFromElement(elems[0])
+	pipeline.AddMany(src, conv, sink)
+	gst.LinkMany(src, conv, sink)
 
 	// Specify the format we want to provide as application into the pipeline
 	// by creating a video info with the given format and creating caps from it for the appsrc element.
-	videoInfo := video.NewInfo().
-		WithFormat(video.FormatRGBA, width, height).
-		WithFPS(gst.Fraction(2, 1))
+	videoInfo := gstvideo.NewVideoInfo()
 
-	src.SetCaps(videoInfo.ToCaps())
-	src.SetProperty("format", gst.FormatTime)
+	ok := videoInfo.SetFormat(gstvideo.VideoFormatRgba, width, height)
+
+	if !ok {
+		return nil, fmt.Errorf("failed to set video format")
+	}
+
+	videoInfo.SetFramerate(2, 1)
+
+	caps := videoInfo.ToCaps()
+
+	fmt.Println("Caps:", caps.String())
+
+	src.SetObjectProperty("caps", caps)
+	src.SetObjectProperty("format", gst.FormatTime)
 
 	// Initialize a frame counter
 	var i int
 
 	// Get all 256 colors in the RGB8P palette.
-	palette := video.FormatRGB8P.Palette()
+	palette := gstvideo.VideoFormatGetPalette(gstvideo.VideoFormatRgb8p)
 
 	// Since our appsrc element operates in pull mode (it asks us to provide data),
 	// we add a handler for the need-data callback and provide new data from there.
@@ -60,42 +64,46 @@ func createPipeline() (*gst.Pipeline, error) {
 	// buffers of all elements of the pipeline are still empty, this will be called
 	// a couple of times until all of them are filled. After this initial period,
 	// this handler will be called (on average) twice per second.
-	src.SetCallbacks(&app.SourceCallbacks{
-		NeedDataFunc: func(self *app.Source, _ uint) {
+	src.ConnectNeedData(func(self gstapp.AppSrc, _ uint) {
 
-			// If we've reached the end of the palette, end the stream.
-			if i == len(palette) {
-				src.EndStream()
-				return
-			}
+		// If we've reached the end of the palette, end the stream.
+		if i == len(palette) {
+			src.EndOfStream()
+			return
+		}
 
-			fmt.Println("Producing frame:", i)
+		fmt.Println("Producing frame:", i)
 
-			// Create a buffer that can hold exactly one video RGBA frame.
-			buffer := gst.NewBufferWithSize(videoInfo.Size())
+		// Create a buffer that can hold exactly one video RGBA frame.
+		buffer := gst.NewBufferAllocate(nil, uint(videoInfo.GetSize()), nil)
 
-			// For each frame we produce, we set the timestamp when it should be displayed
-			// The autovideosink will use this information to display the frame at the right time.
-			buffer.SetPresentationTimestamp(gst.ClockTime(time.Duration(i) * 500 * time.Millisecond))
+		// For each frame we produce, we set the timestamp when it should be displayed
+		// The autovideosink will use this information to display the frame at the right time.
+		buffer.SetPTS(gst.ClockTime(time.Duration(i) * 500 * time.Millisecond))
 
-			// Produce an image frame for this iteration.
-			pixels := produceImageFrame(palette[i])
+		// Produce an image frame for this iteration.
+		pixels := produceImageFrame(palette[i])
 
-			// At this point, buffer is only a reference to an existing memory region somewhere.
-			// When we want to access its content, we have to map it while requesting the required
-			// mode of access (read, read/write).
-			// See: https://gstreamer.freedesktop.org/documentation/plugin-development/advanced/allocation.html
-			//
-			// There are convenience wrappers for building buffers directly from byte sequences as
-			// well.
-			buffer.Map(gst.MapWrite).WriteData(pixels)
-			buffer.Unmap()
+		// At this point, buffer is only a reference to an existing memory region somewhere.
+		// When we want to access its content, we have to map it while requesting the required
+		// mode of access (read, read/write).
+		// See: https://gstreamer.freedesktop.org/documentation/plugin-development/advanced/allocation.html
+		mapped, ok := buffer.Map(gst.MapWrite)
+		if !ok {
+			panic("Failed to map buffer")
+		}
+		_, err := mapped.Write(pixels)
+		if err != nil {
+			println("Failed to write to buffer:", err)
+			panic("Failed to write to buffer")
+		}
 
-			// Push the buffer onto the pipeline.
-			self.PushBuffer(buffer)
+		mapped.Unmap()
 
-			i++
-		},
+		// Push the buffer onto the pipeline.
+		self.PushBuffer(buffer)
+
+		i++
 	})
 
 	return pipeline, nil
@@ -115,54 +123,42 @@ func produceImageFrame(c color.Color) []uint8 {
 	return img.Pix
 }
 
-func handleMessage(msg *gst.Message) error {
-	switch msg.Type() {
-	case gst.MessageEOS:
-		return app.ErrEOS
-	case gst.MessageError:
-		gerr := msg.ParseError()
-		if debug := gerr.DebugString(); debug != "" {
-			fmt.Println(debug)
-		}
-		return gerr
-	}
-	return nil
-}
-
-func mainLoop(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
+func mainLoop(pipeline gst.Pipeline) error {
 	// Start the pipeline
-
-	// Due to recent changes in the bindings - the finalizers might fire on the pipeline
-	// prematurely when it's passed between scopes. So when you do this, it is safer to
-	// take a reference that you dispose of when you are done. There is an alternative
-	// to this method in other examples.
-	pipeline.Ref()
-	defer pipeline.Unref()
 
 	pipeline.SetState(gst.StatePlaying)
 
-	// Retrieve the bus from the pipeline and add a watch function
-	pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {
-		if err := handleMessage(msg); err != nil {
-			fmt.Println(err)
-			loop.Quit()
-			return false
+	for msg := range pipeline.GetBus().Messages(context.Background()) {
+		switch msg.Type() {
+		case gst.MessageEOS:
+			return nil
+		case gst.MessageError:
+			debug, gerr := msg.ParseError()
+			if debug != "" {
+				fmt.Println(gerr.Error(), debug)
+			}
+			return gerr
+		default:
+			fmt.Println(msg)
 		}
-		return true
-	})
 
-	loop.Run()
+		pipeline.DebugBinToDotFileWithTs(gst.DebugGraphShowVerbose, "pipeline")
+	}
 
-	return nil
+	return fmt.Errorf("unexpected end of messages without EOS")
 }
 
 func main() {
-	examples.RunLoop(func(loop *glib.MainLoop) error {
-		var pipeline *gst.Pipeline
-		var err error
-		if pipeline, err = createPipeline(); err != nil {
-			return err
-		}
-		return mainLoop(loop, pipeline)
-	})
+	pipeline, err := createPipeline()
+
+	if err != nil {
+		fmt.Println("Error creating pipeline:", err)
+		return
+	}
+
+	err = mainLoop(pipeline)
+
+	if err != nil {
+		fmt.Println("Error running pipeline:", err)
+	}
 }

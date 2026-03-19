@@ -1,10 +1,7 @@
 module github.com/go-gst/go-gst
 
-go 1.23.2
+go 1.25.0
 
-require (
-	github.com/go-gst/go-glib v1.4.1-0.20241209142714-f53cebf18559
-	github.com/go-gst/go-pointer v0.0.0-20241127163939-ba766f075b4c
-)
+require github.com/go-gst/go-glib v1.4.1-0.20260319133722-f9cac05a5d55
 
-require golang.org/x/exp v0.0.0-20240909161429-701f63a606c0 // indirect
+retract [v1.0.0, v1.4.0] // Handwritten bindings, not as stable as planned and not licensed open enough

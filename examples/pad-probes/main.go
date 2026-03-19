@@ -14,44 +14,35 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/go-gst/go-glib/glib"
-	"github.com/go-gst/go-gst/examples"
-	"github.com/go-gst/go-gst/gst"
+	"github.com/go-gst/go-gst/pkg/gst"
 )
 
-func padProbes(mainLoop *glib.MainLoop) error {
-	gst.Init(nil)
+func main() {
+	gst.Init()
 
 	// Parse the pipeline we want to probe from a static in-line string.
 	// Here we give our audiotestsrc a name, so we can retrieve that element
 	// from the resulting pipeline.
-	pipeline, err := gst.NewPipelineFromString(
+	ret, err := gst.ParseLaunch(
 		"audiotestsrc name=src ! audio/x-raw,format=S16LE,channels=1 ! fakesink",
 	)
 
 	if err != nil {
-		return err
+		panic("could not create pipeline")
 	}
+
+	pipeline := ret.(gst.Pipeline)
 
 	// Get the audiotestsrc element from the pipeline that GStreamer
 	// created for us while parsing the launch syntax above.
-	//
-	// TODO: There are some discrepancies still between methods that check the nil
-	// value and return an error, versus those that will instead just return nil.
-	// Need to settle on one way or the other.
-	src, err := pipeline.GetElementByName("src")
-	if err != nil {
-		return err
-	}
+	src := pipeline.GetByName("src")
+
 	// Get the audiotestsrc's src-pad.
 	srcPad := src.GetStaticPad("src")
-	if srcPad == nil {
-		return errors.New("src pad on src element was nil")
-	}
 
 	// Add a probe handler on the audiotestsrc's src-pad.
 	// This handler gets called for every buffer that passes the pad we probe.
-	srcPad.AddProbe(gst.PadProbeTypeBuffer, func(self *gst.Pad, info *gst.PadProbeInfo) gst.PadProbeReturn {
+	srcPad.AddProbe(gst.PadProbeTypeBuffer, func(self gst.Pad, info *gst.PadProbeInfo) gst.PadProbeReturn {
 		// Interpret the data sent over the pad as a buffer. We know to expect this because of
 		// the probe mask defined above.
 		buffer := info.GetBuffer()
@@ -63,13 +54,18 @@ func padProbes(mainLoop *glib.MainLoop) error {
 		// on the machine's main memory itself, but rather in the GPU's memory.
 		// So mapping the buffer makes the underlying memory region accessible to us.
 		// See: https://gstreamer.freedesktop.org/documentation/plugin-development/advanced/allocation.html
-		mapInfo := buffer.Map(gst.MapRead)
-		defer buffer.Unmap()
+		mapInfo, ok := buffer.Map(gst.MapRead)
+
+		if !ok {
+			panic("could not map buffer")
+		}
+
+		defer mapInfo.Unmap()
 
 		// We know what format the data in the memory region has, since we requested
 		// it by setting the fakesink's caps. So what we do here is interpret the
 		// memory region we mapped as an array of signed 16 bit integers.
-		samples := mapInfo.AsInt16LESlice()
+		samples := mapInfo.Data()
 		if len(samples) == 0 {
 			return gst.PadProbeOK
 		}
@@ -90,29 +86,25 @@ func padProbes(mainLoop *glib.MainLoop) error {
 
 	// Block on messages coming in from the bus instead of using the main loop
 	for {
-		msg := pipeline.GetPipelineBus().TimedPop(gst.ClockTimeNone)
+		msg := pipeline.GetBus().TimedPop(gst.ClockTimeNone)
 		if msg == nil {
 			break
 		}
 		if err := handleMessage(msg); err != nil {
-			return err
+
+			fmt.Println(err)
+			return
 		}
 	}
-
-	return nil
 }
 
 func handleMessage(msg *gst.Message) error {
-	defer msg.Unref()
 	switch msg.Type() {
 	case gst.MessageEOS:
 		return errors.New("end-of-stream")
 	case gst.MessageError:
-		return msg.ParseError()
+		_, err := msg.ParseError()
+		return err
 	}
 	return nil
-}
-
-func main() {
-	examples.RunLoop(padProbes)
 }
