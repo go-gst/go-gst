@@ -353,7 +353,7 @@ func (e GLBaseMemoryError) GoValueType() gobject.Type {
 }
 
 func (e GLBaseMemoryError) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e GLBaseMemoryError) String() string {
@@ -411,7 +411,7 @@ func (e GLConfigCaveat) GoValueType() gobject.Type {
 }
 
 func (e GLConfigCaveat) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e GLConfigCaveat) String() string {
@@ -487,7 +487,7 @@ func (e GLContextError) GoValueType() gobject.Type {
 }
 
 func (e GLContextError) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e GLContextError) String() string {
@@ -612,7 +612,7 @@ func (e GLFormat) GoValueType() gobject.Type {
 }
 
 func (e GLFormat) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e GLFormat) String() string {
@@ -783,7 +783,7 @@ func (e GLQueryType) GoValueType() gobject.Type {
 }
 
 func (e GLQueryType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e GLQueryType) String() string {
@@ -826,7 +826,7 @@ func (e GLSLError) GoValueType() gobject.Type {
 }
 
 func (e GLSLError) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e GLSLError) String() string {
@@ -940,7 +940,7 @@ func (e GLSLVersion) GoValueType() gobject.Type {
 }
 
 func (e GLSLVersion) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e GLSLVersion) String() string {
@@ -1091,7 +1091,7 @@ func (e GLStereoDownmix) GoValueType() gobject.Type {
 }
 
 func (e GLStereoDownmix) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e GLStereoDownmix) String() string {
@@ -1138,7 +1138,7 @@ func (e GLTextureTarget) GoValueType() gobject.Type {
 }
 
 func (e GLTextureTarget) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e GLTextureTarget) String() string {
@@ -1290,7 +1290,7 @@ func (e GLUploadReturn) GoValueType() gobject.Type {
 }
 
 func (e GLUploadReturn) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e GLUploadReturn) String() string {
@@ -1335,7 +1335,7 @@ func (e GLWindowError) GoValueType() gobject.Type {
 }
 
 func (e GLWindowError) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e GLWindowError) String() string {
@@ -1409,7 +1409,7 @@ func (f GLAPI) GoValueType() gobject.Type {
 }
 
 func (f GLAPI) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f GLAPI) String() string {
@@ -1510,7 +1510,7 @@ func (f GLBaseMemoryTransfer) GoValueType() gobject.Type {
 }
 
 func (f GLBaseMemoryTransfer) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f GLBaseMemoryTransfer) String() string {
@@ -1567,7 +1567,7 @@ func (f GLConfigSurfaceType) GoValueType() gobject.Type {
 }
 
 func (f GLConfigSurfaceType) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f GLConfigSurfaceType) String() string {
@@ -1695,7 +1695,7 @@ func (f GLDisplayType) GoValueType() gobject.Type {
 }
 
 func (f GLDisplayType) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f GLDisplayType) String() string {
@@ -1787,7 +1787,7 @@ func (f GLDrmFormatFlags) GoValueType() gobject.Type {
 }
 
 func (f GLDrmFormatFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f GLDrmFormatFlags) String() string {
@@ -1859,7 +1859,7 @@ func (f GLPlatform) GoValueType() gobject.Type {
 }
 
 func (f GLPlatform) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f GLPlatform) String() string {
@@ -1975,7 +1975,7 @@ func (f GLSLProfile) GoValueType() gobject.Type {
 }
 
 func (f GLSLProfile) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f GLSLProfile) String() string {
@@ -8660,7 +8660,7 @@ func NewGLShader(_context GLContext) GLShader {
 // see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_new_default
 func NewGLShaderDefault(_context GLContext) (GLShader, error) {
 	var carg1 *C.GstGLContext // in, none, converted
-	var cret  *C.GstGLShader  // return, full, converted
+	var cret  *C.GstGLShader  // return, full, converted, nullable
 	var _cerr *C.GError       // out, full, converted, nullable
 
 	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
@@ -8671,7 +8671,9 @@ func NewGLShaderDefault(_context GLContext) (GLShader, error) {
 	var goret  GLShader
 	var _goerr error
 
-	goret = UnsafeGLShaderFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeGLShaderFromGlibFull(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}

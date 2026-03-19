@@ -93,7 +93,7 @@ func (e TagDemuxResult) GoValueType() gobject.Type {
 }
 
 func (e TagDemuxResult) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e TagDemuxResult) String() string {
@@ -204,7 +204,7 @@ func (e TagImageType) GoValueType() gobject.Type {
 }
 
 func (e TagImageType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e TagImageType) String() string {
@@ -312,7 +312,7 @@ func (f TagLicenseFlags) GoValueType() gobject.Type {
 }
 
 func (f TagLicenseFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f TagLicenseFlags) String() string {

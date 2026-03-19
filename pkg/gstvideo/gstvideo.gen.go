@@ -500,7 +500,7 @@ func (e AncillaryMetaField) GoValueType() gobject.Type {
 }
 
 func (e AncillaryMetaField) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AncillaryMetaField) String() string {
@@ -539,7 +539,7 @@ func (e ColorBalanceType) GoValueType() gobject.Type {
 }
 
 func (e ColorBalanceType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e ColorBalanceType) String() string {
@@ -629,7 +629,7 @@ func (e NavigationCommand) GoValueType() gobject.Type {
 }
 
 func (e NavigationCommand) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e NavigationCommand) String() string {
@@ -728,7 +728,7 @@ func (e NavigationEventType) GoValueType() gobject.Type {
 }
 
 func (e NavigationEventType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e NavigationEventType) String() string {
@@ -790,7 +790,7 @@ func (e NavigationMessageType) GoValueType() gobject.Type {
 }
 
 func (e NavigationMessageType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e NavigationMessageType) String() string {
@@ -835,7 +835,7 @@ func (e NavigationQueryType) GoValueType() gobject.Type {
 }
 
 func (e NavigationQueryType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e NavigationQueryType) String() string {
@@ -878,7 +878,7 @@ func (e VideoAFDSpec) GoValueType() gobject.Type {
 }
 
 func (e VideoAFDSpec) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoAFDSpec) String() string {
@@ -953,7 +953,7 @@ func (e VideoAFDValue) GoValueType() gobject.Type {
 }
 
 func (e VideoAFDValue) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoAFDValue) String() string {
@@ -1004,7 +1004,7 @@ func (e VideoAlphaMode) GoValueType() gobject.Type {
 }
 
 func (e VideoAlphaMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoAlphaMode) String() string {
@@ -1083,7 +1083,7 @@ func (e VideoAncillaryDID) GoValueType() gobject.Type {
 }
 
 func (e VideoAncillaryDID) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoAncillaryDID) String() string {
@@ -1135,7 +1135,7 @@ func (e VideoAncillaryDID16) GoValueType() gobject.Type {
 }
 
 func (e VideoAncillaryDID16) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoAncillaryDID16) String() string {
@@ -1186,7 +1186,7 @@ func (e VideoCaptionType) GoValueType() gobject.Type {
 }
 
 func (e VideoCaptionType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoCaptionType) String() string {
@@ -1265,7 +1265,7 @@ func (e VideoChromaMethod) GoValueType() gobject.Type {
 }
 
 func (e VideoChromaMethod) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoChromaMethod) String() string {
@@ -1311,7 +1311,7 @@ func (e VideoChromaMode) GoValueType() gobject.Type {
 }
 
 func (e VideoChromaMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoChromaMode) String() string {
@@ -1371,7 +1371,7 @@ func (e VideoColorMatrix) GoValueType() gobject.Type {
 }
 
 func (e VideoColorMatrix) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoColorMatrix) String() string {
@@ -1523,7 +1523,7 @@ func (e VideoColorPrimaries) GoValueType() gobject.Type {
 }
 
 func (e VideoColorPrimaries) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoColorPrimaries) String() string {
@@ -1657,7 +1657,7 @@ func (e VideoColorRange) GoValueType() gobject.Type {
 }
 
 func (e VideoColorRange) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoColorRange) String() string {
@@ -1708,7 +1708,7 @@ func (e VideoDitherMethod) GoValueType() gobject.Type {
 }
 
 func (e VideoDitherMethod) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoDitherMethod) String() string {
@@ -1753,7 +1753,7 @@ func (e VideoFieldOrder) GoValueType() gobject.Type {
 }
 
 func (e VideoFieldOrder) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoFieldOrder) String() string {
@@ -2379,7 +2379,7 @@ func (e VideoFormat) GoValueType() gobject.Type {
 }
 
 func (e VideoFormat) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoFormat) String() string {
@@ -2695,7 +2695,7 @@ func (e VideoGLTextureOrientation) GoValueType() gobject.Type {
 }
 
 func (e VideoGLTextureOrientation) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoGLTextureOrientation) String() string {
@@ -2755,7 +2755,7 @@ func (e VideoGLTextureType) GoValueType() gobject.Type {
 }
 
 func (e VideoGLTextureType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoGLTextureType) String() string {
@@ -2798,7 +2798,7 @@ func (e VideoGammaMode) GoValueType() gobject.Type {
 }
 
 func (e VideoGammaMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoGammaMode) String() string {
@@ -2848,7 +2848,7 @@ func (e VideoInterlaceMode) GoValueType() gobject.Type {
 }
 
 func (e VideoInterlaceMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoInterlaceMode) String() string {
@@ -2936,7 +2936,7 @@ func (e VideoMatrixMode) GoValueType() gobject.Type {
 }
 
 func (e VideoMatrixMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoMatrixMode) String() string {
@@ -3008,7 +3008,7 @@ func (e VideoMultiviewFramePacking) GoValueType() gobject.Type {
 }
 
 func (e VideoMultiviewFramePacking) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoMultiviewFramePacking) String() string {
@@ -3098,7 +3098,7 @@ func (e VideoMultiviewMode) GoValueType() gobject.Type {
 }
 
 func (e VideoMultiviewMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoMultiviewMode) String() string {
@@ -3220,7 +3220,7 @@ func (e VideoOrientationMethod) GoValueType() gobject.Type {
 }
 
 func (e VideoOrientationMethod) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoOrientationMethod) String() string {
@@ -3270,7 +3270,7 @@ func (e VideoPrimariesMode) GoValueType() gobject.Type {
 }
 
 func (e VideoPrimariesMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoPrimariesMode) String() string {
@@ -3321,7 +3321,7 @@ func (e VideoResamplerMethod) GoValueType() gobject.Type {
 }
 
 func (e VideoResamplerMethod) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoResamplerMethod) String() string {
@@ -3366,7 +3366,7 @@ func (e VideoTileMode) GoValueType() gobject.Type {
 }
 
 func (e VideoTileMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoTileMode) String() string {
@@ -3401,7 +3401,7 @@ func (e VideoTileType) GoValueType() gobject.Type {
 }
 
 func (e VideoTileType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoTileType) String() string {
@@ -3498,7 +3498,7 @@ func (e VideoTransferFunction) GoValueType() gobject.Type {
 }
 
 func (e VideoTransferFunction) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoTransferFunction) String() string {
@@ -3667,7 +3667,7 @@ func (e VideoVBIParserResult) GoValueType() gobject.Type {
 }
 
 func (e VideoVBIParserResult) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e VideoVBIParserResult) String() string {
@@ -3774,7 +3774,7 @@ func (f NavigationModifierType) GoValueType() gobject.Type {
 }
 
 func (f NavigationModifierType) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f NavigationModifierType) String() string {
@@ -3903,7 +3903,7 @@ func (f VideoBufferFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoBufferFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoBufferFlags) String() string {
@@ -3976,7 +3976,7 @@ func (f VideoChromaFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoChromaFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoChromaFlags) String() string {
@@ -4053,7 +4053,7 @@ func (f VideoChromaSite) GoValueType() gobject.Type {
 }
 
 func (f VideoChromaSite) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoChromaSite) String() string {
@@ -4177,7 +4177,7 @@ func (f VideoCodecFrameFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoCodecFrameFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoCodecFrameFlags) String() string {
@@ -4235,7 +4235,7 @@ func (f VideoDecoderRequestSyncPointFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoDecoderRequestSyncPointFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoDecoderRequestSyncPointFlags) String() string {
@@ -4288,7 +4288,7 @@ func (f VideoDitherFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoDitherFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoDitherFlags) String() string {
@@ -4344,7 +4344,7 @@ func (f VideoFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoFlags) String() string {
@@ -4428,7 +4428,7 @@ func (f VideoFormatFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoFormatFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoFormatFlags) String() string {
@@ -4529,7 +4529,7 @@ func (f VideoFrameFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoFrameFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoFrameFlags) String() string {
@@ -4599,7 +4599,7 @@ func (f VideoFrameMapFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoFrameMapFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoFrameMapFlags) String() string {
@@ -4672,7 +4672,7 @@ func (f VideoMultiviewFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoMultiviewFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoMultiviewFlags) String() string {
@@ -4743,7 +4743,7 @@ func (f VideoOverlayFormatFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoOverlayFormatFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoOverlayFormatFlags) String() string {
@@ -4799,7 +4799,7 @@ func (f VideoPackFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoPackFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoPackFlags) String() string {
@@ -4851,7 +4851,7 @@ func (f VideoResamplerFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoResamplerFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoResamplerFlags) String() string {
@@ -4900,7 +4900,7 @@ func (f VideoScalerFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoScalerFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoScalerFlags) String() string {
@@ -4953,7 +4953,7 @@ func (f VideoTimeCodeFlags) GoValueType() gobject.Type {
 }
 
 func (f VideoTimeCodeFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f VideoTimeCodeFlags) String() string {

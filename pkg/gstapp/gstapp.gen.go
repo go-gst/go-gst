@@ -126,7 +126,7 @@ func (e AppLeakyType) GoValueType() gobject.Type {
 }
 
 func (e AppLeakyType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AppLeakyType) String() string {
@@ -169,7 +169,7 @@ func (e AppStreamType) GoValueType() gobject.Type {
 }
 
 func (e AppStreamType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AppStreamType) String() string {

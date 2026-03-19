@@ -470,7 +470,7 @@ func (e AudioBaseSinkDiscontReason) GoValueType() gobject.Type {
 }
 
 func (e AudioBaseSinkDiscontReason) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioBaseSinkDiscontReason) String() string {
@@ -520,7 +520,7 @@ func (e AudioBaseSinkSlaveMethod) GoValueType() gobject.Type {
 }
 
 func (e AudioBaseSinkSlaveMethod) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioBaseSinkSlaveMethod) String() string {
@@ -568,7 +568,7 @@ func (e AudioBaseSrcSlaveMethod) GoValueType() gobject.Type {
 }
 
 func (e AudioBaseSrcSlaveMethod) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioBaseSrcSlaveMethod) String() string {
@@ -608,7 +608,7 @@ func (e AudioCdSrcMode) GoValueType() gobject.Type {
 }
 
 func (e AudioCdSrcMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioCdSrcMode) String() string {
@@ -770,7 +770,7 @@ func (e AudioChannelPosition) GoValueType() gobject.Type {
 }
 
 func (e AudioChannelPosition) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioChannelPosition) String() string {
@@ -847,7 +847,7 @@ func (e AudioDitherMethod) GoValueType() gobject.Type {
 }
 
 func (e AudioDitherMethod) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioDitherMethod) String() string {
@@ -1063,7 +1063,7 @@ func (e AudioFormat) GoValueType() gobject.Type {
 }
 
 func (e AudioFormat) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioFormat) String() string {
@@ -1219,7 +1219,7 @@ func (e AudioLayout) GoValueType() gobject.Type {
 }
 
 func (e AudioLayout) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioLayout) String() string {
@@ -1269,7 +1269,7 @@ func (e AudioNoiseShapingMethod) GoValueType() gobject.Type {
 }
 
 func (e AudioNoiseShapingMethod) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioNoiseShapingMethod) String() string {
@@ -1314,7 +1314,7 @@ func (e AudioResamplerFilterInterpolation) GoValueType() gobject.Type {
 }
 
 func (e AudioResamplerFilterInterpolation) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioResamplerFilterInterpolation) String() string {
@@ -1357,7 +1357,7 @@ func (e AudioResamplerFilterMode) GoValueType() gobject.Type {
 }
 
 func (e AudioResamplerFilterMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioResamplerFilterMode) String() string {
@@ -1408,7 +1408,7 @@ func (e AudioResamplerMethod) GoValueType() gobject.Type {
 }
 
 func (e AudioResamplerMethod) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioResamplerMethod) String() string {
@@ -1505,7 +1505,7 @@ func (e AudioRingBufferFormatType) GoValueType() gobject.Type {
 }
 
 func (e AudioRingBufferFormatType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioRingBufferFormatType) String() string {
@@ -1565,7 +1565,7 @@ func (e AudioRingBufferState) GoValueType() gobject.Type {
 }
 
 func (e AudioRingBufferState) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioRingBufferState) String() string {
@@ -1633,7 +1633,7 @@ func (e DsdFormat) GoValueType() gobject.Type {
 }
 
 func (e DsdFormat) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e DsdFormat) String() string {
@@ -1780,7 +1780,7 @@ func (f AudioChannelMixerFlags) GoValueType() gobject.Type {
 }
 
 func (f AudioChannelMixerFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f AudioChannelMixerFlags) String() string {
@@ -1842,7 +1842,7 @@ func (f AudioConverterFlags) GoValueType() gobject.Type {
 }
 
 func (f AudioConverterFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f AudioConverterFlags) String() string {
@@ -1894,7 +1894,7 @@ func (f AudioFlags) GoValueType() gobject.Type {
 }
 
 func (f AudioFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f AudioFlags) String() string {
@@ -1955,7 +1955,7 @@ func (f AudioFormatFlags) GoValueType() gobject.Type {
 }
 
 func (f AudioFormatFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f AudioFormatFlags) String() string {
@@ -2013,7 +2013,7 @@ func (f AudioPackFlags) GoValueType() gobject.Type {
 }
 
 func (f AudioPackFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f AudioPackFlags) String() string {
@@ -2062,7 +2062,7 @@ func (f AudioQuantizeFlags) GoValueType() gobject.Type {
 }
 
 func (f AudioQuantizeFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f AudioQuantizeFlags) String() string {
@@ -2119,7 +2119,7 @@ func (f AudioResamplerFlags) GoValueType() gobject.Type {
 }
 
 func (f AudioResamplerFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f AudioResamplerFlags) String() string {

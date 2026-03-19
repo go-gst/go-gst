@@ -82,7 +82,7 @@ func (e InterpolationMode) GoValueType() gobject.Type {
 }
 
 func (e InterpolationMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e InterpolationMode) String() string {
@@ -134,7 +134,7 @@ func (e LFOWaveform) GoValueType() gobject.Type {
 }
 
 func (e LFOWaveform) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e LFOWaveform) String() string {

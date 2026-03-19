@@ -274,7 +274,7 @@ func (e RTCPFBType) GoValueType() gobject.Type {
 }
 
 func (e RTCPFBType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTCPFBType) String() string {
@@ -379,7 +379,7 @@ func (e RTCPSDESType) GoValueType() gobject.Type {
 }
 
 func (e RTCPSDESType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTCPSDESType) String() string {
@@ -460,7 +460,7 @@ func (e RTCPType) GoValueType() gobject.Type {
 }
 
 func (e RTCPType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTCPType) String() string {
@@ -529,7 +529,7 @@ func (e RTCPXRType) GoValueType() gobject.Type {
 }
 
 func (e RTCPXRType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTCPXRType) String() string {
@@ -669,7 +669,7 @@ func (e RTPPayload) GoValueType() gobject.Type {
 }
 
 func (e RTPPayload) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTPPayload) String() string {
@@ -743,7 +743,7 @@ func (e RTPProfile) GoValueType() gobject.Type {
 }
 
 func (e RTPProfile) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTPProfile) String() string {
@@ -792,7 +792,7 @@ func (f RTPBufferFlags) GoValueType() gobject.Type {
 }
 
 func (f RTPBufferFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f RTPBufferFlags) String() string {
@@ -844,7 +844,7 @@ func (f RTPBufferMapFlags) GoValueType() gobject.Type {
 }
 
 func (f RTPBufferMapFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f RTPBufferMapFlags) String() string {
@@ -905,7 +905,7 @@ func (f RTPHeaderExtensionDirection) GoValueType() gobject.Type {
 }
 
 func (f RTPHeaderExtensionDirection) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f RTPHeaderExtensionDirection) String() string {
@@ -963,7 +963,7 @@ func (f RTPHeaderExtensionFlags) GoValueType() gobject.Type {
 }
 
 func (f RTPHeaderExtensionFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f RTPHeaderExtensionFlags) String() string {

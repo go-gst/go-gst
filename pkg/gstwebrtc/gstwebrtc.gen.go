@@ -211,7 +211,7 @@ func (e WebRTCBundlePolicy) GoValueType() gobject.Type {
 }
 
 func (e WebRTCBundlePolicy) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCBundlePolicy) String() string {
@@ -259,7 +259,7 @@ func (e WebRTCDTLSSetup) GoValueType() gobject.Type {
 }
 
 func (e WebRTCDTLSSetup) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCDTLSSetup) String() string {
@@ -311,7 +311,7 @@ func (e WebRTCDTLSTransportState) GoValueType() gobject.Type {
 }
 
 func (e WebRTCDTLSTransportState) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCDTLSTransportState) String() string {
@@ -360,7 +360,7 @@ func (e WebRTCDataChannelState) GoValueType() gobject.Type {
 }
 
 func (e WebRTCDataChannelState) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCDataChannelState) String() string {
@@ -436,7 +436,7 @@ func (e WebRTCError) GoValueType() gobject.Type {
 }
 
 func (e WebRTCError) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCError) String() string {
@@ -498,7 +498,7 @@ func (e WebRTCFECType) GoValueType() gobject.Type {
 }
 
 func (e WebRTCFECType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCFECType) String() string {
@@ -536,7 +536,7 @@ func (e WebRTCICEComponent) GoValueType() gobject.Type {
 }
 
 func (e WebRTCICEComponent) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCICEComponent) String() string {
@@ -594,7 +594,7 @@ func (e WebRTCICEConnectionState) GoValueType() gobject.Type {
 }
 
 func (e WebRTCICEConnectionState) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCICEConnectionState) String() string {
@@ -641,7 +641,7 @@ func (e WebRTCICEGatheringState) GoValueType() gobject.Type {
 }
 
 func (e WebRTCICEGatheringState) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCICEGatheringState) String() string {
@@ -680,7 +680,7 @@ func (e WebRTCICERole) GoValueType() gobject.Type {
 }
 
 func (e WebRTCICERole) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCICERole) String() string {
@@ -718,7 +718,7 @@ func (e WebRTCICETransportPolicy) GoValueType() gobject.Type {
 }
 
 func (e WebRTCICETransportPolicy) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCICETransportPolicy) String() string {
@@ -760,7 +760,7 @@ func (e WebRTCKind) GoValueType() gobject.Type {
 }
 
 func (e WebRTCKind) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCKind) String() string {
@@ -815,7 +815,7 @@ func (e WebRTCPeerConnectionState) GoValueType() gobject.Type {
 }
 
 func (e WebRTCPeerConnectionState) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCPeerConnectionState) String() string {
@@ -865,7 +865,7 @@ func (e WebRTCPriorityType) GoValueType() gobject.Type {
 }
 
 func (e WebRTCPriorityType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCPriorityType) String() string {
@@ -917,7 +917,7 @@ func (e WebRTCRTPTransceiverDirection) GoValueType() gobject.Type {
 }
 
 func (e WebRTCRTPTransceiverDirection) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCRTPTransceiverDirection) String() string {
@@ -966,7 +966,7 @@ func (e WebRTCSCTPTransportState) GoValueType() gobject.Type {
 }
 
 func (e WebRTCSCTPTransportState) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCSCTPTransportState) String() string {
@@ -1014,7 +1014,7 @@ func (e WebRTCSDPType) GoValueType() gobject.Type {
 }
 
 func (e WebRTCSDPType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCSDPType) String() string {
@@ -1089,7 +1089,7 @@ func (e WebRTCSignalingState) GoValueType() gobject.Type {
 }
 
 func (e WebRTCSignalingState) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCSignalingState) String() string {
@@ -1179,7 +1179,7 @@ func (e WebRTCStatsType) GoValueType() gobject.Type {
 }
 
 func (e WebRTCStatsType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e WebRTCStatsType) String() string {
