@@ -741,7 +741,7 @@ func (e BufferingMode) GoValueType() gobject.Type {
 }
 
 func (e BufferingMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e BufferingMode) String() string {
@@ -785,7 +785,7 @@ func (e BusSyncReply) GoValueType() gobject.Type {
 }
 
 func (e BusSyncReply) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e BusSyncReply) String() string {
@@ -824,7 +824,7 @@ func (e CapsIntersectMode) GoValueType() gobject.Type {
 }
 
 func (e CapsIntersectMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e CapsIntersectMode) String() string {
@@ -862,7 +862,7 @@ func (e ClockEntryType) GoValueType() gobject.Type {
 }
 
 func (e ClockEntryType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e ClockEntryType) String() string {
@@ -924,7 +924,7 @@ func (e ClockReturn) GoValueType() gobject.Type {
 }
 
 func (e ClockReturn) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e ClockReturn) String() string {
@@ -976,7 +976,7 @@ func (e ClockType) GoValueType() gobject.Type {
 }
 
 func (e ClockType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e ClockType) String() string {
@@ -1068,7 +1068,7 @@ func (e CoreError) GoValueType() gobject.Type {
 }
 
 func (e CoreError) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e CoreError) String() string {
@@ -1138,7 +1138,7 @@ func (e DebugColorMode) GoValueType() gobject.Type {
 }
 
 func (e DebugColorMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e DebugColorMode) String() string {
@@ -1209,7 +1209,7 @@ func (e DebugLevel) GoValueType() gobject.Type {
 }
 
 func (e DebugLevel) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e DebugLevel) String() string {
@@ -1394,7 +1394,7 @@ func (e EventType) GoValueType() gobject.Type {
 }
 
 func (e EventType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e EventType) String() string {
@@ -1582,7 +1582,7 @@ func (e FlowReturn) GoValueType() gobject.Type {
 }
 
 func (e FlowReturn) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e FlowReturn) String() string {
@@ -1647,7 +1647,7 @@ func (e Format) GoValueType() gobject.Type {
 }
 
 func (e Format) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e Format) String() string {
@@ -1813,7 +1813,7 @@ func (e IteratorItem) GoValueType() gobject.Type {
 }
 
 func (e IteratorItem) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e IteratorItem) String() string {
@@ -1860,7 +1860,7 @@ func (e IteratorResult) GoValueType() gobject.Type {
 }
 
 func (e IteratorResult) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e IteratorResult) String() string {
@@ -1920,7 +1920,7 @@ func (e LibraryError) GoValueType() gobject.Type {
 }
 
 func (e LibraryError) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e LibraryError) String() string {
@@ -1982,7 +1982,7 @@ func (e PadDirection) GoValueType() gobject.Type {
 }
 
 func (e PadDirection) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e PadDirection) String() string {
@@ -2041,7 +2041,7 @@ func (e PadLinkReturn) GoValueType() gobject.Type {
 }
 
 func (e PadLinkReturn) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e PadLinkReturn) String() string {
@@ -2088,7 +2088,7 @@ func (e PadMode) GoValueType() gobject.Type {
 }
 
 func (e PadMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e PadMode) String() string {
@@ -2150,7 +2150,7 @@ func (e PadPresence) GoValueType() gobject.Type {
 }
 
 func (e PadPresence) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e PadPresence) String() string {
@@ -2201,7 +2201,7 @@ func (e PadProbeReturn) GoValueType() gobject.Type {
 }
 
 func (e PadProbeReturn) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e PadProbeReturn) String() string {
@@ -2266,7 +2266,7 @@ func (e ParseError) GoValueType() gobject.Type {
 }
 
 func (e ParseError) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e ParseError) String() string {
@@ -2329,7 +2329,7 @@ func (e PluginError) GoValueType() gobject.Type {
 }
 
 func (e PluginError) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e PluginError) String() string {
@@ -2395,7 +2395,7 @@ func (e ProgressType) GoValueType() gobject.Type {
 }
 
 func (e ProgressType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e ProgressType) String() string {
@@ -2444,7 +2444,7 @@ func (e PromiseResult) GoValueType() gobject.Type {
 }
 
 func (e PromiseResult) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e PromiseResult) String() string {
@@ -2488,7 +2488,7 @@ func (e QOSType) GoValueType() gobject.Type {
 }
 
 func (e QOSType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e QOSType) String() string {
@@ -2603,7 +2603,7 @@ func (e QueryType) GoValueType() gobject.Type {
 }
 
 func (e QueryType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e QueryType) String() string {
@@ -2725,7 +2725,7 @@ func (e Rank) GoValueType() gobject.Type {
 }
 
 func (e Rank) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e Rank) String() string {
@@ -2821,7 +2821,7 @@ func (e ResourceError) GoValueType() gobject.Type {
 }
 
 func (e ResourceError) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e ResourceError) String() string {
@@ -2892,7 +2892,7 @@ func (e SearchMode) GoValueType() gobject.Type {
 }
 
 func (e SearchMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e SearchMode) String() string {
@@ -2935,7 +2935,7 @@ func (e SeekType) GoValueType() gobject.Type {
 }
 
 func (e SeekType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e SeekType) String() string {
@@ -2986,7 +2986,7 @@ func (e State) GoValueType() gobject.Type {
 }
 
 func (e State) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e State) String() string {
@@ -3059,7 +3059,7 @@ func (e StateChange) GoValueType() gobject.Type {
 }
 
 func (e StateChange) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e StateChange) String() string {
@@ -3132,7 +3132,7 @@ func (e StateChangeReturn) GoValueType() gobject.Type {
 }
 
 func (e StateChangeReturn) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e StateChangeReturn) String() string {
@@ -3220,7 +3220,7 @@ func (e StreamError) GoValueType() gobject.Type {
 }
 
 func (e StreamError) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e StreamError) String() string {
@@ -3305,7 +3305,7 @@ func (e StreamStatusType) GoValueType() gobject.Type {
 }
 
 func (e StreamStatusType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e StreamStatusType) String() string {
@@ -3348,7 +3348,7 @@ func (e StructureChangeType) GoValueType() gobject.Type {
 }
 
 func (e StructureChangeType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e StructureChangeType) String() string {
@@ -3398,7 +3398,7 @@ func (e TagFlag) GoValueType() gobject.Type {
 }
 
 func (e TagFlag) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e TagFlag) String() string {
@@ -3463,7 +3463,7 @@ func (e TagMergeMode) GoValueType() gobject.Type {
 }
 
 func (e TagMergeMode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e TagMergeMode) String() string {
@@ -3507,7 +3507,7 @@ func (e TagScope) GoValueType() gobject.Type {
 }
 
 func (e TagScope) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e TagScope) String() string {
@@ -3549,7 +3549,7 @@ func (e TaskState) GoValueType() gobject.Type {
 }
 
 func (e TaskState) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e TaskState) String() string {
@@ -3608,7 +3608,7 @@ func (e TocEntryType) GoValueType() gobject.Type {
 }
 
 func (e TocEntryType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e TocEntryType) String() string {
@@ -3678,7 +3678,7 @@ func (e TocLoopType) GoValueType() gobject.Type {
 }
 
 func (e TocLoopType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e TocLoopType) String() string {
@@ -3718,7 +3718,7 @@ func (e TocScope) GoValueType() gobject.Type {
 }
 
 func (e TocScope) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e TocScope) String() string {
@@ -3764,7 +3764,7 @@ func (e TracerValueScope) GoValueType() gobject.Type {
 }
 
 func (e TracerValueScope) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e TracerValueScope) String() string {
@@ -3820,7 +3820,7 @@ func (e TypeFindProbability) GoValueType() gobject.Type {
 }
 
 func (e TypeFindProbability) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e TypeFindProbability) String() string {
@@ -3870,7 +3870,7 @@ func (e URIError) GoValueType() gobject.Type {
 }
 
 func (e URIError) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e URIError) String() string {
@@ -3929,7 +3929,7 @@ func (e URIType) GoValueType() gobject.Type {
 }
 
 func (e URIType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e URIType) String() string {
@@ -3976,7 +3976,7 @@ func (f AllocatorFlags) GoValueType() gobject.Type {
 }
 
 func (f AllocatorFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f AllocatorFlags) String() string {
@@ -4032,7 +4032,7 @@ func (f BinFlags) GoValueType() gobject.Type {
 }
 
 func (f BinFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f BinFlags) String() string {
@@ -4104,7 +4104,7 @@ func (f BufferCopyFlags) GoValueType() gobject.Type {
 }
 
 func (f BufferCopyFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f BufferCopyFlags) String() string {
@@ -4216,7 +4216,7 @@ func (f BufferFlags) GoValueType() gobject.Type {
 }
 
 func (f BufferFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f BufferFlags) String() string {
@@ -4313,7 +4313,7 @@ func (f BufferPoolAcquireFlags) GoValueType() gobject.Type {
 }
 
 func (f BufferPoolAcquireFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f BufferPoolAcquireFlags) String() string {
@@ -4371,7 +4371,7 @@ func (f BusFlags) GoValueType() gobject.Type {
 }
 
 func (f BusFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f BusFlags) String() string {
@@ -4416,7 +4416,7 @@ func (f CapsFlags) GoValueType() gobject.Type {
 }
 
 func (f CapsFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f CapsFlags) String() string {
@@ -4486,7 +4486,7 @@ func (f ClockFlags) GoValueType() gobject.Type {
 }
 
 func (f ClockFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f ClockFlags) String() string {
@@ -4617,7 +4617,7 @@ func (f DebugColorFlags) GoValueType() gobject.Type {
 }
 
 func (f DebugColorFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f DebugColorFlags) String() string {
@@ -4734,7 +4734,7 @@ func (f DebugGraphDetails) GoValueType() gobject.Type {
 }
 
 func (f DebugGraphDetails) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f DebugGraphDetails) String() string {
@@ -4818,7 +4818,7 @@ func (f ElementFlags) GoValueType() gobject.Type {
 }
 
 func (f ElementFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f ElementFlags) String() string {
@@ -4894,7 +4894,7 @@ func (f EventTypeFlags) GoValueType() gobject.Type {
 }
 
 func (f EventTypeFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f EventTypeFlags) String() string {
@@ -4948,7 +4948,7 @@ func (f GapFlags) GoValueType() gobject.Type {
 }
 
 func (f GapFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f GapFlags) String() string {
@@ -5002,7 +5002,7 @@ func (f LockFlags) GoValueType() gobject.Type {
 }
 
 func (f LockFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f LockFlags) String() string {
@@ -5061,7 +5061,7 @@ func (f MapFlags) GoValueType() gobject.Type {
 }
 
 func (f MapFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f MapFlags) String() string {
@@ -5133,7 +5133,7 @@ func (f MemoryFlags) GoValueType() gobject.Type {
 }
 
 func (f MemoryFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f MemoryFlags) String() string {
@@ -5357,7 +5357,7 @@ func (f MessageType) GoValueType() gobject.Type {
 }
 
 func (f MessageType) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f MessageType) String() string {
@@ -5576,7 +5576,7 @@ func (f MetaFlags) GoValueType() gobject.Type {
 }
 
 func (f MetaFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f MetaFlags) String() string {
@@ -5642,7 +5642,7 @@ func (f MiniObjectFlags) GoValueType() gobject.Type {
 }
 
 func (f MiniObjectFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f MiniObjectFlags) String() string {
@@ -5701,7 +5701,7 @@ func (f ObjectFlags) GoValueType() gobject.Type {
 }
 
 func (f ObjectFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f ObjectFlags) String() string {
@@ -5801,7 +5801,7 @@ func (f PadFlags) GoValueType() gobject.Type {
 }
 
 func (f PadFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f PadFlags) String() string {
@@ -5902,7 +5902,7 @@ func (f PadLinkCheck) GoValueType() gobject.Type {
 }
 
 func (f PadLinkCheck) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f PadLinkCheck) String() string {
@@ -6043,7 +6043,7 @@ func (f PadProbeType) GoValueType() gobject.Type {
 }
 
 func (f PadProbeType) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f PadProbeType) String() string {
@@ -6148,7 +6148,7 @@ func (f PadTemplateFlags) GoValueType() gobject.Type {
 }
 
 func (f PadTemplateFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f PadTemplateFlags) String() string {
@@ -6202,7 +6202,7 @@ func (f ParseFlags) GoValueType() gobject.Type {
 }
 
 func (f ParseFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f ParseFlags) String() string {
@@ -6257,7 +6257,7 @@ func (f PipelineFlags) GoValueType() gobject.Type {
 }
 
 func (f PipelineFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f PipelineFlags) String() string {
@@ -6302,7 +6302,7 @@ func (f PluginAPIFlags) GoValueType() gobject.Type {
 }
 
 func (f PluginAPIFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f PluginAPIFlags) String() string {
@@ -6364,7 +6364,7 @@ func (f PluginDependencyFlags) GoValueType() gobject.Type {
 }
 
 func (f PluginDependencyFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f PluginDependencyFlags) String() string {
@@ -6425,7 +6425,7 @@ func (f PluginFlags) GoValueType() gobject.Type {
 }
 
 func (f PluginFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f PluginFlags) String() string {
@@ -6478,7 +6478,7 @@ func (f QueryTypeFlags) GoValueType() gobject.Type {
 }
 
 func (f QueryTypeFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f QueryTypeFlags) String() string {
@@ -6534,7 +6534,7 @@ func (f SchedulingFlags) GoValueType() gobject.Type {
 }
 
 func (f SchedulingFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f SchedulingFlags) String() string {
@@ -6634,7 +6634,7 @@ func (f SeekFlags) GoValueType() gobject.Type {
 }
 
 func (f SeekFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f SeekFlags) String() string {
@@ -6743,7 +6743,7 @@ func (f SegmentFlags) GoValueType() gobject.Type {
 }
 
 func (f SegmentFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f SegmentFlags) String() string {
@@ -6814,7 +6814,7 @@ func (f SerializeFlags) GoValueType() gobject.Type {
 }
 
 func (f SerializeFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f SerializeFlags) String() string {
@@ -6866,7 +6866,7 @@ func (f StackTraceFlags) GoValueType() gobject.Type {
 }
 
 func (f StackTraceFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f StackTraceFlags) String() string {
@@ -6923,7 +6923,7 @@ func (f StreamFlags) GoValueType() gobject.Type {
 }
 
 func (f StreamFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f StreamFlags) String() string {
@@ -6990,7 +6990,7 @@ func (f StreamType) GoValueType() gobject.Type {
 }
 
 func (f StreamType) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f StreamType) String() string {
@@ -7071,7 +7071,7 @@ func (f TracerValueFlags) GoValueType() gobject.Type {
 }
 
 func (f TracerValueFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f TracerValueFlags) String() string {
@@ -8114,7 +8114,7 @@ func ParseBinFromDescriptionFull(binDescription string, ghostUnlinkedPads bool, 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer
 func ParseLaunch(pipelineDescription string) (Element, error) {
 	var carg1 *C.gchar      // in, none, string
-	var cret  *C.GstElement // return, none, converted
+	var cret  *C.GstElement // return, none, converted, nullable
 	var _cerr *C.GError     // out, full, converted, nullable
 
 	carg1 = (*C.gchar)(transfer.GLibString(pipelineDescription))
@@ -8126,7 +8126,9 @@ func ParseLaunch(pipelineDescription string) (Element, error) {
 	var goret  Element
 	var _goerr error
 
-	goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}
@@ -8141,7 +8143,7 @@ func ParseLaunchFull(pipelineDescription string, _context *ParseContext, flags P
 	var carg1 *C.gchar           // in, none, string
 	var carg2 *C.GstParseContext // in, none, converted, nullable
 	var carg3 C.GstParseFlags    // in, none, casted
-	var cret  *C.GstElement      // return, none, converted
+	var cret  *C.GstElement      // return, none, converted, nullable
 	var _cerr *C.GError          // out, full, converted, nullable
 
 	carg1 = (*C.gchar)(transfer.GLibString(pipelineDescription))
@@ -8159,7 +8161,9 @@ func ParseLaunchFull(pipelineDescription string, _context *ParseContext, flags P
 	var goret  Element
 	var _goerr error
 
-	goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}
@@ -14385,7 +14389,7 @@ func PluginLoadByName(name string) Plugin {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#gst_plugin_load_file
 func PluginLoadFile(filename string) (Plugin, error) {
 	var carg1 *C.gchar     // in, none, string
-	var cret  *C.GstPlugin // return, full, converted
+	var cret  *C.GstPlugin // return, full, converted, nullable
 	var _cerr *C.GError    // out, full, converted, nullable
 
 	carg1 = (*C.gchar)(transfer.GLibString(filename))
@@ -14397,7 +14401,9 @@ func PluginLoadFile(filename string) (Plugin, error) {
 	var goret  Plugin
 	var _goerr error
 
-	goret = UnsafePluginFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePluginFromGlibFull(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}
@@ -23841,7 +23847,7 @@ func ElementMakeFromURI(typ URIType, uri string, elementname string) (Element, e
 	var carg1 C.GstURIType  // in, none, casted
 	var carg2 *C.gchar      // in, none, string
 	var carg3 *C.gchar      // in, none, string, nullable-string
-	var cret  *C.GstElement // return, none, converted
+	var cret  *C.GstElement // return, none, converted, nullable
 	var _cerr *C.GError     // out, full, converted, nullable
 
 	carg1 = C.GstURIType(typ)
@@ -23860,7 +23866,9 @@ func ElementMakeFromURI(typ URIType, uri string, elementname string) (Element, e
 	var goret  Element
 	var _goerr error
 
-	goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}

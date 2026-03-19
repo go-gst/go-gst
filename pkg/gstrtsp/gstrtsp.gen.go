@@ -109,7 +109,7 @@ func (e RTSPAuthMethod) GoValueType() gobject.Type {
 }
 
 func (e RTSPAuthMethod) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTSPAuthMethod) String() string {
@@ -152,7 +152,7 @@ func (e RTSPFamily) GoValueType() gobject.Type {
 }
 
 func (e RTSPFamily) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTSPFamily) String() string {
@@ -543,7 +543,7 @@ func (e RTSPHeaderField) GoValueType() gobject.Type {
 }
 
 func (e RTSPHeaderField) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTSPHeaderField) String() string {
@@ -685,7 +685,7 @@ func (e RTSPMsgType) GoValueType() gobject.Type {
 }
 
 func (e RTSPMsgType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTSPMsgType) String() string {
@@ -739,7 +739,7 @@ func (e RTSPRangeUnit) GoValueType() gobject.Type {
 }
 
 func (e RTSPRangeUnit) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTSPRangeUnit) String() string {
@@ -848,7 +848,7 @@ func (e RTSPResult) GoValueType() gobject.Type {
 }
 
 func (e RTSPResult) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTSPResult) String() string {
@@ -919,7 +919,7 @@ func (e RTSPState) GoValueType() gobject.Type {
 }
 
 func (e RTSPState) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTSPState) String() string {
@@ -1145,7 +1145,7 @@ func (e RTSPStatusCode) GoValueType() gobject.Type {
 }
 
 func (e RTSPStatusCode) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTSPStatusCode) String() string {
@@ -1241,7 +1241,7 @@ func (e RTSPTimeType) GoValueType() gobject.Type {
 }
 
 func (e RTSPTimeType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTSPTimeType) String() string {
@@ -1290,7 +1290,7 @@ func (e RTSPVersion) GoValueType() gobject.Type {
 }
 
 func (e RTSPVersion) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e RTSPVersion) String() string {
@@ -1353,7 +1353,7 @@ func (f RTSPEvent) GoValueType() gobject.Type {
 }
 
 func (f RTSPEvent) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f RTSPEvent) String() string {
@@ -1418,7 +1418,7 @@ func (f RTSPLowerTrans) GoValueType() gobject.Type {
 }
 
 func (f RTSPLowerTrans) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f RTSPLowerTrans) String() string {
@@ -1527,7 +1527,7 @@ func (f RTSPMethod) GoValueType() gobject.Type {
 }
 
 func (f RTSPMethod) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f RTSPMethod) String() string {
@@ -1645,7 +1645,7 @@ func (f RTSPProfile) GoValueType() gobject.Type {
 }
 
 func (f RTSPProfile) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f RTSPProfile) String() string {
@@ -1707,7 +1707,7 @@ func (f RTSPTransMode) GoValueType() gobject.Type {
 }
 
 func (f RTSPTransMode) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f RTSPTransMode) String() string {
@@ -3016,7 +3016,7 @@ func (conn *RTSPConnection) GetRememberSessionID() bool {
 // see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_get_tls
 func (conn *RTSPConnection) GetTls() (gio.TlsConnection, error) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
-	var cret  *C.GTlsConnection    // return, none, converted
+	var cret  *C.GTlsConnection    // return, none, converted, nullable
 	var _cerr *C.GError            // out, full, converted, nullable
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
@@ -3027,7 +3027,9 @@ func (conn *RTSPConnection) GetTls() (gio.TlsConnection, error) {
 	var goret  gio.TlsConnection
 	var _goerr error
 
-	goret = gio.UnsafeTlsConnectionFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gio.UnsafeTlsConnectionFromGlibNone(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}

@@ -495,7 +495,7 @@ func (e AggregatorStartTimeSelection) GoValueType() gobject.Type {
 }
 
 func (e AggregatorStartTimeSelection) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AggregatorStartTimeSelection) String() string {

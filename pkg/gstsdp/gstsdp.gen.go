@@ -947,7 +947,7 @@ func NewMIKEYMessage() *MIKEYMessage {
 func NewMIKEYMessageFromBytes(bytes *glib.Bytes, info *MIKEYDecryptInfo) (*MIKEYMessage, error) {
 	var carg1 *C.GBytes              // in, none, converted
 	var carg2 *C.GstMIKEYDecryptInfo // in, none, converted
-	var cret  *C.GstMIKEYMessage     // return, full, converted
+	var cret  *C.GstMIKEYMessage     // return, full, converted, nullable
 	var _cerr *C.GError              // out, full, converted, nullable
 
 	carg1 = (*C.GBytes)(glib.UnsafeBytesToGlibNone(bytes))
@@ -960,7 +960,9 @@ func NewMIKEYMessageFromBytes(bytes *glib.Bytes, info *MIKEYDecryptInfo) (*MIKEY
 	var goret  *MIKEYMessage
 	var _goerr error
 
-	goret = UnsafeMIKEYMessageFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMIKEYMessageFromGlibFull(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}
@@ -1483,7 +1485,7 @@ func (msg *MIKEYMessage) SetInfo(version uint8, typ MIKEYType, v bool, prfFunc M
 func (msg *MIKEYMessage) ToBytes(info *MIKEYEncryptInfo) (*glib.Bytes, error) {
 	var carg0 *C.GstMIKEYMessage     // in, none, converted
 	var carg1 *C.GstMIKEYEncryptInfo // in, none, converted
-	var cret  *C.GBytes              // return, full, converted
+	var cret  *C.GBytes              // return, full, converted, nullable
 	var _cerr *C.GError              // out, full, converted, nullable
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
@@ -1496,7 +1498,9 @@ func (msg *MIKEYMessage) ToBytes(info *MIKEYEncryptInfo) (*glib.Bytes, error) {
 	var goret  *glib.Bytes
 	var _goerr error
 
-	goret = glib.UnsafeBytesFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = glib.UnsafeBytesFromGlibFull(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}

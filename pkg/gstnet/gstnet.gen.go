@@ -1255,7 +1255,7 @@ func NewNetTimePacket(buffer [16]uint8) *NetTimePacket {
 func NetTimePacketReceive(socket gio.Socket) (gio.SocketAddress, *NetTimePacket, error) {
 	var carg1 *C.GSocket          // in, none, converted
 	var carg2 *C.GSocketAddress   // out, full, converted
-	var cret  *C.GstNetTimePacket // return, full, converted
+	var cret  *C.GstNetTimePacket // return, full, converted, nullable
 	var _cerr *C.GError           // out, full, converted, nullable
 
 	carg1 = (*C.GSocket)(gio.UnsafeSocketToGlibNone(socket))
@@ -1268,7 +1268,9 @@ func NetTimePacketReceive(socket gio.Socket) (gio.SocketAddress, *NetTimePacket,
 	var _goerr     error
 
 	srcAddress = gio.UnsafeSocketAddressFromGlibFull(unsafe.Pointer(carg2))
-	goret = UnsafeNetTimePacketFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeNetTimePacketFromGlibFull(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}

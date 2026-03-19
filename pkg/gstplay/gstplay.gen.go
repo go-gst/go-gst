@@ -92,7 +92,7 @@ func (e PlayColorBalanceType) GoValueType() gobject.Type {
 }
 
 func (e PlayColorBalanceType) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e PlayColorBalanceType) String() string {
@@ -147,7 +147,7 @@ func (e PlayError) GoValueType() gobject.Type {
 }
 
 func (e PlayError) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e PlayError) String() string {
@@ -262,7 +262,7 @@ func (e PlayMessage) GoValueType() gobject.Type {
 }
 
 func (e PlayMessage) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e PlayMessage) String() string {
@@ -681,7 +681,7 @@ func (e PlayState) GoValueType() gobject.Type {
 }
 
 func (e PlayState) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e PlayState) String() string {

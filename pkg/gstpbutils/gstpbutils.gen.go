@@ -173,7 +173,7 @@ func (e AudioVisualizerShader) GoValueType() gobject.Type {
 }
 
 func (e AudioVisualizerShader) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e AudioVisualizerShader) String() string {
@@ -235,7 +235,7 @@ func (e DiscovererResult) GoValueType() gobject.Type {
 }
 
 func (e DiscovererResult) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e DiscovererResult) String() string {
@@ -313,7 +313,7 @@ func (e InstallPluginsReturn) GoValueType() gobject.Type {
 }
 
 func (e InstallPluginsReturn) SetGoValue(v *gobject.Value) {
-	v.SetEnum(int(e))
+	v.SetEnum(int32(e))
 }
 
 func (e InstallPluginsReturn) String() string {
@@ -395,7 +395,7 @@ func (f DiscovererSerializeFlags) GoValueType() gobject.Type {
 }
 
 func (f DiscovererSerializeFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f DiscovererSerializeFlags) String() string {
@@ -477,7 +477,7 @@ func (f PbUtilsCapsDescriptionFlags) GoValueType() gobject.Type {
 }
 
 func (f PbUtilsCapsDescriptionFlags) SetGoValue(v *gobject.Value) {
-	v.SetFlags(int(f))
+	v.SetFlags(int32(f))
 }
 
 func (f PbUtilsCapsDescriptionFlags) String() string {
@@ -2416,7 +2416,7 @@ func UnsafeDiscovererToGlibFull(c Discoverer) unsafe.Pointer {
 // see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#gst_discoverer_new
 func NewDiscoverer(timeout gst.ClockTime) (Discoverer, error) {
 	var carg1 C.GstClockTime   // in, none, casted, alias
-	var cret  *C.GstDiscoverer // return, full, converted
+	var cret  *C.GstDiscoverer // return, full, converted, nullable
 	var _cerr *C.GError        // out, full, converted, nullable
 
 	carg1 = C.GstClockTime(timeout)
@@ -2427,7 +2427,9 @@ func NewDiscoverer(timeout gst.ClockTime) (Discoverer, error) {
 	var goret  Discoverer
 	var _goerr error
 
-	goret = UnsafeDiscovererFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDiscovererFromGlibFull(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}
@@ -2441,7 +2443,7 @@ func NewDiscoverer(timeout gst.ClockTime) (Discoverer, error) {
 func (discoverer *DiscovererInstance) DiscoverURI(uri string) (DiscovererInfo, error) {
 	var carg0 *C.GstDiscoverer     // in, none, converted
 	var carg1 *C.gchar             // in, none, string
-	var cret  *C.GstDiscovererInfo // return, full, converted
+	var cret  *C.GstDiscovererInfo // return, full, converted, nullable
 	var _cerr *C.GError            // out, full, converted, nullable
 
 	carg0 = (*C.GstDiscoverer)(UnsafeDiscovererToGlibNone(discoverer))
@@ -2455,7 +2457,9 @@ func (discoverer *DiscovererInstance) DiscoverURI(uri string) (DiscovererInfo, e
 	var goret  DiscovererInfo
 	var _goerr error
 
-	goret = UnsafeDiscovererInfoFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDiscovererInfoFromGlibFull(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}
@@ -4785,7 +4789,7 @@ func UnsafeEncodingTargetToGlibFull(c EncodingTarget) unsafe.Pointer {
 func EncodingTargetLoad(name string, category string) (EncodingTarget, error) {
 	var carg1 *C.gchar             // in, none, string
 	var carg2 *C.gchar             // in, none, string, nullable-string
-	var cret  *C.GstEncodingTarget // return, full, converted
+	var cret  *C.GstEncodingTarget // return, full, converted, nullable
 	var _cerr *C.GError            // out, full, converted, nullable
 
 	carg1 = (*C.gchar)(transfer.GLibString(name))
@@ -4802,7 +4806,9 @@ func EncodingTargetLoad(name string, category string) (EncodingTarget, error) {
 	var goret  EncodingTarget
 	var _goerr error
 
-	goret = UnsafeEncodingTargetFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeEncodingTargetFromGlibFull(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}
@@ -4815,7 +4821,7 @@ func EncodingTargetLoad(name string, category string) (EncodingTarget, error) {
 // see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-target.html#gst_encoding_target_load_from_file
 func EncodingTargetLoadFromFile(filepath string) (EncodingTarget, error) {
 	var carg1 *C.gchar             // in, none, string
-	var cret  *C.GstEncodingTarget // return, full, converted
+	var cret  *C.GstEncodingTarget // return, full, converted, nullable
 	var _cerr *C.GError            // out, full, converted, nullable
 
 	carg1 = (*C.gchar)(transfer.GLibString(filepath))
@@ -4827,7 +4833,9 @@ func EncodingTargetLoadFromFile(filepath string) (EncodingTarget, error) {
 	var goret  EncodingTarget
 	var _goerr error
 
-	goret = UnsafeEncodingTargetFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeEncodingTargetFromGlibFull(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}
