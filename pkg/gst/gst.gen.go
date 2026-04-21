@@ -7177,11 +7177,6 @@ type StructureFilterMapFunc func(fieldId glib.Quark, value *gobject.Value) (gore
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststructure.html#GstStructureFilterMapIdStrFunc
 type StructureFilterMapIdStrFunc func(fieldname *IdStr, value *gobject.Value) (goret bool)
 
-// StructureForeachFunc wraps GstStructureForeachFunc
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststructure.html#GstStructureForeachFunc
-type StructureForeachFunc func(fieldId glib.Quark, value *gobject.Value) (goret bool)
-
 // StructureForeachIdStrFunc wraps GstStructureForeachIdStrFunc
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststructure.html#GstStructureForeachIdStrFunc

@@ -160,6 +160,7 @@ var Data = genmain.Data{
 					typesystem.IgnoreMatching("ChildProxy.set_property"),
 					typesystem.IgnoreMatching("ChildProxy.get_property"),
 					typesystem.IgnoreMatching("Iterator.next"),
+					typesystem.IgnoreMatching("StructureForeachFunc"),
 					typesystem.IgnoreMatching("TagList.get_value_index"),
 					// BusSyncHandler has a borrowed message except when the user returns BUS_DROP.
 					typesystem.IgnoreMatching("BusSyncHandler"),
