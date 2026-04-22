@@ -92,9 +92,7 @@ func (s *Structure) UnmarshalInto(data any) error {
 		return errors.New("cannot unmarshal into data: data is not pointer to struct")
 	}
 
-	unmarshalInto(typeOf, valsOf, s)
-
-	return nil
+	return unmarshalInto(typeOf, valsOf, s)
 }
 
 func unmarshalInto(typeOf reflect.Type, valsOf reflect.Value, s *Structure) error {
@@ -131,6 +129,8 @@ func unmarshalInto(typeOf reflect.Type, valsOf reflect.Value, s *Structure) erro
 			if err != nil {
 				return fmt.Errorf("error unmarshaling struct field %s: %w", field.Name, err)
 			}
+
+			continue
 		}
 
 		val := s.GetValue(fieldName)
