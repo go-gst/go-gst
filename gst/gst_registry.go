@@ -53,3 +53,19 @@ func (r *Registry) LookupFeature(name string) (*PluginFeature, error) {
 	}
 	return wrapPluginFeature(glib.TransferFull(unsafe.Pointer(feat))), nil
 }
+
+// GetPluginList gets a copy of all plugins registered in the given registry.
+func (r *Registry) GetPluginList() []*Plugin {
+	gList := C.gst_registry_get_plugin_list((*C.GstRegistry)(r.Instance()))
+	if gList == nil {
+		return []*Plugin{}
+	}
+	wrapped := glib.WrapList(unsafe.Pointer(gList))
+	defer wrapped.Free()
+	out := make([]*Plugin, 0, wrapped.Length())
+	wrapped.Foreach(func(item interface{}) {
+		plugin := item.(unsafe.Pointer)
+		out = append(out, FromGstPluginUnsafeNone(plugin))
+	})
+	return out
+}
