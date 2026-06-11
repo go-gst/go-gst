@@ -356,7 +356,9 @@ func NewTOCSelectEvent(uid string) *Event {
 // NewCustomEvent creates a new custom-typed event. This can be used for anything not handled by other event-specific functions to pass an event
 // to another element.
 func NewCustomEvent(eventType EventType, structure *Structure) *Event {
+	// copy structure since we cannot relinquish ovnership
+
 	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_custom(
-		C.GstEventType(eventType), structure.Instance(),
+		C.GstEventType(eventType), structure.copy(),
 	)))
 }
