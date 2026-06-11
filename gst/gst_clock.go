@@ -179,7 +179,12 @@ func ToGstClock(obj interface{}) *Clock {
 }
 
 // Instance returns the underlying GstClock instance.
-func (c *Clock) Instance() *C.GstClock { return C.toGstClock(c.Unsafe()) }
+func (c *Clock) Instance() *C.GstClock {
+	if c == nil {
+		return nil
+	}
+	return C.toGstClock(c.Unsafe())
+}
 
 // AddObservation adds the time master of the master clock and the time slave of the slave clock to the list of observations.
 // If enough observations are available, a linear regression algorithm is run on the observations and clock is recalibrated.
