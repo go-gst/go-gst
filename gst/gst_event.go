@@ -315,6 +315,16 @@ func (e *Event) ParseTOCSelect() string {
 	return C.GoString((*C.char)(unsafe.Pointer(idPtr)))
 }
 
+// ParseMpegtsSection parses a MPEG TS section event
+func (e *Event) ParseMpegtsSection() *MpegtsSection {
+	ptr := C.gst_event_parse_mpegts_section(e.Instance())
+	if ptr == nil {
+		return nil
+	}
+
+	return FromGstMpegtsSectionUnsafeFull(unsafe.Pointer(ptr))
+}
+
 // Ref increases the ref count on the event by one.
 func (e *Event) Ref() *Event {
 	C.gst_event_ref(e.Instance())
