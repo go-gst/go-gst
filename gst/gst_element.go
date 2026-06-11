@@ -646,6 +646,21 @@ func (e *Element) GetBaseTime() ClockTime {
 	return ClockTime(ctime)
 }
 
+// Seek Sends a seek event to the element.
+func (e *Element) Seek(rate float64, format Format, flags SeekFlags, start_type SeekType, start int64, stop_type SeekType, stop int64) bool {
+	result := C.gst_element_seek(
+		e.Instance(),
+		C.gdouble(rate),
+		C.GstFormat(format),
+		C.GstSeekFlags(flags),
+		C.GstSeekType(start_type),
+		C.gint64(start),
+		C.GstSeekType(stop_type),
+		C.gint64(stop),
+	)
+	return gobool(result)
+}
+
 // SeekSimple seeks to the given position in the stream. The element / pipeline should be in the PAUSED or PLAYING state and must be a seekable.
 func (e *Element) SeekSimple(position int64, format Format, flag SeekFlags) bool {
 	result := C.gst_element_seek_simple(e.Instance(), C.GstFormat(format), C.GstSeekFlags(flag), C.gint64(position))

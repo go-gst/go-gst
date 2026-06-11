@@ -82,34 +82,62 @@ import "C"
 import (
 	"errors"
 	"runtime"
+	"sync"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/go-gst/go-pointer"
 )
 
-// PadFuncMap is an type of map for registering callbacks to a pad instance.
-// It compensates for the lack of userdata in pad callbacks by providing a FuncForPad
-// method that will return the function matching the Pad at the given address.
-type PadFuncMap map[unsafe.Pointer]interface{}
-
-// FuncForPad will return the function in this map for the given pad.
-func (p PadFuncMap) FuncForPad(pad unsafe.Pointer) interface{} {
-	for k, v := range p {
-		if gobool(C.padsAreEqual(k, pad)) {
-			return v
-		}
-	}
-	return nil
+// padFuncMap is an type of map for registering callbacks to a pad instance.
+// it provides an easy way to lookup the callback function for a pad
+type padFuncMap[F any] struct {
+	m map[*C.GstPad]F
+	l sync.RWMutex
 }
 
-// RemoveFuncForPad will remove the function for the given pad from this map.
-func (p PadFuncMap) RemoveFuncForPad(pad unsafe.Pointer) {
-	for k := range p {
-		if gobool(C.padsAreEqual(k, pad)) {
-			delete(p, k)
-		}
+func newPadFuncMap[F any]() *padFuncMap[F] {
+	return &padFuncMap[F]{
+		m: make(map[*C.GstPad]F),
 	}
+}
+
+// padFuncMapLike is needed to remove the registered func from an any value
+type padFuncMapLike interface {
+	removeFuncForPad(pad *C.GstPad)
+}
+
+// registerFuncForPad will register the func in the map, and return a Destroy notify that is needed to unref the
+// func in [goGstPadFuncDestroyNotify]
+func (p *padFuncMap[F]) registerFuncForPad(pad *Pad, f F) *C.PadDestroyNotifyInfo {
+	p.l.Lock()
+	defer p.l.Unlock()
+
+	padPtr := (*C.GstPad)(pad.Unsafe())
+
+	p.m[padPtr] = f
+
+	notifyInfo := (*C.PadDestroyNotifyInfo)(C.malloc(C.sizeof_PadDestroyNotifyInfo))
+	notifyInfo.pad_ptr = padPtr
+	notifyInfo.func_map_ptr = (C.gpointer)(gopointer.Save(p))
+
+	return notifyInfo
+}
+
+// funcForPad will return the function in this map for the given pad.
+func (p *padFuncMap[F]) funcForPad(pad *C.GstPad) F {
+	p.l.RLock()
+	defer p.l.RUnlock()
+
+	return p.m[pad]
+}
+
+// removeFuncForPad will remove the function for the given pad from this map.
+func (p *padFuncMap[F]) removeFuncForPad(pad *C.GstPad) {
+	p.l.Lock()
+	defer p.l.Unlock()
+
+	delete(p.m, pad)
 }
 
 // Pad is a go representation of a GstPad
@@ -281,9 +309,9 @@ func (p *Pad) CreateStreamID(parent *Element, streamID string) string {
 // The event is sent to all pads internally linked to pad. This function takes ownership of event.
 func (p *Pad) EventDefault(parent *Object, event *Event) bool {
 	if parent == nil {
-		return gobool(C.gst_pad_event_default(p.Instance(), nil, event.Ref().Instance()))
+		return gobool(C.gst_pad_event_default(p.Instance(), nil, event.Instance()))
 	}
-	return gobool(C.gst_pad_event_default(p.Instance(), parent.Instance(), event.Ref().Instance()))
+	return gobool(C.gst_pad_event_default(p.Instance(), parent.Instance(), event.Instance()))
 }
 
 // PadForwardFunc is called for all internally linked pads, see Pad Forward().
@@ -763,29 +791,18 @@ func (p *Pad) SendEvent(ev *Event) bool {
 	return gobool(C.gst_pad_send_event(p.Instance(), ev.Ref().Instance()))
 }
 
-func (p *Pad) registerCallback(f interface{}, fmap PadFuncMap) *C.PadDestroyNotifyInfo {
-	selfPtr := p.Unsafe()
-
-	fmap[selfPtr] = f
-
-	notifyInfo := (*C.PadDestroyNotifyInfo)(C.malloc(C.sizeof_PadDestroyNotifyInfo))
-	notifyInfo.pad_ptr = (C.gpointer)(gopointer.Save(selfPtr))
-	notifyInfo.func_map_ptr = (C.gpointer)(gopointer.Save(fmap))
-
-	return notifyInfo
-}
-
 // PadActivateFunc is called when the pad is activated during the element READY to PAUSED state change. By default
 // this function will call the activate function that puts the pad in push mode but elements can override this
 // function to activate the pad in pull mode if they wish.
 type PadActivateFunc func(self *Pad, parent *Object) bool
 
-var padActivateFuncs PadFuncMap = make(PadFuncMap)
+var padActivateFuncs = newPadFuncMap[PadActivateFunc]()
 
 // SetActivateFunction sets the given active function on the pad. The activate function will dispatch to ActivateMode to perform
 // the actual activation. Only makes sense to set on sink pads.
 func (p *Pad) SetActivateFunction(f PadActivateFunc) {
-	notifyInfo := p.registerCallback(f, padActivateFuncs)
+	notifyInfo := padActivateFuncs.registerFuncForPad(p, f)
+
 	C.gst_pad_set_activate_function_full(
 		p.Instance(),
 		C.GstPadActivateFunction(C.cgoGstPadActivateFunction),
@@ -797,12 +814,12 @@ func (p *Pad) SetActivateFunction(f PadActivateFunc) {
 // PadActivateModeFunc is the prototype of the push and pull activate functions.
 type PadActivateModeFunc func(self *Pad, parent *Object, mode PadMode, active bool) bool
 
-var padActivateModeFuncs PadFuncMap = make(PadFuncMap)
+var padActivateModeFuncs = newPadFuncMap[PadActivateModeFunc]()
 
 // SetActivateModeFunction sets the given activate_mode function for the pad. An activate_mode function prepares
 // the element for data passing.
 func (p *Pad) SetActivateModeFunction(f PadActivateModeFunc) {
-	notifyInfo := p.registerCallback(f, padActivateModeFuncs)
+	notifyInfo := padActivateModeFuncs.registerFuncForPad(p, f)
 	C.gst_pad_set_activatemode_function_full(
 		p.Instance(),
 		C.GstPadActivateFunction(C.cgoGstPadActivateModeFunction),
@@ -832,11 +849,11 @@ func (p *Pad) SetActive(active bool) bool {
 // appropriate FlowReturn value.
 type PadChainFunc func(self *Pad, parent *Object, buffer *Buffer) FlowReturn
 
-var padChainFuncs PadFuncMap = make(PadFuncMap)
+var padChainFuncs = newPadFuncMap[PadChainFunc]()
 
 // SetChainFunction sets the given chain function for the pad. The chain function is called to process an input buffer.
 func (p *Pad) SetChainFunction(f PadChainFunc) {
-	notifyInfo := p.registerCallback(f, padChainFuncs)
+	notifyInfo := padChainFuncs.registerFuncForPad(p, f)
 	C.gst_pad_set_chain_function_full(
 		p.Instance(),
 		C.GstPadActivateFunction(C.cgoGstPadChainFunction),
@@ -856,11 +873,12 @@ func (p *Pad) SetChainFunction(f PadChainFunc) {
 // appropriate FlowReturn value.
 type PadChainListFunc func(self *Pad, parent *Object, list *BufferList) FlowReturn
 
-var padChainListFuncs PadFuncMap = make(PadFuncMap)
+var padChainListFuncs = newPadFuncMap[PadChainListFunc]()
 
 // SetChainListFunction sets the given chain function for the pad. The chain function is called to process an input buffer list.
 func (p *Pad) SetChainListFunction(f PadChainListFunc) {
-	notifyInfo := p.registerCallback(f, padChainListFuncs)
+	notifyInfo := padChainListFuncs.registerFuncForPad(p, f)
+
 	C.gst_pad_set_chain_list_function_full(
 		p.Instance(),
 		C.GstPadActivateFunction(C.cgoGstPadChainListFunction),
@@ -880,11 +898,12 @@ func (p *Pad) SetElementPrivate(data interface{}) {
 // will take into account the last downstream flow return (from a pad push), in which case they can return it.
 type PadEventFullFunc func(self *Pad, parent *Object, event *Event) FlowReturn
 
-var padEventFullFuncs PadFuncMap = make(PadFuncMap)
+var padEventFullFuncs = newPadFuncMap[PadEventFullFunc]()
 
 // SetEventFullFunction sets the given event handler for the pad.
 func (p *Pad) SetEventFullFunction(f PadEventFullFunc) {
-	notifyInfo := p.registerCallback(f, padEventFullFuncs)
+	notifyInfo := padEventFullFuncs.registerFuncForPad(p, f)
+
 	C.gst_pad_set_event_full_function_full(
 		p.Instance(),
 		C.GstPadActivateFunction(C.cgoGstPadEventFullFunction),
@@ -896,11 +915,12 @@ func (p *Pad) SetEventFullFunction(f PadEventFullFunc) {
 // PadEventFunc is the function signature to handle an event for the pad
 type PadEventFunc func(self *Pad, parent *Object, event *Event) bool
 
-var padEventFuncs PadFuncMap = make(PadFuncMap)
+var padEventFuncs = newPadFuncMap[PadEventFunc]()
 
 // SetEventFunction sets the given event handler for the pad.
 func (p *Pad) SetEventFunction(f PadEventFunc) {
-	notifyInfo := p.registerCallback(f, padEventFuncs)
+	notifyInfo := padEventFuncs.registerFuncForPad(p, f)
+
 	C.gst_pad_set_event_function_full(
 		p.Instance(),
 		C.GstPadActivateFunction(C.cgoGstPadEventFunction),
@@ -934,12 +954,13 @@ func (p *Pad) SetEventFunction(f PadEventFunc) {
 // might depend on the value of offset.
 type PadGetRangeFunc func(self *Pad, parent *Object, offset uint64, length uint) (FlowReturn, *Buffer)
 
-var padGetRangeFuncs PadFuncMap = make(PadFuncMap)
+var padGetRangeFuncs = newPadFuncMap[PadGetRangeFunc]()
 
 // SetGetRangeFunction sets the given getrange function for the pad. The getrange function is called to produce a new Buffer
 // to start the processing pipeline. see PadGetRangeFunc for a description of the getrange function.
 func (p *Pad) SetGetRangeFunction(f PadGetRangeFunc) {
-	notifyInfo := p.registerCallback(f, padGetRangeFuncs)
+	notifyInfo := padGetRangeFuncs.registerFuncForPad(p, f)
+
 	C.gst_pad_set_getrange_function_full(
 		p.Instance(),
 		C.GstPadActivateFunction(C.cgoGstPadGetRangeFunction),
@@ -953,11 +974,12 @@ func (p *Pad) SetGetRangeFunction(f PadGetRangeFunc) {
 // a single pad until GstIterator is implemented fully in the bindings.
 type PadIterIntLinkFunc func(self *Pad, parent *Object) []*Pad
 
-var padIterIntLinkFuncs PadFuncMap = make(PadFuncMap)
+var padIterIntLinkFuncs = newPadFuncMap[PadIterIntLinkFunc]()
 
 // SetIterIntLinkFunction sets the given internal link iterator function for the pad.
 func (p *Pad) SetIterIntLinkFunction(f PadIterIntLinkFunc) {
-	notifyInfo := p.registerCallback(f, padIterIntLinkFuncs)
+	notifyInfo := padIterIntLinkFuncs.registerFuncForPad(p, f)
+
 	C.gst_pad_set_iterate_internal_links_function_full(
 		p.Instance(),
 		C.GstPadActivateFunction(C.cgoGstPadIterIntLinkFunction),
@@ -969,7 +991,7 @@ func (p *Pad) SetIterIntLinkFunction(f PadIterIntLinkFunc) {
 // PadLinkFunc is the function signature to handle a new link on a pad.
 type PadLinkFunc func(self *Pad, parent *Object, peer *Pad) PadLinkReturn
 
-var padLinkFuncs PadFuncMap = make(PadFuncMap)
+var padLinkFuncs = newPadFuncMap[PadLinkFunc]()
 
 // SetLinkFunction sets the given link function for the pad. It will be called when the pad is linked with another pad.
 //
@@ -979,7 +1001,8 @@ var padLinkFuncs PadFuncMap = make(PadFuncMap)
 //
 // If link is installed on a source pad, it should call the Link of the peer sink pad, if present.
 func (p *Pad) SetLinkFunction(f PadLinkFunc) {
-	notifyInfo := p.registerCallback(f, padLinkFuncs)
+	notifyInfo := padLinkFuncs.registerFuncForPad(p, f)
+
 	C.gst_pad_set_link_function_full(
 		p.Instance(),
 		C.GstPadActivateFunction(C.cgoGstPadLinkFunction),
@@ -996,11 +1019,12 @@ func (p *Pad) SetOffset(offset int64) {
 // PadQueryFunc is a function for performing queries on a pad. It should return true if it could handle the query.
 type PadQueryFunc func(self *Pad, parent *Object, query *Query) bool
 
-var padQueryFuncs PadFuncMap = make(PadFuncMap)
+var padQueryFuncs = newPadFuncMap[PadQueryFunc]()
 
 // SetQueryFunction sets the query handler for the pad.
 func (p *Pad) SetQueryFunction(f PadQueryFunc) {
-	notifyInfo := p.registerCallback(f, padQueryFuncs)
+	notifyInfo := padQueryFuncs.registerFuncForPad(p, f)
+
 	C.gst_pad_set_query_function_full(
 		p.Instance(),
 		C.GstPadActivateFunction(C.cgoGstPadQueryFunction),
@@ -1015,14 +1039,15 @@ func (p *Pad) SetQueryFunction(f PadQueryFunc) {
 // the callback.
 type PadUnlinkFunc func(self *Pad, parent *Object)
 
-var padUnlinkFuncs PadFuncMap = make(PadFuncMap)
+var padUnlinkFuncs = newPadFuncMap[PadUnlinkFunc]()
 
 // SetUnlinkFunction sets the given unlink function for the pad. It will be called when the pad is unlinked.
 //
 // Note that the pad's lock is already held when the unlink function is called, so most pad functions cannot be called
 // from within the callback.
 func (p *Pad) SetUnlinkFunction(f PadUnlinkFunc) {
-	notifyInfo := p.registerCallback(f, padUnlinkFuncs)
+	notifyInfo := padUnlinkFuncs.registerFuncForPad(p, f)
+
 	C.gst_pad_set_unlink_function_full(
 		p.Instance(),
 		C.GstPadActivateFunction(C.cgoGstPadUnlinkFunction),
