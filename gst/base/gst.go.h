@@ -9,6 +9,7 @@ extern GstBaseSrc *        toGstBaseSrc        (void *p);
 extern GstBaseTransform *  toGstBaseTransform  (void *p);
 extern GstCollectPads *    toGstCollectPads    (void *p);
 extern GstPushSrc *        toGstPushSrc        (void *p);
+extern GstAggregatorPad *  toGstAggregatorPad  (void *p);
 
 extern GstBaseSinkClass *       toGstBaseSinkClass       (void *p);
 extern GstBaseSrcClass *        toGstBaseSrcClass        (void *p);
