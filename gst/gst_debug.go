@@ -38,6 +38,16 @@ void cgoResetLogFunction()
 	gst_debug_add_log_function(gst_debug_log_default, NULL, NULL);
 }
 
+const gchar * cgoDebugMessageGetId(GstDebugMessage * message)
+{
+#if GST_CHECK_VERSION(1, 22, 0)
+	const gchar *id = gst_debug_message_get_id(message);
+	return id != NULL ? id : "";
+#else
+	return "";
+#endif
+}
+
 */
 import "C"
 import (
@@ -218,7 +228,7 @@ func (d *DebugMessage) Get() string {
 
 // GetId returns the id of the object that emitted this message. Can be empty.
 func (d *DebugMessage) GetId() string {
-	return C.GoString(C.gst_debug_message_get_id(d.ptr))
+	return C.GoString(C.cgoDebugMessageGetId(d.ptr))
 }
 
 type LogFunction = func(
