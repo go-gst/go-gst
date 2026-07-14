@@ -61,6 +61,7 @@ jobs:
         shell: msys2 {0}
         run: |
           echo "PKG_CONFIG=$(cygpath -m /mingw64/bin/pkg-config.exe)" >> $GITHUB_ENV
+          echo "CC=$(cygpath -m /mingw64/bin/gcc.exe)" >> $GITHUB_ENV
 
       - name: build
         run: ./buildAll.sh
