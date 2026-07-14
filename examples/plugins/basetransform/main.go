@@ -5,40 +5,47 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
+	"runtime"
+	"time"
 
 	"github.com/go-gst/go-gst/examples/plugins/basetransform/internal/customtransform"
-	"github.com/go-gst/go-gst/gst"
+	"github.com/go-gst/go-gst/pkg/gst"
 )
 
 func run(ctx context.Context) error {
 	ctx, cancel := signal.NotifyContext(ctx, os.Interrupt)
 	defer cancel()
 
-	gst.Init(nil)
+	gst.Init()
 
 	customtransform.Register()
 
-	pipeline, err := gst.NewPipelineFromString("audiotestsrc ! gocustomtransform ! fakesink")
+	ret, err := gst.ParseLaunch("audiotestsrc ! gocustomtransform ! fakesink")
 
 	if err != nil {
 		return err
 	}
 
+	pipeline := ret.(gst.Pipeline)
+
 	pipeline.SetState(gst.StatePlaying)
 
 	<-ctx.Done()
 
-	pipeline.BlockSetState(gst.StateNull)
-
-	gst.Deinit()
+	pipeline.BlockSetState(gst.StateNull, gst.ClockTime(time.Second))
 
 	return ctx.Err()
 }
 
 func main() {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
 
 	err := run(ctx)
+
+	for range 10 {
+		runtime.GC()
+	}
 
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)

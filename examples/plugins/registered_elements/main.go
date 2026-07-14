@@ -3,16 +3,15 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"os"
 	"os/signal"
 	"path/filepath"
-	"runtime/pprof"
+	"time"
 
-	"github.com/go-gst/go-glib/glib"
-	"github.com/go-gst/go-gst/examples/plugins/registered_elements/internal/common"
 	"github.com/go-gst/go-gst/examples/plugins/registered_elements/internal/custombin"
 	"github.com/go-gst/go-gst/examples/plugins/registered_elements/internal/customsrc"
-	"github.com/go-gst/go-gst/gst"
+	"github.com/go-gst/go-gst/pkg/gst"
 )
 
 func run(ctx context.Context) error {
@@ -25,68 +24,68 @@ func run(ctx context.Context) error {
 		return err
 	}
 
-	gst.Init(nil)
+	gst.Init()
 
 	customsrc.Register()
 	custombin.Register()
 
-	systemclock := gst.ObtainSystemClock()
+	systemclock := gst.SystemClockObtain()
 
-	pipeline, err := gst.NewPipelineFromString("gocustombin ! fakesink sync=true")
+	log.Printf("using system clock: %s", systemclock.GetName())
+
+	// After registering the elements, we can use them in the parsed pipeline strings as if they were
+	// provided by a plugin.
+	ret, err := gst.ParseLaunch("gocustombin ! fakesink sync=true")
 
 	if err != nil {
 		return err
 	}
 
-	pipeline.ForceClock(systemclock.Clock)
+	pipeline := ret.(gst.Pipeline)
+
+	pipeline.UseClock(systemclock)
 
 	bus := pipeline.GetBus()
 
-	mainloop := glib.NewMainLoop(glib.MainContextDefault(), false)
+	go func() {
+		for msg := range bus.Messages(ctx) {
+			switch msg.Type() {
+			case gst.MessageStateChanged:
+				old, new, _ := msg.ParseStateChanged()
+				dot := pipeline.DebugBinToDotData(gst.DebugGraphShowVerbose)
+
+				f, err := os.OpenFile(filepath.Join(wd, fmt.Sprintf("pipeline-%s-to-%s.dot", old, new)), os.O_TRUNC|os.O_CREATE|os.O_RDWR, 0600)
+
+				if err != nil {
+					cancel()
+					return
+				}
+
+				defer f.Close()
+
+				_, err = f.Write([]byte(dot))
+
+				if err != nil {
+					fmt.Println(err)
+					cancel()
+					return
+				}
+
+			case gst.MessageEOS:
+				fmt.Println("reached EOS")
+				cancel()
+				return
+			default:
+				fmt.Println("got message:", msg.String())
+			}
+		}
+	}()
 
 	pipeline.SetState(gst.StatePlaying)
 
-	bus.AddWatch(func(msg *gst.Message) bool {
-		switch msg.Type() {
-		case gst.MessageStateChanged:
-			old, new := msg.ParseStateChanged()
-			dot := pipeline.DebugBinToDotData(gst.DebugGraphShowVerbose)
-
-			f, err := os.OpenFile(filepath.Join(wd, fmt.Sprintf("pipeline-%s-to-%s.dot", old, new)), os.O_TRUNC|os.O_CREATE|os.O_RDWR, 0600)
-
-			if err != nil {
-				cancel()
-				return false
-			}
-
-			defer f.Close()
-
-			_, err = f.Write([]byte(dot))
-
-			if err != nil {
-				fmt.Println(err)
-				cancel()
-				return false
-			}
-
-		case gst.MessageEOS:
-			fmt.Println(msg.String())
-			cancel()
-			return false
-		}
-
-		// the String method is expensive and should not be used in prodution:
-		fmt.Println(msg.String())
-		return true
-	})
-
-	go mainloop.Run()
-
 	<-ctx.Done()
 
-	mainloop.Quit()
-
-	pipeline.BlockSetState(gst.StateNull)
+	pipeline.BlockSetState(gst.StateNull, gst.ClockTime(time.Second))
 
 	gst.Deinit()
 
@@ -101,14 +100,4 @@ func main() {
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 	}
-
-	// this is very helpful to find memory leaks, see github.com/go-gst/asanutils
-	// asanutils.CheckLeaks()
-
-	prof := pprof.Lookup("go-glib-reffed-objects")
-
-	prof.WriteTo(os.Stdout, 1)
-
-	// we are creating 3 custom elements in total. If this panics, then the go struct will memory leak
-	common.AssertFinalizersCalled(3)
 }

@@ -15,13 +15,13 @@ import (
 	"os"
 	"time"
 
-	"github.com/go-gst/go-gst/gst"
-	"github.com/go-gst/go-gst/gst/pbutils"
+	"github.com/go-gst/go-gst/pkg/gst"
+	"github.com/go-gst/go-gst/pkg/gstpbutils"
 )
 
 func main() {
 
-	gst.Init(nil)
+	gst.Init()
 
 	if len(os.Args) < 2 {
 		fmt.Printf("USAGE: %s <uri>\n", os.Args[0])
@@ -30,7 +30,7 @@ func main() {
 
 	uri := os.Args[1]
 
-	discoverer, err := pbutils.NewDiscoverer(gst.ClockTime(time.Second * 15))
+	discoverer, err := gstpbutils.NewDiscoverer(gst.ClockTime(time.Second * 15))
 	if err != nil {
 		fmt.Println("ERROR:", err)
 		os.Exit(2)
@@ -45,7 +45,7 @@ func main() {
 	printDiscovererInfo(info)
 }
 
-func printDiscovererInfo(info *pbutils.DiscovererInfo) {
+func printDiscovererInfo(info gstpbutils.DiscovererInfo) {
 	fmt.Println("URI:", info.GetURI())
 	fmt.Println("Duration:", info.GetDuration())
 
@@ -59,17 +59,24 @@ func printDiscovererInfo(info *pbutils.DiscovererInfo) {
 	}
 }
 
-func printTags(info *pbutils.DiscovererInfo) {
+func printTags(info gstpbutils.DiscovererInfo) {
 	fmt.Println("Tags:")
-	tags := info.GetTags()
-	if tags != nil {
-		fmt.Println("  ", tags)
-		return
+
+	for _, stream := range info.GetStreamList() {
+		tags := stream.GetTags()
+		if tags != nil {
+			fmt.Println("  ", tags)
+		}
 	}
-	fmt.Println("  no tags")
+	for _, stream := range info.GetContainerStreams() {
+		tags := stream.GetTags()
+		if tags != nil {
+			fmt.Println("  ", tags)
+		}
+	}
 }
 
-func printStreamInfo(info *pbutils.DiscovererStreamInfo) {
+func printStreamInfo(info gstpbutils.DiscovererStreamInfo) {
 	if info == nil {
 		return
 	}

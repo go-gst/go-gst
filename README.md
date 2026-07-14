@@ -40,85 +40,20 @@ PS> go build .
 
 ## Quickstart
 
-For more examples see the `examples` folder [here](examples/).
-
-```go
-// This is the same as the `launch` example. See the godoc and other examples for more 
-// in-depth usage of the bindings.
-package main
-
-import (
-    "fmt"
-    "os"
-    "strings"
-
-    "github.com/go-gst/go-glib/glib"
-    "github.com/go-gst/go-gst/gst"
-)
-
-func main() {
-    // This example expects a simple `gst-launch-1.0` string as arguments
-    if len(os.Args) == 1 {
-        fmt.Println("Pipeline string cannot be empty")
-        os.Exit(1)
-    }
-
-    // Initialize GStreamer with the arguments passed to the program. Gstreamer
-    // and the bindings will automatically pop off any handled arguments leaving
-    // nothing but a pipeline string (unless other invalid args are present).
-    gst.Init(&os.Args)
-
-    // Create a main loop. This is only required when utilizing signals via the bindings.
-    // In this example, the AddWatch on the pipeline bus requires iterating on the main loop.
-    mainLoop := glib.NewMainLoop(glib.MainContextDefault(), false)
-
-    // Build a pipeline string from the cli arguments
-    pipelineString := strings.Join(os.Args[1:], " ")
-
-    /// Let GStreamer create a pipeline from the parsed launch syntax on the cli.
-    pipeline, err := gst.NewPipelineFromString(pipelineString)
-    if err != nil {
-        fmt.Println(err)
-        os.Exit(2)
-    }
-
-    // Add a message handler to the pipeline bus, printing interesting information to the console.
-    pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {
-        switch msg.Type() {
-        case gst.MessageEOS: // When end-of-stream is received flush the pipeling and stop the main loop
-            pipeline.BlockSetState(gst.StateNull)
-            mainLoop.Quit()
-        case gst.MessageError: // Error messages are always fatal
-            err := msg.ParseError()
-            fmt.Println("ERROR:", err.Error())
-            if debug := err.DebugString(); debug != "" {
-                fmt.Println("DEBUG:", debug)
-            }
-            mainLoop.Quit()
-        default:
-            // All messages implement a Stringer. However, this is
-            // typically an expensive thing to do and should be avoided.
-            fmt.Println(msg)
-        }
-        return true
-    })
-
-    // Start the pipeline
-    pipeline.SetState(gst.StatePlaying)
-
-    // Block and iterate on the main loop
-    mainLoop.Run()
-}
-```
+See the `examples` folder [here](examples/).
 
 ## Contributing
 
-If you find any issues with the bindings or spot areas where things can be improved, feel free to open a PR or start an Issue. A few things to note:
+The bindings are mostly auto generated from GStreamer documentation files (GIR Files). If a function is missing that you need, please open an issue or manually implement them. Oftentimes the generator is missing some conversion function.
 
- - Compilation times are insanely slow when working within the bindings.
- - There are a lot of quirks that make generators difficult to deal with for these bindings, so currently everything is hand written. If you have a need for a new binding, feel free to open an issue or create a PR. Writing CGo bindings is not as hard as it seems. (Take a look at https://github.com/go-gst/go-gst/pull/53 for inspiration)
- - More examples would be nice.
- - Support for writing GStreamer plugins and custom elements via the bindings is there, but not well documented.
- - go-gst follows semantic versioning, so it should always be forward compatible for minor versions. If we find an issue in a function and the only way to fix it is to change the function signature, we will break it in a minor version. That way you "get forced" to use the fixed version.
+## Where are the v1.X.X versions?
 
-Please make sure that you use the latest version of GStreamer before submitting an issue. If you are using an older version of GStreamer, please try to reproduce the issue with the [latest version](https://gstreamer.freedesktop.org/releases/) before submitting an issue.
+In https://github.com/go-gst/go-gst/pull/170 this repo was migrated to using a generator from GIR files. This makes all code in this repo:
+
+* safer
+* more aligned with the GStreamer functions
+* way easier to maintain
+
+The old code isn't gone, you can always pin your versions on the old commits. The tags have been retracted though, so you may end up seeing some logs from the go toolchain complaining.
+
+There are some migrations needed, as this is a breaking change, but mostly this is simple syntax or function naming. The underlying GStreamer logic does not change from this. See the [go-gst examples](https://github.com/go-gst/go-gst/tree/main/examples) for some reference.
