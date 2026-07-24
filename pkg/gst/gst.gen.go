@@ -38,7 +38,6 @@ import (
 // extern gboolean _goglib_gst1_StructureMapIdStrFunc(const GstIdStr*, GValue*, gpointer);
 // extern void _goglib_gst1_ElementCallAsyncFunc(GstElement*, gpointer);
 // extern void _goglib_gst1_IteratorForeachFunction(const GValue*, gpointer);
-// extern void _goglib_gst1_LogFunction(GstDebugCategory*, GstDebugLevel, const gchar*, const gchar*, gint, GObject*, GstDebugMessage*, gpointer);
 // extern void _goglib_gst1_TagForeachFunc(const GstTagList*, const gchar*, gpointer);
 // extern void _goglib_gst1_TaskFunction(gpointer);
 // extern void _goglib_gst1_TypeFindFunction(GstTypeFind*, gpointer);
@@ -7231,22 +7230,6 @@ type ElementCallAsyncFunc func(element Element)
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GstElementForeachPadFunc
 type ElementForeachPadFunc func(element Element, pad Pad) (goret bool)
-
-// DebugAddLogFunction wraps gst_debug_add_log_function
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
-func DebugAddLogFunction(fn LogFunction) {
-	var carg1 C.GstLogFunction // callback, scope: notified, closure: carg2, destroy: carg3
-	var carg2 C.gpointer       // implicit
-	var carg3 C.GDestroyNotify // implicit
-
-	carg1 = (*[0]byte)(C._goglib_gst1_LogFunction)
-	carg2 = C.gpointer(userdata.Register(fn))
-	carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
-
-	C.gst_debug_add_log_function(carg1, carg2, carg3)
-	runtime.KeepAlive(fn)
-}
 
 // DebugAddRingBufferLogger wraps gst_debug_add_ring_buffer_logger
 // 

@@ -205,6 +205,9 @@ var Data = genmain.Data{
 					typesystem.IgnoreMatching("Sample.make_writable"),
 					typesystem.IgnoreMatching("TagList.is_writable"),
 					typesystem.IgnoreMatching("TagList.make_writable"),
+
+					// Manually implemented since https://github.com/go-gst/go-gst/pull/219:
+					typesystem.IgnoreMatching("debug_add_log_function"),
 				},
 			},
 			"GstAllocators-1": {
