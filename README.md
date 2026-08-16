@@ -3,7 +3,6 @@
 # go-gst: Go bindings for the GStreamer C libraries
 
 [![godoc reference](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/go-gst/go-gst)
-[![GoReportCard](https://goreportcard.com/badge/github.com/go-gst/go-gst)](https://goreportcard.com/report/github.com/go-gst/go-gst)
 <!-- ![](https://github.com/go-gst/go-gst/workflows/Tests/badge.svg) -->
 
 See [pkg.go.dev](https://pkg.go.dev/github.com/go-gst/go-gst) references for documentation and examples.
