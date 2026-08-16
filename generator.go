@@ -367,6 +367,14 @@ var Data = genmain.Data{
 		},
 
 		MiniObjectExtenderReffing(),
+
+		// Query must be borrowed when marshaled from GValue so it remains writable in callbacks like ConnectProposeAllocation
+		func(r *typesystem.Registry) error {
+			gst := r.FindNamespaceByName("Gst-1")
+			q := gst.FindLocalTypeByGIRName("Query").(*typesystem.Record)
+			q.Marshaler.GlibGetType = ""
+			return nil
+		},
 	},
 }
 
