@@ -313,6 +313,9 @@ var Data = genmain.Data{
 		typesystem.MarkAsManuallyExtended("Gst-1", "ChildProxy"),
 		typesystem.MarkAsManuallyExtended("Gst-1", "TagSetter"),
 
+		typesystem.MarkAsManuallyExtended("GstApp-1", "AppSrc"),
+		typesystem.MarkAsManuallyExtended("GstApp-1", "AppSink"),
+
 		// Virtual methods of BaseTransform collide with Element
 		func(r *typesystem.Registry) error {
 			base := r.FindNamespaceByName("GstBase-1")
