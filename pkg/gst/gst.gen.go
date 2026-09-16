@@ -412,7 +412,6 @@ var (
 	TypeMessage                = gobject.Type(C.gst_message_get_type())
 	TypeMiniObject             = gobject.Type(C.gst_mini_object_get_type())
 	TypeParseContext           = gobject.Type(C.gst_parse_context_get_type())
-	TypeQuery                  = gobject.Type(C.gst_query_get_type())
 	TypeSample                 = gobject.Type(C.gst_sample_get_type())
 	TypeSegment                = gobject.Type(C.gst_segment_get_type())
 	TypeStructure              = gobject.Type(C.gst_structure_get_type())
@@ -562,7 +561,6 @@ func init() {
 		gobject.TypeMarshaler{T: TypeMessage, F: marshalMessage},
 		gobject.TypeMarshaler{T: TypeMiniObject, F: marshalMiniObject},
 		gobject.TypeMarshaler{T: TypeParseContext, F: marshalParseContext},
-		gobject.TypeMarshaler{T: TypeQuery, F: marshalQuery},
 		gobject.TypeMarshaler{T: TypeSample, F: marshalSample},
 		gobject.TypeMarshaler{T: TypeSegment, F: marshalSegment},
 		gobject.TypeMarshaler{T: TypeStructure, F: marshalStructure},
@@ -42381,21 +42379,6 @@ func (q *Query) instance() *C.GstQuery {
 		return nil
 	}
 	return q.native
-}
-
-var _ gobject.GoValueInitializer = (*Query)(nil)
-
-func marshalQuery(p unsafe.Pointer) (interface{}, error) {
-	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeQueryFromGlibNone(b), nil
-}
-
-func (r *Query) GoValueType() gobject.Type {
-	return TypeQuery
-}
-
-func (r *Query) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeQueryFromGlibBorrow is used to convert raw C.GstQuery pointers to go. This is used by the bindings internally.
