@@ -30,36 +30,36 @@ import "C"
 // medias (GArray *) - array of GstSDPMedia with media descriptions
 
 // Emails returns an iterator over the email addresses in the SDPMessage
-func (s *SDPMessage) Emails() iter.Seq2[uint, string] {
+func (s *SDPMessage) Emails() iter.Seq2[uint32, string] {
 	return getIter(s.EmailsLen(), s.GetEmail)
 }
 
 // Phones returns an iterator over the phone numbers in the SDPMessage
-func (s *SDPMessage) Phones() iter.Seq2[uint, string] {
+func (s *SDPMessage) Phones() iter.Seq2[uint32, string] {
 	return getIter(s.PhonesLen(), s.GetPhone)
 }
 
 // Bandwidths returns an iterator over the bandwidths in the SDPMessage
-func (s *SDPMessage) Bandwidths() iter.Seq2[uint, *SDPBandwidth] {
+func (s *SDPMessage) Bandwidths() iter.Seq2[uint32, *SDPBandwidth] {
 	return getIter(s.BandwidthsLen(), s.GetBandwidth)
 }
 
 // Times returns an iterator over the times in the SDPMessage
-func (s *SDPMessage) Times() iter.Seq2[uint, *SDPTime] {
+func (s *SDPMessage) Times() iter.Seq2[uint32, *SDPTime] {
 	return getIter(s.TimesLen(), s.GetTime)
 }
 
 // Zones returns an iterator over the zones in the SDPMessage
-func (s *SDPMessage) Zones() iter.Seq2[uint, *SDPZone] {
+func (s *SDPMessage) Zones() iter.Seq2[uint32, *SDPZone] {
 	return getIter(s.ZonesLen(), s.GetZone)
 }
 
 // Attributes returns an iterator over the attributes in the SDPMessage
-func (s *SDPMessage) Attributes() iter.Seq2[uint, *SDPAttribute] {
+func (s *SDPMessage) Attributes() iter.Seq2[uint32, *SDPAttribute] {
 	return getIter(s.AttributesLen(), s.GetAttribute)
 }
 
 // Medias returns an iterator over the medias in the SDPMessage
-func (s *SDPMessage) Medias() iter.Seq2[uint, *SDPMedia] {
+func (s *SDPMessage) Medias() iter.Seq2[uint32, *SDPMedia] {
 	return getIter(s.MediasLen(), s.GetMedia)
 }

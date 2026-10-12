@@ -16,8 +16,8 @@ func (meta *VideoMeta) GetHeight() uint32 {
 }
 
 // GetNPlanes returns the number of planes in the image.
-func (meta *VideoMeta) GetNPlanes() int {
-	return int(meta.videoMeta.native.n_planes)
+func (meta *VideoMeta) GetNPlanes() uint32 {
+	return uint32(meta.videoMeta.native.n_planes)
 }
 
 // GetOffset returns the offsets for the planes.

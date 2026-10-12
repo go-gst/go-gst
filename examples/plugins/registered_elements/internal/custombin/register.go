@@ -32,7 +32,7 @@ func Register() bool {
 		// The name of the element
 		"gocustombin",
 		// The rank of the element
-		uint(gst.RankNone),
+		uint32(gst.RankNone),
 		registered,
 	)
 }

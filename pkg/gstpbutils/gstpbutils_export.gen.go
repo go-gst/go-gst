@@ -113,4 +113,3 @@ func _goglib_gstpbutils1_Discoverer_starting(carg0 *C.GstDiscoverer) {
 	}
 	fn(carg0)
 }
-

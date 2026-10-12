@@ -670,4 +670,3 @@ func _goglib_gstvideo1_VideoAggregatorConvertPad_create_conversion_info(carg0 *C
 	}
 	fn(carg0, carg1, carg2)
 }
-

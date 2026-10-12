@@ -24,9 +24,9 @@ func _goglib_gstaudio1_AudioBaseSinkCustomSlavingCallback(carg1 *C.GstAudioBaseS
 		fn = v.(AudioBaseSinkCustomSlavingCallback)
 	}
 
-	var sink          AudioBaseSink              // in, none, converted
-	var etime         gst.ClockTime              // in, none, casted, alias
-	var itime         gst.ClockTime              // in, none, casted, alias
+	var sink AudioBaseSink                       // in, none, converted
+	var etime gst.ClockTime                      // in, none, casted, alias
+	var itime gst.ClockTime                      // in, none, casted, alias
 	var requestedSkew *gst.ClockTimeDiff         // in, transfer: none, C Pointers: 1, Name: ClockTimeDiff
 	var discontReason AudioBaseSinkDiscontReason // in, none, casted
 
@@ -926,4 +926,3 @@ func _goglib_gstaudio1_AudioSrc_unprepare(carg0 *C.GstAudioSrc) (cret C.gboolean
 	}
 	return fn(carg0)
 }
-

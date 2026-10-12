@@ -161,8 +161,8 @@ func (info *MapInfo) Unmap() {
 }
 
 // Length returns the length of the mapped memory.
-func (info *MapInfo) Length() int {
-	return int(info.mapInfo.native.size)
+func (info *MapInfo) Length() uint {
+	return uint(info.mapInfo.native.size)
 }
 
 // Flags returns the flags of the mapped memory.

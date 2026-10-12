@@ -12,7 +12,7 @@ func main() {
 
 	registry := gst.RegistryGet()
 
-	higherThanHighRank := uint(258)
+	higherThanHighRank := uint32(258)
 
 	plugin := registry.LookupFeature("vtdec_hw")
 

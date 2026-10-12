@@ -44,9 +44,9 @@ func _goglib_gstgl1_GLFilterRenderFunc(carg1 *C.GstGLFilter, carg2 *C.GstGLMemor
 		fn = v.(GLFilterRenderFunc)
 	}
 
-	var filter GLFilter  // in, none, converted
-	var inTex  *GLMemory // in, none, converted
-	var goret  bool      // return
+	var filter GLFilter // in, none, converted
+	var inTex *GLMemory // in, none, converted
+	var goret bool      // return
 
 	filter = UnsafeGLFilterFromGlibNone(unsafe.Pointer(carg1))
 	inTex = UnsafeGLMemoryFromGlibNone(unsafe.Pointer(carg2))
@@ -539,4 +539,3 @@ func _goglib_gstgl1_GLWindow_show(carg0 *C.GstGLWindow) {
 	}
 	fn(carg0)
 }
-

@@ -23,12 +23,12 @@ func _goglib_gstwebrtc1_WebRTCICEOnCandidateFunc(carg1 *C.GstWebRTCICE, carg2 C.
 		fn = v.(WebRTCICEOnCandidateFunc)
 	}
 
-	var ice       WebRTCICE // in, none, converted
-	var streamId  uint      // in, none, casted
-	var candidate string    // in, none, string
+	var ice WebRTCICE    // in, none, converted
+	var streamId uint32  // in, none, casted
+	var candidate string // in, none, string
 
 	ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg1))
-	streamId = uint(carg2)
+	streamId = uint32(carg2)
 	candidate = C.GoString((*C.char)(unsafe.Pointer(carg3)))
 
 	fn(ice, streamId, candidate)
@@ -285,4 +285,3 @@ func _goglib_gstwebrtc1_WebRTCICETransport_gather_candidates(carg0 *C.GstWebRTCI
 	}
 	return fn(carg0)
 }
-

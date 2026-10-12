@@ -24,10 +24,10 @@ func _goglib_gstbase1_CollectPadsBufferFunction(carg1 *C.GstCollectPads, carg2 *
 		fn = v.(CollectPadsBufferFunction)
 	}
 
-	var pads   CollectPads    // in, none, converted
-	var data   *CollectData   // in, none, converted
-	var buffer *gst.Buffer    // in, full, converted
-	var goret  gst.FlowReturn // return, none, casted
+	var pads CollectPads     // in, none, converted
+	var data *CollectData    // in, none, converted
+	var buffer *gst.Buffer   // in, full, converted
+	var goret gst.FlowReturn // return, none, casted
 
 	pads = UnsafeCollectPadsFromGlibNone(unsafe.Pointer(carg1))
 	data = UnsafeCollectDataFromGlibNone(unsafe.Pointer(carg2))
@@ -51,11 +51,11 @@ func _goglib_gstbase1_CollectPadsClipFunction(carg1 *C.GstCollectPads, carg2 *C.
 		fn = v.(CollectPadsClipFunction)
 	}
 
-	var pads      CollectPads    // in, none, converted
-	var data      *CollectData   // in, none, converted
-	var inbuffer  *gst.Buffer    // in, full, converted
-	var outbuffer *gst.Buffer    // out, full, converted
-	var goret     gst.FlowReturn // return, none, casted
+	var pads CollectPads      // in, none, converted
+	var data *CollectData     // in, none, converted
+	var inbuffer *gst.Buffer  // in, full, converted
+	var outbuffer *gst.Buffer // out, full, converted
+	var goret gst.FlowReturn  // return, none, casted
 
 	pads = UnsafeCollectPadsFromGlibNone(unsafe.Pointer(carg1))
 	data = UnsafeCollectDataFromGlibNone(unsafe.Pointer(carg2))
@@ -80,12 +80,12 @@ func _goglib_gstbase1_CollectPadsCompareFunction(carg1 *C.GstCollectPads, carg2 
 		fn = v.(CollectPadsCompareFunction)
 	}
 
-	var pads       CollectPads   // in, none, converted
-	var data1      *CollectData  // in, none, converted
+	var pads CollectPads         // in, none, converted
+	var data1 *CollectData       // in, none, converted
 	var timestamp1 gst.ClockTime // in, none, casted, alias
-	var data2      *CollectData  // in, none, converted
+	var data2 *CollectData       // in, none, converted
 	var timestamp2 gst.ClockTime // in, none, casted, alias
-	var goret      int32         // return, none, casted
+	var goret int32              // return, none, casted
 
 	pads = UnsafeCollectPadsFromGlibNone(unsafe.Pointer(carg1))
 	data1 = UnsafeCollectDataFromGlibNone(unsafe.Pointer(carg2))
@@ -111,10 +111,10 @@ func _goglib_gstbase1_CollectPadsEventFunction(carg1 *C.GstCollectPads, carg2 *C
 		fn = v.(CollectPadsEventFunction)
 	}
 
-	var pads  CollectPads  // in, none, converted
-	var pad   *CollectData // in, none, converted
-	var event *gst.Event   // in, none, converted
-	var goret bool         // return
+	var pads CollectPads // in, none, converted
+	var pad *CollectData // in, none, converted
+	var event *gst.Event // in, none, converted
+	var goret bool       // return
 
 	pads = UnsafeCollectPadsFromGlibNone(unsafe.Pointer(carg1))
 	pad = UnsafeCollectDataFromGlibNone(unsafe.Pointer(carg2))
@@ -158,7 +158,7 @@ func _goglib_gstbase1_CollectPadsFunction(carg1 *C.GstCollectPads, carg2 C.gpoin
 		fn = v.(CollectPadsFunction)
 	}
 
-	var pads  CollectPads    // in, none, converted
+	var pads CollectPads     // in, none, converted
 	var goret gst.FlowReturn // return, none, casted
 
 	pads = UnsafeCollectPadsFromGlibNone(unsafe.Pointer(carg1))
@@ -181,10 +181,10 @@ func _goglib_gstbase1_CollectPadsQueryFunction(carg1 *C.GstCollectPads, carg2 *C
 		fn = v.(CollectPadsQueryFunction)
 	}
 
-	var pads  CollectPads  // in, none, converted
-	var pad   *CollectData // in, none, converted
-	var query *gst.Query   // in, none, converted
-	var goret bool         // return
+	var pads CollectPads // in, none, converted
+	var pad *CollectData // in, none, converted
+	var query *gst.Query // in, none, converted
+	var goret bool       // return
 
 	pads = UnsafeCollectPadsFromGlibNone(unsafe.Pointer(carg1))
 	pad = UnsafeCollectDataFromGlibNone(unsafe.Pointer(carg2))
@@ -1374,4 +1374,3 @@ func _goglib_gstbase1_PushSrc_fill(carg0 *C.GstPushSrc, carg1 *C.GstBuffer) (cre
 	}
 	return fn(carg0, carg1)
 }
-

@@ -64,7 +64,7 @@ func createPipeline() (gst.Pipeline, error) {
 	// buffers of all elements of the pipeline are still empty, this will be called
 	// a couple of times until all of them are filled. After this initial period,
 	// this handler will be called (on average) twice per second.
-	src.SetCallbacks(&gstapp.AppSrcCallbacks{NeedData: func(self gstapp.AppSrc, _ uint) {
+	src.SetCallbacks(&gstapp.AppSrcCallbacks{NeedData: func(self gstapp.AppSrc, _ uint32) {
 
 		// If we've reached the end of the palette, end the stream.
 		if i == len(palette) {
@@ -75,7 +75,7 @@ func createPipeline() (gst.Pipeline, error) {
 		fmt.Println("Producing frame:", i)
 
 		// Create a buffer that can hold exactly one video RGBA frame.
-		buffer := gst.NewBufferAllocate(nil, uint(videoInfo.GetSize()), nil)
+		buffer := gst.NewBufferAllocate(nil, videoInfo.GetSize(), nil)
 
 		// For each frame we produce, we set the timestamp when it should be displayed
 		// The autovideosink will use this information to display the frame at the right time.

@@ -7,12 +7,12 @@ import "C"
 
 // SetFramerate sets the framerate of the video info as a fraction of
 // num/denom in frames per second.
-func (info *VideoInfo) SetFramerate(num, denom int) {
+func (info *VideoInfo) SetFramerate(num, denom int32) {
 	info.videoInfo.native.fps_n = C.gint(num)
 	info.videoInfo.native.fps_d = C.gint(denom)
 }
 
 // GetSize returns the default size of one frame
-func (info *VideoInfo) GetSize() int {
-	return int(info.videoInfo.native.size)
+func (info *VideoInfo) GetSize() uint {
+	return uint(info.videoInfo.native.size)
 }

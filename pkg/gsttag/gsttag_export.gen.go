@@ -58,4 +58,3 @@ func _goglib_gsttag1_TagMux_render_start_tag(carg0 *C.GstTagMux, carg1 *C.GstTag
 	}
 	return fn(carg0, carg1)
 }
-

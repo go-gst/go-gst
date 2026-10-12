@@ -34,7 +34,7 @@ func Register() bool {
 		// The name of the element
 		"gocustomsrc",
 		// The rank of the element
-		uint(gst.RankNone),
+		uint32(gst.RankNone),
 		registered,
 	)
 }

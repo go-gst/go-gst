@@ -26,8 +26,8 @@ func _goglib_gst1_BufferForeachMetaFunc(carg1 *C.GstBuffer, carg2 **C.GstMeta, c
 	}
 
 	var buffer *Buffer // in, none, converted
-	var meta   *Meta   // out, full, converted
-	var goret  bool    // return
+	var meta *Meta     // out, full, converted
+	var goret bool     // return
 
 	buffer = UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
@@ -52,11 +52,11 @@ func _goglib_gst1_BufferListFunc(carg1 **C.GstBuffer, carg2 C.guint, carg3 C.gpo
 		fn = v.(BufferListFunc)
 	}
 
-	var idx    uint    // in, none, casted
+	var idx uint32     // in, none, casted
 	var buffer *Buffer // out, full, converted
-	var goret  bool    // return
+	var goret bool     // return
 
-	idx = uint(carg2)
+	idx = uint32(carg2)
 
 	buffer, goret = fn(idx)
 
@@ -79,9 +79,9 @@ func _goglib_gst1_CapsFilterMapFunc(carg1 *C.GstCapsFeatures, carg2 *C.GstStruct
 		fn = v.(CapsFilterMapFunc)
 	}
 
-	var features  *CapsFeatures // in, none, converted
-	var structure *Structure    // in, none, converted
-	var goret     bool          // return
+	var features *CapsFeatures // in, none, converted
+	var structure *Structure   // in, none, converted
+	var goret bool             // return
 
 	features = UnsafeCapsFeaturesFromGlibNone(unsafe.Pointer(carg1))
 	structure = UnsafeStructureFromGlibNone(unsafe.Pointer(carg2))
@@ -106,9 +106,9 @@ func _goglib_gst1_CapsForeachFunc(carg1 *C.GstCapsFeatures, carg2 *C.GstStructur
 		fn = v.(CapsForeachFunc)
 	}
 
-	var features  *CapsFeatures // in, none, converted
-	var structure *Structure    // in, none, converted
-	var goret     bool          // return
+	var features *CapsFeatures // in, none, converted
+	var structure *Structure   // in, none, converted
+	var goret bool             // return
 
 	features = UnsafeCapsFeaturesFromGlibNone(unsafe.Pointer(carg1))
 	structure = UnsafeStructureFromGlibNone(unsafe.Pointer(carg2))
@@ -133,9 +133,9 @@ func _goglib_gst1_CapsMapFunc(carg1 *C.GstCapsFeatures, carg2 *C.GstStructure, c
 		fn = v.(CapsMapFunc)
 	}
 
-	var features  *CapsFeatures // in, none, converted
-	var structure *Structure    // in, none, converted
-	var goret     bool          // return
+	var features *CapsFeatures // in, none, converted
+	var structure *Structure   // in, none, converted
+	var goret bool             // return
 
 	features = UnsafeCapsFeaturesFromGlibNone(unsafe.Pointer(carg1))
 	structure = UnsafeStructureFromGlibNone(unsafe.Pointer(carg2))
@@ -160,9 +160,9 @@ func _goglib_gst1_IteratorFoldFunction(carg1 *C.GValue, carg2 *C.GValue, carg3 C
 		fn = v.(IteratorFoldFunction)
 	}
 
-	var item  *gobject.Value // in, none, converted
-	var ret   *gobject.Value // in, none, converted
-	var goret bool           // return
+	var item *gobject.Value // in, none, converted
+	var ret *gobject.Value  // in, none, converted
+	var goret bool          // return
 
 	item = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg1))
 	ret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
@@ -206,12 +206,12 @@ func _goglib_gst1_LogFunction(carg1 *C.GstDebugCategory, carg2 C.GstDebugLevel, 
 	}
 
 	var category *DebugCategory // in, borrow, converted
-	var level    DebugLevel     // in, none, casted
-	var file     string         // in, none, string
+	var level DebugLevel        // in, none, casted
+	var file string             // in, none, string
 	var function string         // in, none, string
-	var line     int32          // in, none, casted
-	var object   gobject.Object // in, none, converted
-	var message  *DebugMessage  // in, borrow, converted
+	var line int32              // in, none, casted
+	var object gobject.Object   // in, none, converted
+	var message *DebugMessage   // in, borrow, converted
 
 	category = UnsafeDebugCategoryFromGlibBorrow(unsafe.Pointer(carg1))
 	// borrow not bound to another value, this requires correct handling by the user
@@ -255,7 +255,7 @@ func _goglib_gst1_PadForwardFunction(carg1 *C.GstPad, carg2 C.gpointer) (cret C.
 		fn = v.(PadForwardFunction)
 	}
 
-	var pad   Pad  // in, none, converted
+	var pad Pad    // in, none, converted
 	var goret bool // return
 
 	pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
@@ -280,8 +280,8 @@ func _goglib_gst1_PadProbeCallback(carg1 *C.GstPad, carg2 *C.GstPadProbeInfo, ca
 		fn = v.(PadProbeCallback)
 	}
 
-	var pad   Pad            // in, none, converted
-	var info  *PadProbeInfo  // in, borrow, converted
+	var pad Pad              // in, none, converted
+	var info *PadProbeInfo   // in, borrow, converted
 	var goret PadProbeReturn // return, none, casted
 
 	pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
@@ -307,7 +307,7 @@ func _goglib_gst1_PluginFeatureFilter(carg1 *C.GstPluginFeature, carg2 C.gpointe
 	}
 
 	var feature PluginFeature // in, none, converted
-	var goret   bool          // return
+	var goret bool            // return
 
 	feature = UnsafePluginFeatureFromGlibNone(unsafe.Pointer(carg1))
 
@@ -332,7 +332,7 @@ func _goglib_gst1_PluginFilter(carg1 *C.GstPlugin, carg2 C.gpointer) (cret C.gbo
 	}
 
 	var plugin Plugin // in, none, converted
-	var goret  bool   // return
+	var goret bool    // return
 
 	plugin = UnsafePluginFromGlibNone(unsafe.Pointer(carg1))
 
@@ -357,7 +357,7 @@ func _goglib_gst1_PluginInitFullFunc(carg1 *C.GstPlugin, carg2 C.gpointer) (cret
 	}
 
 	var plugin Plugin // in, none, converted
-	var goret  bool   // return
+	var goret bool    // return
 
 	plugin = UnsafePluginFromGlibNone(unsafe.Pointer(carg1))
 
@@ -399,9 +399,9 @@ func _goglib_gst1_StructureFilterMapFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 
 		fn = v.(StructureFilterMapFunc)
 	}
 
-	var fieldId glib.Quark     // in, none, casted, alias
-	var value   *gobject.Value // in, none, converted
-	var goret   bool           // return
+	var fieldId glib.Quark   // in, none, casted, alias
+	var value *gobject.Value // in, none, converted
+	var goret bool           // return
 
 	fieldId = glib.Quark(carg1)
 	value = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
@@ -426,9 +426,9 @@ func _goglib_gst1_StructureFilterMapIdStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue
 		fn = v.(StructureFilterMapIdStrFunc)
 	}
 
-	var fieldname *IdStr         // in, none, converted
-	var value     *gobject.Value // in, none, converted
-	var goret     bool           // return
+	var fieldname *IdStr     // in, none, converted
+	var value *gobject.Value // in, none, converted
+	var goret bool           // return
 
 	fieldname = UnsafeIdStrFromGlibNone(unsafe.Pointer(carg1))
 	value = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
@@ -453,9 +453,9 @@ func _goglib_gst1_StructureForeachIdStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue, 
 		fn = v.(StructureForeachIdStrFunc)
 	}
 
-	var fieldname *IdStr         // in, none, converted
-	var value     *gobject.Value // in, none, converted
-	var goret     bool           // return
+	var fieldname *IdStr     // in, none, converted
+	var value *gobject.Value // in, none, converted
+	var goret bool           // return
 
 	fieldname = UnsafeIdStrFromGlibNone(unsafe.Pointer(carg1))
 	value = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
@@ -480,9 +480,9 @@ func _goglib_gst1_StructureMapFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C.gpoi
 		fn = v.(StructureMapFunc)
 	}
 
-	var fieldId glib.Quark     // in, none, casted, alias
-	var value   *gobject.Value // in, none, converted
-	var goret   bool           // return
+	var fieldId glib.Quark   // in, none, casted, alias
+	var value *gobject.Value // in, none, converted
+	var goret bool           // return
 
 	fieldId = glib.Quark(carg1)
 	value = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
@@ -507,9 +507,9 @@ func _goglib_gst1_StructureMapIdStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue, carg
 		fn = v.(StructureMapIdStrFunc)
 	}
 
-	var fieldname *IdStr         // in, none, converted
-	var value     *gobject.Value // in, none, converted
-	var goret     bool           // return
+	var fieldname *IdStr     // in, none, converted
+	var value *gobject.Value // in, none, converted
+	var goret bool           // return
 
 	fieldname = UnsafeIdStrFromGlibNone(unsafe.Pointer(carg1))
 	value = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
@@ -535,7 +535,7 @@ func _goglib_gst1_TagForeachFunc(carg1 *C.GstTagList, carg2 *C.gchar, carg3 C.gp
 	}
 
 	var list *TagList // in, none, converted
-	var tag  string   // in, none, string
+	var tag string    // in, none, string
 
 	list = UnsafeTagListFromGlibNone(unsafe.Pointer(carg1))
 	tag = C.GoString((*C.char)(unsafe.Pointer(carg2)))
@@ -600,9 +600,9 @@ func _goglib_gst1_BusFunc(carg1 *C.GstBus, carg2 *C.GstMessage, carg3 C.gpointer
 		fn = v.(BusFunc)
 	}
 
-	var bus     Bus      // in, none, converted
+	var bus Bus          // in, none, converted
 	var message *Message // in, none, converted
-	var goret   bool     // return
+	var goret bool       // return
 
 	bus = UnsafeBusFromGlibNone(unsafe.Pointer(carg1))
 	message = UnsafeMessageFromGlibNone(unsafe.Pointer(carg2))
@@ -627,10 +627,10 @@ func _goglib_gst1_ClockCallback(carg1 *C.GstClock, carg2 C.GstClockTime, carg3 C
 		fn = v.(ClockCallback)
 	}
 
-	var clock Clock     // in, none, converted
-	var time  ClockTime // in, none, casted, alias
-	var id    ClockID   // in, none, casted, alias
-	var goret bool      // return
+	var clock Clock    // in, none, converted
+	var time ClockTime // in, none, casted, alias
+	var id ClockID     // in, none, casted, alias
+	var goret bool     // return
 
 	clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg1))
 	time = ClockTime(carg2)
@@ -675,8 +675,8 @@ func _goglib_gst1_ElementForeachPadFunc(carg1 *C.GstElement, carg2 *C.GstPad, ca
 	}
 
 	var element Element // in, none, converted
-	var pad     Pad     // in, none, converted
-	var goret   bool    // return
+	var pad Pad         // in, none, converted
+	var goret bool      // return
 
 	element = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
 	pad = UnsafePadFromGlibNone(unsafe.Pointer(carg2))
@@ -1373,4 +1373,3 @@ func _goglib_gst1_Bin_remove_element(carg0 *C.GstBin, carg1 *C.GstElement) (cret
 	}
 	return fn(carg0, carg1)
 }
-

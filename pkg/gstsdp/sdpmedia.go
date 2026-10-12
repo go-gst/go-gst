@@ -19,21 +19,21 @@ import "iter"
 // attributes (GArray *) - array of GstSDPAttribute with the additional media attributes
 
 // Formats returns an iterator over the formats in the SDPMedia
-func (m *SDPMedia) Formats() iter.Seq2[uint, string] {
+func (m *SDPMedia) Formats() iter.Seq2[uint32, string] {
 	return getIter(m.FormatsLen(), m.GetFormat)
 }
 
 // Connections returns an iterator over the connections in the SDPMedia
-func (m *SDPMedia) Connections() iter.Seq2[uint, *SDPConnection] {
+func (m *SDPMedia) Connections() iter.Seq2[uint32, *SDPConnection] {
 	return getIter(m.ConnectionsLen(), m.GetConnection)
 }
 
 // Bandwidths returns an iterator over the bandwidths in the SDPMedia
-func (m *SDPMedia) Bandwidths() iter.Seq2[uint, *SDPBandwidth] {
+func (m *SDPMedia) Bandwidths() iter.Seq2[uint32, *SDPBandwidth] {
 	return getIter(m.BandwidthsLen(), m.GetBandwidth)
 }
 
 // Attributes returns an iterator over the attributes in the SDPMedia
-func (m *SDPMedia) Attributes() iter.Seq2[uint, *SDPAttribute] {
+func (m *SDPMedia) Attributes() iter.Seq2[uint32, *SDPAttribute] {
 	return getIter(m.AttributesLen(), m.GetAttribute)
 }

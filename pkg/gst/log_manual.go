@@ -40,18 +40,18 @@ func DebugAddLogFunction(fn LogFunction) LogFunctionHandle {
 // See https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html?gi-language=c#gst_debug_remove_log_function_by_data
 //
 // Returns the number of functions removed.
-func DebugRemoveLogFunction(handle LogFunctionHandle) uint {
+func DebugRemoveLogFunction(handle LogFunctionHandle) uint32 {
 	if handle == nil {
 		return 0
 	}
 	ret := C.gst_debug_remove_log_function_by_data(C.gpointer(handle))
-	return uint(ret)
+	return uint32(ret)
 }
 
 // DebugRemoveDefaultLogFunction removes GStreamer's default log function (gst_debug_log_default).
 // Returns the number of functions removed.
-func DebugRemoveDefaultLogFunction() uint {
-	return uint(C.gst_debug_remove_log_function((*[0]byte)(C.gst_debug_log_default)))
+func DebugRemoveDefaultLogFunction() uint32 {
+	return uint32(C.gst_debug_remove_log_function((*[0]byte)(C.gst_debug_log_default)))
 }
 
 // DebugAddDefaultLogFunction re-adds GStreamer's default log function (gst_debug_log_default).

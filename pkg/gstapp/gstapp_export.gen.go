@@ -190,4 +190,3 @@ func _goglib_gstapp1_AppSrc_seek_data(carg0 *C.GstAppSrc, carg1 C.guint64) (cret
 	}
 	return fn(carg0, carg1)
 }
-
