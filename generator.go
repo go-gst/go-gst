@@ -22,6 +22,9 @@ const Module = "github.com/go-gst/go-gst/pkg"
 
 const GstreamerDocsBaseURL = "https://gstreamer.freedesktop.org/documentation"
 
+// GstVersion is the min and max version of all generated gstreamer namespaces
+const GstVersion = "1.26"
+
 var Data = genmain.Data{
 	Module:   Module,
 	GirFiles: girfiles_gst.GirFiles,
@@ -108,8 +111,8 @@ var Data = genmain.Data{
 	Config: typesystem.Config{
 		Namespaces: map[string]typesystem.NamespaceConfig{
 			"Gst-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
+				MinVersion: GstVersion,
+				MaxVersion: GstVersion,
 				ManualTypes: []typesystem.Type{
 					&typesystem.Alias{
 						BaseType: typesystem.BaseType{
@@ -210,99 +213,42 @@ var Data = genmain.Data{
 					typesystem.IgnoreMatching("debug_add_log_function"),
 				},
 			},
-			"GstAllocators-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstApp-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstAudio-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstBase-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-				IgnoredDefinitions: []typesystem.IgnoreFunc{
-					// has unexported free function that crashes the linker when compiling the examples:
-					typesystem.IgnoreMatching("TypeFindData"),
-				},
-			},
-			"GstCheck-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstController-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstGL-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstMpegts-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstNet-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstPbutils-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-				IgnoredDefinitions: []typesystem.IgnoreFunc{
-					// Resolve to ObjectClass:
-					typesystem.IgnoreMatching("DiscovererAudioInfoClass"),
-					typesystem.IgnoreMatching("DiscovererContainerInfoClass"),
-					typesystem.IgnoreMatching("DiscovererInfoClass"),
-					typesystem.IgnoreMatching("DiscovererStreamInfoClass"),
-					typesystem.IgnoreMatching("DiscovererSubtitleInfoClass"),
-					typesystem.IgnoreMatching("DiscovererVideoInfoClass"),
-					typesystem.IgnoreMatching("EncodingTargetClass"),
-				},
-			},
-			"GstPlay-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstPlayer-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstRtp-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstRtsp-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstSdp-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstTag-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
-			"GstVideo-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-				IgnoredDefinitions: []typesystem.IgnoreFunc{
-					// must be implemented manually
-					typesystem.IgnoreMatching("VideoCodecFrame.set_user_data"),
-					typesystem.IgnoreMatching("VideoCodecFrame.get_user_data"),
-					// returns a gconstpointer to an array, manually implemented instead
-					typesystem.IgnoreMatching("VideoFormat.get_palette"),
-				},
-			},
-			"GstWebRTC-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
+			"GstAllocators-1": gstNamespace(),
+			"GstApp-1":        gstNamespace(),
+			"GstAudio-1":      gstNamespace(),
+			"GstBase-1": gstNamespace(
+				// has unexported free function that crashes the linker when compiling the examples:
+				typesystem.IgnoreMatching("TypeFindData"),
+			),
+			"GstCheck-1":      gstNamespace(),
+			"GstController-1": gstNamespace(),
+			"GstGL-1":         gstNamespace(),
+			"GstMpegts-1":     gstNamespace(),
+			"GstNet-1":        gstNamespace(),
+			"GstPbutils-1": gstNamespace(
+				// Resolve to ObjectClass:
+				typesystem.IgnoreMatching("DiscovererAudioInfoClass"),
+				typesystem.IgnoreMatching("DiscovererContainerInfoClass"),
+				typesystem.IgnoreMatching("DiscovererInfoClass"),
+				typesystem.IgnoreMatching("DiscovererStreamInfoClass"),
+				typesystem.IgnoreMatching("DiscovererSubtitleInfoClass"),
+				typesystem.IgnoreMatching("DiscovererVideoInfoClass"),
+				typesystem.IgnoreMatching("EncodingTargetClass"),
+			),
+			"GstPlay-1":   gstNamespace(),
+			"GstPlayer-1": gstNamespace(),
+			"GstRtp-1":    gstNamespace(),
+			"GstRtsp-1":   gstNamespace(),
+			"GstSdp-1":    gstNamespace(),
+			"GstTag-1":    gstNamespace(),
+			"GstVideo-1": gstNamespace(
+				// must be implemented manually
+				typesystem.IgnoreMatching("VideoCodecFrame.set_user_data"),
+				typesystem.IgnoreMatching("VideoCodecFrame.get_user_data"),
+				// returns a gconstpointer to an array, manually implemented instead
+				typesystem.IgnoreMatching("VideoFormat.get_palette"),
+			),
+			"GstWebRTC-1": gstNamespace(),
 		},
 	},
 	Postprocessors: []typesystem.PostProcessor{
@@ -368,6 +314,15 @@ var Data = genmain.Data{
 
 		MiniObjectExtenderReffing(),
 	},
+}
+
+// gstNamespace returns the config of a generated gstreamer namespace
+func gstNamespace(ignored ...typesystem.IgnoreFunc) typesystem.NamespaceConfig {
+	return typesystem.NamespaceConfig{
+		MinVersion:         GstVersion,
+		MaxVersion:         GstVersion,
+		IgnoredDefinitions: ignored,
+	}
 }
 
 func main() {
@@ -520,12 +475,6 @@ func MarkSDPMessageGettersAsBorrowed() gir.Preprocessor {
 			f.ReturnValue.TransferOwnership.TransferOwnership = "borrow"
 
 		}
-	})
-}
-
-func MarkReturnAsBorrowed(fulltype string) gir.Preprocessor {
-	return gir.ModifyCallable(fulltype, func(c *gir.CallableAttrs) {
-		c.ReturnValue.TransferOwnership.TransferOwnership = "borrow"
 	})
 }
 
