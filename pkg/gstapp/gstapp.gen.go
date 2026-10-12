@@ -195,6 +195,7 @@ var _ AppSink = (*AppSinkInstance)(nil)
 // 
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#GstAppSink
 type AppSink interface {
+	AppSinkExtManual // handwritten functions
 	gstbase.BaseSink
 	gst.URIHandler
 	upcastToGstAppSink() *AppSinkInstance
@@ -1408,6 +1409,7 @@ var _ AppSrc = (*AppSrcInstance)(nil)
 // 
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#GstAppSrc
 type AppSrc interface {
+	AppSrcExtManual // handwritten functions
 	gstbase.BaseSrc
 	gst.URIHandler
 	upcastToGstAppSrc() *AppSrcInstance
