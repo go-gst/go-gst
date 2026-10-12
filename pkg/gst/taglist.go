@@ -13,7 +13,7 @@ import (
 import "C"
 
 // GetValueIndex wraps gst_tag_list_get_value_index
-func (list *TagList) GetValueIndex(tag string, index uint) any {
+func (list *TagList) GetValueIndex(tag string, index uint32) any {
 	var carg0 *C.GstTagList // in, none, converted
 	var carg1 *C.gchar      // in, none, string, casted *C.gchar
 	var carg2 C.guint       // in, none, casted

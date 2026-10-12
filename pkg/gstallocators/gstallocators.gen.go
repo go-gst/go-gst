@@ -38,25 +38,25 @@ func init() {
 }
 
 // FdMemoryFlags wraps GstFdMemoryFlags
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GstFdMemoryFlags
 type FdMemoryFlags C.gint
 
 const (
 	// FdMemoryFlagNone wraps GST_FD_MEMORY_FLAG_NONE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GST_FD_MEMORY_FLAG_NONE
 	FdMemoryFlagNone FdMemoryFlags = 0
 	// FdMemoryFlagKeepMapped wraps GST_FD_MEMORY_FLAG_KEEP_MAPPED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GST_FD_MEMORY_FLAG_KEEP_MAPPED
 	FdMemoryFlagKeepMapped FdMemoryFlags = 1
 	// FdMemoryFlagMapPrivate wraps GST_FD_MEMORY_FLAG_MAP_PRIVATE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GST_FD_MEMORY_FLAG_MAP_PRIVATE
 	FdMemoryFlagMapPrivate FdMemoryFlags = 2
 	// FdMemoryFlagDontClose wraps GST_FD_MEMORY_FLAG_DONT_CLOSE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GST_FD_MEMORY_FLAG_DONT_CLOSE
 	FdMemoryFlagDontClose FdMemoryFlags = 4
 )
@@ -88,11 +88,11 @@ func (f FdMemoryFlags) String() string {
 }
 
 // DmabufMemoryGetFd wraps gst_dmabuf_memory_get_fd
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators
 func DmabufMemoryGetFd(mem *gst.Memory) int32 {
 	var carg1 *C.GstMemory // in, none, converted
-	var cret  C.gint       // return, none, casted
+	var cret C.gint        // return, none, casted
 
 	carg1 = (*C.GstMemory)(gst.UnsafeMemoryToGlibNone(mem))
 
@@ -107,11 +107,11 @@ func DmabufMemoryGetFd(mem *gst.Memory) int32 {
 }
 
 // DrmDumbMemoryExportDmabuf wraps gst_drm_dumb_memory_export_dmabuf
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators
 func DrmDumbMemoryExportDmabuf(mem *gst.Memory) *gst.Memory {
 	var carg1 *C.GstMemory // in, none, converted
-	var cret  *C.GstMemory // return, full, converted
+	var cret *C.GstMemory  // return, full, converted
 
 	carg1 = (*C.GstMemory)(gst.UnsafeMemoryToGlibNone(mem))
 
@@ -126,11 +126,11 @@ func DrmDumbMemoryExportDmabuf(mem *gst.Memory) *gst.Memory {
 }
 
 // DrmDumbMemoryGetHandle wraps gst_drm_dumb_memory_get_handle
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators
 func DrmDumbMemoryGetHandle(mem *gst.Memory) uint32 {
 	var carg1 *C.GstMemory // in, none, converted
-	var cret  C.guint32    // return, none, casted
+	var cret C.guint32     // return, none, casted
 
 	carg1 = (*C.GstMemory)(gst.UnsafeMemoryToGlibNone(mem))
 
@@ -145,11 +145,11 @@ func DrmDumbMemoryGetHandle(mem *gst.Memory) uint32 {
 }
 
 // FdMemoryGetFd wraps gst_fd_memory_get_fd
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators
 func FdMemoryGetFd(mem *gst.Memory) int32 {
 	var carg1 *C.GstMemory // in, none, converted
-	var cret  C.gint       // return, none, casted
+	var cret C.gint        // return, none, casted
 
 	carg1 = (*C.GstMemory)(gst.UnsafeMemoryToGlibNone(mem))
 
@@ -164,11 +164,11 @@ func FdMemoryGetFd(mem *gst.Memory) int32 {
 }
 
 // IsDmabufMemory wraps gst_is_dmabuf_memory
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators
 func IsDmabufMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
-	var cret  C.gboolean   // return
+	var cret C.gboolean    // return
 
 	carg1 = (*C.GstMemory)(gst.UnsafeMemoryToGlibNone(mem))
 
@@ -185,11 +185,11 @@ func IsDmabufMemory(mem *gst.Memory) bool {
 }
 
 // IsDrmDumbMemory wraps gst_is_drm_dumb_memory
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators
 func IsDrmDumbMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
-	var cret  C.gboolean   // return
+	var cret C.gboolean    // return
 
 	carg1 = (*C.GstMemory)(gst.UnsafeMemoryToGlibNone(mem))
 
@@ -206,11 +206,11 @@ func IsDrmDumbMemory(mem *gst.Memory) bool {
 }
 
 // IsFdMemory wraps gst_is_fd_memory
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators
 func IsFdMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
-	var cret  C.gboolean   // return
+	var cret C.gboolean    // return
 
 	carg1 = (*C.GstMemory)(gst.UnsafeMemoryToGlibNone(mem))
 
@@ -227,11 +227,11 @@ func IsFdMemory(mem *gst.Memory) bool {
 }
 
 // IsPhysMemory wraps gst_is_phys_memory
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators
 func IsPhysMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
-	var cret  C.gboolean   // return
+	var cret C.gboolean    // return
 
 	carg1 = (*C.GstMemory)(gst.UnsafeMemoryToGlibNone(mem))
 
@@ -250,13 +250,14 @@ func IsPhysMemory(mem *gst.Memory) bool {
 // PhysMemoryAllocatorInstance is the instance type used by all types implementing GstPhysMemoryAllocator. It is used internally by the bindings. Users should use the interface [PhysMemoryAllocator] instead.
 type PhysMemoryAllocatorInstance struct {
 	_ [0]func() // equal guard
+
 	Instance gobject.ObjectInstance
 }
 
 var _ PhysMemoryAllocator = (*PhysMemoryAllocatorInstance)(nil)
 
 // PhysMemoryAllocator wraps GstPhysMemoryAllocator
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstphysmemory.html#GstPhysMemoryAllocator
 type PhysMemoryAllocator interface {
 	upcastToGstPhysMemoryAllocator() *PhysMemoryAllocatorInstance
@@ -314,18 +315,18 @@ type DRMDumbAllocatorInstance struct {
 var _ DRMDumbAllocator = (*DRMDumbAllocatorInstance)(nil)
 
 // DRMDumbAllocator wraps GstDRMDumbAllocator
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#GstDRMDumbAllocator
 type DRMDumbAllocator interface {
 	gst.Allocator
 	upcastToGstDRMDumbAllocator() *DRMDumbAllocatorInstance
 
 	// DrmDumbAlloc wraps gst_drm_dumb_allocator_alloc
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#gst_drm_dumb_allocator_alloc
 	DrmDumbAlloc(uint32, uint32, uint32) (uint32, *gst.Memory)
 	// HasPrimeExport wraps gst_drm_dumb_allocator_has_prime_export
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#gst_drm_dumb_allocator_has_prime_export
 	HasPrimeExport() bool
 
@@ -347,7 +348,7 @@ func unsafeWrapDRMDumbAllocator(base *gobject.ObjectInstance) *DRMDumbAllocatorI
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeDRMDumbAllocator,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapDRMDumbAllocator(inst)
 		},
 	)
@@ -387,11 +388,11 @@ func UnsafeDRMDumbAllocatorToGlibFull(c DRMDumbAllocator) unsafe.Pointer {
 }
 
 // NewDRMDumbAllocatorWithDevicePath wraps gst_drm_dumb_allocator_new_with_device_path
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#gst_drm_dumb_allocator_new_with_device_path
 func NewDRMDumbAllocatorWithDevicePath(drmDevicePath string) gst.Allocator {
-	var carg1 *C.gchar        // in, none, string
-	var cret  *C.GstAllocator // return, full, converted, nullable
+	var carg1 *C.gchar       // in, none, string
+	var cret *C.GstAllocator // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(transfer.GLibString(drmDevicePath))
 	defer C.g_free(C.gpointer(carg1))
@@ -409,11 +410,11 @@ func NewDRMDumbAllocatorWithDevicePath(drmDevicePath string) gst.Allocator {
 }
 
 // NewDRMDumbAllocatorWithFd wraps gst_drm_dumb_allocator_new_with_fd
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#gst_drm_dumb_allocator_new_with_fd
 func NewDRMDumbAllocatorWithFd(drmFd int32) gst.Allocator {
-	var carg1 C.gint          // in, none, casted
-	var cret  *C.GstAllocator // return, full, converted, nullable
+	var carg1 C.gint         // in, none, casted
+	var cret *C.GstAllocator // return, full, converted, nullable
 
 	carg1 = C.gint(drmFd)
 
@@ -430,7 +431,7 @@ func NewDRMDumbAllocatorWithFd(drmFd int32) gst.Allocator {
 }
 
 // DrmDumbAlloc wraps gst_drm_dumb_allocator_alloc
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#gst_drm_dumb_allocator_alloc
 func (allocator *DRMDumbAllocatorInstance) DrmDumbAlloc(drmFourcc uint32, width uint32, height uint32) (uint32, *gst.Memory) {
 	var carg0 *C.GstAllocator // in, none, converted
@@ -438,7 +439,7 @@ func (allocator *DRMDumbAllocatorInstance) DrmDumbAlloc(drmFourcc uint32, width 
 	var carg2 C.guint32       // in, none, casted
 	var carg3 C.guint32       // in, none, casted
 	var carg4 C.guint32       // out, full, casted
-	var cret  *C.GstMemory    // return, full, converted
+	var cret *C.GstMemory     // return, full, converted
 
 	carg0 = (*C.GstAllocator)(UnsafeDRMDumbAllocatorToGlibNone(allocator))
 	carg1 = C.guint32(drmFourcc)
@@ -452,7 +453,7 @@ func (allocator *DRMDumbAllocatorInstance) DrmDumbAlloc(drmFourcc uint32, width 
 	runtime.KeepAlive(height)
 
 	var outPitch uint32
-	var goret    *gst.Memory
+	var goret *gst.Memory
 
 	outPitch = uint32(carg4)
 	goret = gst.UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
@@ -461,11 +462,11 @@ func (allocator *DRMDumbAllocatorInstance) DrmDumbAlloc(drmFourcc uint32, width 
 }
 
 // HasPrimeExport wraps gst_drm_dumb_allocator_has_prime_export
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#gst_drm_dumb_allocator_has_prime_export
 func (allocator *DRMDumbAllocatorInstance) HasPrimeExport() bool {
 	var carg0 *C.GstAllocator // in, none, converted
-	var cret  C.gboolean      // return
+	var cret C.gboolean       // return
 
 	carg0 = (*C.GstAllocator)(UnsafeDRMDumbAllocatorToGlibNone(allocator))
 
@@ -486,7 +487,6 @@ func (allocator *DRMDumbAllocatorInstance) HasPrimeExport() bool {
 type DRMDumbAllocatorOverrides[Instance DRMDumbAllocator] struct {
 	// gst.AllocatorOverrides allows you to override virtual methods from the parent class gst.Allocator
 	gst.AllocatorOverrides[Instance]
-
 }
 
 // UnsafeApplyDRMDumbAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -498,12 +498,12 @@ func UnsafeApplyDRMDumbAllocatorOverrides[Instance DRMDumbAllocator](gclass unsa
 // RegisterDRMDumbAllocatorSubClass is used to register a go subclass of GstDRMDumbAllocator. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterDRMDumbAllocatorSubClass[InstanceT DRMDumbAllocator](
-		name string,
-		classInit func(class *DRMDumbAllocatorClass),
-		constructor func() InstanceT,
-		overrides DRMDumbAllocatorOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *DRMDumbAllocatorClass),
+	constructor func() InstanceT,
+	overrides DRMDumbAllocatorOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -514,7 +514,7 @@ func RegisterDRMDumbAllocatorSubClass[InstanceT DRMDumbAllocator](
 		TypeDRMDumbAllocator,
 		UnsafeDRMDumbAllocatorClassFromGlibBorrow,
 		UnsafeApplyDRMDumbAllocatorOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapDRMDumbAllocator(obj)
 		},
 		interfaceInits...,
@@ -530,7 +530,7 @@ type FdAllocatorInstance struct {
 var _ FdAllocator = (*FdAllocatorInstance)(nil)
 
 // FdAllocator wraps GstFdAllocator
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GstFdAllocator
 type FdAllocator interface {
 	gst.Allocator
@@ -554,7 +554,7 @@ func unsafeWrapFdAllocator(base *gobject.ObjectInstance) *FdAllocatorInstance {
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeFdAllocator,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapFdAllocator(inst)
 		},
 	)
@@ -594,7 +594,7 @@ func UnsafeFdAllocatorToGlibFull(c FdAllocator) unsafe.Pointer {
 }
 
 // NewFdAllocator wraps gst_fd_allocator_new
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#gst_fd_allocator_new
 func NewFdAllocator() gst.Allocator {
 	var cret *C.GstAllocator // return, full, converted
@@ -609,14 +609,14 @@ func NewFdAllocator() gst.Allocator {
 }
 
 // FdAllocatorAlloc wraps gst_fd_allocator_alloc
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#gst_fd_allocator_alloc
 func FdAllocatorAlloc(allocator gst.Allocator, fd int32, size uint, flags FdMemoryFlags) *gst.Memory {
 	var carg1 *C.GstAllocator    // in, none, converted
 	var carg2 C.gint             // in, none, casted
 	var carg3 C.gsize            // in, none, casted
 	var carg4 C.GstFdMemoryFlags // in, none, casted
-	var cret  *C.GstMemory       // return, full, converted, nullable
+	var cret *C.GstMemory        // return, full, converted, nullable
 
 	carg1 = (*C.GstAllocator)(gst.UnsafeAllocatorToGlibNone(allocator))
 	carg2 = C.gint(fd)
@@ -643,7 +643,6 @@ func FdAllocatorAlloc(allocator gst.Allocator, fd int32, size uint, flags FdMemo
 type FdAllocatorOverrides[Instance FdAllocator] struct {
 	// gst.AllocatorOverrides allows you to override virtual methods from the parent class gst.Allocator
 	gst.AllocatorOverrides[Instance]
-
 }
 
 // UnsafeApplyFdAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -655,12 +654,12 @@ func UnsafeApplyFdAllocatorOverrides[Instance FdAllocator](gclass unsafe.Pointer
 // RegisterFdAllocatorSubClass is used to register a go subclass of GstFdAllocator. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterFdAllocatorSubClass[InstanceT FdAllocator](
-		name string,
-		classInit func(class *FdAllocatorClass),
-		constructor func() InstanceT,
-		overrides FdAllocatorOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *FdAllocatorClass),
+	constructor func() InstanceT,
+	overrides FdAllocatorOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -671,7 +670,7 @@ func RegisterFdAllocatorSubClass[InstanceT FdAllocator](
 		TypeFdAllocator,
 		UnsafeFdAllocatorClassFromGlibBorrow,
 		UnsafeApplyFdAllocatorOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapFdAllocator(obj)
 		},
 		interfaceInits...,
@@ -687,7 +686,7 @@ type ShmAllocatorInstance struct {
 var _ ShmAllocator = (*ShmAllocatorInstance)(nil)
 
 // ShmAllocator wraps GstShmAllocator
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstshmallocator.html#GstShmAllocator
 type ShmAllocator interface {
 	FdAllocator
@@ -713,7 +712,7 @@ func unsafeWrapShmAllocator(base *gobject.ObjectInstance) *ShmAllocatorInstance 
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeShmAllocator,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapShmAllocator(inst)
 		},
 	)
@@ -753,7 +752,7 @@ func UnsafeShmAllocatorToGlibFull(c ShmAllocator) unsafe.Pointer {
 }
 
 // ShmAllocatorGet wraps gst_shm_allocator_get
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstshmallocator.html#gst_shm_allocator_get
 func ShmAllocatorGet() gst.Allocator {
 	var cret *C.GstAllocator // return, full, converted, nullable
@@ -770,7 +769,7 @@ func ShmAllocatorGet() gst.Allocator {
 }
 
 // ShmAllocatorInitOnce wraps gst_shm_allocator_init_once
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstshmallocator.html#gst_shm_allocator_init_once
 func ShmAllocatorInitOnce() {
 
@@ -782,7 +781,6 @@ func ShmAllocatorInitOnce() {
 type ShmAllocatorOverrides[Instance ShmAllocator] struct {
 	// FdAllocatorOverrides allows you to override virtual methods from the parent class FdAllocator
 	FdAllocatorOverrides[Instance]
-
 }
 
 // UnsafeApplyShmAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -794,12 +792,12 @@ func UnsafeApplyShmAllocatorOverrides[Instance ShmAllocator](gclass unsafe.Point
 // RegisterShmAllocatorSubClass is used to register a go subclass of GstShmAllocator. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterShmAllocatorSubClass[InstanceT ShmAllocator](
-		name string,
-		classInit func(class *ShmAllocatorClass),
-		constructor func() InstanceT,
-		overrides ShmAllocatorOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *ShmAllocatorClass),
+	constructor func() InstanceT,
+	overrides ShmAllocatorOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -810,7 +808,7 @@ func RegisterShmAllocatorSubClass[InstanceT ShmAllocator](
 		TypeShmAllocator,
 		UnsafeShmAllocatorClassFromGlibBorrow,
 		UnsafeApplyShmAllocatorOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapShmAllocator(obj)
 		},
 		interfaceInits...,
@@ -826,7 +824,7 @@ type DmaBufAllocatorInstance struct {
 var _ DmaBufAllocator = (*DmaBufAllocatorInstance)(nil)
 
 // DmaBufAllocator wraps GstDmaBufAllocator
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstdmabuf.html#GstDmaBufAllocator
 type DmaBufAllocator interface {
 	FdAllocator
@@ -852,7 +850,7 @@ func unsafeWrapDmaBufAllocator(base *gobject.ObjectInstance) *DmaBufAllocatorIns
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeDmaBufAllocator,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapDmaBufAllocator(inst)
 		},
 	)
@@ -892,7 +890,7 @@ func UnsafeDmaBufAllocatorToGlibFull(c DmaBufAllocator) unsafe.Pointer {
 }
 
 // NewDmaBufAllocator wraps gst_dmabuf_allocator_new
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstdmabuf.html#gst_dmabuf_allocator_new
 func NewDmaBufAllocator() gst.Allocator {
 	var cret *C.GstAllocator // return, full, converted
@@ -907,13 +905,13 @@ func NewDmaBufAllocator() gst.Allocator {
 }
 
 // DmaBufAllocatorAlloc wraps gst_dmabuf_allocator_alloc
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstdmabuf.html#gst_dmabuf_allocator_alloc
 func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int32, size uint) *gst.Memory {
 	var carg1 *C.GstAllocator // in, none, converted
 	var carg2 C.gint          // in, none, casted
 	var carg3 C.gsize         // in, none, casted
-	var cret  *C.GstMemory    // return, full, converted, nullable
+	var cret *C.GstMemory     // return, full, converted, nullable
 
 	carg1 = (*C.GstAllocator)(gst.UnsafeAllocatorToGlibNone(allocator))
 	carg2 = C.gint(fd)
@@ -934,14 +932,14 @@ func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int32, size uint) *gst.Mem
 }
 
 // DmaBufAllocatorAllocWithFlags wraps gst_dmabuf_allocator_alloc_with_flags
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstdmabuf.html#gst_dmabuf_allocator_alloc_with_flags
 func DmaBufAllocatorAllocWithFlags(allocator gst.Allocator, fd int32, size uint, flags FdMemoryFlags) *gst.Memory {
 	var carg1 *C.GstAllocator    // in, none, converted
 	var carg2 C.gint             // in, none, casted
 	var carg3 C.gsize            // in, none, casted
 	var carg4 C.GstFdMemoryFlags // in, none, casted
-	var cret  *C.GstMemory       // return, full, converted, nullable
+	var cret *C.GstMemory        // return, full, converted, nullable
 
 	carg1 = (*C.GstAllocator)(gst.UnsafeAllocatorToGlibNone(allocator))
 	carg2 = C.gint(fd)
@@ -968,7 +966,6 @@ func DmaBufAllocatorAllocWithFlags(allocator gst.Allocator, fd int32, size uint,
 type DmaBufAllocatorOverrides[Instance DmaBufAllocator] struct {
 	// FdAllocatorOverrides allows you to override virtual methods from the parent class FdAllocator
 	FdAllocatorOverrides[Instance]
-
 }
 
 // UnsafeApplyDmaBufAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -980,12 +977,12 @@ func UnsafeApplyDmaBufAllocatorOverrides[Instance DmaBufAllocator](gclass unsafe
 // RegisterDmaBufAllocatorSubClass is used to register a go subclass of GstDmaBufAllocator. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterDmaBufAllocatorSubClass[InstanceT DmaBufAllocator](
-		name string,
-		classInit func(class *DmaBufAllocatorClass),
-		constructor func() InstanceT,
-		overrides DmaBufAllocatorOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *DmaBufAllocatorClass),
+	constructor func() InstanceT,
+	overrides DmaBufAllocatorOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -996,7 +993,7 @@ func RegisterDmaBufAllocatorSubClass[InstanceT DmaBufAllocator](
 		TypeDmaBufAllocator,
 		UnsafeDmaBufAllocatorClassFromGlibBorrow,
 		UnsafeApplyDmaBufAllocatorOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapDmaBufAllocator(obj)
 		},
 		interfaceInits...,
@@ -1004,9 +1001,9 @@ func RegisterDmaBufAllocatorSubClass[InstanceT DmaBufAllocator](
 }
 
 // DRMDumbAllocatorClass wraps GstDRMDumbAllocatorClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#GstDRMDumbAllocatorClass
-// 
+//
 // DRMDumbAllocatorClass is the type struct for [DRMDumbAllocator]
 type DRMDumbAllocatorClass struct {
 	*dRMDumbAllocatorClass
@@ -1034,7 +1031,7 @@ func UnsafeDRMDumbAllocatorClassFromGlibBorrow(p unsafe.Pointer) *DRMDumbAllocat
 }
 
 // UnsafeDRMDumbAllocatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [DRMDumbAllocatorClass] is expected to work anymore.
 func UnsafeDRMDumbAllocatorClassFree(d *DRMDumbAllocatorClass) {
 	C.free(unsafe.Pointer(d.native))
@@ -1059,9 +1056,9 @@ func (d *DRMDumbAllocatorClass) ParentClass() *gst.AllocatorClass {
 }
 
 // DmaBufAllocatorClass wraps GstDmaBufAllocatorClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstdmabuf.html#GstDmaBufAllocatorClass
-// 
+//
 // DmaBufAllocatorClass is the type struct for [DmaBufAllocator]
 type DmaBufAllocatorClass struct {
 	*dmaBufAllocatorClass
@@ -1089,7 +1086,7 @@ func UnsafeDmaBufAllocatorClassFromGlibBorrow(p unsafe.Pointer) *DmaBufAllocator
 }
 
 // UnsafeDmaBufAllocatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [DmaBufAllocatorClass] is expected to work anymore.
 func UnsafeDmaBufAllocatorClassFree(d *DmaBufAllocatorClass) {
 	C.free(unsafe.Pointer(d.native))
@@ -1114,9 +1111,9 @@ func (d *DmaBufAllocatorClass) ParentClass() *FdAllocatorClass {
 }
 
 // FdAllocatorClass wraps GstFdAllocatorClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GstFdAllocatorClass
-// 
+//
 // FdAllocatorClass is the type struct for [FdAllocator]
 type FdAllocatorClass struct {
 	*fdAllocatorClass
@@ -1144,7 +1141,7 @@ func UnsafeFdAllocatorClassFromGlibBorrow(p unsafe.Pointer) *FdAllocatorClass {
 }
 
 // UnsafeFdAllocatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [FdAllocatorClass] is expected to work anymore.
 func UnsafeFdAllocatorClassFree(f *FdAllocatorClass) {
 	C.free(unsafe.Pointer(f.native))
@@ -1169,7 +1166,7 @@ func (f *FdAllocatorClass) ParentClass() *gst.AllocatorClass {
 }
 
 // PhysMemoryAllocatorInterface wraps GstPhysMemoryAllocatorInterface
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstphysmemory.html#GstPhysMemoryAllocatorInterface
 type PhysMemoryAllocatorInterface struct {
 	*physMemoryAllocatorInterface
@@ -1215,7 +1212,7 @@ func UnsafePhysMemoryAllocatorInterfaceFromGlibFull(p unsafe.Pointer) *PhysMemor
 	}
 	runtime.SetFinalizer(
 		wrapped.physMemoryAllocatorInterface,
-		func (intern *physMemoryAllocatorInterface) {
+		func(intern *physMemoryAllocatorInterface) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -1223,7 +1220,7 @@ func UnsafePhysMemoryAllocatorInterfaceFromGlibFull(p unsafe.Pointer) *PhysMemor
 }
 
 // UnsafePhysMemoryAllocatorInterfaceFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [PhysMemoryAllocatorInterface] is expected to work anymore.
 func UnsafePhysMemoryAllocatorInterfaceFree(p *PhysMemoryAllocatorInterface) {
 	C.free(unsafe.Pointer(p.native))
@@ -1251,9 +1248,9 @@ func UnsafePhysMemoryAllocatorInterfaceToGlibFull(p *PhysMemoryAllocatorInterfac
 }
 
 // ShmAllocatorClass wraps GstShmAllocatorClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/allocators/gstshmallocator.html#GstShmAllocatorClass
-// 
+//
 // ShmAllocatorClass is the type struct for [ShmAllocator]
 type ShmAllocatorClass struct {
 	*shmAllocatorClass
@@ -1281,7 +1278,7 @@ func UnsafeShmAllocatorClassFromGlibBorrow(p unsafe.Pointer) *ShmAllocatorClass 
 }
 
 // UnsafeShmAllocatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [ShmAllocatorClass] is expected to work anymore.
 func UnsafeShmAllocatorClassFree(s *ShmAllocatorClass) {
 	C.free(unsafe.Pointer(s.native))
@@ -1304,4 +1301,3 @@ func (s *ShmAllocatorClass) ParentClass() *FdAllocatorClass {
 	runtime.AddCleanup(parent, func(_ *ShmAllocatorClass) {}, s)
 	return parent
 }
-

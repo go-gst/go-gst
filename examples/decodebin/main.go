@@ -70,7 +70,7 @@ func buildPipeline() (gst.Pipeline, error) {
 		var isAudio, isVideo bool
 		caps := srcPad.GetCurrentCaps()
 		for i := 0; i < int(caps.GetSize()); i++ {
-			st := caps.GetStructure(uint(i))
+			st := caps.GetStructure(uint32(i))
 			if strings.HasPrefix(st.GetName(), "audio/") {
 				isAudio = true
 			}

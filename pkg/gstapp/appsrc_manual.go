@@ -25,7 +25,7 @@ type AppSrcCallbacks struct {
 	// NeedData gets invoked when the source wants more input. Respond by pushing buffers or
 	// signalling end of stream, here or on another goroutine. length is a hint for the
 	// amount of bytes wanted, math.MaxUint32 means that any amount is fine.
-	NeedData func(appsrc AppSrc, length uint)
+	NeedData func(appsrc AppSrc, length uint32)
 
 	// EnoughData gets invoked when the internal queue of the source is full. Stop pushing
 	// until NeedData is invoked again.

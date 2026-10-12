@@ -177,25 +177,25 @@ func init() {
 }
 
 // WebRTCBundlePolicy wraps GstWebRTCBundlePolicy
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCBundlePolicy
 type WebRTCBundlePolicy C.int
 
 const (
 	// WebrtcBundlePolicyNone wraps GST_WEBRTC_BUNDLE_POLICY_NONE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_BUNDLE_POLICY_NONE
 	WebrtcBundlePolicyNone WebRTCBundlePolicy = 0
 	// WebrtcBundlePolicyBalanced wraps GST_WEBRTC_BUNDLE_POLICY_BALANCED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_BUNDLE_POLICY_BALANCED
 	WebrtcBundlePolicyBalanced WebRTCBundlePolicy = 1
 	// WebrtcBundlePolicyMaxCompat wraps GST_WEBRTC_BUNDLE_POLICY_MAX_COMPAT
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_BUNDLE_POLICY_MAX_COMPAT
 	WebrtcBundlePolicyMaxCompat WebRTCBundlePolicy = 2
 	// WebrtcBundlePolicyMaxBundle wraps GST_WEBRTC_BUNDLE_POLICY_MAX_BUNDLE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_BUNDLE_POLICY_MAX_BUNDLE
 	WebrtcBundlePolicyMaxBundle WebRTCBundlePolicy = 3
 )
@@ -216,34 +216,39 @@ func (e WebRTCBundlePolicy) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCBundlePolicy) String() string {
 	switch e {
-		case WebrtcBundlePolicyBalanced: return "WebrtcBundlePolicyBalanced"
-		case WebrtcBundlePolicyMaxBundle: return "WebrtcBundlePolicyMaxBundle"
-		case WebrtcBundlePolicyMaxCompat: return "WebrtcBundlePolicyMaxCompat"
-		case WebrtcBundlePolicyNone: return "WebrtcBundlePolicyNone"
-		default: return fmt.Sprintf("WebRTCBundlePolicy(%d)", e)
+	case WebrtcBundlePolicyBalanced:
+		return "WebrtcBundlePolicyBalanced"
+	case WebrtcBundlePolicyMaxBundle:
+		return "WebrtcBundlePolicyMaxBundle"
+	case WebrtcBundlePolicyMaxCompat:
+		return "WebrtcBundlePolicyMaxCompat"
+	case WebrtcBundlePolicyNone:
+		return "WebrtcBundlePolicyNone"
+	default:
+		return fmt.Sprintf("WebRTCBundlePolicy(%d)", e)
 	}
 }
 
 // WebRTCDTLSSetup wraps GstWebRTCDTLSSetup
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCDTLSSetup
 type WebRTCDTLSSetup C.int
 
 const (
 	// WebrtcDtlsSetupNone wraps GST_WEBRTC_DTLS_SETUP_NONE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_SETUP_NONE
 	WebrtcDtlsSetupNone WebRTCDTLSSetup = 0
 	// WebrtcDtlsSetupActpass wraps GST_WEBRTC_DTLS_SETUP_ACTPASS
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_SETUP_ACTPASS
 	WebrtcDtlsSetupActpass WebRTCDTLSSetup = 1
 	// WebrtcDtlsSetupActive wraps GST_WEBRTC_DTLS_SETUP_ACTIVE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_SETUP_ACTIVE
 	WebrtcDtlsSetupActive WebRTCDTLSSetup = 2
 	// WebrtcDtlsSetupPassive wraps GST_WEBRTC_DTLS_SETUP_PASSIVE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_SETUP_PASSIVE
 	WebrtcDtlsSetupPassive WebRTCDTLSSetup = 3
 )
@@ -264,38 +269,43 @@ func (e WebRTCDTLSSetup) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCDTLSSetup) String() string {
 	switch e {
-		case WebrtcDtlsSetupActive: return "WebrtcDtlsSetupActive"
-		case WebrtcDtlsSetupActpass: return "WebrtcDtlsSetupActpass"
-		case WebrtcDtlsSetupNone: return "WebrtcDtlsSetupNone"
-		case WebrtcDtlsSetupPassive: return "WebrtcDtlsSetupPassive"
-		default: return fmt.Sprintf("WebRTCDTLSSetup(%d)", e)
+	case WebrtcDtlsSetupActive:
+		return "WebrtcDtlsSetupActive"
+	case WebrtcDtlsSetupActpass:
+		return "WebrtcDtlsSetupActpass"
+	case WebrtcDtlsSetupNone:
+		return "WebrtcDtlsSetupNone"
+	case WebrtcDtlsSetupPassive:
+		return "WebrtcDtlsSetupPassive"
+	default:
+		return fmt.Sprintf("WebRTCDTLSSetup(%d)", e)
 	}
 }
 
 // WebRTCDTLSTransportState wraps GstWebRTCDTLSTransportState
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCDTLSTransportState
 type WebRTCDTLSTransportState C.int
 
 const (
 	// WebrtcDtlsTransportStateNew wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_NEW
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_TRANSPORT_STATE_NEW
 	WebrtcDtlsTransportStateNew WebRTCDTLSTransportState = 0
 	// WebrtcDtlsTransportStateClosed wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_CLOSED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_TRANSPORT_STATE_CLOSED
 	WebrtcDtlsTransportStateClosed WebRTCDTLSTransportState = 1
 	// WebrtcDtlsTransportStateFailed wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_FAILED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_TRANSPORT_STATE_FAILED
 	WebrtcDtlsTransportStateFailed WebRTCDTLSTransportState = 2
 	// WebrtcDtlsTransportStateConnecting wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTING
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTING
 	WebrtcDtlsTransportStateConnecting WebRTCDTLSTransportState = 3
 	// WebrtcDtlsTransportStateConnected wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTED
 	WebrtcDtlsTransportStateConnected WebRTCDTLSTransportState = 4
 )
@@ -316,35 +326,41 @@ func (e WebRTCDTLSTransportState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCDTLSTransportState) String() string {
 	switch e {
-		case WebrtcDtlsTransportStateClosed: return "WebrtcDtlsTransportStateClosed"
-		case WebrtcDtlsTransportStateConnected: return "WebrtcDtlsTransportStateConnected"
-		case WebrtcDtlsTransportStateConnecting: return "WebrtcDtlsTransportStateConnecting"
-		case WebrtcDtlsTransportStateFailed: return "WebrtcDtlsTransportStateFailed"
-		case WebrtcDtlsTransportStateNew: return "WebrtcDtlsTransportStateNew"
-		default: return fmt.Sprintf("WebRTCDTLSTransportState(%d)", e)
+	case WebrtcDtlsTransportStateClosed:
+		return "WebrtcDtlsTransportStateClosed"
+	case WebrtcDtlsTransportStateConnected:
+		return "WebrtcDtlsTransportStateConnected"
+	case WebrtcDtlsTransportStateConnecting:
+		return "WebrtcDtlsTransportStateConnecting"
+	case WebrtcDtlsTransportStateFailed:
+		return "WebrtcDtlsTransportStateFailed"
+	case WebrtcDtlsTransportStateNew:
+		return "WebrtcDtlsTransportStateNew"
+	default:
+		return fmt.Sprintf("WebRTCDTLSTransportState(%d)", e)
 	}
 }
 
 // WebRTCDataChannelState wraps GstWebRTCDataChannelState
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCDataChannelState
 type WebRTCDataChannelState C.int
 
 const (
 	// WebrtcDataChannelStateConnecting wraps GST_WEBRTC_DATA_CHANNEL_STATE_CONNECTING
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DATA_CHANNEL_STATE_CONNECTING
 	WebrtcDataChannelStateConnecting WebRTCDataChannelState = 1
 	// WebrtcDataChannelStateOpen wraps GST_WEBRTC_DATA_CHANNEL_STATE_OPEN
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DATA_CHANNEL_STATE_OPEN
 	WebrtcDataChannelStateOpen WebRTCDataChannelState = 2
 	// WebrtcDataChannelStateClosing wraps GST_WEBRTC_DATA_CHANNEL_STATE_CLOSING
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DATA_CHANNEL_STATE_CLOSING
 	WebrtcDataChannelStateClosing WebRTCDataChannelState = 3
 	// WebrtcDataChannelStateClosed wraps GST_WEBRTC_DATA_CHANNEL_STATE_CLOSED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DATA_CHANNEL_STATE_CLOSED
 	WebrtcDataChannelStateClosed WebRTCDataChannelState = 4
 )
@@ -365,62 +381,67 @@ func (e WebRTCDataChannelState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCDataChannelState) String() string {
 	switch e {
-		case WebrtcDataChannelStateClosed: return "WebrtcDataChannelStateClosed"
-		case WebrtcDataChannelStateClosing: return "WebrtcDataChannelStateClosing"
-		case WebrtcDataChannelStateConnecting: return "WebrtcDataChannelStateConnecting"
-		case WebrtcDataChannelStateOpen: return "WebrtcDataChannelStateOpen"
-		default: return fmt.Sprintf("WebRTCDataChannelState(%d)", e)
+	case WebrtcDataChannelStateClosed:
+		return "WebrtcDataChannelStateClosed"
+	case WebrtcDataChannelStateClosing:
+		return "WebrtcDataChannelStateClosing"
+	case WebrtcDataChannelStateConnecting:
+		return "WebrtcDataChannelStateConnecting"
+	case WebrtcDataChannelStateOpen:
+		return "WebrtcDataChannelStateOpen"
+	default:
+		return fmt.Sprintf("WebRTCDataChannelState(%d)", e)
 	}
 }
 
 // WebRTCError wraps GstWebRTCError
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCError
 type WebRTCError C.int
 
 const (
 	// WebrtcErrorDataChannelFailure wraps GST_WEBRTC_ERROR_DATA_CHANNEL_FAILURE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_DATA_CHANNEL_FAILURE
 	WebrtcErrorDataChannelFailure WebRTCError = 0
 	// WebrtcErrorDtlsFailure wraps GST_WEBRTC_ERROR_DTLS_FAILURE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_DTLS_FAILURE
 	WebrtcErrorDtlsFailure WebRTCError = 1
 	// WebrtcErrorFingerprintFailure wraps GST_WEBRTC_ERROR_FINGERPRINT_FAILURE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_FINGERPRINT_FAILURE
 	WebrtcErrorFingerprintFailure WebRTCError = 2
 	// WebrtcErrorSctpFailure wraps GST_WEBRTC_ERROR_SCTP_FAILURE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_SCTP_FAILURE
 	WebrtcErrorSctpFailure WebRTCError = 3
 	// WebrtcErrorSdpSyntaxError wraps GST_WEBRTC_ERROR_SDP_SYNTAX_ERROR
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_SDP_SYNTAX_ERROR
 	WebrtcErrorSdpSyntaxError WebRTCError = 4
 	// WebrtcErrorHardwareEncoderNotAvailable wraps GST_WEBRTC_ERROR_HARDWARE_ENCODER_NOT_AVAILABLE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_HARDWARE_ENCODER_NOT_AVAILABLE
 	WebrtcErrorHardwareEncoderNotAvailable WebRTCError = 5
 	// WebrtcErrorEncoderError wraps GST_WEBRTC_ERROR_ENCODER_ERROR
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_ENCODER_ERROR
 	WebrtcErrorEncoderError WebRTCError = 6
 	// WebrtcErrorInvalidState wraps GST_WEBRTC_ERROR_INVALID_STATE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_INVALID_STATE
 	WebrtcErrorInvalidState WebRTCError = 7
 	// WebrtcErrorInternalFailure wraps GST_WEBRTC_ERROR_INTERNAL_FAILURE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_INTERNAL_FAILURE
 	WebrtcErrorInternalFailure WebRTCError = 8
 	// WebrtcErrorInvalidModification wraps GST_WEBRTC_ERROR_INVALID_MODIFICATION
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_INVALID_MODIFICATION
 	WebrtcErrorInvalidModification WebRTCError = 9
 	// WebrtcErrorTypeError wraps GST_WEBRTC_ERROR_TYPE_ERROR
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_TYPE_ERROR
 	WebrtcErrorTypeError WebRTCError = 10
 )
@@ -441,23 +462,35 @@ func (e WebRTCError) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCError) String() string {
 	switch e {
-		case WebrtcErrorDataChannelFailure: return "WebrtcErrorDataChannelFailure"
-		case WebrtcErrorDtlsFailure: return "WebrtcErrorDtlsFailure"
-		case WebrtcErrorEncoderError: return "WebrtcErrorEncoderError"
-		case WebrtcErrorFingerprintFailure: return "WebrtcErrorFingerprintFailure"
-		case WebrtcErrorHardwareEncoderNotAvailable: return "WebrtcErrorHardwareEncoderNotAvailable"
-		case WebrtcErrorInternalFailure: return "WebrtcErrorInternalFailure"
-		case WebrtcErrorInvalidModification: return "WebrtcErrorInvalidModification"
-		case WebrtcErrorInvalidState: return "WebrtcErrorInvalidState"
-		case WebrtcErrorSctpFailure: return "WebrtcErrorSctpFailure"
-		case WebrtcErrorSdpSyntaxError: return "WebrtcErrorSdpSyntaxError"
-		case WebrtcErrorTypeError: return "WebrtcErrorTypeError"
-		default: return fmt.Sprintf("WebRTCError(%d)", e)
+	case WebrtcErrorDataChannelFailure:
+		return "WebrtcErrorDataChannelFailure"
+	case WebrtcErrorDtlsFailure:
+		return "WebrtcErrorDtlsFailure"
+	case WebrtcErrorEncoderError:
+		return "WebrtcErrorEncoderError"
+	case WebrtcErrorFingerprintFailure:
+		return "WebrtcErrorFingerprintFailure"
+	case WebrtcErrorHardwareEncoderNotAvailable:
+		return "WebrtcErrorHardwareEncoderNotAvailable"
+	case WebrtcErrorInternalFailure:
+		return "WebrtcErrorInternalFailure"
+	case WebrtcErrorInvalidModification:
+		return "WebrtcErrorInvalidModification"
+	case WebrtcErrorInvalidState:
+		return "WebrtcErrorInvalidState"
+	case WebrtcErrorSctpFailure:
+		return "WebrtcErrorSctpFailure"
+	case WebrtcErrorSdpSyntaxError:
+		return "WebrtcErrorSdpSyntaxError"
+	case WebrtcErrorTypeError:
+		return "WebrtcErrorTypeError"
+	default:
+		return fmt.Sprintf("WebRTCError(%d)", e)
 	}
 }
 
 // WebRTCErrorQuark wraps gst_webrtc_error_quark
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#gst_webrtc_error_quark
 func WebRTCErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
@@ -472,17 +505,17 @@ func WebRTCErrorQuark() glib.Quark {
 }
 
 // WebRTCFECType wraps GstWebRTCFECType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCFECType
 type WebRTCFECType C.int
 
 const (
 	// WebrtcFecTypeNone wraps GST_WEBRTC_FEC_TYPE_NONE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_FEC_TYPE_NONE
 	WebrtcFecTypeNone WebRTCFECType = 0
 	// WebrtcFecTypeUlpRed wraps GST_WEBRTC_FEC_TYPE_ULP_RED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_FEC_TYPE_ULP_RED
 	WebrtcFecTypeUlpRed WebRTCFECType = 1
 )
@@ -503,24 +536,27 @@ func (e WebRTCFECType) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCFECType) String() string {
 	switch e {
-		case WebrtcFecTypeNone: return "WebrtcFecTypeNone"
-		case WebrtcFecTypeUlpRed: return "WebrtcFecTypeUlpRed"
-		default: return fmt.Sprintf("WebRTCFECType(%d)", e)
+	case WebrtcFecTypeNone:
+		return "WebrtcFecTypeNone"
+	case WebrtcFecTypeUlpRed:
+		return "WebrtcFecTypeUlpRed"
+	default:
+		return fmt.Sprintf("WebRTCFECType(%d)", e)
 	}
 }
 
 // WebRTCICEComponent wraps GstWebRTCICEComponent
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCICEComponent
 type WebRTCICEComponent C.int
 
 const (
 	// WebrtcIceComponentRtp wraps GST_WEBRTC_ICE_COMPONENT_RTP
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_COMPONENT_RTP
 	WebrtcIceComponentRtp WebRTCICEComponent = 0
 	// WebrtcIceComponentRtcp wraps GST_WEBRTC_ICE_COMPONENT_RTCP
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_COMPONENT_RTCP
 	WebrtcIceComponentRtcp WebRTCICEComponent = 1
 )
@@ -541,44 +577,47 @@ func (e WebRTCICEComponent) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCICEComponent) String() string {
 	switch e {
-		case WebrtcIceComponentRtcp: return "WebrtcIceComponentRtcp"
-		case WebrtcIceComponentRtp: return "WebrtcIceComponentRtp"
-		default: return fmt.Sprintf("WebRTCICEComponent(%d)", e)
+	case WebrtcIceComponentRtcp:
+		return "WebrtcIceComponentRtcp"
+	case WebrtcIceComponentRtp:
+		return "WebrtcIceComponentRtp"
+	default:
+		return fmt.Sprintf("WebRTCICEComponent(%d)", e)
 	}
 }
 
 // WebRTCICEConnectionState wraps GstWebRTCICEConnectionState
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCICEConnectionState
 type WebRTCICEConnectionState C.int
 
 const (
 	// WebrtcIceConnectionStateNew wraps GST_WEBRTC_ICE_CONNECTION_STATE_NEW
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_NEW
 	WebrtcIceConnectionStateNew WebRTCICEConnectionState = 0
 	// WebrtcIceConnectionStateChecking wraps GST_WEBRTC_ICE_CONNECTION_STATE_CHECKING
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_CHECKING
 	WebrtcIceConnectionStateChecking WebRTCICEConnectionState = 1
 	// WebrtcIceConnectionStateConnected wraps GST_WEBRTC_ICE_CONNECTION_STATE_CONNECTED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_CONNECTED
 	WebrtcIceConnectionStateConnected WebRTCICEConnectionState = 2
 	// WebrtcIceConnectionStateCompleted wraps GST_WEBRTC_ICE_CONNECTION_STATE_COMPLETED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_COMPLETED
 	WebrtcIceConnectionStateCompleted WebRTCICEConnectionState = 3
 	// WebrtcIceConnectionStateFailed wraps GST_WEBRTC_ICE_CONNECTION_STATE_FAILED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_FAILED
 	WebrtcIceConnectionStateFailed WebRTCICEConnectionState = 4
 	// WebrtcIceConnectionStateDisconnected wraps GST_WEBRTC_ICE_CONNECTION_STATE_DISCONNECTED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_DISCONNECTED
 	WebrtcIceConnectionStateDisconnected WebRTCICEConnectionState = 5
 	// WebrtcIceConnectionStateClosed wraps GST_WEBRTC_ICE_CONNECTION_STATE_CLOSED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_CLOSED
 	WebrtcIceConnectionStateClosed WebRTCICEConnectionState = 6
 )
@@ -599,33 +638,41 @@ func (e WebRTCICEConnectionState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCICEConnectionState) String() string {
 	switch e {
-		case WebrtcIceConnectionStateChecking: return "WebrtcIceConnectionStateChecking"
-		case WebrtcIceConnectionStateClosed: return "WebrtcIceConnectionStateClosed"
-		case WebrtcIceConnectionStateCompleted: return "WebrtcIceConnectionStateCompleted"
-		case WebrtcIceConnectionStateConnected: return "WebrtcIceConnectionStateConnected"
-		case WebrtcIceConnectionStateDisconnected: return "WebrtcIceConnectionStateDisconnected"
-		case WebrtcIceConnectionStateFailed: return "WebrtcIceConnectionStateFailed"
-		case WebrtcIceConnectionStateNew: return "WebrtcIceConnectionStateNew"
-		default: return fmt.Sprintf("WebRTCICEConnectionState(%d)", e)
+	case WebrtcIceConnectionStateChecking:
+		return "WebrtcIceConnectionStateChecking"
+	case WebrtcIceConnectionStateClosed:
+		return "WebrtcIceConnectionStateClosed"
+	case WebrtcIceConnectionStateCompleted:
+		return "WebrtcIceConnectionStateCompleted"
+	case WebrtcIceConnectionStateConnected:
+		return "WebrtcIceConnectionStateConnected"
+	case WebrtcIceConnectionStateDisconnected:
+		return "WebrtcIceConnectionStateDisconnected"
+	case WebrtcIceConnectionStateFailed:
+		return "WebrtcIceConnectionStateFailed"
+	case WebrtcIceConnectionStateNew:
+		return "WebrtcIceConnectionStateNew"
+	default:
+		return fmt.Sprintf("WebRTCICEConnectionState(%d)", e)
 	}
 }
 
 // WebRTCICEGatheringState wraps GstWebRTCICEGatheringState
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCICEGatheringState
 type WebRTCICEGatheringState C.int
 
 const (
 	// WebrtcIceGatheringStateNew wraps GST_WEBRTC_ICE_GATHERING_STATE_NEW
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_GATHERING_STATE_NEW
 	WebrtcIceGatheringStateNew WebRTCICEGatheringState = 0
 	// WebrtcIceGatheringStateGathering wraps GST_WEBRTC_ICE_GATHERING_STATE_GATHERING
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_GATHERING_STATE_GATHERING
 	WebrtcIceGatheringStateGathering WebRTCICEGatheringState = 1
 	// WebrtcIceGatheringStateComplete wraps GST_WEBRTC_ICE_GATHERING_STATE_COMPLETE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_GATHERING_STATE_COMPLETE
 	WebrtcIceGatheringStateComplete WebRTCICEGatheringState = 2
 )
@@ -646,25 +693,29 @@ func (e WebRTCICEGatheringState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCICEGatheringState) String() string {
 	switch e {
-		case WebrtcIceGatheringStateComplete: return "WebrtcIceGatheringStateComplete"
-		case WebrtcIceGatheringStateGathering: return "WebrtcIceGatheringStateGathering"
-		case WebrtcIceGatheringStateNew: return "WebrtcIceGatheringStateNew"
-		default: return fmt.Sprintf("WebRTCICEGatheringState(%d)", e)
+	case WebrtcIceGatheringStateComplete:
+		return "WebrtcIceGatheringStateComplete"
+	case WebrtcIceGatheringStateGathering:
+		return "WebrtcIceGatheringStateGathering"
+	case WebrtcIceGatheringStateNew:
+		return "WebrtcIceGatheringStateNew"
+	default:
+		return fmt.Sprintf("WebRTCICEGatheringState(%d)", e)
 	}
 }
 
 // WebRTCICERole wraps GstWebRTCICERole
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCICERole
 type WebRTCICERole C.int
 
 const (
 	// WebrtcIceRoleControlled wraps GST_WEBRTC_ICE_ROLE_CONTROLLED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_ROLE_CONTROLLED
 	WebrtcIceRoleControlled WebRTCICERole = 0
 	// WebrtcIceRoleControlling wraps GST_WEBRTC_ICE_ROLE_CONTROLLING
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_ROLE_CONTROLLING
 	WebrtcIceRoleControlling WebRTCICERole = 1
 )
@@ -685,24 +736,27 @@ func (e WebRTCICERole) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCICERole) String() string {
 	switch e {
-		case WebrtcIceRoleControlled: return "WebrtcIceRoleControlled"
-		case WebrtcIceRoleControlling: return "WebrtcIceRoleControlling"
-		default: return fmt.Sprintf("WebRTCICERole(%d)", e)
+	case WebrtcIceRoleControlled:
+		return "WebrtcIceRoleControlled"
+	case WebrtcIceRoleControlling:
+		return "WebrtcIceRoleControlling"
+	default:
+		return fmt.Sprintf("WebRTCICERole(%d)", e)
 	}
 }
 
 // WebRTCICETransportPolicy wraps GstWebRTCICETransportPolicy
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCICETransportPolicy
 type WebRTCICETransportPolicy C.int
 
 const (
 	// WebrtcIceTransportPolicyAll wraps GST_WEBRTC_ICE_TRANSPORT_POLICY_ALL
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_TRANSPORT_POLICY_ALL
 	WebrtcIceTransportPolicyAll WebRTCICETransportPolicy = 0
 	// WebrtcIceTransportPolicyRelay wraps GST_WEBRTC_ICE_TRANSPORT_POLICY_RELAY
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_TRANSPORT_POLICY_RELAY
 	WebrtcIceTransportPolicyRelay WebRTCICETransportPolicy = 1
 )
@@ -723,28 +777,31 @@ func (e WebRTCICETransportPolicy) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCICETransportPolicy) String() string {
 	switch e {
-		case WebrtcIceTransportPolicyAll: return "WebrtcIceTransportPolicyAll"
-		case WebrtcIceTransportPolicyRelay: return "WebrtcIceTransportPolicyRelay"
-		default: return fmt.Sprintf("WebRTCICETransportPolicy(%d)", e)
+	case WebrtcIceTransportPolicyAll:
+		return "WebrtcIceTransportPolicyAll"
+	case WebrtcIceTransportPolicyRelay:
+		return "WebrtcIceTransportPolicyRelay"
+	default:
+		return fmt.Sprintf("WebRTCICETransportPolicy(%d)", e)
 	}
 }
 
 // WebRTCKind wraps GstWebRTCKind
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCKind
 type WebRTCKind C.int
 
 const (
 	// WebrtcKindUnknown wraps GST_WEBRTC_KIND_UNKNOWN
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_KIND_UNKNOWN
 	WebrtcKindUnknown WebRTCKind = 0
 	// WebrtcKindAudio wraps GST_WEBRTC_KIND_AUDIO
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_KIND_AUDIO
 	WebrtcKindAudio WebRTCKind = 1
 	// WebrtcKindVideo wraps GST_WEBRTC_KIND_VIDEO
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_KIND_VIDEO
 	WebrtcKindVideo WebRTCKind = 2
 )
@@ -765,41 +822,45 @@ func (e WebRTCKind) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCKind) String() string {
 	switch e {
-		case WebrtcKindAudio: return "WebrtcKindAudio"
-		case WebrtcKindUnknown: return "WebrtcKindUnknown"
-		case WebrtcKindVideo: return "WebrtcKindVideo"
-		default: return fmt.Sprintf("WebRTCKind(%d)", e)
+	case WebrtcKindAudio:
+		return "WebrtcKindAudio"
+	case WebrtcKindUnknown:
+		return "WebrtcKindUnknown"
+	case WebrtcKindVideo:
+		return "WebrtcKindVideo"
+	default:
+		return fmt.Sprintf("WebRTCKind(%d)", e)
 	}
 }
 
 // WebRTCPeerConnectionState wraps GstWebRTCPeerConnectionState
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCPeerConnectionState
 type WebRTCPeerConnectionState C.int
 
 const (
 	// WebrtcPeerConnectionStateNew wraps GST_WEBRTC_PEER_CONNECTION_STATE_NEW
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PEER_CONNECTION_STATE_NEW
 	WebrtcPeerConnectionStateNew WebRTCPeerConnectionState = 0
 	// WebrtcPeerConnectionStateConnecting wraps GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTING
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTING
 	WebrtcPeerConnectionStateConnecting WebRTCPeerConnectionState = 1
 	// WebrtcPeerConnectionStateConnected wraps GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTED
 	WebrtcPeerConnectionStateConnected WebRTCPeerConnectionState = 2
 	// WebrtcPeerConnectionStateDisconnected wraps GST_WEBRTC_PEER_CONNECTION_STATE_DISCONNECTED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PEER_CONNECTION_STATE_DISCONNECTED
 	WebrtcPeerConnectionStateDisconnected WebRTCPeerConnectionState = 3
 	// WebrtcPeerConnectionStateFailed wraps GST_WEBRTC_PEER_CONNECTION_STATE_FAILED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PEER_CONNECTION_STATE_FAILED
 	WebrtcPeerConnectionStateFailed WebRTCPeerConnectionState = 4
 	// WebrtcPeerConnectionStateClosed wraps GST_WEBRTC_PEER_CONNECTION_STATE_CLOSED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PEER_CONNECTION_STATE_CLOSED
 	WebrtcPeerConnectionStateClosed WebRTCPeerConnectionState = 5
 )
@@ -820,36 +881,43 @@ func (e WebRTCPeerConnectionState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCPeerConnectionState) String() string {
 	switch e {
-		case WebrtcPeerConnectionStateClosed: return "WebrtcPeerConnectionStateClosed"
-		case WebrtcPeerConnectionStateConnected: return "WebrtcPeerConnectionStateConnected"
-		case WebrtcPeerConnectionStateConnecting: return "WebrtcPeerConnectionStateConnecting"
-		case WebrtcPeerConnectionStateDisconnected: return "WebrtcPeerConnectionStateDisconnected"
-		case WebrtcPeerConnectionStateFailed: return "WebrtcPeerConnectionStateFailed"
-		case WebrtcPeerConnectionStateNew: return "WebrtcPeerConnectionStateNew"
-		default: return fmt.Sprintf("WebRTCPeerConnectionState(%d)", e)
+	case WebrtcPeerConnectionStateClosed:
+		return "WebrtcPeerConnectionStateClosed"
+	case WebrtcPeerConnectionStateConnected:
+		return "WebrtcPeerConnectionStateConnected"
+	case WebrtcPeerConnectionStateConnecting:
+		return "WebrtcPeerConnectionStateConnecting"
+	case WebrtcPeerConnectionStateDisconnected:
+		return "WebrtcPeerConnectionStateDisconnected"
+	case WebrtcPeerConnectionStateFailed:
+		return "WebrtcPeerConnectionStateFailed"
+	case WebrtcPeerConnectionStateNew:
+		return "WebrtcPeerConnectionStateNew"
+	default:
+		return fmt.Sprintf("WebRTCPeerConnectionState(%d)", e)
 	}
 }
 
 // WebRTCPriorityType wraps GstWebRTCPriorityType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCPriorityType
 type WebRTCPriorityType C.int
 
 const (
 	// WebrtcPriorityTypeVeryLow wraps GST_WEBRTC_PRIORITY_TYPE_VERY_LOW
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PRIORITY_TYPE_VERY_LOW
 	WebrtcPriorityTypeVeryLow WebRTCPriorityType = 1
 	// WebrtcPriorityTypeLow wraps GST_WEBRTC_PRIORITY_TYPE_LOW
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PRIORITY_TYPE_LOW
 	WebrtcPriorityTypeLow WebRTCPriorityType = 2
 	// WebrtcPriorityTypeMedium wraps GST_WEBRTC_PRIORITY_TYPE_MEDIUM
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PRIORITY_TYPE_MEDIUM
 	WebrtcPriorityTypeMedium WebRTCPriorityType = 3
 	// WebrtcPriorityTypeHigh wraps GST_WEBRTC_PRIORITY_TYPE_HIGH
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PRIORITY_TYPE_HIGH
 	WebrtcPriorityTypeHigh WebRTCPriorityType = 4
 )
@@ -870,38 +938,43 @@ func (e WebRTCPriorityType) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCPriorityType) String() string {
 	switch e {
-		case WebrtcPriorityTypeHigh: return "WebrtcPriorityTypeHigh"
-		case WebrtcPriorityTypeLow: return "WebrtcPriorityTypeLow"
-		case WebrtcPriorityTypeMedium: return "WebrtcPriorityTypeMedium"
-		case WebrtcPriorityTypeVeryLow: return "WebrtcPriorityTypeVeryLow"
-		default: return fmt.Sprintf("WebRTCPriorityType(%d)", e)
+	case WebrtcPriorityTypeHigh:
+		return "WebrtcPriorityTypeHigh"
+	case WebrtcPriorityTypeLow:
+		return "WebrtcPriorityTypeLow"
+	case WebrtcPriorityTypeMedium:
+		return "WebrtcPriorityTypeMedium"
+	case WebrtcPriorityTypeVeryLow:
+		return "WebrtcPriorityTypeVeryLow"
+	default:
+		return fmt.Sprintf("WebRTCPriorityType(%d)", e)
 	}
 }
 
 // WebRTCRTPTransceiverDirection wraps GstWebRTCRTPTransceiverDirection
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCRTPTransceiverDirection
 type WebRTCRTPTransceiverDirection C.int
 
 const (
 	// WebrtcRtpTransceiverDirectionNone wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_NONE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_NONE
 	WebrtcRtpTransceiverDirectionNone WebRTCRTPTransceiverDirection = 0
 	// WebrtcRtpTransceiverDirectionInactive wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_INACTIVE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_INACTIVE
 	WebrtcRtpTransceiverDirectionInactive WebRTCRTPTransceiverDirection = 1
 	// WebrtcRtpTransceiverDirectionSendonly wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDONLY
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDONLY
 	WebrtcRtpTransceiverDirectionSendonly WebRTCRTPTransceiverDirection = 2
 	// WebrtcRtpTransceiverDirectionRecvonly wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_RECVONLY
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_RECVONLY
 	WebrtcRtpTransceiverDirectionRecvonly WebRTCRTPTransceiverDirection = 3
 	// WebrtcRtpTransceiverDirectionSendrecv wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDRECV
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDRECV
 	WebrtcRtpTransceiverDirectionSendrecv WebRTCRTPTransceiverDirection = 4
 )
@@ -922,35 +995,41 @@ func (e WebRTCRTPTransceiverDirection) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCRTPTransceiverDirection) String() string {
 	switch e {
-		case WebrtcRtpTransceiverDirectionInactive: return "WebrtcRtpTransceiverDirectionInactive"
-		case WebrtcRtpTransceiverDirectionNone: return "WebrtcRtpTransceiverDirectionNone"
-		case WebrtcRtpTransceiverDirectionRecvonly: return "WebrtcRtpTransceiverDirectionRecvonly"
-		case WebrtcRtpTransceiverDirectionSendonly: return "WebrtcRtpTransceiverDirectionSendonly"
-		case WebrtcRtpTransceiverDirectionSendrecv: return "WebrtcRtpTransceiverDirectionSendrecv"
-		default: return fmt.Sprintf("WebRTCRTPTransceiverDirection(%d)", e)
+	case WebrtcRtpTransceiverDirectionInactive:
+		return "WebrtcRtpTransceiverDirectionInactive"
+	case WebrtcRtpTransceiverDirectionNone:
+		return "WebrtcRtpTransceiverDirectionNone"
+	case WebrtcRtpTransceiverDirectionRecvonly:
+		return "WebrtcRtpTransceiverDirectionRecvonly"
+	case WebrtcRtpTransceiverDirectionSendonly:
+		return "WebrtcRtpTransceiverDirectionSendonly"
+	case WebrtcRtpTransceiverDirectionSendrecv:
+		return "WebrtcRtpTransceiverDirectionSendrecv"
+	default:
+		return fmt.Sprintf("WebRTCRTPTransceiverDirection(%d)", e)
 	}
 }
 
 // WebRTCSCTPTransportState wraps GstWebRTCSCTPTransportState
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCSCTPTransportState
 type WebRTCSCTPTransportState C.int
 
 const (
 	// WebrtcSctpTransportStateNew wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_NEW
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SCTP_TRANSPORT_STATE_NEW
 	WebrtcSctpTransportStateNew WebRTCSCTPTransportState = 0
 	// WebrtcSctpTransportStateConnecting wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTING
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTING
 	WebrtcSctpTransportStateConnecting WebRTCSCTPTransportState = 1
 	// WebrtcSctpTransportStateConnected wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTED
 	WebrtcSctpTransportStateConnected WebRTCSCTPTransportState = 2
 	// WebrtcSctpTransportStateClosed wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_CLOSED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SCTP_TRANSPORT_STATE_CLOSED
 	WebrtcSctpTransportStateClosed WebRTCSCTPTransportState = 3
 )
@@ -971,34 +1050,39 @@ func (e WebRTCSCTPTransportState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCSCTPTransportState) String() string {
 	switch e {
-		case WebrtcSctpTransportStateClosed: return "WebrtcSctpTransportStateClosed"
-		case WebrtcSctpTransportStateConnected: return "WebrtcSctpTransportStateConnected"
-		case WebrtcSctpTransportStateConnecting: return "WebrtcSctpTransportStateConnecting"
-		case WebrtcSctpTransportStateNew: return "WebrtcSctpTransportStateNew"
-		default: return fmt.Sprintf("WebRTCSCTPTransportState(%d)", e)
+	case WebrtcSctpTransportStateClosed:
+		return "WebrtcSctpTransportStateClosed"
+	case WebrtcSctpTransportStateConnected:
+		return "WebrtcSctpTransportStateConnected"
+	case WebrtcSctpTransportStateConnecting:
+		return "WebrtcSctpTransportStateConnecting"
+	case WebrtcSctpTransportStateNew:
+		return "WebrtcSctpTransportStateNew"
+	default:
+		return fmt.Sprintf("WebRTCSCTPTransportState(%d)", e)
 	}
 }
 
 // WebRTCSDPType wraps GstWebRTCSDPType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCSDPType
 type WebRTCSDPType C.int
 
 const (
 	// WebrtcSdpTypeOffer wraps GST_WEBRTC_SDP_TYPE_OFFER
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SDP_TYPE_OFFER
 	WebrtcSdpTypeOffer WebRTCSDPType = 1
 	// WebrtcSdpTypePranswer wraps GST_WEBRTC_SDP_TYPE_PRANSWER
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SDP_TYPE_PRANSWER
 	WebrtcSdpTypePranswer WebRTCSDPType = 2
 	// WebrtcSdpTypeAnswer wraps GST_WEBRTC_SDP_TYPE_ANSWER
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SDP_TYPE_ANSWER
 	WebrtcSdpTypeAnswer WebRTCSDPType = 3
 	// WebrtcSdpTypeRollback wraps GST_WEBRTC_SDP_TYPE_ROLLBACK
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SDP_TYPE_ROLLBACK
 	WebrtcSdpTypeRollback WebRTCSDPType = 4
 )
@@ -1019,20 +1103,25 @@ func (e WebRTCSDPType) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCSDPType) String() string {
 	switch e {
-		case WebrtcSdpTypeAnswer: return "WebrtcSdpTypeAnswer"
-		case WebrtcSdpTypeOffer: return "WebrtcSdpTypeOffer"
-		case WebrtcSdpTypePranswer: return "WebrtcSdpTypePranswer"
-		case WebrtcSdpTypeRollback: return "WebrtcSdpTypeRollback"
-		default: return fmt.Sprintf("WebRTCSDPType(%d)", e)
+	case WebrtcSdpTypeAnswer:
+		return "WebrtcSdpTypeAnswer"
+	case WebrtcSdpTypeOffer:
+		return "WebrtcSdpTypeOffer"
+	case WebrtcSdpTypePranswer:
+		return "WebrtcSdpTypePranswer"
+	case WebrtcSdpTypeRollback:
+		return "WebrtcSdpTypeRollback"
+	default:
+		return fmt.Sprintf("WebRTCSDPType(%d)", e)
 	}
 }
 
 // WebRTCSDPTypeString wraps gst_webrtc_sdp_type_to_string
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#gst_webrtc_sdp_type_to_string
 func WebRTCSDPTypeString(typ WebRTCSDPType) string {
 	var carg1 C.GstWebRTCSDPType // in, none, casted
-	var cret  *C.gchar           // return, none, string
+	var cret *C.gchar            // return, none, string
 
 	carg1 = C.GstWebRTCSDPType(typ)
 
@@ -1047,33 +1136,33 @@ func WebRTCSDPTypeString(typ WebRTCSDPType) string {
 }
 
 // WebRTCSignalingState wraps GstWebRTCSignalingState
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCSignalingState
 type WebRTCSignalingState C.int
 
 const (
 	// WebrtcSignalingStateStable wraps GST_WEBRTC_SIGNALING_STATE_STABLE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SIGNALING_STATE_STABLE
 	WebrtcSignalingStateStable WebRTCSignalingState = 0
 	// WebrtcSignalingStateClosed wraps GST_WEBRTC_SIGNALING_STATE_CLOSED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SIGNALING_STATE_CLOSED
 	WebrtcSignalingStateClosed WebRTCSignalingState = 1
 	// WebrtcSignalingStateHaveLocalOffer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_OFFER
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_OFFER
 	WebrtcSignalingStateHaveLocalOffer WebRTCSignalingState = 2
 	// WebrtcSignalingStateHaveRemoteOffer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_OFFER
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_OFFER
 	WebrtcSignalingStateHaveRemoteOffer WebRTCSignalingState = 3
 	// WebrtcSignalingStateHaveLocalPranswer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_PRANSWER
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_PRANSWER
 	WebrtcSignalingStateHaveLocalPranswer WebRTCSignalingState = 4
 	// WebrtcSignalingStateHaveRemotePranswer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_PRANSWER
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_PRANSWER
 	WebrtcSignalingStateHaveRemotePranswer WebRTCSignalingState = 5
 )
@@ -1094,76 +1183,83 @@ func (e WebRTCSignalingState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCSignalingState) String() string {
 	switch e {
-		case WebrtcSignalingStateClosed: return "WebrtcSignalingStateClosed"
-		case WebrtcSignalingStateHaveLocalOffer: return "WebrtcSignalingStateHaveLocalOffer"
-		case WebrtcSignalingStateHaveLocalPranswer: return "WebrtcSignalingStateHaveLocalPranswer"
-		case WebrtcSignalingStateHaveRemoteOffer: return "WebrtcSignalingStateHaveRemoteOffer"
-		case WebrtcSignalingStateHaveRemotePranswer: return "WebrtcSignalingStateHaveRemotePranswer"
-		case WebrtcSignalingStateStable: return "WebrtcSignalingStateStable"
-		default: return fmt.Sprintf("WebRTCSignalingState(%d)", e)
+	case WebrtcSignalingStateClosed:
+		return "WebrtcSignalingStateClosed"
+	case WebrtcSignalingStateHaveLocalOffer:
+		return "WebrtcSignalingStateHaveLocalOffer"
+	case WebrtcSignalingStateHaveLocalPranswer:
+		return "WebrtcSignalingStateHaveLocalPranswer"
+	case WebrtcSignalingStateHaveRemoteOffer:
+		return "WebrtcSignalingStateHaveRemoteOffer"
+	case WebrtcSignalingStateHaveRemotePranswer:
+		return "WebrtcSignalingStateHaveRemotePranswer"
+	case WebrtcSignalingStateStable:
+		return "WebrtcSignalingStateStable"
+	default:
+		return fmt.Sprintf("WebRTCSignalingState(%d)", e)
 	}
 }
 
 // WebRTCStatsType wraps GstWebRTCStatsType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCStatsType
 type WebRTCStatsType C.int
 
 const (
 	// WebrtcStatsCodec wraps GST_WEBRTC_STATS_CODEC
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_CODEC
 	WebrtcStatsCodec WebRTCStatsType = 1
 	// WebrtcStatsInboundRtp wraps GST_WEBRTC_STATS_INBOUND_RTP
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_INBOUND_RTP
 	WebrtcStatsInboundRtp WebRTCStatsType = 2
 	// WebrtcStatsOutboundRtp wraps GST_WEBRTC_STATS_OUTBOUND_RTP
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_OUTBOUND_RTP
 	WebrtcStatsOutboundRtp WebRTCStatsType = 3
 	// WebrtcStatsRemoteInboundRtp wraps GST_WEBRTC_STATS_REMOTE_INBOUND_RTP
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_REMOTE_INBOUND_RTP
 	WebrtcStatsRemoteInboundRtp WebRTCStatsType = 4
 	// WebrtcStatsRemoteOutboundRtp wraps GST_WEBRTC_STATS_REMOTE_OUTBOUND_RTP
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_REMOTE_OUTBOUND_RTP
 	WebrtcStatsRemoteOutboundRtp WebRTCStatsType = 5
 	// WebrtcStatsCsrc wraps GST_WEBRTC_STATS_CSRC
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_CSRC
 	WebrtcStatsCsrc WebRTCStatsType = 6
 	// WebrtcStatsPeerConnection wraps GST_WEBRTC_STATS_PEER_CONNECTION
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_PEER_CONNECTION
 	WebrtcStatsPeerConnection WebRTCStatsType = 7
 	// WebrtcStatsDataChannel wraps GST_WEBRTC_STATS_DATA_CHANNEL
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_DATA_CHANNEL
 	WebrtcStatsDataChannel WebRTCStatsType = 8
 	// WebrtcStatsStream wraps GST_WEBRTC_STATS_STREAM
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_STREAM
 	WebrtcStatsStream WebRTCStatsType = 9
 	// WebrtcStatsTransport wraps GST_WEBRTC_STATS_TRANSPORT
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_TRANSPORT
 	WebrtcStatsTransport WebRTCStatsType = 10
 	// WebrtcStatsCandidatePair wraps GST_WEBRTC_STATS_CANDIDATE_PAIR
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_CANDIDATE_PAIR
 	WebrtcStatsCandidatePair WebRTCStatsType = 11
 	// WebrtcStatsLocalCandidate wraps GST_WEBRTC_STATS_LOCAL_CANDIDATE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_LOCAL_CANDIDATE
 	WebrtcStatsLocalCandidate WebRTCStatsType = 12
 	// WebrtcStatsRemoteCandidate wraps GST_WEBRTC_STATS_REMOTE_CANDIDATE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_REMOTE_CANDIDATE
 	WebrtcStatsRemoteCandidate WebRTCStatsType = 13
 	// WebrtcStatsCertificate wraps GST_WEBRTC_STATS_CERTIFICATE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_CERTIFICATE
 	WebrtcStatsCertificate WebRTCStatsType = 14
 )
@@ -1184,28 +1280,43 @@ func (e WebRTCStatsType) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCStatsType) String() string {
 	switch e {
-		case WebrtcStatsCandidatePair: return "WebrtcStatsCandidatePair"
-		case WebrtcStatsCertificate: return "WebrtcStatsCertificate"
-		case WebrtcStatsCodec: return "WebrtcStatsCodec"
-		case WebrtcStatsCsrc: return "WebrtcStatsCsrc"
-		case WebrtcStatsDataChannel: return "WebrtcStatsDataChannel"
-		case WebrtcStatsInboundRtp: return "WebrtcStatsInboundRtp"
-		case WebrtcStatsLocalCandidate: return "WebrtcStatsLocalCandidate"
-		case WebrtcStatsOutboundRtp: return "WebrtcStatsOutboundRtp"
-		case WebrtcStatsPeerConnection: return "WebrtcStatsPeerConnection"
-		case WebrtcStatsRemoteCandidate: return "WebrtcStatsRemoteCandidate"
-		case WebrtcStatsRemoteInboundRtp: return "WebrtcStatsRemoteInboundRtp"
-		case WebrtcStatsRemoteOutboundRtp: return "WebrtcStatsRemoteOutboundRtp"
-		case WebrtcStatsStream: return "WebrtcStatsStream"
-		case WebrtcStatsTransport: return "WebrtcStatsTransport"
-		default: return fmt.Sprintf("WebRTCStatsType(%d)", e)
+	case WebrtcStatsCandidatePair:
+		return "WebrtcStatsCandidatePair"
+	case WebrtcStatsCertificate:
+		return "WebrtcStatsCertificate"
+	case WebrtcStatsCodec:
+		return "WebrtcStatsCodec"
+	case WebrtcStatsCsrc:
+		return "WebrtcStatsCsrc"
+	case WebrtcStatsDataChannel:
+		return "WebrtcStatsDataChannel"
+	case WebrtcStatsInboundRtp:
+		return "WebrtcStatsInboundRtp"
+	case WebrtcStatsLocalCandidate:
+		return "WebrtcStatsLocalCandidate"
+	case WebrtcStatsOutboundRtp:
+		return "WebrtcStatsOutboundRtp"
+	case WebrtcStatsPeerConnection:
+		return "WebrtcStatsPeerConnection"
+	case WebrtcStatsRemoteCandidate:
+		return "WebrtcStatsRemoteCandidate"
+	case WebrtcStatsRemoteInboundRtp:
+		return "WebrtcStatsRemoteInboundRtp"
+	case WebrtcStatsRemoteOutboundRtp:
+		return "WebrtcStatsRemoteOutboundRtp"
+	case WebrtcStatsStream:
+		return "WebrtcStatsStream"
+	case WebrtcStatsTransport:
+		return "WebrtcStatsTransport"
+	default:
+		return fmt.Sprintf("WebRTCStatsType(%d)", e)
 	}
 }
 
 // WebRTCICEOnCandidateFunc wraps GstWebRTCICEOnCandidateFunc
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#GstWebRTCICEOnCandidateFunc
-type WebRTCICEOnCandidateFunc func(ice WebRTCICE, streamId uint, candidate string)
+type WebRTCICEOnCandidateFunc func(ice WebRTCICE, streamId uint32, candidate string)
 
 // WebRTCDTLSTransportInstance is the instance type used by all types extending GstWebRTCDTLSTransport. It is used internally by the bindings. Users should use the interface [WebRTCDTLSTransport] instead.
 type WebRTCDTLSTransportInstance struct {
@@ -1216,7 +1327,7 @@ type WebRTCDTLSTransportInstance struct {
 var _ WebRTCDTLSTransport = (*WebRTCDTLSTransportInstance)(nil)
 
 // WebRTCDTLSTransport wraps GstWebRTCDTLSTransport
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCDTLSTransport
 type WebRTCDTLSTransport interface {
 	gst.Object
@@ -1236,7 +1347,7 @@ func unsafeWrapWebRTCDTLSTransport(base *gobject.ObjectInstance) *WebRTCDTLSTran
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeWebRTCDTLSTransport,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapWebRTCDTLSTransport(inst)
 		},
 	)
@@ -1284,58 +1395,58 @@ type WebRTCDataChannelInstance struct {
 var _ WebRTCDataChannel = (*WebRTCDataChannelInstance)(nil)
 
 // WebRTCDataChannel wraps GstWebRTCDataChannel
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCDataChannel
 type WebRTCDataChannel interface {
 	gobject.Object
 	upcastToGstWebRTCDataChannel() *WebRTCDataChannelInstance
 
 	// Close wraps gst_webrtc_data_channel_close
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#gst_webrtc_data_channel_close
 	Close()
 	// SendDataFull wraps gst_webrtc_data_channel_send_data_full
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#gst_webrtc_data_channel_send_data_full
 	SendDataFull(*glib.Bytes) (bool, error)
 	// SendStringFull wraps gst_webrtc_data_channel_send_string_full
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#gst_webrtc_data_channel_send_string_full
 	SendStringFull(string) (bool, error)
 	// EmitClose emits the "close" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/datachannel.html
 	EmitClose()
 	// ConnectOnBufferedAmountLow connects the provided callback to the "on-buffered-amount-low" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
 	ConnectOnBufferedAmountLow(func(WebRTCDataChannel)) gobject.SignalHandle
 	// ConnectOnClose connects the provided callback to the "on-close" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
 	ConnectOnClose(func(WebRTCDataChannel)) gobject.SignalHandle
 	// ConnectOnError connects the provided callback to the "on-error" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
 	ConnectOnError(func(WebRTCDataChannel, error)) gobject.SignalHandle
 	// ConnectOnMessageData connects the provided callback to the "on-message-data" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
 	ConnectOnMessageData(func(WebRTCDataChannel, *glib.Bytes)) gobject.SignalHandle
 	// ConnectOnMessageString connects the provided callback to the "on-message-string" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
 	ConnectOnMessageString(func(WebRTCDataChannel, string)) gobject.SignalHandle
 	// ConnectOnOpen connects the provided callback to the "on-open" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
 	ConnectOnOpen(func(WebRTCDataChannel)) gobject.SignalHandle
 	// EmitSendData emits the "send-data" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
 	EmitSendData(*glib.Bytes)
 	// EmitSendString emits the "send-string" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
 	EmitSendString(string)
 }
@@ -1349,7 +1460,7 @@ func unsafeWrapWebRTCDataChannel(base *gobject.ObjectInstance) *WebRTCDataChanne
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeWebRTCDataChannel,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapWebRTCDataChannel(inst)
 		},
 	)
@@ -1389,7 +1500,7 @@ func UnsafeWebRTCDataChannelToGlibFull(c WebRTCDataChannel) unsafe.Pointer {
 }
 
 // Close wraps gst_webrtc_data_channel_close
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#gst_webrtc_data_channel_close
 func (channel *WebRTCDataChannelInstance) Close() {
 	var carg0 *C.GstWebRTCDataChannel // in, none, converted
@@ -1401,12 +1512,12 @@ func (channel *WebRTCDataChannelInstance) Close() {
 }
 
 // SendDataFull wraps gst_webrtc_data_channel_send_data_full
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#gst_webrtc_data_channel_send_data_full
 func (channel *WebRTCDataChannelInstance) SendDataFull(data *glib.Bytes) (bool, error) {
 	var carg0 *C.GstWebRTCDataChannel // in, none, converted
 	var carg1 *C.GBytes               // in, none, converted, nullable
-	var cret  C.gboolean              // return
+	var cret C.gboolean               // return
 	var _cerr *C.GError               // out, full, converted, nullable
 
 	carg0 = (*C.GstWebRTCDataChannel)(UnsafeWebRTCDataChannelToGlibNone(channel))
@@ -1418,7 +1529,7 @@ func (channel *WebRTCDataChannelInstance) SendDataFull(data *glib.Bytes) (bool, 
 	runtime.KeepAlive(channel)
 	runtime.KeepAlive(data)
 
-	var goret  bool
+	var goret bool
 	var _goerr error
 
 	if cret != 0 {
@@ -1432,12 +1543,12 @@ func (channel *WebRTCDataChannelInstance) SendDataFull(data *glib.Bytes) (bool, 
 }
 
 // SendStringFull wraps gst_webrtc_data_channel_send_string_full
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#gst_webrtc_data_channel_send_string_full
 func (channel *WebRTCDataChannelInstance) SendStringFull(str string) (bool, error) {
 	var carg0 *C.GstWebRTCDataChannel // in, none, converted
 	var carg1 *C.gchar                // in, none, string, nullable-string
-	var cret  C.gboolean              // return
+	var cret C.gboolean               // return
 	var _cerr *C.GError               // out, full, converted, nullable
 
 	carg0 = (*C.GstWebRTCDataChannel)(UnsafeWebRTCDataChannelToGlibNone(channel))
@@ -1450,7 +1561,7 @@ func (channel *WebRTCDataChannelInstance) SendStringFull(str string) (bool, erro
 	runtime.KeepAlive(channel)
 	runtime.KeepAlive(str)
 
-	var goret  bool
+	var goret bool
 	var _goerr error
 
 	if cret != 0 {
@@ -1464,63 +1575,63 @@ func (channel *WebRTCDataChannelInstance) SendStringFull(str string) (bool, erro
 }
 
 // EmitClose emits the "close" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/datachannel.html
 func (o *WebRTCDataChannelInstance) EmitClose() {
 	o.Emit("close")
 }
 
 // ConnectOnBufferedAmountLow connects the provided callback to the "on-buffered-amount-low" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc
 func (o *WebRTCDataChannelInstance) ConnectOnBufferedAmountLow(fn func(WebRTCDataChannel)) gobject.SignalHandle {
 	return o.Connect("on-buffered-amount-low", fn)
 }
 
 // ConnectOnClose connects the provided callback to the "on-close" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc
 func (o *WebRTCDataChannelInstance) ConnectOnClose(fn func(WebRTCDataChannel)) gobject.SignalHandle {
 	return o.Connect("on-close", fn)
 }
 
 // ConnectOnError connects the provided callback to the "on-error" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc
 func (o *WebRTCDataChannelInstance) ConnectOnError(fn func(WebRTCDataChannel, error)) gobject.SignalHandle {
 	return o.Connect("on-error", fn)
 }
 
 // ConnectOnMessageData connects the provided callback to the "on-message-data" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc
 func (o *WebRTCDataChannelInstance) ConnectOnMessageData(fn func(WebRTCDataChannel, *glib.Bytes)) gobject.SignalHandle {
 	return o.Connect("on-message-data", fn)
 }
 
 // ConnectOnMessageString connects the provided callback to the "on-message-string" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc
 func (o *WebRTCDataChannelInstance) ConnectOnMessageString(fn func(WebRTCDataChannel, string)) gobject.SignalHandle {
 	return o.Connect("on-message-string", fn)
 }
 
 // ConnectOnOpen connects the provided callback to the "on-open" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc
 func (o *WebRTCDataChannelInstance) ConnectOnOpen(fn func(WebRTCDataChannel)) gobject.SignalHandle {
 	return o.Connect("on-open", fn)
 }
 
 // EmitSendData emits the "send-data" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc
 func (o *WebRTCDataChannelInstance) EmitSendData(arg0 *glib.Bytes) {
 	o.Emit("send-data", arg0)
 }
 
 // EmitSendString emits the "send-string" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc
 func (o *WebRTCDataChannelInstance) EmitSendString(arg0 string) {
 	o.Emit("send-string", arg0)
@@ -1535,98 +1646,98 @@ type WebRTCICEInstance struct {
 var _ WebRTCICE = (*WebRTCICEInstance)(nil)
 
 // WebRTCICE wraps GstWebRTCICE
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#GstWebRTCICE
 type WebRTCICE interface {
 	gst.Object
 	upcastToGstWebRTCICE() *WebRTCICEInstance
 
 	// AddCandidate wraps gst_webrtc_ice_add_candidate
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_add_candidate
 	AddCandidate(WebRTCICEStream, string, *gst.Promise)
 	// AddStream wraps gst_webrtc_ice_add_stream
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_add_stream
-	AddStream(uint) WebRTCICEStream
+	AddStream(uint32) WebRTCICEStream
 	// AddTurnServer wraps gst_webrtc_ice_add_turn_server
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_add_turn_server
 	AddTurnServer(string) bool
 	// FindTransport wraps gst_webrtc_ice_find_transport
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_find_transport
 	FindTransport(WebRTCICEStream, WebRTCICEComponent) WebRTCICETransport
 	// GatherCandidates wraps gst_webrtc_ice_gather_candidates
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_gather_candidates
 	GatherCandidates(WebRTCICEStream) bool
 	// GetHttpProxy wraps gst_webrtc_ice_get_http_proxy
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_http_proxy
 	GetHttpProxy() string
 	// GetIsController wraps gst_webrtc_ice_get_is_controller
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_is_controller
 	GetIsController() bool
 	// GetLocalCandidates wraps gst_webrtc_ice_get_local_candidates
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_local_candidates
 	GetLocalCandidates(WebRTCICEStream) []*WebRTCICECandidateStats
 	// GetRemoteCandidates wraps gst_webrtc_ice_get_remote_candidates
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_remote_candidates
 	GetRemoteCandidates(WebRTCICEStream) []*WebRTCICECandidateStats
 	// GetSelectedPair wraps gst_webrtc_ice_get_selected_pair
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_selected_pair
 	GetSelectedPair(WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool)
 	// GetStunServer wraps gst_webrtc_ice_get_stun_server
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_stun_server
 	GetStunServer() string
 	// GetTurnServer wraps gst_webrtc_ice_get_turn_server
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_turn_server
 	GetTurnServer() string
 	// SetForceRelay wraps gst_webrtc_ice_set_force_relay
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_force_relay
 	SetForceRelay(bool)
 	// SetHttpProxy wraps gst_webrtc_ice_set_http_proxy
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_http_proxy
 	SetHttpProxy(string)
 	// SetIsController wraps gst_webrtc_ice_set_is_controller
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_is_controller
 	SetIsController(bool)
 	// SetLocalCredentials wraps gst_webrtc_ice_set_local_credentials
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_local_credentials
 	SetLocalCredentials(WebRTCICEStream, string, string) bool
 	// SetOnIceCandidate wraps gst_webrtc_ice_set_on_ice_candidate
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_on_ice_candidate
 	SetOnIceCandidate(WebRTCICEOnCandidateFunc)
 	// SetRemoteCredentials wraps gst_webrtc_ice_set_remote_credentials
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_remote_credentials
 	SetRemoteCredentials(WebRTCICEStream, string, string) bool
 	// SetStunServer wraps gst_webrtc_ice_set_stun_server
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_stun_server
 	SetStunServer(string)
 	// SetTos wraps gst_webrtc_ice_set_tos
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_tos
-	SetTos(WebRTCICEStream, uint)
+	SetTos(WebRTCICEStream, uint32)
 	// SetTurnServer wraps gst_webrtc_ice_set_turn_server
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_turn_server
 	SetTurnServer(string)
 	// EmitAddLocalIpAddress emits the "add-local-ip-address" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html
 	EmitAddLocalIpAddress(string) bool
 
@@ -1634,92 +1745,92 @@ type WebRTCICE interface {
 
 	// ParentAddCandidate calls the default implementations of the `GstWebRTCICE.add_candidate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#add_candidate
 	ParentAddCandidate(stream WebRTCICEStream, candidate string, promise *gst.Promise)
 	// ParentAddStream calls the default implementations of the `GstWebRTCICE.add_stream` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#add_stream
-	ParentAddStream(sessionId uint) WebRTCICEStream
+	ParentAddStream(sessionId uint32) WebRTCICEStream
 	// ParentAddTurnServer calls the default implementations of the `GstWebRTCICE.add_turn_server` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#add_turn_server
 	ParentAddTurnServer(uri string) bool
 	// ParentFindTransport calls the default implementations of the `GstWebRTCICE.find_transport` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#find_transport
 	ParentFindTransport(stream WebRTCICEStream, component WebRTCICEComponent) WebRTCICETransport
 	// ParentGatherCandidates calls the default implementations of the `GstWebRTCICE.gather_candidates` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gather_candidates
 	ParentGatherCandidates(stream WebRTCICEStream) bool
 	// ParentGetHttpProxy calls the default implementations of the `GstWebRTCICE.get_http_proxy` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_http_proxy
 	ParentGetHttpProxy() string
 	// ParentGetIsController calls the default implementations of the `GstWebRTCICE.get_is_controller` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_is_controller
 	ParentGetIsController() bool
 	// ParentGetSelectedPair calls the default implementations of the `GstWebRTCICE.get_selected_pair` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_selected_pair
 	ParentGetSelectedPair(stream WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool)
 	// ParentGetStunServer calls the default implementations of the `GstWebRTCICE.get_stun_server` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_stun_server
 	ParentGetStunServer() string
 	// ParentGetTurnServer calls the default implementations of the `GstWebRTCICE.get_turn_server` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_turn_server
 	ParentGetTurnServer() string
 	// ParentSetForceRelay calls the default implementations of the `GstWebRTCICE.set_force_relay` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_force_relay
 	ParentSetForceRelay(forceRelay bool)
 	// ParentSetHttpProxy calls the default implementations of the `GstWebRTCICE.set_http_proxy` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_http_proxy
 	ParentSetHttpProxy(uri string)
 	// ParentSetIsController calls the default implementations of the `GstWebRTCICE.set_is_controller` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_is_controller
 	ParentSetIsController(controller bool)
 	// ParentSetLocalCredentials calls the default implementations of the `GstWebRTCICE.set_local_credentials` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_local_credentials
 	ParentSetLocalCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool
 	// ParentSetRemoteCredentials calls the default implementations of the `GstWebRTCICE.set_remote_credentials` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_remote_credentials
 	ParentSetRemoteCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool
 	// ParentSetStunServer calls the default implementations of the `GstWebRTCICE.set_stun_server` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_stun_server
 	ParentSetStunServer(uri string)
 	// ParentSetTos calls the default implementations of the `GstWebRTCICE.set_tos` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_tos
-	ParentSetTos(stream WebRTCICEStream, tos uint)
+	ParentSetTos(stream WebRTCICEStream, tos uint32)
 	// ParentSetTurnServer calls the default implementations of the `GstWebRTCICE.set_turn_server` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_turn_server
 	ParentSetTurnServer(uri string)
 }
@@ -1737,7 +1848,7 @@ func unsafeWrapWebRTCICE(base *gobject.ObjectInstance) *WebRTCICEInstance {
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeWebRTCICE,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapWebRTCICE(inst)
 		},
 	)
@@ -1777,7 +1888,7 @@ func UnsafeWebRTCICEToGlibFull(c WebRTCICE) unsafe.Pointer {
 }
 
 // AddCandidate wraps gst_webrtc_ice_add_candidate
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_add_candidate
 func (ice *WebRTCICEInstance) AddCandidate(stream WebRTCICEStream, candidate string, promise *gst.Promise) {
 	var carg0 *C.GstWebRTCICE       // in, none, converted
@@ -1801,12 +1912,12 @@ func (ice *WebRTCICEInstance) AddCandidate(stream WebRTCICEStream, candidate str
 }
 
 // AddStream wraps gst_webrtc_ice_add_stream
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_add_stream
-func (ice *WebRTCICEInstance) AddStream(sessionId uint) WebRTCICEStream {
-	var carg0 *C.GstWebRTCICE       // in, none, converted
-	var carg1 C.guint               // in, none, casted
-	var cret  *C.GstWebRTCICEStream // return, full, converted, nullable
+func (ice *WebRTCICEInstance) AddStream(sessionId uint32) WebRTCICEStream {
+	var carg0 *C.GstWebRTCICE      // in, none, converted
+	var carg1 C.guint              // in, none, casted
+	var cret *C.GstWebRTCICEStream // return, full, converted, nullable
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = C.guint(sessionId)
@@ -1825,12 +1936,12 @@ func (ice *WebRTCICEInstance) AddStream(sessionId uint) WebRTCICEStream {
 }
 
 // AddTurnServer wraps gst_webrtc_ice_add_turn_server
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_add_turn_server
 func (ice *WebRTCICEInstance) AddTurnServer(uri string) bool {
 	var carg0 *C.GstWebRTCICE // in, none, converted
 	var carg1 *C.gchar        // in, none, string
-	var cret  C.gboolean      // return
+	var cret C.gboolean       // return
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.gchar)(transfer.GLibString(uri))
@@ -1850,13 +1961,13 @@ func (ice *WebRTCICEInstance) AddTurnServer(uri string) bool {
 }
 
 // FindTransport wraps gst_webrtc_ice_find_transport
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_find_transport
 func (ice *WebRTCICEInstance) FindTransport(stream WebRTCICEStream, component WebRTCICEComponent) WebRTCICETransport {
-	var carg0 *C.GstWebRTCICE          // in, none, converted
-	var carg1 *C.GstWebRTCICEStream    // in, none, converted
-	var carg2 C.GstWebRTCICEComponent  // in, none, casted
-	var cret  *C.GstWebRTCICETransport // return, full, converted, nullable
+	var carg0 *C.GstWebRTCICE         // in, none, converted
+	var carg1 *C.GstWebRTCICEStream   // in, none, converted
+	var carg2 C.GstWebRTCICEComponent // in, none, casted
+	var cret *C.GstWebRTCICETransport // return, full, converted, nullable
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
@@ -1877,12 +1988,12 @@ func (ice *WebRTCICEInstance) FindTransport(stream WebRTCICEStream, component We
 }
 
 // GatherCandidates wraps gst_webrtc_ice_gather_candidates
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_gather_candidates
 func (ice *WebRTCICEInstance) GatherCandidates(stream WebRTCICEStream) bool {
 	var carg0 *C.GstWebRTCICE       // in, none, converted
 	var carg1 *C.GstWebRTCICEStream // in, none, converted
-	var cret  C.gboolean            // return
+	var cret C.gboolean             // return
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
@@ -1901,11 +2012,11 @@ func (ice *WebRTCICEInstance) GatherCandidates(stream WebRTCICEStream) bool {
 }
 
 // GetHttpProxy wraps gst_webrtc_ice_get_http_proxy
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_http_proxy
 func (ice *WebRTCICEInstance) GetHttpProxy() string {
 	var carg0 *C.GstWebRTCICE // in, none, converted
-	var cret  *C.gchar        // return, full, string
+	var cret *C.gchar         // return, full, string
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 
@@ -1921,11 +2032,11 @@ func (ice *WebRTCICEInstance) GetHttpProxy() string {
 }
 
 // GetIsController wraps gst_webrtc_ice_get_is_controller
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_is_controller
 func (ice *WebRTCICEInstance) GetIsController() bool {
 	var carg0 *C.GstWebRTCICE // in, none, converted
-	var cret  C.gboolean      // return
+	var cret C.gboolean       // return
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 
@@ -1942,12 +2053,12 @@ func (ice *WebRTCICEInstance) GetIsController() bool {
 }
 
 // GetLocalCandidates wraps gst_webrtc_ice_get_local_candidates
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_local_candidates
 func (ice *WebRTCICEInstance) GetLocalCandidates(stream WebRTCICEStream) []*WebRTCICECandidateStats {
-	var carg0 *C.GstWebRTCICE                // in, none, converted
-	var carg1 *C.GstWebRTCICEStream          // in, none, converted
-	var cret  **C.GstWebRTCICECandidateStats // return, transfer: full, C Pointers: 2, Name: array[WebRTCICECandidateStats], scope: , array (inner GstWebRTCICECandidateStats* (*typesystem.Record), zero-terminated)
+	var carg0 *C.GstWebRTCICE               // in, none, converted
+	var carg1 *C.GstWebRTCICEStream         // in, none, converted
+	var cret **C.GstWebRTCICECandidateStats // return, transfer: full, C Pointers: 2, Name: array[WebRTCICECandidateStats], array (inner GstWebRTCICECandidateStats* (*typesystem.Record), zero-terminated)
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
@@ -1966,12 +2077,12 @@ func (ice *WebRTCICEInstance) GetLocalCandidates(stream WebRTCICEStream) []*WebR
 }
 
 // GetRemoteCandidates wraps gst_webrtc_ice_get_remote_candidates
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_remote_candidates
 func (ice *WebRTCICEInstance) GetRemoteCandidates(stream WebRTCICEStream) []*WebRTCICECandidateStats {
-	var carg0 *C.GstWebRTCICE                // in, none, converted
-	var carg1 *C.GstWebRTCICEStream          // in, none, converted
-	var cret  **C.GstWebRTCICECandidateStats // return, transfer: full, C Pointers: 2, Name: array[WebRTCICECandidateStats], scope: , array (inner GstWebRTCICECandidateStats* (*typesystem.Record), zero-terminated)
+	var carg0 *C.GstWebRTCICE               // in, none, converted
+	var carg1 *C.GstWebRTCICEStream         // in, none, converted
+	var cret **C.GstWebRTCICECandidateStats // return, transfer: full, C Pointers: 2, Name: array[WebRTCICECandidateStats], array (inner GstWebRTCICECandidateStats* (*typesystem.Record), zero-terminated)
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
@@ -1990,14 +2101,14 @@ func (ice *WebRTCICEInstance) GetRemoteCandidates(stream WebRTCICEStream) []*Web
 }
 
 // GetSelectedPair wraps gst_webrtc_ice_get_selected_pair
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_selected_pair
 func (ice *WebRTCICEInstance) GetSelectedPair(stream WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool) {
 	var carg0 *C.GstWebRTCICE               // in, none, converted
 	var carg1 *C.GstWebRTCICEStream         // in, none, converted
 	var carg2 *C.GstWebRTCICECandidateStats // out, full, converted
 	var carg3 *C.GstWebRTCICECandidateStats // out, full, converted
-	var cret  C.gboolean                    // return
+	var cret C.gboolean                     // return
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
@@ -2006,9 +2117,9 @@ func (ice *WebRTCICEInstance) GetSelectedPair(stream WebRTCICEStream) (*WebRTCIC
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(stream)
 
-	var localStats  *WebRTCICECandidateStats
+	var localStats *WebRTCICECandidateStats
 	var remoteStats *WebRTCICECandidateStats
-	var goret       bool
+	var goret bool
 
 	localStats = UnsafeWebRTCICECandidateStatsFromGlibFull(unsafe.Pointer(carg2))
 	remoteStats = UnsafeWebRTCICECandidateStatsFromGlibFull(unsafe.Pointer(carg3))
@@ -2020,11 +2131,11 @@ func (ice *WebRTCICEInstance) GetSelectedPair(stream WebRTCICEStream) (*WebRTCIC
 }
 
 // GetStunServer wraps gst_webrtc_ice_get_stun_server
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_stun_server
 func (ice *WebRTCICEInstance) GetStunServer() string {
 	var carg0 *C.GstWebRTCICE // in, none, converted
-	var cret  *C.gchar        // return, full, string, nullable-string
+	var cret *C.gchar         // return, full, string, nullable-string
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 
@@ -2042,11 +2153,11 @@ func (ice *WebRTCICEInstance) GetStunServer() string {
 }
 
 // GetTurnServer wraps gst_webrtc_ice_get_turn_server
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_get_turn_server
 func (ice *WebRTCICEInstance) GetTurnServer() string {
 	var carg0 *C.GstWebRTCICE // in, none, converted
-	var cret  *C.gchar        // return, full, string, nullable-string
+	var cret *C.gchar         // return, full, string, nullable-string
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 
@@ -2064,7 +2175,7 @@ func (ice *WebRTCICEInstance) GetTurnServer() string {
 }
 
 // SetForceRelay wraps gst_webrtc_ice_set_force_relay
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_force_relay
 func (ice *WebRTCICEInstance) SetForceRelay(forceRelay bool) {
 	var carg0 *C.GstWebRTCICE // in, none, converted
@@ -2081,7 +2192,7 @@ func (ice *WebRTCICEInstance) SetForceRelay(forceRelay bool) {
 }
 
 // SetHttpProxy wraps gst_webrtc_ice_set_http_proxy
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_http_proxy
 func (ice *WebRTCICEInstance) SetHttpProxy(uri string) {
 	var carg0 *C.GstWebRTCICE // in, none, converted
@@ -2097,7 +2208,7 @@ func (ice *WebRTCICEInstance) SetHttpProxy(uri string) {
 }
 
 // SetIsController wraps gst_webrtc_ice_set_is_controller
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_is_controller
 func (ice *WebRTCICEInstance) SetIsController(controller bool) {
 	var carg0 *C.GstWebRTCICE // in, none, converted
@@ -2114,14 +2225,14 @@ func (ice *WebRTCICEInstance) SetIsController(controller bool) {
 }
 
 // SetLocalCredentials wraps gst_webrtc_ice_set_local_credentials
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_local_credentials
 func (ice *WebRTCICEInstance) SetLocalCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool {
 	var carg0 *C.GstWebRTCICE       // in, none, converted
 	var carg1 *C.GstWebRTCICEStream // in, none, converted
 	var carg2 *C.gchar              // in, none, string
 	var carg3 *C.gchar              // in, none, string
-	var cret  C.gboolean            // return
+	var cret C.gboolean             // return
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
@@ -2146,7 +2257,7 @@ func (ice *WebRTCICEInstance) SetLocalCredentials(stream WebRTCICEStream, ufrag 
 }
 
 // SetOnIceCandidate wraps gst_webrtc_ice_set_on_ice_candidate
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_on_ice_candidate
 func (ice *WebRTCICEInstance) SetOnIceCandidate(fn WebRTCICEOnCandidateFunc) {
 	var carg0 *C.GstWebRTCICE               // in, none, converted
@@ -2165,14 +2276,14 @@ func (ice *WebRTCICEInstance) SetOnIceCandidate(fn WebRTCICEOnCandidateFunc) {
 }
 
 // SetRemoteCredentials wraps gst_webrtc_ice_set_remote_credentials
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_remote_credentials
 func (ice *WebRTCICEInstance) SetRemoteCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool {
 	var carg0 *C.GstWebRTCICE       // in, none, converted
 	var carg1 *C.GstWebRTCICEStream // in, none, converted
 	var carg2 *C.gchar              // in, none, string
 	var carg3 *C.gchar              // in, none, string
-	var cret  C.gboolean            // return
+	var cret C.gboolean             // return
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
@@ -2197,7 +2308,7 @@ func (ice *WebRTCICEInstance) SetRemoteCredentials(stream WebRTCICEStream, ufrag
 }
 
 // SetStunServer wraps gst_webrtc_ice_set_stun_server
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_stun_server
 func (ice *WebRTCICEInstance) SetStunServer(uri string) {
 	var carg0 *C.GstWebRTCICE // in, none, converted
@@ -2215,9 +2326,9 @@ func (ice *WebRTCICEInstance) SetStunServer(uri string) {
 }
 
 // SetTos wraps gst_webrtc_ice_set_tos
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_tos
-func (ice *WebRTCICEInstance) SetTos(stream WebRTCICEStream, tos uint) {
+func (ice *WebRTCICEInstance) SetTos(stream WebRTCICEStream, tos uint32) {
 	var carg0 *C.GstWebRTCICE       // in, none, converted
 	var carg1 *C.GstWebRTCICEStream // in, none, converted
 	var carg2 C.guint               // in, none, casted
@@ -2233,7 +2344,7 @@ func (ice *WebRTCICEInstance) SetTos(stream WebRTCICEStream, tos uint) {
 }
 
 // SetTurnServer wraps gst_webrtc_ice_set_turn_server
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_set_turn_server
 func (ice *WebRTCICEInstance) SetTurnServer(uri string) {
 	var carg0 *C.GstWebRTCICE // in, none, converted
@@ -2251,7 +2362,7 @@ func (ice *WebRTCICEInstance) SetTurnServer(uri string) {
 }
 
 // EmitAddLocalIpAddress emits the "add-local-ip-address" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html
 func (o *WebRTCICEInstance) EmitAddLocalIpAddress(arg0 string) bool {
 	return o.Emit("add-local-ip-address", arg0).(bool)
@@ -2263,76 +2374,76 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
 	gst.ObjectOverrides[Instance]
 
-	// // AddCandidate allows you to override the implementation of the virtual method add_candidate.
-	// 
+	// AddCandidate allows you to override the implementation of the virtual method add_candidate.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#add_candidate
 	AddCandidate func(Instance, WebRTCICEStream, string, *gst.Promise)
-	// // AddStream allows you to override the implementation of the virtual method add_stream.
-	// 
+	// AddStream allows you to override the implementation of the virtual method add_stream.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#add_stream
-	AddStream func(Instance, uint) WebRTCICEStream
-	// // AddTurnServer allows you to override the implementation of the virtual method add_turn_server.
-	// 
+	AddStream func(Instance, uint32) WebRTCICEStream
+	// AddTurnServer allows you to override the implementation of the virtual method add_turn_server.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#add_turn_server
 	AddTurnServer func(Instance, string) bool
-	// // FindTransport allows you to override the implementation of the virtual method find_transport.
-	// 
+	// FindTransport allows you to override the implementation of the virtual method find_transport.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#find_transport
 	FindTransport func(Instance, WebRTCICEStream, WebRTCICEComponent) WebRTCICETransport
-	// // GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
-	// 
+	// GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gather_candidates
 	GatherCandidates func(Instance, WebRTCICEStream) bool
-	// // GetHttpProxy allows you to override the implementation of the virtual method get_http_proxy.
-	// 
+	// GetHttpProxy allows you to override the implementation of the virtual method get_http_proxy.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_http_proxy
 	GetHttpProxy func(Instance) string
-	// // GetIsController allows you to override the implementation of the virtual method get_is_controller.
-	// 
+	// GetIsController allows you to override the implementation of the virtual method get_is_controller.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_is_controller
 	GetIsController func(Instance) bool
-	// // GetSelectedPair allows you to override the implementation of the virtual method get_selected_pair.
-	// 
+	// GetSelectedPair allows you to override the implementation of the virtual method get_selected_pair.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_selected_pair
 	GetSelectedPair func(Instance, WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool)
-	// // GetStunServer allows you to override the implementation of the virtual method get_stun_server.
-	// 
+	// GetStunServer allows you to override the implementation of the virtual method get_stun_server.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_stun_server
 	GetStunServer func(Instance) string
-	// // GetTurnServer allows you to override the implementation of the virtual method get_turn_server.
-	// 
+	// GetTurnServer allows you to override the implementation of the virtual method get_turn_server.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_turn_server
 	GetTurnServer func(Instance) string
-	// // SetForceRelay allows you to override the implementation of the virtual method set_force_relay.
-	// 
+	// SetForceRelay allows you to override the implementation of the virtual method set_force_relay.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_force_relay
 	SetForceRelay func(Instance, bool)
-	// // SetHttpProxy allows you to override the implementation of the virtual method set_http_proxy.
-	// 
+	// SetHttpProxy allows you to override the implementation of the virtual method set_http_proxy.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_http_proxy
 	SetHttpProxy func(Instance, string)
-	// // SetIsController allows you to override the implementation of the virtual method set_is_controller.
-	// 
+	// SetIsController allows you to override the implementation of the virtual method set_is_controller.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_is_controller
 	SetIsController func(Instance, bool)
-	// // SetLocalCredentials allows you to override the implementation of the virtual method set_local_credentials.
-	// 
+	// SetLocalCredentials allows you to override the implementation of the virtual method set_local_credentials.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_local_credentials
 	SetLocalCredentials func(Instance, WebRTCICEStream, string, string) bool
-	// // SetRemoteCredentials allows you to override the implementation of the virtual method set_remote_credentials.
-	// 
+	// SetRemoteCredentials allows you to override the implementation of the virtual method set_remote_credentials.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_remote_credentials
 	SetRemoteCredentials func(Instance, WebRTCICEStream, string, string) bool
-	// // SetStunServer allows you to override the implementation of the virtual method set_stun_server.
-	// 
+	// SetStunServer allows you to override the implementation of the virtual method set_stun_server.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_stun_server
 	SetStunServer func(Instance, string)
-	// // SetTos allows you to override the implementation of the virtual method set_tos.
-	// 
+	// SetTos allows you to override the implementation of the virtual method set_tos.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_tos
-	SetTos func(Instance, WebRTCICEStream, uint)
-	// // SetTurnServer allows you to override the implementation of the virtual method set_turn_server.
-	// 
+	SetTos func(Instance, WebRTCICEStream, uint32)
+	// SetTurnServer allows you to override the implementation of the virtual method set_turn_server.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_turn_server
 	SetTurnServer func(Instance, string)
 }
@@ -2350,10 +2461,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_add_candidate",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 *C.gchar, carg3 *C.GstPromise) {
-				var ice       Instance        // go GstWebRTCICE subclass
-				var stream    WebRTCICEStream // in, none, converted
-				var candidate string          // in, none, string
-				var promise   *gst.Promise    // in, none, converted, nullable
+				var ice Instance           // go GstWebRTCICE subclass
+				var stream WebRTCICEStream // in, none, converted
+				var candidate string       // in, none, string
+				var promise *gst.Promise   // in, none, converted, nullable
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
@@ -2373,12 +2484,12 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_add_stream",
 			func(carg0 *C.GstWebRTCICE, carg1 C.guint) (cret *C.GstWebRTCICEStream) {
-				var ice       Instance        // go GstWebRTCICE subclass
-				var sessionId uint            // in, none, casted
-				var goret     WebRTCICEStream // return, full, converted, nullable
+				var ice Instance          // go GstWebRTCICE subclass
+				var sessionId uint32      // in, none, casted
+				var goret WebRTCICEStream // return, full, converted, nullable
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
-				sessionId = uint(carg1)
+				sessionId = uint32(carg1)
 
 				goret = overrides.AddStream(ice, sessionId)
 
@@ -2397,9 +2508,9 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_add_turn_server",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.gchar) (cret C.gboolean) {
-				var ice   Instance // go GstWebRTCICE subclass
-				var uri   string   // in, none, string
-				var goret bool     // return
+				var ice Instance // go GstWebRTCICE subclass
+				var uri string   // in, none, string
+				var goret bool   // return
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
@@ -2421,10 +2532,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_find_transport",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 C.GstWebRTCICEComponent) (cret *C.GstWebRTCICETransport) {
-				var ice       Instance           // go GstWebRTCICE subclass
-				var stream    WebRTCICEStream    // in, none, converted
+				var ice Instance                 // go GstWebRTCICE subclass
+				var stream WebRTCICEStream       // in, none, converted
 				var component WebRTCICEComponent // in, none, casted
-				var goret     WebRTCICETransport // return, full, converted, nullable
+				var goret WebRTCICETransport     // return, full, converted, nullable
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
@@ -2447,9 +2558,9 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_gather_candidates",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream) (cret C.gboolean) {
-				var ice    Instance        // go GstWebRTCICE subclass
+				var ice Instance           // go GstWebRTCICE subclass
 				var stream WebRTCICEStream // in, none, converted
-				var goret  bool            // return
+				var goret bool             // return
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
@@ -2471,8 +2582,8 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_get_http_proxy",
 			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
-				var ice   Instance // go GstWebRTCICE subclass
-				var goret string   // return, full, string
+				var ice Instance // go GstWebRTCICE subclass
+				var goret string // return, full, string
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
@@ -2491,8 +2602,8 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_get_is_controller",
 			func(carg0 *C.GstWebRTCICE) (cret C.gboolean) {
-				var ice   Instance // go GstWebRTCICE subclass
-				var goret bool     // return
+				var ice Instance // go GstWebRTCICE subclass
+				var goret bool   // return
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
@@ -2513,11 +2624,11 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_get_selected_pair",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 **C.GstWebRTCICECandidateStats, carg3 **C.GstWebRTCICECandidateStats) (cret C.gboolean) {
-				var ice         Instance                 // go GstWebRTCICE subclass
-				var stream      WebRTCICEStream          // in, none, converted
-				var localStats  *WebRTCICECandidateStats // out, full, converted
+				var ice Instance                         // go GstWebRTCICE subclass
+				var stream WebRTCICEStream               // in, none, converted
+				var localStats *WebRTCICECandidateStats  // out, full, converted
 				var remoteStats *WebRTCICECandidateStats // out, full, converted
-				var goret       bool                     // return
+				var goret bool                           // return
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
@@ -2541,8 +2652,8 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_get_stun_server",
 			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
-				var ice   Instance // go GstWebRTCICE subclass
-				var goret string   // return, full, string, nullable-string
+				var ice Instance // go GstWebRTCICE subclass
+				var goret string // return, full, string, nullable-string
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
@@ -2563,8 +2674,8 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_get_turn_server",
 			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
-				var ice   Instance // go GstWebRTCICE subclass
-				var goret string   // return, full, string, nullable-string
+				var ice Instance // go GstWebRTCICE subclass
+				var goret string // return, full, string, nullable-string
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
@@ -2585,8 +2696,8 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_set_force_relay",
 			func(carg0 *C.GstWebRTCICE, carg1 C.gboolean) {
-				var ice        Instance // go GstWebRTCICE subclass
-				var forceRelay bool     // in
+				var ice Instance    // go GstWebRTCICE subclass
+				var forceRelay bool // in
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != 0 {
@@ -2621,8 +2732,8 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_set_is_controller",
 			func(carg0 *C.GstWebRTCICE, carg1 C.gboolean) {
-				var ice        Instance // go GstWebRTCICE subclass
-				var controller bool     // in
+				var ice Instance    // go GstWebRTCICE subclass
+				var controller bool // in
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != 0 {
@@ -2640,11 +2751,11 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_set_local_credentials",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 *C.gchar, carg3 *C.gchar) (cret C.gboolean) {
-				var ice    Instance        // go GstWebRTCICE subclass
+				var ice Instance           // go GstWebRTCICE subclass
 				var stream WebRTCICEStream // in, none, converted
-				var ufrag  string          // in, none, string
-				var pwd    string          // in, none, string
-				var goret  bool            // return
+				var ufrag string           // in, none, string
+				var pwd string             // in, none, string
+				var goret bool             // return
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
@@ -2668,11 +2779,11 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_set_remote_credentials",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 *C.gchar, carg3 *C.gchar) (cret C.gboolean) {
-				var ice    Instance        // go GstWebRTCICE subclass
+				var ice Instance           // go GstWebRTCICE subclass
 				var stream WebRTCICEStream // in, none, converted
-				var ufrag  string          // in, none, string
-				var pwd    string          // in, none, string
-				var goret  bool            // return
+				var ufrag string           // in, none, string
+				var pwd string             // in, none, string
+				var goret bool             // return
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
@@ -2715,13 +2826,13 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICE_set_tos",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 C.guint) {
-				var ice    Instance        // go GstWebRTCICE subclass
+				var ice Instance           // go GstWebRTCICE subclass
 				var stream WebRTCICEStream // in, none, converted
-				var tos    uint            // in, none, casted
+				var tos uint32             // in, none, casted
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
-				tos = uint(carg2)
+				tos = uint32(carg2)
 
 				overrides.SetTos(ice, stream, tos)
 			},
@@ -2750,7 +2861,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 
 // ParentAddCandidate calls the default implementations of the `GstWebRTCICE.add_candidate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#add_candidate
 func (ice *WebRTCICEInstance) ParentAddCandidate(stream WebRTCICEStream, candidate string, promise *gst.Promise) {
 	var carg0 *C.GstWebRTCICE
@@ -2777,12 +2888,12 @@ func (ice *WebRTCICEInstance) ParentAddCandidate(stream WebRTCICEStream, candida
 
 // ParentAddStream calls the default implementations of the `GstWebRTCICE.add_stream` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#add_stream
-func (ice *WebRTCICEInstance) ParentAddStream(sessionId uint) WebRTCICEStream {
+func (ice *WebRTCICEInstance) ParentAddStream(sessionId uint32) WebRTCICEStream {
 	var carg0 *C.GstWebRTCICE
-	var carg1 C.guint               // in, none, converted
-	var cret  *C.GstWebRTCICEStream // return, full, converted, nullable
+	var carg1 C.guint              // in, none, converted
+	var cret *C.GstWebRTCICEStream // return, full, converted, nullable
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
@@ -2804,12 +2915,12 @@ func (ice *WebRTCICEInstance) ParentAddStream(sessionId uint) WebRTCICEStream {
 
 // ParentAddTurnServer calls the default implementations of the `GstWebRTCICE.add_turn_server` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#add_turn_server
 func (ice *WebRTCICEInstance) ParentAddTurnServer(uri string) bool {
 	var carg0 *C.GstWebRTCICE
-	var carg1 *C.gchar   // in, none, converted
-	var cret  C.gboolean // return
+	var carg1 *C.gchar  // in, none, converted
+	var cret C.gboolean // return
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
@@ -2832,13 +2943,13 @@ func (ice *WebRTCICEInstance) ParentAddTurnServer(uri string) bool {
 
 // ParentFindTransport calls the default implementations of the `GstWebRTCICE.find_transport` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#find_transport
 func (ice *WebRTCICEInstance) ParentFindTransport(stream WebRTCICEStream, component WebRTCICEComponent) WebRTCICETransport {
 	var carg0 *C.GstWebRTCICE
-	var carg1 *C.GstWebRTCICEStream    // in, none, converted
-	var carg2 C.GstWebRTCICEComponent  // in, none, converted
-	var cret  *C.GstWebRTCICETransport // return, full, converted, nullable
+	var carg1 *C.GstWebRTCICEStream   // in, none, converted
+	var carg2 C.GstWebRTCICEComponent // in, none, converted
+	var cret *C.GstWebRTCICETransport // return, full, converted, nullable
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
@@ -2862,12 +2973,12 @@ func (ice *WebRTCICEInstance) ParentFindTransport(stream WebRTCICEStream, compon
 
 // ParentGatherCandidates calls the default implementations of the `GstWebRTCICE.gather_candidates` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gather_candidates
 func (ice *WebRTCICEInstance) ParentGatherCandidates(stream WebRTCICEStream) bool {
 	var carg0 *C.GstWebRTCICE
 	var carg1 *C.GstWebRTCICEStream // in, none, converted
-	var cret  C.gboolean            // return
+	var cret C.gboolean             // return
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
@@ -2889,11 +3000,11 @@ func (ice *WebRTCICEInstance) ParentGatherCandidates(stream WebRTCICEStream) boo
 
 // ParentGetHttpProxy calls the default implementations of the `GstWebRTCICE.get_http_proxy` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_http_proxy
 func (ice *WebRTCICEInstance) ParentGetHttpProxy() string {
 	var carg0 *C.GstWebRTCICE
-	var cret  *C.gchar // return, full, string
+	var cret *C.gchar // return, full, string
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
@@ -2912,11 +3023,11 @@ func (ice *WebRTCICEInstance) ParentGetHttpProxy() string {
 
 // ParentGetIsController calls the default implementations of the `GstWebRTCICE.get_is_controller` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_is_controller
 func (ice *WebRTCICEInstance) ParentGetIsController() bool {
 	var carg0 *C.GstWebRTCICE
-	var cret  C.gboolean // return
+	var cret C.gboolean // return
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
@@ -2936,14 +3047,14 @@ func (ice *WebRTCICEInstance) ParentGetIsController() bool {
 
 // ParentGetSelectedPair calls the default implementations of the `GstWebRTCICE.get_selected_pair` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_selected_pair
 func (ice *WebRTCICEInstance) ParentGetSelectedPair(stream WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool) {
 	var carg0 *C.GstWebRTCICE
 	var carg1 *C.GstWebRTCICEStream         // in, none, converted
 	var carg2 *C.GstWebRTCICECandidateStats // out, full, converted
 	var carg3 *C.GstWebRTCICECandidateStats // out, full, converted
-	var cret  C.gboolean                    // return
+	var cret C.gboolean                     // return
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
@@ -2954,9 +3065,9 @@ func (ice *WebRTCICEInstance) ParentGetSelectedPair(stream WebRTCICEStream) (*We
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(stream)
 
-	var localStats  *WebRTCICECandidateStats
+	var localStats *WebRTCICECandidateStats
 	var remoteStats *WebRTCICECandidateStats
-	var goret       bool
+	var goret bool
 
 	localStats = UnsafeWebRTCICECandidateStatsFromGlibFull(unsafe.Pointer(carg2))
 	remoteStats = UnsafeWebRTCICECandidateStatsFromGlibFull(unsafe.Pointer(carg3))
@@ -2969,11 +3080,11 @@ func (ice *WebRTCICEInstance) ParentGetSelectedPair(stream WebRTCICEStream) (*We
 
 // ParentGetStunServer calls the default implementations of the `GstWebRTCICE.get_stun_server` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_stun_server
 func (ice *WebRTCICEInstance) ParentGetStunServer() string {
 	var carg0 *C.GstWebRTCICE
-	var cret  *C.gchar // return, full, string, nullable-string
+	var cret *C.gchar // return, full, string, nullable-string
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
@@ -2994,11 +3105,11 @@ func (ice *WebRTCICEInstance) ParentGetStunServer() string {
 
 // ParentGetTurnServer calls the default implementations of the `GstWebRTCICE.get_turn_server` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#get_turn_server
 func (ice *WebRTCICEInstance) ParentGetTurnServer() string {
 	var carg0 *C.GstWebRTCICE
-	var cret  *C.gchar // return, full, string, nullable-string
+	var cret *C.gchar // return, full, string, nullable-string
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
@@ -3019,7 +3130,7 @@ func (ice *WebRTCICEInstance) ParentGetTurnServer() string {
 
 // ParentSetForceRelay calls the default implementations of the `GstWebRTCICE.set_force_relay` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_force_relay
 func (ice *WebRTCICEInstance) ParentSetForceRelay(forceRelay bool) {
 	var carg0 *C.GstWebRTCICE
@@ -3039,7 +3150,7 @@ func (ice *WebRTCICEInstance) ParentSetForceRelay(forceRelay bool) {
 
 // ParentSetHttpProxy calls the default implementations of the `GstWebRTCICE.set_http_proxy` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_http_proxy
 func (ice *WebRTCICEInstance) ParentSetHttpProxy(uri string) {
 	var carg0 *C.GstWebRTCICE
@@ -3058,7 +3169,7 @@ func (ice *WebRTCICEInstance) ParentSetHttpProxy(uri string) {
 
 // ParentSetIsController calls the default implementations of the `GstWebRTCICE.set_is_controller` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_is_controller
 func (ice *WebRTCICEInstance) ParentSetIsController(controller bool) {
 	var carg0 *C.GstWebRTCICE
@@ -3078,14 +3189,14 @@ func (ice *WebRTCICEInstance) ParentSetIsController(controller bool) {
 
 // ParentSetLocalCredentials calls the default implementations of the `GstWebRTCICE.set_local_credentials` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_local_credentials
 func (ice *WebRTCICEInstance) ParentSetLocalCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool {
 	var carg0 *C.GstWebRTCICE
 	var carg1 *C.GstWebRTCICEStream // in, none, converted
 	var carg2 *C.gchar              // in, none, converted
 	var carg3 *C.gchar              // in, none, string
-	var cret  C.gboolean            // return
+	var cret C.gboolean             // return
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
@@ -3113,14 +3224,14 @@ func (ice *WebRTCICEInstance) ParentSetLocalCredentials(stream WebRTCICEStream, 
 
 // ParentSetRemoteCredentials calls the default implementations of the `GstWebRTCICE.set_remote_credentials` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_remote_credentials
 func (ice *WebRTCICEInstance) ParentSetRemoteCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool {
 	var carg0 *C.GstWebRTCICE
 	var carg1 *C.GstWebRTCICEStream // in, none, converted
 	var carg2 *C.gchar              // in, none, converted
 	var carg3 *C.gchar              // in, none, string
-	var cret  C.gboolean            // return
+	var cret C.gboolean             // return
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
@@ -3148,7 +3259,7 @@ func (ice *WebRTCICEInstance) ParentSetRemoteCredentials(stream WebRTCICEStream,
 
 // ParentSetStunServer calls the default implementations of the `GstWebRTCICE.set_stun_server` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_stun_server
 func (ice *WebRTCICEInstance) ParentSetStunServer(uri string) {
 	var carg0 *C.GstWebRTCICE
@@ -3169,9 +3280,9 @@ func (ice *WebRTCICEInstance) ParentSetStunServer(uri string) {
 
 // ParentSetTos calls the default implementations of the `GstWebRTCICE.set_tos` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_tos
-func (ice *WebRTCICEInstance) ParentSetTos(stream WebRTCICEStream, tos uint) {
+func (ice *WebRTCICEInstance) ParentSetTos(stream WebRTCICEStream, tos uint32) {
 	var carg0 *C.GstWebRTCICE
 	var carg1 *C.GstWebRTCICEStream // in, none, converted
 	var carg2 C.guint               // in, none, converted
@@ -3190,7 +3301,7 @@ func (ice *WebRTCICEInstance) ParentSetTos(stream WebRTCICEStream, tos uint) {
 
 // ParentSetTurnServer calls the default implementations of the `GstWebRTCICE.set_turn_server` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#set_turn_server
 func (ice *WebRTCICEInstance) ParentSetTurnServer(uri string) {
 	var carg0 *C.GstWebRTCICE
@@ -3212,12 +3323,12 @@ func (ice *WebRTCICEInstance) ParentSetTurnServer(uri string) {
 // RegisterWebRTCICESubClass is used to register a go subclass of GstWebRTCICE. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterWebRTCICESubClass[InstanceT WebRTCICE](
-		name string,
-		classInit func(class *WebRTCICEClass),
-		constructor func() InstanceT,
-		overrides WebRTCICEOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *WebRTCICEClass),
+	constructor func() InstanceT,
+	overrides WebRTCICEOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -3228,7 +3339,7 @@ func RegisterWebRTCICESubClass[InstanceT WebRTCICE](
 		TypeWebRTCICE,
 		UnsafeWebRTCICEClassFromGlibBorrow,
 		UnsafeApplyWebRTCICEOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapWebRTCICE(obj)
 		},
 		interfaceInits...,
@@ -3244,18 +3355,18 @@ type WebRTCICEStreamInstance struct {
 var _ WebRTCICEStream = (*WebRTCICEStreamInstance)(nil)
 
 // WebRTCICEStream wraps GstWebRTCICEStream
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/icestream.html#GstWebRTCICEStream
 type WebRTCICEStream interface {
 	gst.Object
 	upcastToGstWebRTCICEStream() *WebRTCICEStreamInstance
 
 	// FindTransport wraps gst_webrtc_ice_stream_find_transport
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/icestream.html#gst_webrtc_ice_stream_find_transport
 	FindTransport(WebRTCICEComponent) WebRTCICETransport
 	// GatherCandidates wraps gst_webrtc_ice_stream_gather_candidates
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/icestream.html#gst_webrtc_ice_stream_gather_candidates
 	GatherCandidates() bool
 
@@ -3263,12 +3374,12 @@ type WebRTCICEStream interface {
 
 	// ParentFindTransport calls the default implementations of the `GstWebRTCICEStream.find_transport` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/icestream.html#find_transport
 	ParentFindTransport(component WebRTCICEComponent) WebRTCICETransport
 	// ParentGatherCandidates calls the default implementations of the `GstWebRTCICEStream.gather_candidates` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/icestream.html#gather_candidates
 	ParentGatherCandidates() bool
 }
@@ -3286,7 +3397,7 @@ func unsafeWrapWebRTCICEStream(base *gobject.ObjectInstance) *WebRTCICEStreamIns
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeWebRTCICEStream,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapWebRTCICEStream(inst)
 		},
 	)
@@ -3326,12 +3437,12 @@ func UnsafeWebRTCICEStreamToGlibFull(c WebRTCICEStream) unsafe.Pointer {
 }
 
 // FindTransport wraps gst_webrtc_ice_stream_find_transport
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/icestream.html#gst_webrtc_ice_stream_find_transport
 func (stream *WebRTCICEStreamInstance) FindTransport(component WebRTCICEComponent) WebRTCICETransport {
-	var carg0 *C.GstWebRTCICEStream    // in, none, converted
-	var carg1 C.GstWebRTCICEComponent  // in, none, casted
-	var cret  *C.GstWebRTCICETransport // return, full, converted, nullable
+	var carg0 *C.GstWebRTCICEStream   // in, none, converted
+	var carg1 C.GstWebRTCICEComponent // in, none, casted
+	var cret *C.GstWebRTCICETransport // return, full, converted, nullable
 
 	carg0 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 	carg1 = C.GstWebRTCICEComponent(component)
@@ -3350,11 +3461,11 @@ func (stream *WebRTCICEStreamInstance) FindTransport(component WebRTCICEComponen
 }
 
 // GatherCandidates wraps gst_webrtc_ice_stream_gather_candidates
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/icestream.html#gst_webrtc_ice_stream_gather_candidates
 func (ice *WebRTCICEStreamInstance) GatherCandidates() bool {
 	var carg0 *C.GstWebRTCICEStream // in, none, converted
-	var cret  C.gboolean            // return
+	var cret C.gboolean             // return
 
 	carg0 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(ice))
 
@@ -3376,12 +3487,12 @@ type WebRTCICEStreamOverrides[Instance WebRTCICEStream] struct {
 	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
 	gst.ObjectOverrides[Instance]
 
-	// // FindTransport allows you to override the implementation of the virtual method find_transport.
-	// 
+	// FindTransport allows you to override the implementation of the virtual method find_transport.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/icestream.html#find_transport
 	FindTransport func(Instance, WebRTCICEComponent) WebRTCICETransport
-	// // GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
-	// 
+	// GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/icestream.html#gather_candidates
 	GatherCandidates func(Instance) bool
 }
@@ -3399,9 +3510,9 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICEStream_find_transport",
 			func(carg0 *C.GstWebRTCICEStream, carg1 C.GstWebRTCICEComponent) (cret *C.GstWebRTCICETransport) {
-				var stream    Instance           // go GstWebRTCICEStream subclass
+				var stream Instance              // go GstWebRTCICEStream subclass
 				var component WebRTCICEComponent // in, none, casted
-				var goret     WebRTCICETransport // return, full, converted, nullable
+				var goret WebRTCICETransport     // return, full, converted, nullable
 
 				stream = UnsafeWebRTCICEStreamFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				component = WebRTCICEComponent(carg1)
@@ -3423,8 +3534,8 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 			unsafe.Pointer(pclass),
 			"_goglib_gstwebrtc1_WebRTCICEStream_gather_candidates",
 			func(carg0 *C.GstWebRTCICEStream) (cret C.gboolean) {
-				var ice   Instance // go GstWebRTCICEStream subclass
-				var goret bool     // return
+				var ice Instance // go GstWebRTCICEStream subclass
+				var goret bool   // return
 
 				ice = UnsafeWebRTCICEStreamFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
@@ -3442,12 +3553,12 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 
 // ParentFindTransport calls the default implementations of the `GstWebRTCICEStream.find_transport` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/icestream.html#find_transport
 func (stream *WebRTCICEStreamInstance) ParentFindTransport(component WebRTCICEComponent) WebRTCICETransport {
 	var carg0 *C.GstWebRTCICEStream
-	var carg1 C.GstWebRTCICEComponent  // in, none, converted
-	var cret  *C.GstWebRTCICETransport // return, full, converted, nullable
+	var carg1 C.GstWebRTCICEComponent // in, none, converted
+	var cret *C.GstWebRTCICETransport // return, full, converted, nullable
 
 	parentclass := (*C.GstWebRTCICEStreamClass)(classdata.PeekParentClass(UnsafeWebRTCICEStreamToGlibNone(stream)))
 
@@ -3469,11 +3580,11 @@ func (stream *WebRTCICEStreamInstance) ParentFindTransport(component WebRTCICECo
 
 // ParentGatherCandidates calls the default implementations of the `GstWebRTCICEStream.gather_candidates` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/icestream.html#gather_candidates
 func (ice *WebRTCICEStreamInstance) ParentGatherCandidates() bool {
 	var carg0 *C.GstWebRTCICEStream
-	var cret  C.gboolean // return
+	var cret C.gboolean // return
 
 	parentclass := (*C.GstWebRTCICEStreamClass)(classdata.PeekParentClass(UnsafeWebRTCICEStreamToGlibNone(ice)))
 
@@ -3494,12 +3605,12 @@ func (ice *WebRTCICEStreamInstance) ParentGatherCandidates() bool {
 // RegisterWebRTCICEStreamSubClass is used to register a go subclass of GstWebRTCICEStream. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterWebRTCICEStreamSubClass[InstanceT WebRTCICEStream](
-		name string,
-		classInit func(class *WebRTCICEStreamClass),
-		constructor func() InstanceT,
-		overrides WebRTCICEStreamOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *WebRTCICEStreamClass),
+	constructor func() InstanceT,
+	overrides WebRTCICEStreamOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -3510,7 +3621,7 @@ func RegisterWebRTCICEStreamSubClass[InstanceT WebRTCICEStream](
 		TypeWebRTCICEStream,
 		UnsafeWebRTCICEStreamClassFromGlibBorrow,
 		UnsafeApplyWebRTCICEStreamOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapWebRTCICEStream(obj)
 		},
 		interfaceInits...,
@@ -3526,34 +3637,34 @@ type WebRTCICETransportInstance struct {
 var _ WebRTCICETransport = (*WebRTCICETransportInstance)(nil)
 
 // WebRTCICETransport wraps GstWebRTCICETransport
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/icetransport.html#GstWebRTCICETransport
 type WebRTCICETransport interface {
 	gst.Object
 	upcastToGstWebRTCICETransport() *WebRTCICETransportInstance
 
 	// ConnectionStateChange wraps gst_webrtc_ice_transport_connection_state_change
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/icetransport.html#gst_webrtc_ice_transport_connection_state_change
 	ConnectionStateChange(WebRTCICEConnectionState)
 	// GatheringStateChange wraps gst_webrtc_ice_transport_gathering_state_change
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/icetransport.html#gst_webrtc_ice_transport_gathering_state_change
 	GatheringStateChange(WebRTCICEGatheringState)
 	// NewCandidate wraps gst_webrtc_ice_transport_new_candidate
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/icetransport.html#gst_webrtc_ice_transport_new_candidate
-	NewCandidate(uint, WebRTCICEComponent, string)
+	NewCandidate(uint32, WebRTCICEComponent, string)
 	// SelectedPairChange wraps gst_webrtc_ice_transport_selected_pair_change
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/icetransport.html#gst_webrtc_ice_transport_selected_pair_change
 	SelectedPairChange()
 	// ConnectOnNewCandidate connects the provided callback to the "on-new-candidate" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
 	ConnectOnNewCandidate(func(WebRTCICETransport, string)) gobject.SignalHandle
 	// ConnectOnSelectedCandidatePairChange connects the provided callback to the "on-selected-candidate-pair-change" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc
 	ConnectOnSelectedCandidatePairChange(func(WebRTCICETransport)) gobject.SignalHandle
 
@@ -3561,7 +3672,7 @@ type WebRTCICETransport interface {
 
 	// ParentGatherCandidates calls the default implementations of the `GstWebRTCICETransport.gather_candidates` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/icetransport.html#gather_candidates
 	ParentGatherCandidates() bool
 }
@@ -3579,7 +3690,7 @@ func unsafeWrapWebRTCICETransport(base *gobject.ObjectInstance) *WebRTCICETransp
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeWebRTCICETransport,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapWebRTCICETransport(inst)
 		},
 	)
@@ -3619,7 +3730,7 @@ func UnsafeWebRTCICETransportToGlibFull(c WebRTCICETransport) unsafe.Pointer {
 }
 
 // ConnectionStateChange wraps gst_webrtc_ice_transport_connection_state_change
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/icetransport.html#gst_webrtc_ice_transport_connection_state_change
 func (ice *WebRTCICETransportInstance) ConnectionStateChange(newState WebRTCICEConnectionState) {
 	var carg0 *C.GstWebRTCICETransport      // in, none, converted
@@ -3634,7 +3745,7 @@ func (ice *WebRTCICETransportInstance) ConnectionStateChange(newState WebRTCICEC
 }
 
 // GatheringStateChange wraps gst_webrtc_ice_transport_gathering_state_change
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/icetransport.html#gst_webrtc_ice_transport_gathering_state_change
 func (ice *WebRTCICETransportInstance) GatheringStateChange(newState WebRTCICEGatheringState) {
 	var carg0 *C.GstWebRTCICETransport     // in, none, converted
@@ -3649,9 +3760,9 @@ func (ice *WebRTCICETransportInstance) GatheringStateChange(newState WebRTCICEGa
 }
 
 // NewCandidate wraps gst_webrtc_ice_transport_new_candidate
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/icetransport.html#gst_webrtc_ice_transport_new_candidate
-func (ice *WebRTCICETransportInstance) NewCandidate(streamId uint, component WebRTCICEComponent, attr string) {
+func (ice *WebRTCICETransportInstance) NewCandidate(streamId uint32, component WebRTCICEComponent, attr string) {
 	var carg0 *C.GstWebRTCICETransport // in, none, converted
 	var carg1 C.guint                  // in, none, casted
 	var carg2 C.GstWebRTCICEComponent  // in, none, casted
@@ -3671,7 +3782,7 @@ func (ice *WebRTCICETransportInstance) NewCandidate(streamId uint, component Web
 }
 
 // SelectedPairChange wraps gst_webrtc_ice_transport_selected_pair_change
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/icetransport.html#gst_webrtc_ice_transport_selected_pair_change
 func (ice *WebRTCICETransportInstance) SelectedPairChange() {
 	var carg0 *C.GstWebRTCICETransport // in, none, converted
@@ -3683,14 +3794,14 @@ func (ice *WebRTCICETransportInstance) SelectedPairChange() {
 }
 
 // ConnectOnNewCandidate connects the provided callback to the "on-new-candidate" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc
 func (o *WebRTCICETransportInstance) ConnectOnNewCandidate(fn func(WebRTCICETransport, string)) gobject.SignalHandle {
 	return o.Connect("on-new-candidate", fn)
 }
 
 // ConnectOnSelectedCandidatePairChange connects the provided callback to the "on-selected-candidate-pair-change" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc
 func (o *WebRTCICETransportInstance) ConnectOnSelectedCandidatePairChange(fn func(WebRTCICETransport)) gobject.SignalHandle {
 	return o.Connect("on-selected-candidate-pair-change", fn)
@@ -3702,8 +3813,8 @@ type WebRTCICETransportOverrides[Instance WebRTCICETransport] struct {
 	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
 	gst.ObjectOverrides[Instance]
 
-	// // GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
-	// 
+	// GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/icetransport.html#gather_candidates
 	GatherCandidates func(Instance) bool
 }
@@ -3722,7 +3833,7 @@ func UnsafeApplyWebRTCICETransportOverrides[Instance WebRTCICETransport](gclass 
 			"_goglib_gstwebrtc1_WebRTCICETransport_gather_candidates",
 			func(carg0 *C.GstWebRTCICETransport) (cret C.gboolean) {
 				var transport Instance // go GstWebRTCICETransport subclass
-				var goret     bool     // return
+				var goret bool         // return
 
 				transport = UnsafeWebRTCICETransportFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
@@ -3740,11 +3851,11 @@ func UnsafeApplyWebRTCICETransportOverrides[Instance WebRTCICETransport](gclass 
 
 // ParentGatherCandidates calls the default implementations of the `GstWebRTCICETransport.gather_candidates` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/icetransport.html#gather_candidates
 func (transport *WebRTCICETransportInstance) ParentGatherCandidates() bool {
 	var carg0 *C.GstWebRTCICETransport
-	var cret  C.gboolean // return
+	var cret C.gboolean // return
 
 	parentclass := (*C.GstWebRTCICETransportClass)(classdata.PeekParentClass(UnsafeWebRTCICETransportToGlibNone(transport)))
 
@@ -3765,12 +3876,12 @@ func (transport *WebRTCICETransportInstance) ParentGatherCandidates() bool {
 // RegisterWebRTCICETransportSubClass is used to register a go subclass of GstWebRTCICETransport. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterWebRTCICETransportSubClass[InstanceT WebRTCICETransport](
-		name string,
-		classInit func(class *WebRTCICETransportClass),
-		constructor func() InstanceT,
-		overrides WebRTCICETransportOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *WebRTCICETransportClass),
+	constructor func() InstanceT,
+	overrides WebRTCICETransportOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -3781,7 +3892,7 @@ func RegisterWebRTCICETransportSubClass[InstanceT WebRTCICETransport](
 		TypeWebRTCICETransport,
 		UnsafeWebRTCICETransportClassFromGlibBorrow,
 		UnsafeApplyWebRTCICETransportOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapWebRTCICETransport(obj)
 		},
 		interfaceInits...,
@@ -3797,7 +3908,7 @@ type WebRTCRTPReceiverInstance struct {
 var _ WebRTCRTPReceiver = (*WebRTCRTPReceiverInstance)(nil)
 
 // WebRTCRTPReceiver wraps GstWebRTCRTPReceiver
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCRTPReceiver
 type WebRTCRTPReceiver interface {
 	gst.Object
@@ -3817,7 +3928,7 @@ func unsafeWrapWebRTCRTPReceiver(base *gobject.ObjectInstance) *WebRTCRTPReceive
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeWebRTCRTPReceiver,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapWebRTCRTPReceiver(inst)
 		},
 	)
@@ -3865,14 +3976,14 @@ type WebRTCRTPSenderInstance struct {
 var _ WebRTCRTPSender = (*WebRTCRTPSenderInstance)(nil)
 
 // WebRTCRTPSender wraps GstWebRTCRTPSender
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCRTPSender
 type WebRTCRTPSender interface {
 	gst.Object
 	upcastToGstWebRTCRTPSender() *WebRTCRTPSenderInstance
 
 	// SetPriority wraps gst_webrtc_rtp_sender_set_priority
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#gst_webrtc_rtp_sender_set_priority
 	SetPriority(WebRTCPriorityType)
 }
@@ -3890,7 +4001,7 @@ func unsafeWrapWebRTCRTPSender(base *gobject.ObjectInstance) *WebRTCRTPSenderIns
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeWebRTCRTPSender,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapWebRTCRTPSender(inst)
 		},
 	)
@@ -3930,7 +4041,7 @@ func UnsafeWebRTCRTPSenderToGlibFull(c WebRTCRTPSender) unsafe.Pointer {
 }
 
 // SetPriority wraps gst_webrtc_rtp_sender_set_priority
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#gst_webrtc_rtp_sender_set_priority
 func (sender *WebRTCRTPSenderInstance) SetPriority(priority WebRTCPriorityType) {
 	var carg0 *C.GstWebRTCRTPSender   // in, none, converted
@@ -3953,7 +4064,7 @@ type WebRTCRTPTransceiverInstance struct {
 var _ WebRTCRTPTransceiver = (*WebRTCRTPTransceiverInstance)(nil)
 
 // WebRTCRTPTransceiver wraps GstWebRTCRTPTransceiver
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCRTPTransceiver
 type WebRTCRTPTransceiver interface {
 	gst.Object
@@ -3973,7 +4084,7 @@ func unsafeWrapWebRTCRTPTransceiver(base *gobject.ObjectInstance) *WebRTCRTPTran
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeWebRTCRTPTransceiver,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapWebRTCRTPTransceiver(inst)
 		},
 	)
@@ -4021,7 +4132,7 @@ type WebRTCSCTPTransportInstance struct {
 var _ WebRTCSCTPTransport = (*WebRTCSCTPTransportInstance)(nil)
 
 // WebRTCSCTPTransport wraps GstWebRTCSCTPTransport
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCSCTPTransport
 type WebRTCSCTPTransport interface {
 	gst.Object
@@ -4041,7 +4152,7 @@ func unsafeWrapWebRTCSCTPTransport(base *gobject.ObjectInstance) *WebRTCSCTPTran
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeWebRTCSCTPTransport,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapWebRTCSCTPTransport(inst)
 		},
 	)
@@ -4081,9 +4192,9 @@ func UnsafeWebRTCSCTPTransportToGlibFull(c WebRTCSCTPTransport) unsafe.Pointer {
 }
 
 // WebRTCDTLSTransportClass wraps GstWebRTCDTLSTransportClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCDTLSTransportClass
-// 
+//
 // WebRTCDTLSTransportClass is the type struct for [WebRTCDTLSTransport]
 type WebRTCDTLSTransportClass struct {
 	*webRTCDTLSTransportClass
@@ -4111,7 +4222,7 @@ func UnsafeWebRTCDTLSTransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCDTLST
 }
 
 // UnsafeWebRTCDTLSTransportClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [WebRTCDTLSTransportClass] is expected to work anymore.
 func UnsafeWebRTCDTLSTransportClassFree(w *WebRTCDTLSTransportClass) {
 	C.free(unsafe.Pointer(w.native))
@@ -4136,9 +4247,9 @@ func (w *WebRTCDTLSTransportClass) ParentClass() *gst.ObjectClass {
 }
 
 // WebRTCDataChannelClass wraps GstWebRTCDataChannelClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCDataChannelClass
-// 
+//
 // WebRTCDataChannelClass is the type struct for [WebRTCDataChannel]
 type WebRTCDataChannelClass struct {
 	*webRTCDataChannelClass
@@ -4166,7 +4277,7 @@ func UnsafeWebRTCDataChannelClassFromGlibBorrow(p unsafe.Pointer) *WebRTCDataCha
 }
 
 // UnsafeWebRTCDataChannelClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [WebRTCDataChannelClass] is expected to work anymore.
 func UnsafeWebRTCDataChannelClassFree(w *WebRTCDataChannelClass) {
 	C.free(unsafe.Pointer(w.native))
@@ -4191,7 +4302,7 @@ func (w *WebRTCDataChannelClass) ParentClass() *gobject.ObjectClass {
 }
 
 // WebRTCICECandidateStats wraps GstWebRTCICECandidateStats
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#GstWebRTCICECandidateStats
 type WebRTCICECandidateStats struct {
 	*webRTCICECandidateStats
@@ -4241,7 +4352,6 @@ func UnsafeWebRTCICECandidateStatsFromGlibNone(p unsafe.Pointer) *WebRTCICECandi
 	}
 
 	return wrapped.Copy() // create an owned copy
-
 }
 
 // UnsafeWebRTCICECandidateStatsFromGlibFull is used to convert raw C.GstWebRTCICECandidateStats pointers to go while taking ownership. This is used by the bindings internally.
@@ -4252,7 +4362,7 @@ func UnsafeWebRTCICECandidateStatsFromGlibFull(p unsafe.Pointer) *WebRTCICECandi
 	}
 	runtime.SetFinalizer(
 		wrapped.webRTCICECandidateStats,
-		func (intern *webRTCICECandidateStats) {
+		func(intern *webRTCICECandidateStats) {
 			C.gst_webrtc_ice_candidate_stats_free(intern.native)
 		},
 	)
@@ -4260,7 +4370,7 @@ func UnsafeWebRTCICECandidateStatsFromGlibFull(p unsafe.Pointer) *WebRTCICECandi
 }
 
 // UnsafeWebRTCICECandidateStatsFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [WebRTCICECandidateStats] is expected to work anymore.
 func UnsafeWebRTCICECandidateStatsFree(w *WebRTCICECandidateStats) {
 	C.gst_webrtc_ice_candidate_stats_free(w.native)
@@ -4288,11 +4398,11 @@ func UnsafeWebRTCICECandidateStatsToGlibFull(w *WebRTCICECandidateStats) unsafe.
 }
 
 // Copy wraps gst_webrtc_ice_candidate_stats_copy
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#gst_webrtc_ice_candidate_stats_copy
 func (stats *WebRTCICECandidateStats) Copy() *WebRTCICECandidateStats {
 	var carg0 *C.GstWebRTCICECandidateStats // in, none, converted
-	var cret  *C.GstWebRTCICECandidateStats // return, full, converted
+	var cret *C.GstWebRTCICECandidateStats  // return, full, converted
 
 	carg0 = (*C.GstWebRTCICECandidateStats)(UnsafeWebRTCICECandidateStatsToGlibNone(stats))
 
@@ -4307,9 +4417,9 @@ func (stats *WebRTCICECandidateStats) Copy() *WebRTCICECandidateStats {
 }
 
 // WebRTCICEClass wraps GstWebRTCICEClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html#GstWebRTCICEClass
-// 
+//
 // WebRTCICEClass is the type struct for [WebRTCICE]
 type WebRTCICEClass struct {
 	*webRTCICEClass
@@ -4337,7 +4447,7 @@ func UnsafeWebRTCICEClassFromGlibBorrow(p unsafe.Pointer) *WebRTCICEClass {
 }
 
 // UnsafeWebRTCICEClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [WebRTCICEClass] is expected to work anymore.
 func UnsafeWebRTCICEClassFree(w *WebRTCICEClass) {
 	C.free(unsafe.Pointer(w.native))
@@ -4362,9 +4472,9 @@ func (w *WebRTCICEClass) ParentClass() *gst.ObjectClass {
 }
 
 // WebRTCICEStreamClass wraps GstWebRTCICEStreamClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/icestream.html#GstWebRTCICEStreamClass
-// 
+//
 // WebRTCICEStreamClass is the type struct for [WebRTCICEStream]
 type WebRTCICEStreamClass struct {
 	*webRTCICEStreamClass
@@ -4392,7 +4502,7 @@ func UnsafeWebRTCICEStreamClassFromGlibBorrow(p unsafe.Pointer) *WebRTCICEStream
 }
 
 // UnsafeWebRTCICEStreamClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [WebRTCICEStreamClass] is expected to work anymore.
 func UnsafeWebRTCICEStreamClassFree(w *WebRTCICEStreamClass) {
 	C.free(unsafe.Pointer(w.native))
@@ -4417,9 +4527,9 @@ func (w *WebRTCICEStreamClass) ParentClass() *gst.ObjectClass {
 }
 
 // WebRTCICETransportClass wraps GstWebRTCICETransportClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/icetransport.html#GstWebRTCICETransportClass
-// 
+//
 // WebRTCICETransportClass is the type struct for [WebRTCICETransport]
 type WebRTCICETransportClass struct {
 	*webRTCICETransportClass
@@ -4447,7 +4557,7 @@ func UnsafeWebRTCICETransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCICETra
 }
 
 // UnsafeWebRTCICETransportClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [WebRTCICETransportClass] is expected to work anymore.
 func UnsafeWebRTCICETransportClassFree(w *WebRTCICETransportClass) {
 	C.free(unsafe.Pointer(w.native))
@@ -4472,9 +4582,9 @@ func (w *WebRTCICETransportClass) ParentClass() *gst.ObjectClass {
 }
 
 // WebRTCRTPReceiverClass wraps GstWebRTCRTPReceiverClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCRTPReceiverClass
-// 
+//
 // WebRTCRTPReceiverClass is the type struct for [WebRTCRTPReceiver]
 type WebRTCRTPReceiverClass struct {
 	*webRTCRTPReceiverClass
@@ -4502,7 +4612,7 @@ func UnsafeWebRTCRTPReceiverClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPRece
 }
 
 // UnsafeWebRTCRTPReceiverClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [WebRTCRTPReceiverClass] is expected to work anymore.
 func UnsafeWebRTCRTPReceiverClassFree(w *WebRTCRTPReceiverClass) {
 	C.free(unsafe.Pointer(w.native))
@@ -4527,9 +4637,9 @@ func (w *WebRTCRTPReceiverClass) ParentClass() *gst.ObjectClass {
 }
 
 // WebRTCRTPSenderClass wraps GstWebRTCRTPSenderClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCRTPSenderClass
-// 
+//
 // WebRTCRTPSenderClass is the type struct for [WebRTCRTPSender]
 type WebRTCRTPSenderClass struct {
 	*webRTCRTPSenderClass
@@ -4557,7 +4667,7 @@ func UnsafeWebRTCRTPSenderClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPSender
 }
 
 // UnsafeWebRTCRTPSenderClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [WebRTCRTPSenderClass] is expected to work anymore.
 func UnsafeWebRTCRTPSenderClassFree(w *WebRTCRTPSenderClass) {
 	C.free(unsafe.Pointer(w.native))
@@ -4582,9 +4692,9 @@ func (w *WebRTCRTPSenderClass) ParentClass() *gst.ObjectClass {
 }
 
 // WebRTCRTPTransceiverClass wraps GstWebRTCRTPTransceiverClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCRTPTransceiverClass
-// 
+//
 // WebRTCRTPTransceiverClass is the type struct for [WebRTCRTPTransceiver]
 type WebRTCRTPTransceiverClass struct {
 	*webRTCRTPTransceiverClass
@@ -4612,7 +4722,7 @@ func UnsafeWebRTCRTPTransceiverClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPT
 }
 
 // UnsafeWebRTCRTPTransceiverClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [WebRTCRTPTransceiverClass] is expected to work anymore.
 func UnsafeWebRTCRTPTransceiverClassFree(w *WebRTCRTPTransceiverClass) {
 	C.free(unsafe.Pointer(w.native))
@@ -4637,9 +4747,9 @@ func (w *WebRTCRTPTransceiverClass) ParentClass() *gst.ObjectClass {
 }
 
 // WebRTCSCTPTransportClass wraps GstWebRTCSCTPTransportClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCSCTPTransportClass
-// 
+//
 // WebRTCSCTPTransportClass is the type struct for [WebRTCSCTPTransport]
 type WebRTCSCTPTransportClass struct {
 	*webRTCSCTPTransportClass
@@ -4667,7 +4777,7 @@ func UnsafeWebRTCSCTPTransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCSCTPT
 }
 
 // UnsafeWebRTCSCTPTransportClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [WebRTCSCTPTransportClass] is expected to work anymore.
 func UnsafeWebRTCSCTPTransportClassFree(w *WebRTCSCTPTransportClass) {
 	C.free(unsafe.Pointer(w.native))
@@ -4692,7 +4802,7 @@ func (w *WebRTCSCTPTransportClass) ParentClass() *gst.ObjectClass {
 }
 
 // WebRTCSessionDescription wraps GstWebRTCSessionDescription
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/rtcsessiondescription.html#GstWebRTCSessionDescription
 type WebRTCSessionDescription struct {
 	*webRTCSessionDescription
@@ -4742,7 +4852,6 @@ func UnsafeWebRTCSessionDescriptionFromGlibNone(p unsafe.Pointer) *WebRTCSession
 	}
 
 	return wrapped.Copy() // create an owned copy
-
 }
 
 // UnsafeWebRTCSessionDescriptionFromGlibFull is used to convert raw C.GstWebRTCSessionDescription pointers to go while taking ownership. This is used by the bindings internally.
@@ -4753,7 +4862,7 @@ func UnsafeWebRTCSessionDescriptionFromGlibFull(p unsafe.Pointer) *WebRTCSession
 	}
 	runtime.SetFinalizer(
 		wrapped.webRTCSessionDescription,
-		func (intern *webRTCSessionDescription) {
+		func(intern *webRTCSessionDescription) {
 			C.gst_webrtc_session_description_free(intern.native)
 		},
 	)
@@ -4761,7 +4870,7 @@ func UnsafeWebRTCSessionDescriptionFromGlibFull(p unsafe.Pointer) *WebRTCSession
 }
 
 // UnsafeWebRTCSessionDescriptionFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [WebRTCSessionDescription] is expected to work anymore.
 func UnsafeWebRTCSessionDescriptionFree(w *WebRTCSessionDescription) {
 	C.gst_webrtc_session_description_free(w.native)
@@ -4789,12 +4898,12 @@ func UnsafeWebRTCSessionDescriptionToGlibFull(w *WebRTCSessionDescription) unsaf
 }
 
 // NewWebRTCSessionDescription wraps gst_webrtc_session_description_new
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/rtcsessiondescription.html#gst_webrtc_session_description_new
 func NewWebRTCSessionDescription(typ WebRTCSDPType, sdp *gstsdp.SDPMessage) *WebRTCSessionDescription {
-	var carg1 C.GstWebRTCSDPType             // in, none, casted
-	var carg2 *C.GstSDPMessage               // in, full, converted
-	var cret  *C.GstWebRTCSessionDescription // return, full, converted
+	var carg1 C.GstWebRTCSDPType            // in, none, casted
+	var carg2 *C.GstSDPMessage              // in, full, converted
+	var cret *C.GstWebRTCSessionDescription // return, full, converted
 
 	carg1 = C.GstWebRTCSDPType(typ)
 	carg2 = (*C.GstSDPMessage)(gstsdp.UnsafeSDPMessageToGlibFull(sdp))
@@ -4811,11 +4920,11 @@ func NewWebRTCSessionDescription(typ WebRTCSDPType, sdp *gstsdp.SDPMessage) *Web
 }
 
 // Copy wraps gst_webrtc_session_description_copy
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/webrtc/rtcsessiondescription.html#gst_webrtc_session_description_copy
 func (src *WebRTCSessionDescription) Copy() *WebRTCSessionDescription {
 	var carg0 *C.GstWebRTCSessionDescription // in, none, converted
-	var cret  *C.GstWebRTCSessionDescription // return, full, converted
+	var cret *C.GstWebRTCSessionDescription  // return, full, converted
 
 	carg0 = (*C.GstWebRTCSessionDescription)(UnsafeWebRTCSessionDescriptionToGlibNone(src))
 
@@ -4828,4 +4937,3 @@ func (src *WebRTCSessionDescription) Copy() *WebRTCSessionDescription {
 
 	return goret
 }
-

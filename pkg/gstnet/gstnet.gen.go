@@ -42,25 +42,27 @@ func init() {
 }
 
 // NET_TIME_PACKET_SIZE wraps GST_NET_TIME_PACKET_SIZE
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#GST_NET_TIME_PACKET_SIZE
 const NET_TIME_PACKET_SIZE = 16
+
 // PTP_CLOCK_ID_NONE wraps GST_PTP_CLOCK_ID_NONE
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstptpclock.html#GST_PTP_CLOCK_ID_NONE
 const PTP_CLOCK_ID_NONE = 18446744073709551615
+
 // PtpStatisticsCallback wraps GstPtpStatisticsCallback
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstptpclock.html#GstPtpStatisticsCallback
 type PtpStatisticsCallback func(domain uint8, stats *gst.Structure) (goret bool)
 
 // BufferAddNetAddressMeta wraps gst_buffer_add_net_address_meta
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net
 func BufferAddNetAddressMeta(buffer *gst.Buffer, addr gio.SocketAddress) *NetAddressMeta {
-	var carg1 *C.GstBuffer         // in, none, converted
-	var carg2 *C.GSocketAddress    // in, none, converted
-	var cret  *C.GstNetAddressMeta // return, none, converted
+	var carg1 *C.GstBuffer        // in, none, converted
+	var carg2 *C.GSocketAddress   // in, none, converted
+	var cret *C.GstNetAddressMeta // return, none, converted
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	carg2 = (*C.GSocketAddress)(gio.UnsafeSocketAddressToGlibNone(addr))
@@ -77,12 +79,12 @@ func BufferAddNetAddressMeta(buffer *gst.Buffer, addr gio.SocketAddress) *NetAdd
 }
 
 // BufferAddNetControlMessageMeta wraps gst_buffer_add_net_control_message_meta
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net
 func BufferAddNetControlMessageMeta(buffer *gst.Buffer, message gio.SocketControlMessage) *NetControlMessageMeta {
-	var carg1 *C.GstBuffer                // in, none, converted
-	var carg2 *C.GSocketControlMessage    // in, none, converted
-	var cret  *C.GstNetControlMessageMeta // return, none, converted
+	var carg1 *C.GstBuffer               // in, none, converted
+	var carg2 *C.GSocketControlMessage   // in, none, converted
+	var cret *C.GstNetControlMessageMeta // return, none, converted
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	carg2 = (*C.GSocketControlMessage)(gio.UnsafeSocketControlMessageToGlibNone(message))
@@ -99,11 +101,11 @@ func BufferAddNetControlMessageMeta(buffer *gst.Buffer, message gio.SocketContro
 }
 
 // BufferGetNetAddressMeta wraps gst_buffer_get_net_address_meta
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net
 func BufferGetNetAddressMeta(buffer *gst.Buffer) *NetAddressMeta {
-	var carg1 *C.GstBuffer         // in, none, converted
-	var cret  *C.GstNetAddressMeta // return, none, converted, nullable
+	var carg1 *C.GstBuffer        // in, none, converted
+	var cret *C.GstNetAddressMeta // return, none, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
@@ -120,7 +122,7 @@ func BufferGetNetAddressMeta(buffer *gst.Buffer) *NetAddressMeta {
 }
 
 // NetAddressMetaAPIGetType wraps gst_net_address_meta_api_get_type
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net
 func NetAddressMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
@@ -135,7 +137,7 @@ func NetAddressMetaAPIGetType() gobject.Type {
 }
 
 // NetControlMessageMetaAPIGetType wraps gst_net_control_message_meta_api_get_type
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net
 func NetControlMessageMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
@@ -150,12 +152,12 @@ func NetControlMessageMetaAPIGetType() gobject.Type {
 }
 
 // NetUtilsSetSocketTos wraps gst_net_utils_set_socket_tos
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net
 func NetUtilsSetSocketTos(socket gio.Socket, qosDscp int32) bool {
 	var carg1 *C.GSocket // in, none, converted
 	var carg2 C.gint     // in, none, casted
-	var cret  C.gboolean // return
+	var cret C.gboolean  // return
 
 	carg1 = (*C.GSocket)(gio.UnsafeSocketToGlibNone(socket))
 	carg2 = C.gint(qosDscp)
@@ -174,7 +176,7 @@ func NetUtilsSetSocketTos(socket gio.Socket, qosDscp int32) bool {
 }
 
 // PtpDeinit wraps gst_ptp_deinit
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net
 func PtpDeinit() {
 
@@ -182,12 +184,12 @@ func PtpDeinit() {
 }
 
 // PtpInit wraps gst_ptp_init
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net
 func PtpInit(clockId uint64, interfaces []string) bool {
-	var carg1 C.guint64  // in, none, casted
-	var carg2 **C.gchar  // in, transfer: none, C Pointers: 2, Name: array[utf8], nullable, array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
-	var cret  C.gboolean // return
+	var carg1 C.guint64 // in, none, casted
+	var carg2 **C.gchar // in, transfer: none, C Pointers: 2, Name: array[utf8], nullable, array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
+	var cret C.gboolean // return
 
 	carg1 = C.guint64(clockId)
 	_ = interfaces
@@ -208,11 +210,11 @@ func PtpInit(clockId uint64, interfaces []string) bool {
 }
 
 // PtpInitFull wraps gst_ptp_init_full
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net
 func PtpInitFull(config *gst.Structure) bool {
 	var carg1 *C.GstStructure // in, none, converted
-	var cret  C.gboolean      // return
+	var cret C.gboolean       // return
 
 	carg1 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(config))
 
@@ -229,7 +231,7 @@ func PtpInitFull(config *gst.Structure) bool {
 }
 
 // PtpIsInitialized wraps gst_ptp_is_initialized
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net
 func PtpIsInitialized() bool {
 	var cret C.gboolean // return
@@ -246,7 +248,7 @@ func PtpIsInitialized() bool {
 }
 
 // PtpIsSupported wraps gst_ptp_is_supported
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net
 func PtpIsSupported() bool {
 	var cret C.gboolean // return
@@ -263,13 +265,13 @@ func PtpIsSupported() bool {
 }
 
 // PtpStatisticsCallbackAdd wraps gst_ptp_statistics_callback_add
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net
-func PtpStatisticsCallbackAdd(callback PtpStatisticsCallback) uint32 {
+func PtpStatisticsCallbackAdd(callback PtpStatisticsCallback) uint64 {
 	var carg1 C.GstPtpStatisticsCallback // callback, scope: notified, closure: carg2, destroy: carg3
 	var carg2 C.gpointer                 // implicit
 	var carg3 C.GDestroyNotify           // implicit
-	var cret  C.gulong                   // return, none, casted
+	var cret C.gulong                    // return, none, casted
 
 	carg1 = (*[0]byte)(C._goglib_gstnet1_PtpStatisticsCallback)
 	carg2 = C.gpointer(userdata.Register(callback))
@@ -278,17 +280,17 @@ func PtpStatisticsCallbackAdd(callback PtpStatisticsCallback) uint32 {
 	cret = C.gst_ptp_statistics_callback_add(carg1, carg2, carg3)
 	runtime.KeepAlive(callback)
 
-	var goret uint32
+	var goret uint64
 
-	goret = uint32(cret)
+	goret = uint64(cret)
 
 	return goret
 }
 
 // PtpStatisticsCallbackRemove wraps gst_ptp_statistics_callback_remove
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net
-func PtpStatisticsCallbackRemove(id uint32) {
+func PtpStatisticsCallbackRemove(id uint64) {
 	var carg1 C.gulong // in, none, casted
 
 	carg1 = C.gulong(id)
@@ -306,7 +308,7 @@ type NetClientClockInstance struct {
 var _ NetClientClock = (*NetClientClockInstance)(nil)
 
 // NetClientClock wraps GstNetClientClock
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#GstNetClientClock
 type NetClientClock interface {
 	gst.SystemClock
@@ -332,7 +334,7 @@ func unsafeWrapNetClientClock(base *gobject.ObjectInstance) *NetClientClockInsta
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeNetClientClock,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapNetClientClock(inst)
 		},
 	)
@@ -372,14 +374,14 @@ func UnsafeNetClientClockToGlibFull(c NetClientClock) unsafe.Pointer {
 }
 
 // NewNetClientClock wraps gst_net_client_clock_new
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#gst_net_client_clock_new
 func NewNetClientClock(name string, remoteAddress string, remotePort int32, baseTime gst.ClockTime) gst.Clock {
 	var carg1 *C.gchar       // in, none, string, nullable-string
 	var carg2 *C.gchar       // in, none, string
 	var carg3 C.gint         // in, none, casted
 	var carg4 C.GstClockTime // in, none, casted, alias
-	var cret  *C.GstClock    // return, full, converted
+	var cret *C.GstClock     // return, full, converted
 
 	if name != "" {
 		carg1 = (*C.gchar)(transfer.GLibString(name))
@@ -408,7 +410,6 @@ func NewNetClientClock(name string, remoteAddress string, remotePort int32, base
 type NetClientClockOverrides[Instance NetClientClock] struct {
 	// gst.SystemClockOverrides allows you to override virtual methods from the parent class gst.SystemClock
 	gst.SystemClockOverrides[Instance]
-
 }
 
 // UnsafeApplyNetClientClockOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -420,12 +421,12 @@ func UnsafeApplyNetClientClockOverrides[Instance NetClientClock](gclass unsafe.P
 // RegisterNetClientClockSubClass is used to register a go subclass of GstNetClientClock. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterNetClientClockSubClass[InstanceT NetClientClock](
-		name string,
-		classInit func(class *NetClientClockClass),
-		constructor func() InstanceT,
-		overrides NetClientClockOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *NetClientClockClass),
+	constructor func() InstanceT,
+	overrides NetClientClockOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -436,7 +437,7 @@ func RegisterNetClientClockSubClass[InstanceT NetClientClock](
 		TypeNetClientClock,
 		UnsafeNetClientClockClassFromGlibBorrow,
 		UnsafeApplyNetClientClockOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapNetClientClock(obj)
 		},
 		interfaceInits...,
@@ -454,7 +455,7 @@ type NetTimeProviderInstance struct {
 var _ NetTimeProvider = (*NetTimeProviderInstance)(nil)
 
 // NetTimeProvider wraps GstNetTimeProvider
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnettimeprovider.html#GstNetTimeProvider
 type NetTimeProvider interface {
 	gst.Object
@@ -480,7 +481,7 @@ func unsafeWrapNetTimeProvider(base *gobject.ObjectInstance) *NetTimeProviderIns
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeNetTimeProvider,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapNetTimeProvider(inst)
 		},
 	)
@@ -520,13 +521,13 @@ func UnsafeNetTimeProviderToGlibFull(c NetTimeProvider) unsafe.Pointer {
 }
 
 // NewNetTimeProvider wraps gst_net_time_provider_new
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnettimeprovider.html#gst_net_time_provider_new
 func NewNetTimeProvider(clock gst.Clock, address string, port int32) NetTimeProvider {
-	var carg1 *C.GstClock           // in, none, converted
-	var carg2 *C.gchar              // in, none, string, nullable-string
-	var carg3 C.gint                // in, none, casted
-	var cret  *C.GstNetTimeProvider // return, full, converted, nullable
+	var carg1 *C.GstClock          // in, none, converted
+	var carg2 *C.gchar             // in, none, string, nullable-string
+	var carg3 C.gint               // in, none, casted
+	var cret *C.GstNetTimeProvider // return, full, converted, nullable
 
 	carg1 = (*C.GstClock)(gst.UnsafeClockToGlibNone(clock))
 	if address != "" {
@@ -554,7 +555,6 @@ func NewNetTimeProvider(clock gst.Clock, address string, port int32) NetTimeProv
 type NetTimeProviderOverrides[Instance NetTimeProvider] struct {
 	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
 	gst.ObjectOverrides[Instance]
-
 }
 
 // UnsafeApplyNetTimeProviderOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -566,12 +566,12 @@ func UnsafeApplyNetTimeProviderOverrides[Instance NetTimeProvider](gclass unsafe
 // RegisterNetTimeProviderSubClass is used to register a go subclass of GstNetTimeProvider. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterNetTimeProviderSubClass[InstanceT NetTimeProvider](
-		name string,
-		classInit func(class *NetTimeProviderClass),
-		constructor func() InstanceT,
-		overrides NetTimeProviderOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *NetTimeProviderClass),
+	constructor func() InstanceT,
+	overrides NetTimeProviderOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -582,7 +582,7 @@ func RegisterNetTimeProviderSubClass[InstanceT NetTimeProvider](
 		TypeNetTimeProvider,
 		UnsafeNetTimeProviderClassFromGlibBorrow,
 		UnsafeApplyNetTimeProviderOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapNetTimeProvider(obj)
 		},
 		interfaceInits...,
@@ -598,7 +598,7 @@ type NtpClockInstance struct {
 var _ NtpClock = (*NtpClockInstance)(nil)
 
 // NtpClock wraps GstNtpClock
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#GstNtpClock
 type NtpClock interface {
 	NetClientClock
@@ -626,7 +626,7 @@ func unsafeWrapNtpClock(base *gobject.ObjectInstance) *NtpClockInstance {
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeNtpClock,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapNtpClock(inst)
 		},
 	)
@@ -666,14 +666,14 @@ func UnsafeNtpClockToGlibFull(c NtpClock) unsafe.Pointer {
 }
 
 // NewNtpClock wraps gst_ntp_clock_new
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#gst_ntp_clock_new
 func NewNtpClock(name string, remoteAddress string, remotePort int32, baseTime gst.ClockTime) gst.Clock {
 	var carg1 *C.gchar       // in, none, string, nullable-string
 	var carg2 *C.gchar       // in, none, string
 	var carg3 C.gint         // in, none, casted
 	var carg4 C.GstClockTime // in, none, casted, alias
-	var cret  *C.GstClock    // return, full, converted
+	var cret *C.GstClock     // return, full, converted
 
 	if name != "" {
 		carg1 = (*C.gchar)(transfer.GLibString(name))
@@ -702,7 +702,6 @@ func NewNtpClock(name string, remoteAddress string, remotePort int32, baseTime g
 type NtpClockOverrides[Instance NtpClock] struct {
 	// NetClientClockOverrides allows you to override virtual methods from the parent class NetClientClock
 	NetClientClockOverrides[Instance]
-
 }
 
 // UnsafeApplyNtpClockOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -714,12 +713,12 @@ func UnsafeApplyNtpClockOverrides[Instance NtpClock](gclass unsafe.Pointer, over
 // RegisterNtpClockSubClass is used to register a go subclass of GstNtpClock. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterNtpClockSubClass[InstanceT NtpClock](
-		name string,
-		classInit func(class *NtpClockClass),
-		constructor func() InstanceT,
-		overrides NtpClockOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *NtpClockClass),
+	constructor func() InstanceT,
+	overrides NtpClockOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -730,7 +729,7 @@ func RegisterNtpClockSubClass[InstanceT NtpClock](
 		TypeNtpClock,
 		UnsafeNtpClockClassFromGlibBorrow,
 		UnsafeApplyNtpClockOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapNtpClock(obj)
 		},
 		interfaceInits...,
@@ -746,7 +745,7 @@ type PtpClockInstance struct {
 var _ PtpClock = (*PtpClockInstance)(nil)
 
 // PtpClock wraps GstPtpClock
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstptpclock.html#GstPtpClock
 type PtpClock interface {
 	gst.SystemClock
@@ -772,7 +771,7 @@ func unsafeWrapPtpClock(base *gobject.ObjectInstance) *PtpClockInstance {
 func init() {
 	gobject.RegisterObjectCasting(
 		TypePtpClock,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapPtpClock(inst)
 		},
 	)
@@ -812,12 +811,12 @@ func UnsafePtpClockToGlibFull(c PtpClock) unsafe.Pointer {
 }
 
 // NewPtpClock wraps gst_ptp_clock_new
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstptpclock.html#gst_ptp_clock_new
-func NewPtpClock(name string, domain uint) gst.Clock {
-	var carg1 *C.gchar    // in, none, string, nullable-string
-	var carg2 C.guint     // in, none, casted
-	var cret  *C.GstClock // return, full, converted, nullable
+func NewPtpClock(name string, domain uint32) gst.Clock {
+	var carg1 *C.gchar   // in, none, string, nullable-string
+	var carg2 C.guint    // in, none, casted
+	var cret *C.GstClock // return, full, converted, nullable
 
 	if name != "" {
 		carg1 = (*C.gchar)(transfer.GLibString(name))
@@ -843,7 +842,6 @@ func NewPtpClock(name string, domain uint) gst.Clock {
 type PtpClockOverrides[Instance PtpClock] struct {
 	// gst.SystemClockOverrides allows you to override virtual methods from the parent class gst.SystemClock
 	gst.SystemClockOverrides[Instance]
-
 }
 
 // UnsafeApplyPtpClockOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -855,12 +853,12 @@ func UnsafeApplyPtpClockOverrides[Instance PtpClock](gclass unsafe.Pointer, over
 // RegisterPtpClockSubClass is used to register a go subclass of GstPtpClock. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterPtpClockSubClass[InstanceT PtpClock](
-		name string,
-		classInit func(class *PtpClockClass),
-		constructor func() InstanceT,
-		overrides PtpClockOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *PtpClockClass),
+	constructor func() InstanceT,
+	overrides PtpClockOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -871,7 +869,7 @@ func RegisterPtpClockSubClass[InstanceT PtpClock](
 		TypePtpClock,
 		UnsafePtpClockClassFromGlibBorrow,
 		UnsafeApplyPtpClockOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapPtpClock(obj)
 		},
 		interfaceInits...,
@@ -879,7 +877,7 @@ func RegisterPtpClockSubClass[InstanceT PtpClock](
 }
 
 // NetAddressMeta wraps GstNetAddressMeta
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnetaddressmeta.html#GstNetAddressMeta
 type NetAddressMeta struct {
 	*netAddressMeta
@@ -925,7 +923,7 @@ func UnsafeNetAddressMetaFromGlibFull(p unsafe.Pointer) *NetAddressMeta {
 	}
 	runtime.SetFinalizer(
 		wrapped.netAddressMeta,
-		func (intern *netAddressMeta) {
+		func(intern *netAddressMeta) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -933,7 +931,7 @@ func UnsafeNetAddressMetaFromGlibFull(p unsafe.Pointer) *NetAddressMeta {
 }
 
 // UnsafeNetAddressMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [NetAddressMeta] is expected to work anymore.
 func UnsafeNetAddressMetaFree(n *NetAddressMeta) {
 	C.free(unsafe.Pointer(n.native))
@@ -961,7 +959,7 @@ func UnsafeNetAddressMetaToGlibFull(n *NetAddressMeta) unsafe.Pointer {
 }
 
 // NetAddressMetaGetInfo wraps gst_net_address_meta_get_info
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnetaddressmeta.html#gst_net_address_meta_get_info
 func NetAddressMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
@@ -976,9 +974,9 @@ func NetAddressMetaGetInfo() *gst.MetaInfo {
 }
 
 // NetClientClockClass wraps GstNetClientClockClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#GstNetClientClockClass
-// 
+//
 // NetClientClockClass is the type struct for [NetClientClock]
 type NetClientClockClass struct {
 	*netClientClockClass
@@ -1006,7 +1004,7 @@ func UnsafeNetClientClockClassFromGlibBorrow(p unsafe.Pointer) *NetClientClockCl
 }
 
 // UnsafeNetClientClockClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [NetClientClockClass] is expected to work anymore.
 func UnsafeNetClientClockClassFree(n *NetClientClockClass) {
 	C.free(unsafe.Pointer(n.native))
@@ -1031,7 +1029,7 @@ func (n *NetClientClockClass) ParentClass() *gst.SystemClockClass {
 }
 
 // NetControlMessageMeta wraps GstNetControlMessageMeta
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnetcontrolmessagemeta.html#GstNetControlMessageMeta
 type NetControlMessageMeta struct {
 	*netControlMessageMeta
@@ -1077,7 +1075,7 @@ func UnsafeNetControlMessageMetaFromGlibFull(p unsafe.Pointer) *NetControlMessag
 	}
 	runtime.SetFinalizer(
 		wrapped.netControlMessageMeta,
-		func (intern *netControlMessageMeta) {
+		func(intern *netControlMessageMeta) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -1085,7 +1083,7 @@ func UnsafeNetControlMessageMetaFromGlibFull(p unsafe.Pointer) *NetControlMessag
 }
 
 // UnsafeNetControlMessageMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [NetControlMessageMeta] is expected to work anymore.
 func UnsafeNetControlMessageMetaFree(n *NetControlMessageMeta) {
 	C.free(unsafe.Pointer(n.native))
@@ -1113,7 +1111,7 @@ func UnsafeNetControlMessageMetaToGlibFull(n *NetControlMessageMeta) unsafe.Poin
 }
 
 // NetControlMessageMetaGetInfo wraps gst_net_control_message_meta_get_info
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnetcontrolmessagemeta.html#gst_net_control_message_meta_get_info
 func NetControlMessageMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
@@ -1128,7 +1126,7 @@ func NetControlMessageMetaGetInfo() *gst.MetaInfo {
 }
 
 // NetTimePacket wraps GstNetTimePacket
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#GstNetTimePacket
 type NetTimePacket struct {
 	*netTimePacket
@@ -1178,7 +1176,6 @@ func UnsafeNetTimePacketFromGlibNone(p unsafe.Pointer) *NetTimePacket {
 	}
 
 	return wrapped.Copy() // create an owned copy
-
 }
 
 // UnsafeNetTimePacketFromGlibFull is used to convert raw C.GstNetTimePacket pointers to go while taking ownership. This is used by the bindings internally.
@@ -1189,7 +1186,7 @@ func UnsafeNetTimePacketFromGlibFull(p unsafe.Pointer) *NetTimePacket {
 	}
 	runtime.SetFinalizer(
 		wrapped.netTimePacket,
-		func (intern *netTimePacket) {
+		func(intern *netTimePacket) {
 			C.gst_net_time_packet_free(intern.native)
 		},
 	)
@@ -1197,7 +1194,7 @@ func UnsafeNetTimePacketFromGlibFull(p unsafe.Pointer) *NetTimePacket {
 }
 
 // UnsafeNetTimePacketFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [NetTimePacket] is expected to work anymore.
 func UnsafeNetTimePacketFree(n *NetTimePacket) {
 	C.gst_net_time_packet_free(n.native)
@@ -1225,11 +1222,11 @@ func UnsafeNetTimePacketToGlibFull(n *NetTimePacket) unsafe.Pointer {
 }
 
 // NewNetTimePacket wraps gst_net_time_packet_new
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#gst_net_time_packet_new
 func NewNetTimePacket(buffer [16]uint8) *NetTimePacket {
-	var carg1 *C.guint8           // in, none, array fixed size (inner: guint8, size: 16)
-	var cret  *C.GstNetTimePacket // return, full, converted
+	var carg1 *C.guint8          // in, none, array fixed size (inner: guint8, size: 16)
+	var cret *C.GstNetTimePacket // return, full, converted
 
 	{
 		var carr [16]C.guint8
@@ -1250,13 +1247,13 @@ func NewNetTimePacket(buffer [16]uint8) *NetTimePacket {
 }
 
 // NetTimePacketReceive wraps gst_net_time_packet_receive
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#gst_net_time_packet_receive
 func NetTimePacketReceive(socket gio.Socket) (gio.SocketAddress, *NetTimePacket, error) {
-	var carg1 *C.GSocket          // in, none, converted
-	var carg2 *C.GSocketAddress   // out, full, converted
-	var cret  *C.GstNetTimePacket // return, full, converted, nullable
-	var _cerr *C.GError           // out, full, converted, nullable
+	var carg1 *C.GSocket         // in, none, converted
+	var carg2 *C.GSocketAddress  // out, full, converted
+	var cret *C.GstNetTimePacket // return, full, converted, nullable
+	var _cerr *C.GError          // out, full, converted, nullable
 
 	carg1 = (*C.GSocket)(gio.UnsafeSocketToGlibNone(socket))
 
@@ -1264,8 +1261,8 @@ func NetTimePacketReceive(socket gio.Socket) (gio.SocketAddress, *NetTimePacket,
 	runtime.KeepAlive(socket)
 
 	var srcAddress gio.SocketAddress
-	var goret      *NetTimePacket
-	var _goerr     error
+	var goret *NetTimePacket
+	var _goerr error
 
 	srcAddress = gio.UnsafeSocketAddressFromGlibFull(unsafe.Pointer(carg2))
 	if cret != nil {
@@ -1279,11 +1276,11 @@ func NetTimePacketReceive(socket gio.Socket) (gio.SocketAddress, *NetTimePacket,
 }
 
 // Copy wraps gst_net_time_packet_copy
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#gst_net_time_packet_copy
 func (packet *NetTimePacket) Copy() *NetTimePacket {
 	var carg0 *C.GstNetTimePacket // in, none, converted
-	var cret  *C.GstNetTimePacket // return, full, converted
+	var cret *C.GstNetTimePacket  // return, full, converted
 
 	carg0 = (*C.GstNetTimePacket)(UnsafeNetTimePacketToGlibNone(packet))
 
@@ -1298,13 +1295,13 @@ func (packet *NetTimePacket) Copy() *NetTimePacket {
 }
 
 // Send wraps gst_net_time_packet_send
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#gst_net_time_packet_send
 func (packet *NetTimePacket) Send(socket gio.Socket, destAddress gio.SocketAddress) (bool, error) {
 	var carg0 *C.GstNetTimePacket // in, none, converted
 	var carg1 *C.GSocket          // in, none, converted
 	var carg2 *C.GSocketAddress   // in, none, converted
-	var cret  C.gboolean          // return
+	var cret C.gboolean           // return
 	var _cerr *C.GError           // out, full, converted, nullable
 
 	carg0 = (*C.GstNetTimePacket)(UnsafeNetTimePacketToGlibNone(packet))
@@ -1316,7 +1313,7 @@ func (packet *NetTimePacket) Send(socket gio.Socket, destAddress gio.SocketAddre
 	runtime.KeepAlive(socket)
 	runtime.KeepAlive(destAddress)
 
-	var goret  bool
+	var goret bool
 	var _goerr error
 
 	if cret != 0 {
@@ -1330,11 +1327,11 @@ func (packet *NetTimePacket) Send(socket gio.Socket, destAddress gio.SocketAddre
 }
 
 // Serialize wraps gst_net_time_packet_serialize
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#gst_net_time_packet_serialize
 func (packet *NetTimePacket) Serialize() [16]uint8 {
 	var carg0 *C.GstNetTimePacket // in, none, converted
-	var cret  *C.guint8           // return, transfer: full, C Pointers: 1, Name: array[guint8], scope: , array (inner guint8 (*typesystem.CastablePrimitive), fixed-size: 16)
+	var cret *C.guint8            // return, transfer: full, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), fixed-size: 16)
 
 	carg0 = (*C.GstNetTimePacket)(UnsafeNetTimePacketToGlibNone(packet))
 
@@ -1351,9 +1348,9 @@ func (packet *NetTimePacket) Serialize() [16]uint8 {
 }
 
 // NetTimeProviderClass wraps GstNetTimeProviderClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnettimeprovider.html#GstNetTimeProviderClass
-// 
+//
 // NetTimeProviderClass is the type struct for [NetTimeProvider]
 type NetTimeProviderClass struct {
 	*netTimeProviderClass
@@ -1381,7 +1378,7 @@ func UnsafeNetTimeProviderClassFromGlibBorrow(p unsafe.Pointer) *NetTimeProvider
 }
 
 // UnsafeNetTimeProviderClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [NetTimeProviderClass] is expected to work anymore.
 func UnsafeNetTimeProviderClassFree(n *NetTimeProviderClass) {
 	C.free(unsafe.Pointer(n.native))
@@ -1406,9 +1403,9 @@ func (n *NetTimeProviderClass) ParentClass() *gst.ObjectClass {
 }
 
 // NtpClockClass wraps GstNtpClockClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#GstNtpClockClass
-// 
+//
 // NtpClockClass is the type struct for [NtpClock]
 type NtpClockClass struct {
 	*ntpClockClass
@@ -1436,7 +1433,7 @@ func UnsafeNtpClockClassFromGlibBorrow(p unsafe.Pointer) *NtpClockClass {
 }
 
 // UnsafeNtpClockClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [NtpClockClass] is expected to work anymore.
 func UnsafeNtpClockClassFree(n *NtpClockClass) {
 	C.free(unsafe.Pointer(n.native))
@@ -1461,9 +1458,9 @@ func (n *NtpClockClass) ParentClass() *NetClientClockClass {
 }
 
 // PtpClockClass wraps GstPtpClockClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/net/gstptpclock.html#GstPtpClockClass
-// 
+//
 // PtpClockClass is the type struct for [PtpClock]
 type PtpClockClass struct {
 	*ptpClockClass
@@ -1491,7 +1488,7 @@ func UnsafePtpClockClassFromGlibBorrow(p unsafe.Pointer) *PtpClockClass {
 }
 
 // UnsafePtpClockClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [PtpClockClass] is expected to work anymore.
 func UnsafePtpClockClassFree(p *PtpClockClass) {
 	C.free(unsafe.Pointer(p.native))
@@ -1514,4 +1511,3 @@ func (p *PtpClockClass) ParentClass() *gst.SystemClockClass {
 	runtime.AddCleanup(parent, func(_ *PtpClockClass) {}, p)
 	return parent
 }
-

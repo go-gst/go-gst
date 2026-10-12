@@ -23,10 +23,10 @@ func _goglib_gstrtsp1_RTSPConnectionAcceptCertificateFunc(carg1 *C.GTlsConnectio
 		fn = v.(RTSPConnectionAcceptCertificateFunc)
 	}
 
-	var conn     gio.TlsConnection       // in, none, converted
-	var peerCert gio.TlsCertificate      // in, none, converted
-	var errors   gio.TlsCertificateFlags // in, none, casted
-	var goret    bool                    // return
+	var conn gio.TlsConnection         // in, none, converted
+	var peerCert gio.TlsCertificate    // in, none, converted
+	var errors gio.TlsCertificateFlags // in, none, casted
+	var goret bool                     // return
 
 	conn = gio.UnsafeTlsConnectionFromGlibNone(unsafe.Pointer(carg1))
 	peerCert = gio.UnsafeTlsCertificateFromGlibNone(unsafe.Pointer(carg2))
@@ -40,4 +40,3 @@ func _goglib_gstrtsp1_RTSPConnectionAcceptCertificateFunc(carg1 *C.GTlsConnectio
 
 	return cret
 }
-

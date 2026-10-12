@@ -238,4 +238,3 @@ func _goglib_gstrtp1_RTPHeaderExtension_write(carg0 *C.GstRTPHeaderExtension, ca
 	}
 	return fn(carg0, carg1, carg2, carg3, carg4, carg5)
 }
-

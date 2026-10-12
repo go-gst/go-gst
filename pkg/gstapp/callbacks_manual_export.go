@@ -76,7 +76,7 @@ func _gogst_gstapp1_AppSink_propose_allocation(carg0 *C.GstAppSink, carg1 *C.Gst
 func _gogst_gstapp1_AppSrc_need_data(carg0 *C.GstAppSrc, carg1 C.guint, carg2 C.gpointer) {
 	cbs := loadAppSrcCallbacks(carg2)
 
-	cbs.NeedData(UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)), uint(carg1))
+	cbs.NeedData(UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)), uint32(carg1))
 }
 
 //export _gogst_gstapp1_AppSrc_enough_data

@@ -96,21 +96,21 @@ func init() {
 }
 
 // AppLeakyType wraps GstAppLeakyType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#GstAppLeakyType
 type AppLeakyType C.int
 
 const (
 	// AppLeakyTypeNone wraps GST_APP_LEAKY_TYPE_NONE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#GST_APP_LEAKY_TYPE_NONE
 	AppLeakyTypeNone AppLeakyType = 0
 	// AppLeakyTypeUpstream wraps GST_APP_LEAKY_TYPE_UPSTREAM
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#GST_APP_LEAKY_TYPE_UPSTREAM
 	AppLeakyTypeUpstream AppLeakyType = 1
 	// AppLeakyTypeDownstream wraps GST_APP_LEAKY_TYPE_DOWNSTREAM
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#GST_APP_LEAKY_TYPE_DOWNSTREAM
 	AppLeakyTypeDownstream AppLeakyType = 2
 )
@@ -131,29 +131,33 @@ func (e AppLeakyType) SetGoValue(v *gobject.Value) {
 
 func (e AppLeakyType) String() string {
 	switch e {
-		case AppLeakyTypeDownstream: return "AppLeakyTypeDownstream"
-		case AppLeakyTypeNone: return "AppLeakyTypeNone"
-		case AppLeakyTypeUpstream: return "AppLeakyTypeUpstream"
-		default: return fmt.Sprintf("AppLeakyType(%d)", e)
+	case AppLeakyTypeDownstream:
+		return "AppLeakyTypeDownstream"
+	case AppLeakyTypeNone:
+		return "AppLeakyTypeNone"
+	case AppLeakyTypeUpstream:
+		return "AppLeakyTypeUpstream"
+	default:
+		return fmt.Sprintf("AppLeakyType(%d)", e)
 	}
 }
 
 // AppStreamType wraps GstAppStreamType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#GstAppStreamType
 type AppStreamType C.int
 
 const (
 	// AppStreamTypeStream wraps GST_APP_STREAM_TYPE_STREAM
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#GST_APP_STREAM_TYPE_STREAM
 	AppStreamTypeStream AppStreamType = 0
 	// AppStreamTypeSeekable wraps GST_APP_STREAM_TYPE_SEEKABLE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#GST_APP_STREAM_TYPE_SEEKABLE
 	AppStreamTypeSeekable AppStreamType = 1
 	// AppStreamTypeRandomAccess wraps GST_APP_STREAM_TYPE_RANDOM_ACCESS
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#GST_APP_STREAM_TYPE_RANDOM_ACCESS
 	AppStreamTypeRandomAccess AppStreamType = 2
 )
@@ -174,10 +178,14 @@ func (e AppStreamType) SetGoValue(v *gobject.Value) {
 
 func (e AppStreamType) String() string {
 	switch e {
-		case AppStreamTypeRandomAccess: return "AppStreamTypeRandomAccess"
-		case AppStreamTypeSeekable: return "AppStreamTypeSeekable"
-		case AppStreamTypeStream: return "AppStreamTypeStream"
-		default: return fmt.Sprintf("AppStreamType(%d)", e)
+	case AppStreamTypeRandomAccess:
+		return "AppStreamTypeRandomAccess"
+	case AppStreamTypeSeekable:
+		return "AppStreamTypeSeekable"
+	case AppStreamTypeStream:
+		return "AppStreamTypeStream"
+	default:
+		return fmt.Sprintf("AppStreamType(%d)", e)
 	}
 }
 
@@ -192,7 +200,7 @@ type AppSinkInstance struct {
 var _ AppSink = (*AppSinkInstance)(nil)
 
 // AppSink wraps GstAppSink
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#GstAppSink
 type AppSink interface {
 	AppSinkExtManual // handwritten functions
@@ -201,119 +209,119 @@ type AppSink interface {
 	upcastToGstAppSink() *AppSinkInstance
 
 	// GetBufferListSupport wraps gst_app_sink_get_buffer_list_support
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_buffer_list_support
 	GetBufferListSupport() bool
 	// GetCaps wraps gst_app_sink_get_caps
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_caps
 	GetCaps() *gst.Caps
 	// GetDrop wraps gst_app_sink_get_drop
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_drop
 	//
 	// Deprecated: (since 1.28.0) see the provided link for the reason
 	GetDrop() bool
 	// GetEmitSignals wraps gst_app_sink_get_emit_signals
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_emit_signals
 	GetEmitSignals() bool
 	// GetMaxBuffers wraps gst_app_sink_get_max_buffers
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_max_buffers
-	GetMaxBuffers() uint
+	GetMaxBuffers() uint32
 	// GetMaxBytes wraps gst_app_sink_get_max_bytes
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_max_bytes
 	GetMaxBytes() uint64
 	// GetMaxTime wraps gst_app_sink_get_max_time
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_max_time
 	GetMaxTime() gst.ClockTime
 	// GetWaitOnEOS wraps gst_app_sink_get_wait_on_eos
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_wait_on_eos
 	GetWaitOnEOS() bool
 	// IsEOS wraps gst_app_sink_is_eos
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_is_eos
 	IsEOS() bool
 	// PullObject wraps gst_app_sink_pull_object
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_pull_object
 	PullObject() *gst.MiniObject
 	// PullPreroll wraps gst_app_sink_pull_preroll
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_pull_preroll
 	PullPreroll() *gst.Sample
 	// PullSample wraps gst_app_sink_pull_sample
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_pull_sample
 	PullSample() *gst.Sample
 	// SetBufferListSupport wraps gst_app_sink_set_buffer_list_support
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_buffer_list_support
 	SetBufferListSupport(bool)
 	// SetCaps wraps gst_app_sink_set_caps
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_caps
 	SetCaps(*gst.Caps)
 	// SetDrop wraps gst_app_sink_set_drop
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_drop
 	//
 	// Deprecated: (since 1.28.0) see the provided link for the reason
 	SetDrop(bool)
 	// SetEmitSignals wraps gst_app_sink_set_emit_signals
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_emit_signals
 	SetEmitSignals(bool)
 	// SetMaxBuffers wraps gst_app_sink_set_max_buffers
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_max_buffers
-	SetMaxBuffers(uint)
+	SetMaxBuffers(uint32)
 	// SetMaxBytes wraps gst_app_sink_set_max_bytes
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_max_bytes
 	SetMaxBytes(uint64)
 	// SetMaxTime wraps gst_app_sink_set_max_time
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_max_time
 	SetMaxTime(gst.ClockTime)
 	// SetWaitOnEOS wraps gst_app_sink_set_wait_on_eos
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_wait_on_eos
 	SetWaitOnEOS(bool)
 	// TryPullObject wraps gst_app_sink_try_pull_object
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_try_pull_object
 	TryPullObject(gst.ClockTime) *gst.MiniObject
 	// TryPullPreroll wraps gst_app_sink_try_pull_preroll
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_try_pull_preroll
 	TryPullPreroll(gst.ClockTime) *gst.Sample
 	// TryPullSample wraps gst_app_sink_try_pull_sample
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_try_pull_sample
 	TryPullSample(gst.ClockTime) *gst.Sample
 	// EmitPullPreroll emits the "pull-preroll" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
 	EmitPullPreroll() gst.Sample
 	// EmitPullSample emits the "pull-sample" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
 	EmitPullSample() gst.Sample
 	// EmitTryPullObject emits the "try-pull-object" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
 	EmitTryPullObject(uint64) gst.MiniObject
 	// EmitTryPullPreroll emits the "try-pull-preroll" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
 	EmitTryPullPreroll(uint64) gst.Sample
 	// EmitTryPullSample emits the "try-pull-sample" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
 	EmitTryPullSample(uint64) gst.Sample
 
@@ -321,42 +329,42 @@ type AppSink interface {
 
 	// ParentEOS calls the default implementations of the `GstAppSink.eos` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#eos
 	ParentEOS()
 	// ParentNewPreroll calls the default implementations of the `GstAppSink.new_preroll` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#new_preroll
 	ParentNewPreroll() gst.FlowReturn
 	// ParentNewSample calls the default implementations of the `GstAppSink.new_sample` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#new_sample
 	ParentNewSample() gst.FlowReturn
 	// ParentPullPreroll calls the default implementations of the `GstAppSink.pull_preroll` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#pull_preroll
 	ParentPullPreroll() *gst.Sample
 	// ParentPullSample calls the default implementations of the `GstAppSink.pull_sample` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#pull_sample
 	ParentPullSample() *gst.Sample
 	// ParentTryPullObject calls the default implementations of the `GstAppSink.try_pull_object` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#try_pull_object
 	ParentTryPullObject(timeout gst.ClockTime) *gst.MiniObject
 	// ParentTryPullPreroll calls the default implementations of the `GstAppSink.try_pull_preroll` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#try_pull_preroll
 	ParentTryPullPreroll(timeout gst.ClockTime) *gst.Sample
 	// ParentTryPullSample calls the default implementations of the `GstAppSink.try_pull_sample` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#try_pull_sample
 	ParentTryPullSample(timeout gst.ClockTime) *gst.Sample
 }
@@ -381,7 +389,7 @@ func unsafeWrapAppSink(base *gobject.ObjectInstance) *AppSinkInstance {
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeAppSink,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapAppSink(inst)
 		},
 	)
@@ -421,11 +429,11 @@ func UnsafeAppSinkToGlibFull(c AppSink) unsafe.Pointer {
 }
 
 // GetBufferListSupport wraps gst_app_sink_get_buffer_list_support
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_buffer_list_support
 func (appsink *AppSinkInstance) GetBufferListSupport() bool {
 	var carg0 *C.GstAppSink // in, none, converted
-	var cret  C.gboolean    // return
+	var cret C.gboolean     // return
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -442,11 +450,11 @@ func (appsink *AppSinkInstance) GetBufferListSupport() bool {
 }
 
 // GetCaps wraps gst_app_sink_get_caps
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_caps
 func (appsink *AppSinkInstance) GetCaps() *gst.Caps {
 	var carg0 *C.GstAppSink // in, none, converted
-	var cret  *C.GstCaps    // return, full, converted, nullable
+	var cret *C.GstCaps     // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -463,13 +471,13 @@ func (appsink *AppSinkInstance) GetCaps() *gst.Caps {
 }
 
 // GetDrop wraps gst_app_sink_get_drop
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_drop
 //
 // Deprecated: (since 1.28.0) see the provided link for the reason
 func (appsink *AppSinkInstance) GetDrop() bool {
 	var carg0 *C.GstAppSink // in, none, converted
-	var cret  C.gboolean    // return
+	var cret C.gboolean     // return
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -486,11 +494,11 @@ func (appsink *AppSinkInstance) GetDrop() bool {
 }
 
 // GetEmitSignals wraps gst_app_sink_get_emit_signals
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_emit_signals
 func (appsink *AppSinkInstance) GetEmitSignals() bool {
 	var carg0 *C.GstAppSink // in, none, converted
-	var cret  C.gboolean    // return
+	var cret C.gboolean     // return
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -507,30 +515,30 @@ func (appsink *AppSinkInstance) GetEmitSignals() bool {
 }
 
 // GetMaxBuffers wraps gst_app_sink_get_max_buffers
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_max_buffers
-func (appsink *AppSinkInstance) GetMaxBuffers() uint {
+func (appsink *AppSinkInstance) GetMaxBuffers() uint32 {
 	var carg0 *C.GstAppSink // in, none, converted
-	var cret  C.guint       // return, none, casted
+	var cret C.guint        // return, none, casted
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
 	cret = C.gst_app_sink_get_max_buffers(carg0)
 	runtime.KeepAlive(appsink)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // GetMaxBytes wraps gst_app_sink_get_max_bytes
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_max_bytes
 func (appsink *AppSinkInstance) GetMaxBytes() uint64 {
 	var carg0 *C.GstAppSink // in, none, converted
-	var cret  C.guint64     // return, none, casted
+	var cret C.guint64      // return, none, casted
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -545,11 +553,11 @@ func (appsink *AppSinkInstance) GetMaxBytes() uint64 {
 }
 
 // GetMaxTime wraps gst_app_sink_get_max_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_max_time
 func (appsink *AppSinkInstance) GetMaxTime() gst.ClockTime {
-	var carg0 *C.GstAppSink  // in, none, converted
-	var cret  C.GstClockTime // return, none, casted, alias
+	var carg0 *C.GstAppSink // in, none, converted
+	var cret C.GstClockTime // return, none, casted, alias
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -564,11 +572,11 @@ func (appsink *AppSinkInstance) GetMaxTime() gst.ClockTime {
 }
 
 // GetWaitOnEOS wraps gst_app_sink_get_wait_on_eos
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_get_wait_on_eos
 func (appsink *AppSinkInstance) GetWaitOnEOS() bool {
 	var carg0 *C.GstAppSink // in, none, converted
-	var cret  C.gboolean    // return
+	var cret C.gboolean     // return
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -585,11 +593,11 @@ func (appsink *AppSinkInstance) GetWaitOnEOS() bool {
 }
 
 // IsEOS wraps gst_app_sink_is_eos
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_is_eos
 func (appsink *AppSinkInstance) IsEOS() bool {
 	var carg0 *C.GstAppSink // in, none, converted
-	var cret  C.gboolean    // return
+	var cret C.gboolean     // return
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -606,11 +614,11 @@ func (appsink *AppSinkInstance) IsEOS() bool {
 }
 
 // PullObject wraps gst_app_sink_pull_object
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_pull_object
 func (appsink *AppSinkInstance) PullObject() *gst.MiniObject {
-	var carg0 *C.GstAppSink    // in, none, converted
-	var cret  *C.GstMiniObject // return, full, converted, nullable
+	var carg0 *C.GstAppSink   // in, none, converted
+	var cret *C.GstMiniObject // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -627,11 +635,11 @@ func (appsink *AppSinkInstance) PullObject() *gst.MiniObject {
 }
 
 // PullPreroll wraps gst_app_sink_pull_preroll
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_pull_preroll
 func (appsink *AppSinkInstance) PullPreroll() *gst.Sample {
 	var carg0 *C.GstAppSink // in, none, converted
-	var cret  *C.GstSample  // return, full, converted, nullable
+	var cret *C.GstSample   // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -648,11 +656,11 @@ func (appsink *AppSinkInstance) PullPreroll() *gst.Sample {
 }
 
 // PullSample wraps gst_app_sink_pull_sample
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_pull_sample
 func (appsink *AppSinkInstance) PullSample() *gst.Sample {
 	var carg0 *C.GstAppSink // in, none, converted
-	var cret  *C.GstSample  // return, full, converted, nullable
+	var cret *C.GstSample   // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -669,7 +677,7 @@ func (appsink *AppSinkInstance) PullSample() *gst.Sample {
 }
 
 // SetBufferListSupport wraps gst_app_sink_set_buffer_list_support
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_buffer_list_support
 func (appsink *AppSinkInstance) SetBufferListSupport(enableLists bool) {
 	var carg0 *C.GstAppSink // in, none, converted
@@ -686,7 +694,7 @@ func (appsink *AppSinkInstance) SetBufferListSupport(enableLists bool) {
 }
 
 // SetCaps wraps gst_app_sink_set_caps
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_caps
 func (appsink *AppSinkInstance) SetCaps(caps *gst.Caps) {
 	var carg0 *C.GstAppSink // in, none, converted
@@ -703,7 +711,7 @@ func (appsink *AppSinkInstance) SetCaps(caps *gst.Caps) {
 }
 
 // SetDrop wraps gst_app_sink_set_drop
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_drop
 //
 // Deprecated: (since 1.28.0) see the provided link for the reason
@@ -722,7 +730,7 @@ func (appsink *AppSinkInstance) SetDrop(drop bool) {
 }
 
 // SetEmitSignals wraps gst_app_sink_set_emit_signals
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_emit_signals
 func (appsink *AppSinkInstance) SetEmitSignals(emit bool) {
 	var carg0 *C.GstAppSink // in, none, converted
@@ -739,9 +747,9 @@ func (appsink *AppSinkInstance) SetEmitSignals(emit bool) {
 }
 
 // SetMaxBuffers wraps gst_app_sink_set_max_buffers
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_max_buffers
-func (appsink *AppSinkInstance) SetMaxBuffers(max uint) {
+func (appsink *AppSinkInstance) SetMaxBuffers(max uint32) {
 	var carg0 *C.GstAppSink // in, none, converted
 	var carg1 C.guint       // in, none, casted
 
@@ -754,7 +762,7 @@ func (appsink *AppSinkInstance) SetMaxBuffers(max uint) {
 }
 
 // SetMaxBytes wraps gst_app_sink_set_max_bytes
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_max_bytes
 func (appsink *AppSinkInstance) SetMaxBytes(max uint64) {
 	var carg0 *C.GstAppSink // in, none, converted
@@ -769,7 +777,7 @@ func (appsink *AppSinkInstance) SetMaxBytes(max uint64) {
 }
 
 // SetMaxTime wraps gst_app_sink_set_max_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_max_time
 func (appsink *AppSinkInstance) SetMaxTime(max gst.ClockTime) {
 	var carg0 *C.GstAppSink  // in, none, converted
@@ -784,7 +792,7 @@ func (appsink *AppSinkInstance) SetMaxTime(max gst.ClockTime) {
 }
 
 // SetWaitOnEOS wraps gst_app_sink_set_wait_on_eos
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_set_wait_on_eos
 func (appsink *AppSinkInstance) SetWaitOnEOS(wait bool) {
 	var carg0 *C.GstAppSink // in, none, converted
@@ -801,12 +809,12 @@ func (appsink *AppSinkInstance) SetWaitOnEOS(wait bool) {
 }
 
 // TryPullObject wraps gst_app_sink_try_pull_object
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_try_pull_object
 func (appsink *AppSinkInstance) TryPullObject(timeout gst.ClockTime) *gst.MiniObject {
-	var carg0 *C.GstAppSink    // in, none, converted
-	var carg1 C.GstClockTime   // in, none, casted, alias
-	var cret  *C.GstMiniObject // return, full, converted, nullable
+	var carg0 *C.GstAppSink   // in, none, converted
+	var carg1 C.GstClockTime  // in, none, casted, alias
+	var cret *C.GstMiniObject // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 	carg1 = C.GstClockTime(timeout)
@@ -825,12 +833,12 @@ func (appsink *AppSinkInstance) TryPullObject(timeout gst.ClockTime) *gst.MiniOb
 }
 
 // TryPullPreroll wraps gst_app_sink_try_pull_preroll
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_try_pull_preroll
 func (appsink *AppSinkInstance) TryPullPreroll(timeout gst.ClockTime) *gst.Sample {
 	var carg0 *C.GstAppSink  // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
-	var cret  *C.GstSample   // return, full, converted, nullable
+	var cret *C.GstSample    // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 	carg1 = C.GstClockTime(timeout)
@@ -849,12 +857,12 @@ func (appsink *AppSinkInstance) TryPullPreroll(timeout gst.ClockTime) *gst.Sampl
 }
 
 // TryPullSample wraps gst_app_sink_try_pull_sample
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_try_pull_sample
 func (appsink *AppSinkInstance) TryPullSample(timeout gst.ClockTime) *gst.Sample {
 	var carg0 *C.GstAppSink  // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
-	var cret  *C.GstSample   // return, full, converted, nullable
+	var cret *C.GstSample    // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 	carg1 = C.GstClockTime(timeout)
@@ -873,35 +881,35 @@ func (appsink *AppSinkInstance) TryPullSample(timeout gst.ClockTime) *gst.Sample
 }
 
 // EmitPullPreroll emits the "pull-preroll" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
 func (o *AppSinkInstance) EmitPullPreroll() gst.Sample {
 	return o.Emit("pull-preroll").(gst.Sample)
 }
 
 // EmitPullSample emits the "pull-sample" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
 func (o *AppSinkInstance) EmitPullSample() gst.Sample {
 	return o.Emit("pull-sample").(gst.Sample)
 }
 
 // EmitTryPullObject emits the "try-pull-object" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
 func (o *AppSinkInstance) EmitTryPullObject(arg0 uint64) gst.MiniObject {
 	return o.Emit("try-pull-object", arg0).(gst.MiniObject)
 }
 
 // EmitTryPullPreroll emits the "try-pull-preroll" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
 func (o *AppSinkInstance) EmitTryPullPreroll(arg0 uint64) gst.Sample {
 	return o.Emit("try-pull-preroll", arg0).(gst.Sample)
 }
 
 // EmitTryPullSample emits the "try-pull-sample" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
 func (o *AppSinkInstance) EmitTryPullSample(arg0 uint64) gst.Sample {
 	return o.Emit("try-pull-sample", arg0).(gst.Sample)
@@ -913,36 +921,36 @@ type AppSinkOverrides[Instance AppSink] struct {
 	// gstbase.BaseSinkOverrides allows you to override virtual methods from the parent class gstbase.BaseSink
 	gstbase.BaseSinkOverrides[Instance]
 
-	// // EOS allows you to override the implementation of the virtual method eos.
-	// 
+	// EOS allows you to override the implementation of the virtual method eos.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#eos
 	EOS func(Instance)
-	// // NewPreroll allows you to override the implementation of the virtual method new_preroll.
-	// 
+	// NewPreroll allows you to override the implementation of the virtual method new_preroll.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#new_preroll
 	NewPreroll func(Instance) gst.FlowReturn
-	// // NewSample allows you to override the implementation of the virtual method new_sample.
-	// 
+	// NewSample allows you to override the implementation of the virtual method new_sample.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#new_sample
 	NewSample func(Instance) gst.FlowReturn
-	// // PullPreroll allows you to override the implementation of the virtual method pull_preroll.
-	// 
+	// PullPreroll allows you to override the implementation of the virtual method pull_preroll.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#pull_preroll
 	PullPreroll func(Instance) *gst.Sample
-	// // PullSample allows you to override the implementation of the virtual method pull_sample.
-	// 
+	// PullSample allows you to override the implementation of the virtual method pull_sample.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#pull_sample
 	PullSample func(Instance) *gst.Sample
-	// // TryPullObject allows you to override the implementation of the virtual method try_pull_object.
-	// 
+	// TryPullObject allows you to override the implementation of the virtual method try_pull_object.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#try_pull_object
 	TryPullObject func(Instance, gst.ClockTime) *gst.MiniObject
-	// // TryPullPreroll allows you to override the implementation of the virtual method try_pull_preroll.
-	// 
+	// TryPullPreroll allows you to override the implementation of the virtual method try_pull_preroll.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#try_pull_preroll
 	TryPullPreroll func(Instance, gst.ClockTime) *gst.Sample
-	// // TryPullSample allows you to override the implementation of the virtual method try_pull_sample.
-	// 
+	// TryPullSample allows you to override the implementation of the virtual method try_pull_sample.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#try_pull_sample
 	TryPullSample func(Instance, gst.ClockTime) *gst.Sample
 }
@@ -975,8 +983,8 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 			unsafe.Pointer(pclass),
 			"_goglib_gstapp1_AppSink_new_preroll",
 			func(carg0 *C.GstAppSink) (cret C.GstFlowReturn) {
-				var appsink Instance       // go GstAppSink subclass
-				var goret   gst.FlowReturn // return, none, casted
+				var appsink Instance     // go GstAppSink subclass
+				var goret gst.FlowReturn // return, none, casted
 
 				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
@@ -995,8 +1003,8 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 			unsafe.Pointer(pclass),
 			"_goglib_gstapp1_AppSink_new_sample",
 			func(carg0 *C.GstAppSink) (cret C.GstFlowReturn) {
-				var appsink Instance       // go GstAppSink subclass
-				var goret   gst.FlowReturn // return, none, casted
+				var appsink Instance     // go GstAppSink subclass
+				var goret gst.FlowReturn // return, none, casted
 
 				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
@@ -1015,8 +1023,8 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 			unsafe.Pointer(pclass),
 			"_goglib_gstapp1_AppSink_pull_preroll",
 			func(carg0 *C.GstAppSink) (cret *C.GstSample) {
-				var appsink Instance    // go GstAppSink subclass
-				var goret   *gst.Sample // return, full, converted, nullable
+				var appsink Instance  // go GstAppSink subclass
+				var goret *gst.Sample // return, full, converted, nullable
 
 				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
@@ -1037,8 +1045,8 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 			unsafe.Pointer(pclass),
 			"_goglib_gstapp1_AppSink_pull_sample",
 			func(carg0 *C.GstAppSink) (cret *C.GstSample) {
-				var appsink Instance    // go GstAppSink subclass
-				var goret   *gst.Sample // return, full, converted, nullable
+				var appsink Instance  // go GstAppSink subclass
+				var goret *gst.Sample // return, full, converted, nullable
 
 				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
@@ -1059,9 +1067,9 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 			unsafe.Pointer(pclass),
 			"_goglib_gstapp1_AppSink_try_pull_object",
 			func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstMiniObject) {
-				var appsink Instance        // go GstAppSink subclass
-				var timeout gst.ClockTime   // in, none, casted, alias
-				var goret   *gst.MiniObject // return, full, converted, nullable
+				var appsink Instance      // go GstAppSink subclass
+				var timeout gst.ClockTime // in, none, casted, alias
+				var goret *gst.MiniObject // return, full, converted, nullable
 
 				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				timeout = gst.ClockTime(carg1)
@@ -1085,7 +1093,7 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 			func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample) {
 				var appsink Instance      // go GstAppSink subclass
 				var timeout gst.ClockTime // in, none, casted, alias
-				var goret   *gst.Sample   // return, full, converted, nullable
+				var goret *gst.Sample     // return, full, converted, nullable
 
 				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				timeout = gst.ClockTime(carg1)
@@ -1109,7 +1117,7 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 			func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample) {
 				var appsink Instance      // go GstAppSink subclass
 				var timeout gst.ClockTime // in, none, casted, alias
-				var goret   *gst.Sample   // return, full, converted, nullable
+				var goret *gst.Sample     // return, full, converted, nullable
 
 				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				timeout = gst.ClockTime(carg1)
@@ -1128,7 +1136,7 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 
 // ParentEOS calls the default implementations of the `GstAppSink.eos` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#eos
 func (appsink *AppSinkInstance) ParentEOS() {
 	var carg0 *C.GstAppSink
@@ -1143,11 +1151,11 @@ func (appsink *AppSinkInstance) ParentEOS() {
 
 // ParentNewPreroll calls the default implementations of the `GstAppSink.new_preroll` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#new_preroll
 func (appsink *AppSinkInstance) ParentNewPreroll() gst.FlowReturn {
 	var carg0 *C.GstAppSink
-	var cret  C.GstFlowReturn // return, none, casted
+	var cret C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
 
@@ -1165,11 +1173,11 @@ func (appsink *AppSinkInstance) ParentNewPreroll() gst.FlowReturn {
 
 // ParentNewSample calls the default implementations of the `GstAppSink.new_sample` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#new_sample
 func (appsink *AppSinkInstance) ParentNewSample() gst.FlowReturn {
 	var carg0 *C.GstAppSink
-	var cret  C.GstFlowReturn // return, none, casted
+	var cret C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
 
@@ -1187,11 +1195,11 @@ func (appsink *AppSinkInstance) ParentNewSample() gst.FlowReturn {
 
 // ParentPullPreroll calls the default implementations of the `GstAppSink.pull_preroll` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#pull_preroll
 func (appsink *AppSinkInstance) ParentPullPreroll() *gst.Sample {
 	var carg0 *C.GstAppSink
-	var cret  *C.GstSample // return, full, converted, nullable
+	var cret *C.GstSample // return, full, converted, nullable
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
 
@@ -1211,11 +1219,11 @@ func (appsink *AppSinkInstance) ParentPullPreroll() *gst.Sample {
 
 // ParentPullSample calls the default implementations of the `GstAppSink.pull_sample` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#pull_sample
 func (appsink *AppSinkInstance) ParentPullSample() *gst.Sample {
 	var carg0 *C.GstAppSink
-	var cret  *C.GstSample // return, full, converted, nullable
+	var cret *C.GstSample // return, full, converted, nullable
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
 
@@ -1235,12 +1243,12 @@ func (appsink *AppSinkInstance) ParentPullSample() *gst.Sample {
 
 // ParentTryPullObject calls the default implementations of the `GstAppSink.try_pull_object` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#try_pull_object
 func (appsink *AppSinkInstance) ParentTryPullObject(timeout gst.ClockTime) *gst.MiniObject {
 	var carg0 *C.GstAppSink
-	var carg1 C.GstClockTime   // in, none, converted
-	var cret  *C.GstMiniObject // return, full, converted, nullable
+	var carg1 C.GstClockTime  // in, none, converted
+	var cret *C.GstMiniObject // return, full, converted, nullable
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
 
@@ -1262,12 +1270,12 @@ func (appsink *AppSinkInstance) ParentTryPullObject(timeout gst.ClockTime) *gst.
 
 // ParentTryPullPreroll calls the default implementations of the `GstAppSink.try_pull_preroll` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#try_pull_preroll
 func (appsink *AppSinkInstance) ParentTryPullPreroll(timeout gst.ClockTime) *gst.Sample {
 	var carg0 *C.GstAppSink
 	var carg1 C.GstClockTime // in, none, converted
-	var cret  *C.GstSample   // return, full, converted, nullable
+	var cret *C.GstSample    // return, full, converted, nullable
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
 
@@ -1289,12 +1297,12 @@ func (appsink *AppSinkInstance) ParentTryPullPreroll(timeout gst.ClockTime) *gst
 
 // ParentTryPullSample calls the default implementations of the `GstAppSink.try_pull_sample` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#try_pull_sample
 func (appsink *AppSinkInstance) ParentTryPullSample(timeout gst.ClockTime) *gst.Sample {
 	var carg0 *C.GstAppSink
 	var carg1 C.GstClockTime // in, none, converted
-	var cret  *C.GstSample   // return, full, converted, nullable
+	var cret *C.GstSample    // return, full, converted, nullable
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
 
@@ -1317,12 +1325,12 @@ func (appsink *AppSinkInstance) ParentTryPullSample(timeout gst.ClockTime) *gst.
 // RegisterAppSinkSubClass is used to register a go subclass of GstAppSink. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterAppSinkSubClass[InstanceT AppSink](
-		name string,
-		classInit func(class *AppSinkClass),
-		constructor func() InstanceT,
-		overrides AppSinkOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *AppSinkClass),
+	constructor func() InstanceT,
+	overrides AppSinkOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -1333,7 +1341,7 @@ func RegisterAppSinkSubClass[InstanceT AppSink](
 		TypeAppSink,
 		UnsafeAppSinkClassFromGlibBorrow,
 		UnsafeApplyAppSinkOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapAppSink(obj)
 		},
 		interfaceInits...,
@@ -1351,7 +1359,7 @@ type AppSrcInstance struct {
 var _ AppSrc = (*AppSrcInstance)(nil)
 
 // AppSrc wraps GstAppSrc
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#GstAppSrc
 type AppSrc interface {
 	AppSrcExtManual // handwritten functions
@@ -1360,127 +1368,127 @@ type AppSrc interface {
 	upcastToGstAppSrc() *AppSrcInstance
 
 	// EndOfStream wraps gst_app_src_end_of_stream
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_end_of_stream
 	EndOfStream() gst.FlowReturn
 	// GetCaps wraps gst_app_src_get_caps
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_caps
 	GetCaps() *gst.Caps
 	// GetCurrentLevelBuffers wraps gst_app_src_get_current_level_buffers
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_current_level_buffers
 	GetCurrentLevelBuffers() uint64
 	// GetCurrentLevelBytes wraps gst_app_src_get_current_level_bytes
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_current_level_bytes
 	GetCurrentLevelBytes() uint64
 	// GetCurrentLevelTime wraps gst_app_src_get_current_level_time
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_current_level_time
 	GetCurrentLevelTime() gst.ClockTime
 	// GetDuration wraps gst_app_src_get_duration
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_duration
 	GetDuration() gst.ClockTime
 	// GetEmitSignals wraps gst_app_src_get_emit_signals
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_emit_signals
 	GetEmitSignals() bool
 	// GetLatency wraps gst_app_src_get_latency
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_latency
 	GetLatency() (uint64, uint64)
 	// GetLeakyType wraps gst_app_src_get_leaky_type
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_leaky_type
 	GetLeakyType() AppLeakyType
 	// GetMaxBuffers wraps gst_app_src_get_max_buffers
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_max_buffers
 	GetMaxBuffers() uint64
 	// GetMaxBytes wraps gst_app_src_get_max_bytes
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_max_bytes
 	GetMaxBytes() uint64
 	// GetMaxTime wraps gst_app_src_get_max_time
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_max_time
 	GetMaxTime() gst.ClockTime
 	// GetSize wraps gst_app_src_get_size
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_size
 	GetSize() int64
 	// GetStreamType wraps gst_app_src_get_stream_type
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_stream_type
 	GetStreamType() AppStreamType
 	// PushBuffer wraps gst_app_src_push_buffer
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_push_buffer
 	PushBuffer(*gst.Buffer) gst.FlowReturn
 	// PushBufferList wraps gst_app_src_push_buffer_list
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_push_buffer_list
 	PushBufferList(*gst.BufferList) gst.FlowReturn
 	// PushSample wraps gst_app_src_push_sample
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_push_sample
 	PushSample(*gst.Sample) gst.FlowReturn
 	// AppSrcSetCaps wraps gst_app_src_set_caps
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_caps
 	AppSrcSetCaps(*gst.Caps)
 	// SetDuration wraps gst_app_src_set_duration
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_duration
 	SetDuration(gst.ClockTime)
 	// SetEmitSignals wraps gst_app_src_set_emit_signals
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_emit_signals
 	SetEmitSignals(bool)
 	// SetLatency wraps gst_app_src_set_latency
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_latency
 	SetLatency(uint64, uint64)
 	// SetLeakyType wraps gst_app_src_set_leaky_type
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_leaky_type
 	SetLeakyType(AppLeakyType)
 	// SetMaxBuffers wraps gst_app_src_set_max_buffers
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_max_buffers
 	SetMaxBuffers(uint64)
 	// SetMaxBytes wraps gst_app_src_set_max_bytes
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_max_bytes
 	SetMaxBytes(uint64)
 	// SetMaxTime wraps gst_app_src_set_max_time
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_max_time
 	SetMaxTime(gst.ClockTime)
 	// SetSize wraps gst_app_src_set_size
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_size
 	SetSize(int64)
 	// SetStreamType wraps gst_app_src_set_stream_type
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_stream_type
 	SetStreamType(AppStreamType)
 	// EmitEndOfStream emits the "end-of-stream" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
 	EmitEndOfStream() gst.FlowReturn
 	// EmitPushBuffer emits the "push-buffer" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
 	EmitPushBuffer(*gst.Buffer) gst.FlowReturn
 	// EmitPushBufferList emits the "push-buffer-list" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
 	EmitPushBufferList(*gst.BufferList) gst.FlowReturn
 	// EmitPushSample emits the "push-sample" signal
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
 	EmitPushSample(*gst.Sample) gst.FlowReturn
 
@@ -1488,37 +1496,37 @@ type AppSrc interface {
 
 	// ParentEndOfStream calls the default implementations of the `GstAppSrc.end_of_stream` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#end_of_stream
 	ParentEndOfStream() gst.FlowReturn
 	// ParentEnoughData calls the default implementations of the `GstAppSrc.enough_data` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#enough_data
 	ParentEnoughData()
 	// ParentNeedData calls the default implementations of the `GstAppSrc.need_data` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#need_data
-	ParentNeedData(length uint)
+	ParentNeedData(length uint32)
 	// ParentPushBuffer calls the default implementations of the `GstAppSrc.push_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#push_buffer
 	ParentPushBuffer(buffer *gst.Buffer) gst.FlowReturn
 	// ParentPushBufferList calls the default implementations of the `GstAppSrc.push_buffer_list` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#push_buffer_list
 	ParentPushBufferList(bufferList *gst.BufferList) gst.FlowReturn
 	// ParentPushSample calls the default implementations of the `GstAppSrc.push_sample` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#push_sample
 	ParentPushSample(sample *gst.Sample) gst.FlowReturn
 	// ParentSeekData calls the default implementations of the `GstAppSrc.seek_data` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#seek_data
 	ParentSeekData(offset uint64) bool
 }
@@ -1543,7 +1551,7 @@ func unsafeWrapAppSrc(base *gobject.ObjectInstance) *AppSrcInstance {
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeAppSrc,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapAppSrc(inst)
 		},
 	)
@@ -1583,11 +1591,11 @@ func UnsafeAppSrcToGlibFull(c AppSrc) unsafe.Pointer {
 }
 
 // EndOfStream wraps gst_app_src_end_of_stream
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_end_of_stream
 func (appsrc *AppSrcInstance) EndOfStream() gst.FlowReturn {
-	var carg0 *C.GstAppSrc    // in, none, converted
-	var cret  C.GstFlowReturn // return, none, casted
+	var carg0 *C.GstAppSrc   // in, none, converted
+	var cret C.GstFlowReturn // return, none, casted
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1602,11 +1610,11 @@ func (appsrc *AppSrcInstance) EndOfStream() gst.FlowReturn {
 }
 
 // GetCaps wraps gst_app_src_get_caps
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_caps
 func (appsrc *AppSrcInstance) GetCaps() *gst.Caps {
 	var carg0 *C.GstAppSrc // in, none, converted
-	var cret  *C.GstCaps   // return, full, converted, nullable
+	var cret *C.GstCaps    // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1623,11 +1631,11 @@ func (appsrc *AppSrcInstance) GetCaps() *gst.Caps {
 }
 
 // GetCurrentLevelBuffers wraps gst_app_src_get_current_level_buffers
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_current_level_buffers
 func (appsrc *AppSrcInstance) GetCurrentLevelBuffers() uint64 {
 	var carg0 *C.GstAppSrc // in, none, converted
-	var cret  C.guint64    // return, none, casted
+	var cret C.guint64     // return, none, casted
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1642,11 +1650,11 @@ func (appsrc *AppSrcInstance) GetCurrentLevelBuffers() uint64 {
 }
 
 // GetCurrentLevelBytes wraps gst_app_src_get_current_level_bytes
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_current_level_bytes
 func (appsrc *AppSrcInstance) GetCurrentLevelBytes() uint64 {
 	var carg0 *C.GstAppSrc // in, none, converted
-	var cret  C.guint64    // return, none, casted
+	var cret C.guint64     // return, none, casted
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1661,11 +1669,11 @@ func (appsrc *AppSrcInstance) GetCurrentLevelBytes() uint64 {
 }
 
 // GetCurrentLevelTime wraps gst_app_src_get_current_level_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_current_level_time
 func (appsrc *AppSrcInstance) GetCurrentLevelTime() gst.ClockTime {
-	var carg0 *C.GstAppSrc   // in, none, converted
-	var cret  C.GstClockTime // return, none, casted, alias
+	var carg0 *C.GstAppSrc  // in, none, converted
+	var cret C.GstClockTime // return, none, casted, alias
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1680,11 +1688,11 @@ func (appsrc *AppSrcInstance) GetCurrentLevelTime() gst.ClockTime {
 }
 
 // GetDuration wraps gst_app_src_get_duration
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_duration
 func (appsrc *AppSrcInstance) GetDuration() gst.ClockTime {
-	var carg0 *C.GstAppSrc   // in, none, converted
-	var cret  C.GstClockTime // return, none, casted, alias
+	var carg0 *C.GstAppSrc  // in, none, converted
+	var cret C.GstClockTime // return, none, casted, alias
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1699,11 +1707,11 @@ func (appsrc *AppSrcInstance) GetDuration() gst.ClockTime {
 }
 
 // GetEmitSignals wraps gst_app_src_get_emit_signals
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_emit_signals
 func (appsrc *AppSrcInstance) GetEmitSignals() bool {
 	var carg0 *C.GstAppSrc // in, none, converted
-	var cret  C.gboolean   // return
+	var cret C.gboolean    // return
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1720,7 +1728,7 @@ func (appsrc *AppSrcInstance) GetEmitSignals() bool {
 }
 
 // GetLatency wraps gst_app_src_get_latency
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_latency
 func (appsrc *AppSrcInstance) GetLatency() (uint64, uint64) {
 	var carg0 *C.GstAppSrc // in, none, converted
@@ -1742,11 +1750,11 @@ func (appsrc *AppSrcInstance) GetLatency() (uint64, uint64) {
 }
 
 // GetLeakyType wraps gst_app_src_get_leaky_type
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_leaky_type
 func (appsrc *AppSrcInstance) GetLeakyType() AppLeakyType {
-	var carg0 *C.GstAppSrc      // in, none, converted
-	var cret  C.GstAppLeakyType // return, none, casted
+	var carg0 *C.GstAppSrc     // in, none, converted
+	var cret C.GstAppLeakyType // return, none, casted
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1761,11 +1769,11 @@ func (appsrc *AppSrcInstance) GetLeakyType() AppLeakyType {
 }
 
 // GetMaxBuffers wraps gst_app_src_get_max_buffers
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_max_buffers
 func (appsrc *AppSrcInstance) GetMaxBuffers() uint64 {
 	var carg0 *C.GstAppSrc // in, none, converted
-	var cret  C.guint64    // return, none, casted
+	var cret C.guint64     // return, none, casted
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1780,11 +1788,11 @@ func (appsrc *AppSrcInstance) GetMaxBuffers() uint64 {
 }
 
 // GetMaxBytes wraps gst_app_src_get_max_bytes
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_max_bytes
 func (appsrc *AppSrcInstance) GetMaxBytes() uint64 {
 	var carg0 *C.GstAppSrc // in, none, converted
-	var cret  C.guint64    // return, none, casted
+	var cret C.guint64     // return, none, casted
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1799,11 +1807,11 @@ func (appsrc *AppSrcInstance) GetMaxBytes() uint64 {
 }
 
 // GetMaxTime wraps gst_app_src_get_max_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_max_time
 func (appsrc *AppSrcInstance) GetMaxTime() gst.ClockTime {
-	var carg0 *C.GstAppSrc   // in, none, converted
-	var cret  C.GstClockTime // return, none, casted, alias
+	var carg0 *C.GstAppSrc  // in, none, converted
+	var cret C.GstClockTime // return, none, casted, alias
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1818,11 +1826,11 @@ func (appsrc *AppSrcInstance) GetMaxTime() gst.ClockTime {
 }
 
 // GetSize wraps gst_app_src_get_size
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_size
 func (appsrc *AppSrcInstance) GetSize() int64 {
 	var carg0 *C.GstAppSrc // in, none, converted
-	var cret  C.gint64     // return, none, casted
+	var cret C.gint64      // return, none, casted
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1837,11 +1845,11 @@ func (appsrc *AppSrcInstance) GetSize() int64 {
 }
 
 // GetStreamType wraps gst_app_src_get_stream_type
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_get_stream_type
 func (appsrc *AppSrcInstance) GetStreamType() AppStreamType {
-	var carg0 *C.GstAppSrc       // in, none, converted
-	var cret  C.GstAppStreamType // return, none, casted
+	var carg0 *C.GstAppSrc      // in, none, converted
+	var cret C.GstAppStreamType // return, none, casted
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1856,12 +1864,12 @@ func (appsrc *AppSrcInstance) GetStreamType() AppStreamType {
 }
 
 // PushBuffer wraps gst_app_src_push_buffer
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_push_buffer
 func (appsrc *AppSrcInstance) PushBuffer(buffer *gst.Buffer) gst.FlowReturn {
-	var carg0 *C.GstAppSrc    // in, none, converted
-	var carg1 *C.GstBuffer    // in, full, converted
-	var cret  C.GstFlowReturn // return, none, casted
+	var carg0 *C.GstAppSrc   // in, none, converted
+	var carg1 *C.GstBuffer   // in, full, converted
+	var cret C.GstFlowReturn // return, none, casted
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(buffer))
@@ -1878,12 +1886,12 @@ func (appsrc *AppSrcInstance) PushBuffer(buffer *gst.Buffer) gst.FlowReturn {
 }
 
 // PushBufferList wraps gst_app_src_push_buffer_list
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_push_buffer_list
 func (appsrc *AppSrcInstance) PushBufferList(bufferList *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstAppSrc     // in, none, converted
 	var carg1 *C.GstBufferList // in, full, converted
-	var cret  C.GstFlowReturn  // return, none, casted
+	var cret C.GstFlowReturn   // return, none, casted
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 	carg1 = (*C.GstBufferList)(gst.UnsafeBufferListToGlibFull(bufferList))
@@ -1900,12 +1908,12 @@ func (appsrc *AppSrcInstance) PushBufferList(bufferList *gst.BufferList) gst.Flo
 }
 
 // PushSample wraps gst_app_src_push_sample
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_push_sample
 func (appsrc *AppSrcInstance) PushSample(sample *gst.Sample) gst.FlowReturn {
-	var carg0 *C.GstAppSrc    // in, none, converted
-	var carg1 *C.GstSample    // in, none, converted
-	var cret  C.GstFlowReturn // return, none, casted
+	var carg0 *C.GstAppSrc   // in, none, converted
+	var carg1 *C.GstSample   // in, none, converted
+	var cret C.GstFlowReturn // return, none, casted
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 	carg1 = (*C.GstSample)(gst.UnsafeSampleToGlibNone(sample))
@@ -1922,7 +1930,7 @@ func (appsrc *AppSrcInstance) PushSample(sample *gst.Sample) gst.FlowReturn {
 }
 
 // AppSrcSetCaps wraps gst_app_src_set_caps
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_caps
 func (appsrc *AppSrcInstance) AppSrcSetCaps(caps *gst.Caps) {
 	var carg0 *C.GstAppSrc // in, none, converted
@@ -1939,7 +1947,7 @@ func (appsrc *AppSrcInstance) AppSrcSetCaps(caps *gst.Caps) {
 }
 
 // SetDuration wraps gst_app_src_set_duration
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_duration
 func (appsrc *AppSrcInstance) SetDuration(duration gst.ClockTime) {
 	var carg0 *C.GstAppSrc   // in, none, converted
@@ -1954,7 +1962,7 @@ func (appsrc *AppSrcInstance) SetDuration(duration gst.ClockTime) {
 }
 
 // SetEmitSignals wraps gst_app_src_set_emit_signals
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_emit_signals
 func (appsrc *AppSrcInstance) SetEmitSignals(emit bool) {
 	var carg0 *C.GstAppSrc // in, none, converted
@@ -1971,7 +1979,7 @@ func (appsrc *AppSrcInstance) SetEmitSignals(emit bool) {
 }
 
 // SetLatency wraps gst_app_src_set_latency
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_latency
 func (appsrc *AppSrcInstance) SetLatency(min uint64, max uint64) {
 	var carg0 *C.GstAppSrc // in, none, converted
@@ -1989,7 +1997,7 @@ func (appsrc *AppSrcInstance) SetLatency(min uint64, max uint64) {
 }
 
 // SetLeakyType wraps gst_app_src_set_leaky_type
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_leaky_type
 func (appsrc *AppSrcInstance) SetLeakyType(leaky AppLeakyType) {
 	var carg0 *C.GstAppSrc      // in, none, converted
@@ -2004,7 +2012,7 @@ func (appsrc *AppSrcInstance) SetLeakyType(leaky AppLeakyType) {
 }
 
 // SetMaxBuffers wraps gst_app_src_set_max_buffers
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_max_buffers
 func (appsrc *AppSrcInstance) SetMaxBuffers(max uint64) {
 	var carg0 *C.GstAppSrc // in, none, converted
@@ -2019,7 +2027,7 @@ func (appsrc *AppSrcInstance) SetMaxBuffers(max uint64) {
 }
 
 // SetMaxBytes wraps gst_app_src_set_max_bytes
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_max_bytes
 func (appsrc *AppSrcInstance) SetMaxBytes(max uint64) {
 	var carg0 *C.GstAppSrc // in, none, converted
@@ -2034,7 +2042,7 @@ func (appsrc *AppSrcInstance) SetMaxBytes(max uint64) {
 }
 
 // SetMaxTime wraps gst_app_src_set_max_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_max_time
 func (appsrc *AppSrcInstance) SetMaxTime(max gst.ClockTime) {
 	var carg0 *C.GstAppSrc   // in, none, converted
@@ -2049,7 +2057,7 @@ func (appsrc *AppSrcInstance) SetMaxTime(max gst.ClockTime) {
 }
 
 // SetSize wraps gst_app_src_set_size
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_size
 func (appsrc *AppSrcInstance) SetSize(size int64) {
 	var carg0 *C.GstAppSrc // in, none, converted
@@ -2064,7 +2072,7 @@ func (appsrc *AppSrcInstance) SetSize(size int64) {
 }
 
 // SetStreamType wraps gst_app_src_set_stream_type
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#gst_app_src_set_stream_type
 func (appsrc *AppSrcInstance) SetStreamType(typ AppStreamType) {
 	var carg0 *C.GstAppSrc       // in, none, converted
@@ -2079,28 +2087,28 @@ func (appsrc *AppSrcInstance) SetStreamType(typ AppStreamType) {
 }
 
 // EmitEndOfStream emits the "end-of-stream" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
 func (o *AppSrcInstance) EmitEndOfStream() gst.FlowReturn {
 	return o.Emit("end-of-stream").(gst.FlowReturn)
 }
 
 // EmitPushBuffer emits the "push-buffer" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
 func (o *AppSrcInstance) EmitPushBuffer(arg0 *gst.Buffer) gst.FlowReturn {
 	return o.Emit("push-buffer", arg0).(gst.FlowReturn)
 }
 
 // EmitPushBufferList emits the "push-buffer-list" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
 func (o *AppSrcInstance) EmitPushBufferList(arg0 *gst.BufferList) gst.FlowReturn {
 	return o.Emit("push-buffer-list", arg0).(gst.FlowReturn)
 }
 
 // EmitPushSample emits the "push-sample" signal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
 func (o *AppSrcInstance) EmitPushSample(arg0 *gst.Sample) gst.FlowReturn {
 	return o.Emit("push-sample", arg0).(gst.FlowReturn)
@@ -2112,32 +2120,32 @@ type AppSrcOverrides[Instance AppSrc] struct {
 	// gstbase.BaseSrcOverrides allows you to override virtual methods from the parent class gstbase.BaseSrc
 	gstbase.BaseSrcOverrides[Instance]
 
-	// // EndOfStream allows you to override the implementation of the virtual method end_of_stream.
-	// 
+	// EndOfStream allows you to override the implementation of the virtual method end_of_stream.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#end_of_stream
 	EndOfStream func(Instance) gst.FlowReturn
-	// // EnoughData allows you to override the implementation of the virtual method enough_data.
-	// 
+	// EnoughData allows you to override the implementation of the virtual method enough_data.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#enough_data
 	EnoughData func(Instance)
-	// // NeedData allows you to override the implementation of the virtual method need_data.
-	// 
+	// NeedData allows you to override the implementation of the virtual method need_data.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#need_data
-	NeedData func(Instance, uint)
-	// // PushBuffer allows you to override the implementation of the virtual method push_buffer.
-	// 
+	NeedData func(Instance, uint32)
+	// PushBuffer allows you to override the implementation of the virtual method push_buffer.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#push_buffer
 	PushBuffer func(Instance, *gst.Buffer) gst.FlowReturn
-	// // PushBufferList allows you to override the implementation of the virtual method push_buffer_list.
-	// 
+	// PushBufferList allows you to override the implementation of the virtual method push_buffer_list.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#push_buffer_list
 	PushBufferList func(Instance, *gst.BufferList) gst.FlowReturn
-	// // PushSample allows you to override the implementation of the virtual method push_sample.
-	// 
+	// PushSample allows you to override the implementation of the virtual method push_sample.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#push_sample
 	PushSample func(Instance, *gst.Sample) gst.FlowReturn
-	// // SeekData allows you to override the implementation of the virtual method seek_data.
-	// 
+	// SeekData allows you to override the implementation of the virtual method seek_data.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#seek_data
 	SeekData func(Instance, uint64) bool
 }
@@ -2155,8 +2163,8 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 			unsafe.Pointer(pclass),
 			"_goglib_gstapp1_AppSrc_end_of_stream",
 			func(carg0 *C.GstAppSrc) (cret C.GstFlowReturn) {
-				var appsrc Instance       // go GstAppSrc subclass
-				var goret  gst.FlowReturn // return, none, casted
+				var appsrc Instance      // go GstAppSrc subclass
+				var goret gst.FlowReturn // return, none, casted
 
 				appsrc = UnsafeAppSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
@@ -2191,10 +2199,10 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 			"_goglib_gstapp1_AppSrc_need_data",
 			func(carg0 *C.GstAppSrc, carg1 C.guint) {
 				var appsrc Instance // go GstAppSrc subclass
-				var length uint     // in, none, casted
+				var length uint32   // in, none, casted
 
 				appsrc = UnsafeAppSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
-				length = uint(carg1)
+				length = uint32(carg1)
 
 				overrides.NeedData(appsrc, length)
 			},
@@ -2207,9 +2215,9 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 			unsafe.Pointer(pclass),
 			"_goglib_gstapp1_AppSrc_push_buffer",
 			func(carg0 *C.GstAppSrc, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
-				var appsrc Instance       // go GstAppSrc subclass
-				var buffer *gst.Buffer    // in, full, converted
-				var goret  gst.FlowReturn // return, none, casted
+				var appsrc Instance      // go GstAppSrc subclass
+				var buffer *gst.Buffer   // in, full, converted
+				var goret gst.FlowReturn // return, none, casted
 
 				appsrc = UnsafeAppSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				buffer = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg1))
@@ -2229,9 +2237,9 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 			unsafe.Pointer(pclass),
 			"_goglib_gstapp1_AppSrc_push_buffer_list",
 			func(carg0 *C.GstAppSrc, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
-				var appsrc     Instance        // go GstAppSrc subclass
+				var appsrc Instance            // go GstAppSrc subclass
 				var bufferList *gst.BufferList // in, full, converted
-				var goret      gst.FlowReturn  // return, none, casted
+				var goret gst.FlowReturn       // return, none, casted
 
 				appsrc = UnsafeAppSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				bufferList = gst.UnsafeBufferListFromGlibFull(unsafe.Pointer(carg1))
@@ -2251,9 +2259,9 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 			unsafe.Pointer(pclass),
 			"_goglib_gstapp1_AppSrc_push_sample",
 			func(carg0 *C.GstAppSrc, carg1 *C.GstSample) (cret C.GstFlowReturn) {
-				var appsrc Instance       // go GstAppSrc subclass
-				var sample *gst.Sample    // in, none, converted
-				var goret  gst.FlowReturn // return, none, casted
+				var appsrc Instance      // go GstAppSrc subclass
+				var sample *gst.Sample   // in, none, converted
+				var goret gst.FlowReturn // return, none, casted
 
 				appsrc = UnsafeAppSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				sample = gst.UnsafeSampleFromGlibNone(unsafe.Pointer(carg1))
@@ -2275,7 +2283,7 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 			func(carg0 *C.GstAppSrc, carg1 C.guint64) (cret C.gboolean) {
 				var appsrc Instance // go GstAppSrc subclass
 				var offset uint64   // in, none, casted
-				var goret  bool     // return
+				var goret bool      // return
 
 				appsrc = UnsafeAppSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				offset = uint64(carg1)
@@ -2294,11 +2302,11 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 
 // ParentEndOfStream calls the default implementations of the `GstAppSrc.end_of_stream` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#end_of_stream
 func (appsrc *AppSrcInstance) ParentEndOfStream() gst.FlowReturn {
 	var carg0 *C.GstAppSrc
-	var cret  C.GstFlowReturn // return, none, casted
+	var cret C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
 
@@ -2316,7 +2324,7 @@ func (appsrc *AppSrcInstance) ParentEndOfStream() gst.FlowReturn {
 
 // ParentEnoughData calls the default implementations of the `GstAppSrc.enough_data` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#enough_data
 func (appsrc *AppSrcInstance) ParentEnoughData() {
 	var carg0 *C.GstAppSrc
@@ -2331,9 +2339,9 @@ func (appsrc *AppSrcInstance) ParentEnoughData() {
 
 // ParentNeedData calls the default implementations of the `GstAppSrc.need_data` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#need_data
-func (appsrc *AppSrcInstance) ParentNeedData(length uint) {
+func (appsrc *AppSrcInstance) ParentNeedData(length uint32) {
 	var carg0 *C.GstAppSrc
 	var carg1 C.guint // in, none, converted
 
@@ -2349,12 +2357,12 @@ func (appsrc *AppSrcInstance) ParentNeedData(length uint) {
 
 // ParentPushBuffer calls the default implementations of the `GstAppSrc.push_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#push_buffer
 func (appsrc *AppSrcInstance) ParentPushBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstAppSrc
-	var carg1 *C.GstBuffer    // in, none, converted
-	var cret  C.GstFlowReturn // return, none, casted
+	var carg1 *C.GstBuffer   // in, none, converted
+	var cret C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
 
@@ -2374,12 +2382,12 @@ func (appsrc *AppSrcInstance) ParentPushBuffer(buffer *gst.Buffer) gst.FlowRetur
 
 // ParentPushBufferList calls the default implementations of the `GstAppSrc.push_buffer_list` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#push_buffer_list
 func (appsrc *AppSrcInstance) ParentPushBufferList(bufferList *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstAppSrc
 	var carg1 *C.GstBufferList // in, none, converted
-	var cret  C.GstFlowReturn  // return, none, casted
+	var cret C.GstFlowReturn   // return, none, casted
 
 	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
 
@@ -2399,12 +2407,12 @@ func (appsrc *AppSrcInstance) ParentPushBufferList(bufferList *gst.BufferList) g
 
 // ParentPushSample calls the default implementations of the `GstAppSrc.push_sample` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#push_sample
 func (appsrc *AppSrcInstance) ParentPushSample(sample *gst.Sample) gst.FlowReturn {
 	var carg0 *C.GstAppSrc
-	var carg1 *C.GstSample    // in, none, converted
-	var cret  C.GstFlowReturn // return, none, casted
+	var carg1 *C.GstSample   // in, none, converted
+	var cret C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
 
@@ -2424,12 +2432,12 @@ func (appsrc *AppSrcInstance) ParentPushSample(sample *gst.Sample) gst.FlowRetur
 
 // ParentSeekData calls the default implementations of the `GstAppSrc.seek_data` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#seek_data
 func (appsrc *AppSrcInstance) ParentSeekData(offset uint64) bool {
 	var carg0 *C.GstAppSrc
-	var carg1 C.guint64  // in, none, converted
-	var cret  C.gboolean // return
+	var carg1 C.guint64 // in, none, converted
+	var cret C.gboolean // return
 
 	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
 
@@ -2452,12 +2460,12 @@ func (appsrc *AppSrcInstance) ParentSeekData(offset uint64) bool {
 // RegisterAppSrcSubClass is used to register a go subclass of GstAppSrc. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterAppSrcSubClass[InstanceT AppSrc](
-		name string,
-		classInit func(class *AppSrcClass),
-		constructor func() InstanceT,
-		overrides AppSrcOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *AppSrcClass),
+	constructor func() InstanceT,
+	overrides AppSrcOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -2468,7 +2476,7 @@ func RegisterAppSrcSubClass[InstanceT AppSrc](
 		TypeAppSrc,
 		UnsafeAppSrcClassFromGlibBorrow,
 		UnsafeApplyAppSrcOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapAppSrc(obj)
 		},
 		interfaceInits...,
@@ -2476,9 +2484,9 @@ func RegisterAppSrcSubClass[InstanceT AppSrc](
 }
 
 // AppSinkClass wraps GstAppSinkClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#GstAppSinkClass
-// 
+//
 // AppSinkClass is the type struct for [AppSink]
 type AppSinkClass struct {
 	*appSinkClass
@@ -2506,7 +2514,7 @@ func UnsafeAppSinkClassFromGlibBorrow(p unsafe.Pointer) *AppSinkClass {
 }
 
 // UnsafeAppSinkClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [AppSinkClass] is expected to work anymore.
 func UnsafeAppSinkClassFree(a *AppSinkClass) {
 	C.free(unsafe.Pointer(a.native))
@@ -2531,9 +2539,9 @@ func (a *AppSinkClass) ParentClass() *gstbase.BaseSinkClass {
 }
 
 // AppSrcClass wraps GstAppSrcClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#GstAppSrcClass
-// 
+//
 // AppSrcClass is the type struct for [AppSrc]
 type AppSrcClass struct {
 	*appSrcClass
@@ -2561,7 +2569,7 @@ func UnsafeAppSrcClassFromGlibBorrow(p unsafe.Pointer) *AppSrcClass {
 }
 
 // UnsafeAppSrcClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [AppSrcClass] is expected to work anymore.
 func UnsafeAppSrcClassFree(a *AppSrcClass) {
 	C.free(unsafe.Pointer(a.native))
@@ -2584,4 +2592,3 @@ func (a *AppSrcClass) ParentClass() *gstbase.BaseSrcClass {
 	runtime.AddCleanup(parent, func(_ *AppSrcClass) {}, a)
 	return parent
 }
-

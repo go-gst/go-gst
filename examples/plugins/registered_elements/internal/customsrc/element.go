@@ -77,7 +77,7 @@ func (bin *customSrc) init() {
 	bin.updateSource()
 }
 
-func (bin *customSrc) setProperty(_ uint, value any, pspec *gobject.ParamSpec) {
+func (bin *customSrc) setProperty(_ uint32, value any, pspec *gobject.ParamSpec) {
 	switch pspec.Name() {
 	case "duration":
 		bin.Duration = time.Duration(value.(int64)) // declared as int64 property in classInit
@@ -88,7 +88,7 @@ func (bin *customSrc) setProperty(_ uint, value any, pspec *gobject.ParamSpec) {
 	}
 }
 
-func (bin *customSrc) getProperty(_ uint, pspec *gobject.ParamSpec) any {
+func (bin *customSrc) getProperty(_ uint32, pspec *gobject.ParamSpec) any {
 	switch pspec.Name() {
 	case "duration":
 		return int64(bin.Duration) // declared as int64 property in classInit

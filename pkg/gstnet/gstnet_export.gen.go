@@ -23,9 +23,9 @@ func _goglib_gstnet1_PtpStatisticsCallback(carg1 C.guint8, carg2 *C.GstStructure
 		fn = v.(PtpStatisticsCallback)
 	}
 
-	var domain uint8          // in, none, casted
-	var stats  *gst.Structure // in, none, converted
-	var goret  bool           // return
+	var domain uint8         // in, none, casted
+	var stats *gst.Structure // in, none, converted
+	var goret bool           // return
 
 	domain = uint8(carg1)
 	stats = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(carg2))
@@ -38,4 +38,3 @@ func _goglib_gstnet1_PtpStatisticsCallback(carg1 C.guint8, carg2 *C.GstStructure
 
 	return cret
 }
-

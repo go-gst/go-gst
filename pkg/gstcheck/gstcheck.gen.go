@@ -33,17 +33,17 @@ func init() {
 }
 
 // CheckLogFilterFunc wraps GstCheckLogFilterFunc
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstcheck.html#GstCheckLogFilterFunc
 type CheckLogFilterFunc func(logDomain string, logLevel glib.LogLevelFlags, message string) (goret bool)
 
 // BufferStrawGetBuffer wraps gst_buffer_straw_get_buffer
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func BufferStrawGetBuffer(bin gst.Element, pad gst.Pad) *gst.Buffer {
 	var carg1 *C.GstElement // in, none, converted
 	var carg2 *C.GstPad     // in, none, converted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret *C.GstBuffer   // return, full, converted
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(bin))
 	carg2 = (*C.GstPad)(gst.UnsafePadToGlibNone(pad))
@@ -60,7 +60,7 @@ func BufferStrawGetBuffer(bin gst.Element, pad gst.Pad) *gst.Buffer {
 }
 
 // BufferStrawStartPipeline wraps gst_buffer_straw_start_pipeline
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func BufferStrawStartPipeline(bin gst.Element, pad gst.Pad) {
 	var carg1 *C.GstElement // in, none, converted
@@ -75,7 +75,7 @@ func BufferStrawStartPipeline(bin gst.Element, pad gst.Pad) {
 }
 
 // BufferStrawStopPipeline wraps gst_buffer_straw_stop_pipeline
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func BufferStrawStopPipeline(bin gst.Element, pad gst.Pad) {
 	var carg1 *C.GstElement // in, none, converted
@@ -90,7 +90,7 @@ func BufferStrawStopPipeline(bin gst.Element, pad gst.Pad) {
 }
 
 // CheckAbiList wraps gst_check_abi_list
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckAbiList(list *CheckABIStruct, haveAbiSizes bool) {
 	var carg1 *C.GstCheckABIStruct // in, none, converted
@@ -107,7 +107,7 @@ func CheckAbiList(list *CheckABIStruct, haveAbiSizes bool) {
 }
 
 // CheckCapsEqual wraps gst_check_caps_equal
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckCapsEqual(caps1 *gst.Caps, caps2 *gst.Caps) {
 	var carg1 *C.GstCaps // in, none, converted
@@ -122,13 +122,13 @@ func CheckCapsEqual(caps1 *gst.Caps, caps2 *gst.Caps) {
 }
 
 // CheckChainFunc wraps gst_check_chain_func
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckChainFunc(pad gst.Pad, parent gst.Object, buffer *gst.Buffer) gst.FlowReturn {
-	var carg1 *C.GstPad       // in, none, converted
-	var carg2 *C.GstObject    // in, none, converted
-	var carg3 *C.GstBuffer    // in, none, converted
-	var cret  C.GstFlowReturn // return, none, casted
+	var carg1 *C.GstPad      // in, none, converted
+	var carg2 *C.GstObject   // in, none, converted
+	var carg3 *C.GstBuffer   // in, none, converted
+	var cret C.GstFlowReturn // return, none, casted
 
 	carg1 = (*C.GstPad)(gst.UnsafePadToGlibNone(pad))
 	carg2 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(parent))
@@ -147,7 +147,7 @@ func CheckChainFunc(pad gst.Pad, parent gst.Object, buffer *gst.Buffer) gst.Flow
 }
 
 // CheckClearLogFilter wraps gst_check_clear_log_filter
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckClearLogFilter() {
 
@@ -155,7 +155,7 @@ func CheckClearLogFilter() {
 }
 
 // CheckDropBuffers wraps gst_check_drop_buffers
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckDropBuffers() {
 
@@ -163,7 +163,7 @@ func CheckDropBuffers() {
 }
 
 // CheckElementPushBuffer wraps gst_check_element_push_buffer
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckElementPushBuffer(elementName string, bufferIn *gst.Buffer, capsIn *gst.Caps, bufferOut *gst.Buffer, capsOut *gst.Caps) {
 	var carg1 *C.gchar     // in, none, string
@@ -188,7 +188,7 @@ func CheckElementPushBuffer(elementName string, bufferIn *gst.Buffer, capsIn *gs
 }
 
 // CheckMessageError wraps gst_check_message_error
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckMessageError(message *gst.Message, typ gst.MessageType, domain glib.Quark, code int32) {
 	var carg1 *C.GstMessage    // in, none, converted
@@ -209,7 +209,7 @@ func CheckMessageError(message *gst.Message, typ gst.MessageType, domain glib.Qu
 }
 
 // CheckRemoveLogFilter wraps gst_check_remove_log_filter
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckRemoveLogFilter(filter *CheckLogFilter) {
 	var carg1 *C.GstCheckLogFilter // in, none, converted
@@ -221,11 +221,11 @@ func CheckRemoveLogFilter(filter *CheckLogFilter) {
 }
 
 // CheckSetupElement wraps gst_check_setup_element
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckSetupElement(factory string) gst.Element {
-	var carg1 *C.gchar      // in, none, string
-	var cret  *C.GstElement // return, full, converted
+	var carg1 *C.gchar     // in, none, string
+	var cret *C.GstElement // return, full, converted
 
 	carg1 = (*C.gchar)(transfer.GLibString(factory))
 	defer C.g_free(C.gpointer(carg1))
@@ -241,7 +241,7 @@ func CheckSetupElement(factory string) gst.Element {
 }
 
 // CheckSetupEvents wraps gst_check_setup_events
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckSetupEvents(srcpad gst.Pad, element gst.Element, caps *gst.Caps, format gst.Format) {
 	var carg1 *C.GstPad     // in, none, converted
@@ -264,7 +264,7 @@ func CheckSetupEvents(srcpad gst.Pad, element gst.Element, caps *gst.Caps, forma
 }
 
 // CheckSetupEventsWithStreamID wraps gst_check_setup_events_with_stream_id
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckSetupEventsWithStreamID(srcpad gst.Pad, element gst.Element, caps *gst.Caps, format gst.Format, streamId string) {
 	var carg1 *C.GstPad     // in, none, converted
@@ -291,12 +291,12 @@ func CheckSetupEventsWithStreamID(srcpad gst.Pad, element gst.Element, caps *gst
 }
 
 // CheckSetupSinkPad wraps gst_check_setup_sink_pad
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckSetupSinkPad(element gst.Element, tmpl *gst.StaticPadTemplate) gst.Pad {
 	var carg1 *C.GstElement           // in, none, converted
 	var carg2 *C.GstStaticPadTemplate // in, none, converted
-	var cret  *C.GstPad               // return, full, converted
+	var cret *C.GstPad                // return, full, converted
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
 	carg2 = (*C.GstStaticPadTemplate)(gst.UnsafeStaticPadTemplateToGlibNone(tmpl))
@@ -313,13 +313,13 @@ func CheckSetupSinkPad(element gst.Element, tmpl *gst.StaticPadTemplate) gst.Pad
 }
 
 // CheckSetupSinkPadByName wraps gst_check_setup_sink_pad_by_name
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckSetupSinkPadByName(element gst.Element, tmpl *gst.StaticPadTemplate, name string) gst.Pad {
 	var carg1 *C.GstElement           // in, none, converted
 	var carg2 *C.GstStaticPadTemplate // in, none, converted
 	var carg3 *C.gchar                // in, none, string
-	var cret  *C.GstPad               // return, full, converted
+	var cret *C.GstPad                // return, full, converted
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
 	carg2 = (*C.GstStaticPadTemplate)(gst.UnsafeStaticPadTemplateToGlibNone(tmpl))
@@ -339,13 +339,13 @@ func CheckSetupSinkPadByName(element gst.Element, tmpl *gst.StaticPadTemplate, n
 }
 
 // CheckSetupSinkPadByNameFromTemplate wraps gst_check_setup_sink_pad_by_name_from_template
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckSetupSinkPadByNameFromTemplate(element gst.Element, tmpl gst.PadTemplate, name string) gst.Pad {
 	var carg1 *C.GstElement     // in, none, converted
 	var carg2 *C.GstPadTemplate // in, none, converted
 	var carg3 *C.gchar          // in, none, string
-	var cret  *C.GstPad         // return, full, converted
+	var cret *C.GstPad          // return, full, converted
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
 	carg2 = (*C.GstPadTemplate)(gst.UnsafePadTemplateToGlibNone(tmpl))
@@ -365,12 +365,12 @@ func CheckSetupSinkPadByNameFromTemplate(element gst.Element, tmpl gst.PadTempla
 }
 
 // CheckSetupSinkPadFromTemplate wraps gst_check_setup_sink_pad_from_template
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckSetupSinkPadFromTemplate(element gst.Element, tmpl gst.PadTemplate) gst.Pad {
 	var carg1 *C.GstElement     // in, none, converted
 	var carg2 *C.GstPadTemplate // in, none, converted
-	var cret  *C.GstPad         // return, full, converted
+	var cret *C.GstPad          // return, full, converted
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
 	carg2 = (*C.GstPadTemplate)(gst.UnsafePadTemplateToGlibNone(tmpl))
@@ -387,12 +387,12 @@ func CheckSetupSinkPadFromTemplate(element gst.Element, tmpl gst.PadTemplate) gs
 }
 
 // CheckSetupSrcPad wraps gst_check_setup_src_pad
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckSetupSrcPad(element gst.Element, tmpl *gst.StaticPadTemplate) gst.Pad {
 	var carg1 *C.GstElement           // in, none, converted
 	var carg2 *C.GstStaticPadTemplate // in, none, converted
-	var cret  *C.GstPad               // return, full, converted
+	var cret *C.GstPad                // return, full, converted
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
 	carg2 = (*C.GstStaticPadTemplate)(gst.UnsafeStaticPadTemplateToGlibNone(tmpl))
@@ -409,13 +409,13 @@ func CheckSetupSrcPad(element gst.Element, tmpl *gst.StaticPadTemplate) gst.Pad 
 }
 
 // CheckSetupSrcPadByName wraps gst_check_setup_src_pad_by_name
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckSetupSrcPadByName(element gst.Element, tmpl *gst.StaticPadTemplate, name string) gst.Pad {
 	var carg1 *C.GstElement           // in, none, converted
 	var carg2 *C.GstStaticPadTemplate // in, none, converted
 	var carg3 *C.gchar                // in, none, string
-	var cret  *C.GstPad               // return, full, converted
+	var cret *C.GstPad                // return, full, converted
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
 	carg2 = (*C.GstStaticPadTemplate)(gst.UnsafeStaticPadTemplateToGlibNone(tmpl))
@@ -435,13 +435,13 @@ func CheckSetupSrcPadByName(element gst.Element, tmpl *gst.StaticPadTemplate, na
 }
 
 // CheckSetupSrcPadByNameFromTemplate wraps gst_check_setup_src_pad_by_name_from_template
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckSetupSrcPadByNameFromTemplate(element gst.Element, tmpl gst.PadTemplate, name string) gst.Pad {
 	var carg1 *C.GstElement     // in, none, converted
 	var carg2 *C.GstPadTemplate // in, none, converted
 	var carg3 *C.gchar          // in, none, string
-	var cret  *C.GstPad         // return, full, converted
+	var cret *C.GstPad          // return, full, converted
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
 	carg2 = (*C.GstPadTemplate)(gst.UnsafePadTemplateToGlibNone(tmpl))
@@ -461,12 +461,12 @@ func CheckSetupSrcPadByNameFromTemplate(element gst.Element, tmpl gst.PadTemplat
 }
 
 // CheckSetupSrcPadFromTemplate wraps gst_check_setup_src_pad_from_template
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckSetupSrcPadFromTemplate(element gst.Element, tmpl gst.PadTemplate) gst.Pad {
 	var carg1 *C.GstElement     // in, none, converted
 	var carg2 *C.GstPadTemplate // in, none, converted
-	var cret  *C.GstPad         // return, full, converted
+	var cret *C.GstPad          // return, full, converted
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
 	carg2 = (*C.GstPadTemplate)(gst.UnsafePadTemplateToGlibNone(tmpl))
@@ -483,7 +483,7 @@ func CheckSetupSrcPadFromTemplate(element gst.Element, tmpl gst.PadTemplate) gst
 }
 
 // CheckTeardownElement wraps gst_check_teardown_element
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckTeardownElement(element gst.Element) {
 	var carg1 *C.GstElement // in, none, converted
@@ -495,7 +495,7 @@ func CheckTeardownElement(element gst.Element) {
 }
 
 // CheckTeardownPadByName wraps gst_check_teardown_pad_by_name
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckTeardownPadByName(element gst.Element, name string) {
 	var carg1 *C.GstElement // in, none, converted
@@ -511,7 +511,7 @@ func CheckTeardownPadByName(element gst.Element, name string) {
 }
 
 // CheckTeardownSinkPad wraps gst_check_teardown_sink_pad
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckTeardownSinkPad(element gst.Element) {
 	var carg1 *C.GstElement // in, none, converted
@@ -523,7 +523,7 @@ func CheckTeardownSinkPad(element gst.Element) {
 }
 
 // CheckTeardownSrcPad wraps gst_check_teardown_src_pad
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func CheckTeardownSrcPad(element gst.Element) {
 	var carg1 *C.GstElement // in, none, converted
@@ -535,12 +535,12 @@ func CheckTeardownSrcPad(element gst.Element) {
 }
 
 // ConsistencyCheckerAddPad wraps gst_consistency_checker_add_pad
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func ConsistencyCheckerAddPad(consist *StreamConsistency, pad gst.Pad) bool {
 	var carg1 *C.GstStreamConsistency // in, none, converted
 	var carg2 *C.GstPad               // in, none, converted
-	var cret  C.gboolean              // return
+	var cret C.gboolean               // return
 
 	carg1 = (*C.GstStreamConsistency)(UnsafeStreamConsistencyToGlibNone(consist))
 	carg2 = (*C.GstPad)(gst.UnsafePadToGlibNone(pad))
@@ -559,7 +559,7 @@ func ConsistencyCheckerAddPad(consist *StreamConsistency, pad gst.Pad) bool {
 }
 
 // ConsistencyCheckerFree wraps gst_consistency_checker_free
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func ConsistencyCheckerFree(consist *StreamConsistency) {
 	var carg1 *C.GstStreamConsistency // in, none, converted
@@ -571,7 +571,7 @@ func ConsistencyCheckerFree(consist *StreamConsistency) {
 }
 
 // ConsistencyCheckerReset wraps gst_consistency_checker_reset
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check
 func ConsistencyCheckerReset(consist *StreamConsistency) {
 	var carg1 *C.GstStreamConsistency // in, none, converted
@@ -591,50 +591,50 @@ type TestClockInstance struct {
 var _ TestClock = (*TestClockInstance)(nil)
 
 // TestClock wraps GstTestClock
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#GstTestClock
 type TestClock interface {
 	gst.Clock
 	upcastToGstTestClock() *TestClockInstance
 
 	// AdvanceTime wraps gst_test_clock_advance_time
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_advance_time
 	AdvanceTime(gst.ClockTimeDiff)
 	// Crank wraps gst_test_clock_crank
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_crank
 	Crank() bool
 	// GetNextEntryTime wraps gst_test_clock_get_next_entry_time
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_get_next_entry_time
 	GetNextEntryTime() gst.ClockTime
 	// HasID wraps gst_test_clock_has_id
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_has_id
 	HasID(gst.ClockID) bool
 	// PeekIDCount wraps gst_test_clock_peek_id_count
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_peek_id_count
-	PeekIDCount() uint
+	PeekIDCount() uint32
 	// PeekNextPendingID wraps gst_test_clock_peek_next_pending_id
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_peek_next_pending_id
 	PeekNextPendingID() (gst.ClockID, bool)
 	// ProcessID wraps gst_test_clock_process_id
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_process_id
 	ProcessID(gst.ClockID) bool
 	// ProcessNextClockID wraps gst_test_clock_process_next_clock_id
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_process_next_clock_id
 	ProcessNextClockID() gst.ClockID
 	// SetTime wraps gst_test_clock_set_time
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_set_time
 	SetTime(gst.ClockTime)
 	// WaitForNextPendingID wraps gst_test_clock_wait_for_next_pending_id
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_wait_for_next_pending_id
 	WaitForNextPendingID() gst.ClockID
 
@@ -656,7 +656,7 @@ func unsafeWrapTestClock(base *gobject.ObjectInstance) *TestClockInstance {
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeTestClock,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapTestClock(inst)
 		},
 	)
@@ -696,7 +696,7 @@ func UnsafeTestClockToGlibFull(c TestClock) unsafe.Pointer {
 }
 
 // NewTestClock wraps gst_test_clock_new
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_new
 func NewTestClock() gst.Clock {
 	var cret *C.GstClock // return, full, converted
@@ -711,11 +711,11 @@ func NewTestClock() gst.Clock {
 }
 
 // NewTestClockWithStartTime wraps gst_test_clock_new_with_start_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_new_with_start_time
 func NewTestClockWithStartTime(startTime gst.ClockTime) gst.Clock {
 	var carg1 C.GstClockTime // in, none, casted, alias
-	var cret  *C.GstClock    // return, full, converted
+	var cret *C.GstClock     // return, full, converted
 
 	carg1 = C.GstClockTime(startTime)
 
@@ -730,7 +730,7 @@ func NewTestClockWithStartTime(startTime gst.ClockTime) gst.Clock {
 }
 
 // AdvanceTime wraps gst_test_clock_advance_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_advance_time
 func (testClock *TestClockInstance) AdvanceTime(delta gst.ClockTimeDiff) {
 	var carg0 *C.GstTestClock    // in, none, converted
@@ -745,11 +745,11 @@ func (testClock *TestClockInstance) AdvanceTime(delta gst.ClockTimeDiff) {
 }
 
 // Crank wraps gst_test_clock_crank
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_crank
 func (testClock *TestClockInstance) Crank() bool {
 	var carg0 *C.GstTestClock // in, none, converted
-	var cret  C.gboolean      // return
+	var cret C.gboolean       // return
 
 	carg0 = (*C.GstTestClock)(UnsafeTestClockToGlibNone(testClock))
 
@@ -766,11 +766,11 @@ func (testClock *TestClockInstance) Crank() bool {
 }
 
 // GetNextEntryTime wraps gst_test_clock_get_next_entry_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_get_next_entry_time
 func (testClock *TestClockInstance) GetNextEntryTime() gst.ClockTime {
 	var carg0 *C.GstTestClock // in, none, converted
-	var cret  C.GstClockTime  // return, none, casted, alias
+	var cret C.GstClockTime   // return, none, casted, alias
 
 	carg0 = (*C.GstTestClock)(UnsafeTestClockToGlibNone(testClock))
 
@@ -785,12 +785,12 @@ func (testClock *TestClockInstance) GetNextEntryTime() gst.ClockTime {
 }
 
 // HasID wraps gst_test_clock_has_id
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_has_id
 func (testClock *TestClockInstance) HasID(id gst.ClockID) bool {
 	var carg0 *C.GstTestClock // in, none, converted
 	var carg1 C.GstClockID    // in, none, casted, alias
-	var cret  C.gboolean      // return
+	var cret C.gboolean       // return
 
 	carg0 = (*C.GstTestClock)(UnsafeTestClockToGlibNone(testClock))
 	carg1 = C.GstClockID(id)
@@ -809,31 +809,31 @@ func (testClock *TestClockInstance) HasID(id gst.ClockID) bool {
 }
 
 // PeekIDCount wraps gst_test_clock_peek_id_count
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_peek_id_count
-func (testClock *TestClockInstance) PeekIDCount() uint {
+func (testClock *TestClockInstance) PeekIDCount() uint32 {
 	var carg0 *C.GstTestClock // in, none, converted
-	var cret  C.guint         // return, none, casted
+	var cret C.guint          // return, none, casted
 
 	carg0 = (*C.GstTestClock)(UnsafeTestClockToGlibNone(testClock))
 
 	cret = C.gst_test_clock_peek_id_count(carg0)
 	runtime.KeepAlive(testClock)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // PeekNextPendingID wraps gst_test_clock_peek_next_pending_id
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_peek_next_pending_id
 func (testClock *TestClockInstance) PeekNextPendingID() (gst.ClockID, bool) {
 	var carg0 *C.GstTestClock // in, none, converted
 	var carg1 C.GstClockID    // out, full, casted, alias
-	var cret  C.gboolean      // return
+	var cret C.gboolean       // return
 
 	carg0 = (*C.GstTestClock)(UnsafeTestClockToGlibNone(testClock))
 
@@ -841,7 +841,7 @@ func (testClock *TestClockInstance) PeekNextPendingID() (gst.ClockID, bool) {
 	runtime.KeepAlive(testClock)
 
 	var pendingId gst.ClockID
-	var goret     bool
+	var goret bool
 
 	pendingId = gst.ClockID(carg1)
 	if cret != 0 {
@@ -852,12 +852,12 @@ func (testClock *TestClockInstance) PeekNextPendingID() (gst.ClockID, bool) {
 }
 
 // ProcessID wraps gst_test_clock_process_id
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_process_id
 func (testClock *TestClockInstance) ProcessID(pendingId gst.ClockID) bool {
 	var carg0 *C.GstTestClock // in, none, converted
 	var carg1 C.GstClockID    // in, full, casted, alias
-	var cret  C.gboolean      // return
+	var cret C.gboolean       // return
 
 	carg0 = (*C.GstTestClock)(UnsafeTestClockToGlibNone(testClock))
 	carg1 = C.GstClockID(pendingId)
@@ -876,11 +876,11 @@ func (testClock *TestClockInstance) ProcessID(pendingId gst.ClockID) bool {
 }
 
 // ProcessNextClockID wraps gst_test_clock_process_next_clock_id
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_process_next_clock_id
 func (testClock *TestClockInstance) ProcessNextClockID() gst.ClockID {
 	var carg0 *C.GstTestClock // in, none, converted
-	var cret  C.GstClockID    // return, full, casted, alias, nullable
+	var cret C.GstClockID     // return, full, casted, alias, nullable
 
 	carg0 = (*C.GstTestClock)(UnsafeTestClockToGlibNone(testClock))
 
@@ -897,7 +897,7 @@ func (testClock *TestClockInstance) ProcessNextClockID() gst.ClockID {
 }
 
 // SetTime wraps gst_test_clock_set_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_set_time
 func (testClock *TestClockInstance) SetTime(newTime gst.ClockTime) {
 	var carg0 *C.GstTestClock // in, none, converted
@@ -912,7 +912,7 @@ func (testClock *TestClockInstance) SetTime(newTime gst.ClockTime) {
 }
 
 // WaitForNextPendingID wraps gst_test_clock_wait_for_next_pending_id
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_wait_for_next_pending_id
 func (testClock *TestClockInstance) WaitForNextPendingID() gst.ClockID {
 	var carg0 *C.GstTestClock // in, none, converted
@@ -935,7 +935,6 @@ func (testClock *TestClockInstance) WaitForNextPendingID() gst.ClockID {
 type TestClockOverrides[Instance TestClock] struct {
 	// gst.ClockOverrides allows you to override virtual methods from the parent class gst.Clock
 	gst.ClockOverrides[Instance]
-
 }
 
 // UnsafeApplyTestClockOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -947,12 +946,12 @@ func UnsafeApplyTestClockOverrides[Instance TestClock](gclass unsafe.Pointer, ov
 // RegisterTestClockSubClass is used to register a go subclass of GstTestClock. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterTestClockSubClass[InstanceT TestClock](
-		name string,
-		classInit func(class *TestClockClass),
-		constructor func() InstanceT,
-		overrides TestClockOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *TestClockClass),
+	constructor func() InstanceT,
+	overrides TestClockOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -963,7 +962,7 @@ func RegisterTestClockSubClass[InstanceT TestClock](
 		TypeTestClock,
 		UnsafeTestClockClassFromGlibBorrow,
 		UnsafeApplyTestClockOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapTestClock(obj)
 		},
 		interfaceInits...,
@@ -971,7 +970,7 @@ func RegisterTestClockSubClass[InstanceT TestClock](
 }
 
 // CheckABIStruct wraps GstCheckABIStruct
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstcheck.html#GstCheckABIStruct
 type CheckABIStruct struct {
 	*checkABIStruct
@@ -1017,7 +1016,7 @@ func UnsafeCheckABIStructFromGlibFull(p unsafe.Pointer) *CheckABIStruct {
 	}
 	runtime.SetFinalizer(
 		wrapped.checkABIStruct,
-		func (intern *checkABIStruct) {
+		func(intern *checkABIStruct) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -1025,7 +1024,7 @@ func UnsafeCheckABIStructFromGlibFull(p unsafe.Pointer) *CheckABIStruct {
 }
 
 // UnsafeCheckABIStructFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [CheckABIStruct] is expected to work anymore.
 func UnsafeCheckABIStructFree(c *CheckABIStruct) {
 	C.free(unsafe.Pointer(c.native))
@@ -1053,7 +1052,7 @@ func UnsafeCheckABIStructToGlibFull(c *CheckABIStruct) unsafe.Pointer {
 }
 
 // CheckLogFilter wraps GstCheckLogFilter
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstcheck.html#GstCheckLogFilter
 type CheckLogFilter struct {
 	*checkLogFilter
@@ -1099,7 +1098,7 @@ func UnsafeCheckLogFilterFromGlibFull(p unsafe.Pointer) *CheckLogFilter {
 	}
 	runtime.SetFinalizer(
 		wrapped.checkLogFilter,
-		func (intern *checkLogFilter) {
+		func(intern *checkLogFilter) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -1107,7 +1106,7 @@ func UnsafeCheckLogFilterFromGlibFull(p unsafe.Pointer) *CheckLogFilter {
 }
 
 // UnsafeCheckLogFilterFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [CheckLogFilter] is expected to work anymore.
 func UnsafeCheckLogFilterFree(c *CheckLogFilter) {
 	C.free(unsafe.Pointer(c.native))
@@ -1135,7 +1134,7 @@ func UnsafeCheckLogFilterToGlibFull(c *CheckLogFilter) unsafe.Pointer {
 }
 
 // Harness wraps GstHarness
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#GstHarness
 type Harness struct {
 	*harness
@@ -1181,7 +1180,7 @@ func UnsafeHarnessFromGlibFull(p unsafe.Pointer) *Harness {
 	}
 	runtime.SetFinalizer(
 		wrapped.harness,
-		func (intern *harness) {
+		func(intern *harness) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -1189,7 +1188,7 @@ func UnsafeHarnessFromGlibFull(p unsafe.Pointer) *Harness {
 }
 
 // UnsafeHarnessFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [Harness] is expected to work anymore.
 func UnsafeHarnessFree(h *Harness) {
 	C.free(unsafe.Pointer(h.native))
@@ -1217,26 +1216,26 @@ func UnsafeHarnessToGlibFull(h *Harness) unsafe.Pointer {
 }
 
 // HarnessStressThreadStop wraps gst_harness_stress_thread_stop
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_stress_thread_stop
-func HarnessStressThreadStop(t *HarnessThread) uint {
+func HarnessStressThreadStop(t *HarnessThread) uint32 {
 	var carg1 *C.GstHarnessThread // in, none, converted
-	var cret  C.guint             // return, none, casted
+	var cret C.guint              // return, none, casted
 
 	carg1 = (*C.GstHarnessThread)(UnsafeHarnessThreadToGlibNone(t))
 
 	cret = C.gst_harness_stress_thread_stop(carg1)
 	runtime.KeepAlive(t)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // AddElementSinkPad wraps gst_harness_add_element_sink_pad
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_add_element_sink_pad
 func (h *Harness) AddElementSinkPad(sinkpad gst.Pad) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1251,7 +1250,7 @@ func (h *Harness) AddElementSinkPad(sinkpad gst.Pad) {
 }
 
 // AddElementSrcPad wraps gst_harness_add_element_src_pad
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_add_element_src_pad
 func (h *Harness) AddElementSrcPad(srcpad gst.Pad) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1266,7 +1265,7 @@ func (h *Harness) AddElementSrcPad(srcpad gst.Pad) {
 }
 
 // AddProbe wraps gst_harness_add_probe
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_add_probe
 func (h *Harness) AddProbe(elementName string, padName string, mask gst.PadProbeType, callback gst.PadProbeCallback) {
 	var carg0 *C.GstHarness         // in, none, converted
@@ -1296,7 +1295,7 @@ func (h *Harness) AddProbe(elementName string, padName string, mask gst.PadProbe
 }
 
 // AddProposeAllocationMeta wraps gst_harness_add_propose_allocation_meta
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_add_propose_allocation_meta
 func (h *Harness) AddProposeAllocationMeta(api gobject.Type, params *gst.Structure) {
 	var carg0 *C.GstHarness   // in, none, converted
@@ -1316,7 +1315,7 @@ func (h *Harness) AddProposeAllocationMeta(api gobject.Type, params *gst.Structu
 }
 
 // AddSink wraps gst_harness_add_sink
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_add_sink
 func (h *Harness) AddSink(sinkElementName string) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1332,7 +1331,7 @@ func (h *Harness) AddSink(sinkElementName string) {
 }
 
 // AddSinkHarness wraps gst_harness_add_sink_harness
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_add_sink_harness
 func (h *Harness) AddSinkHarness(sinkHarness *Harness) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1347,7 +1346,7 @@ func (h *Harness) AddSinkHarness(sinkHarness *Harness) {
 }
 
 // AddSinkParse wraps gst_harness_add_sink_parse
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_add_sink_parse
 func (h *Harness) AddSinkParse(launchline string) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1363,7 +1362,7 @@ func (h *Harness) AddSinkParse(launchline string) {
 }
 
 // AddSrc wraps gst_harness_add_src
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_add_src
 func (h *Harness) AddSrc(srcElementName string, hasClockWait bool) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1384,7 +1383,7 @@ func (h *Harness) AddSrc(srcElementName string, hasClockWait bool) {
 }
 
 // AddSrcHarness wraps gst_harness_add_src_harness
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_add_src_harness
 func (h *Harness) AddSrcHarness(srcHarness *Harness, hasClockWait bool) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1404,7 +1403,7 @@ func (h *Harness) AddSrcHarness(srcHarness *Harness, hasClockWait bool) {
 }
 
 // AddSrcParse wraps gst_harness_add_src_parse
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_add_src_parse
 func (h *Harness) AddSrcParse(launchline string, hasClockWait bool) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1425,50 +1424,50 @@ func (h *Harness) AddSrcParse(launchline string, hasClockWait bool) {
 }
 
 // BuffersInQueue wraps gst_harness_buffers_in_queue
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_buffers_in_queue
-func (h *Harness) BuffersInQueue() uint {
+func (h *Harness) BuffersInQueue() uint32 {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  C.guint       // return, none, casted
+	var cret C.guint        // return, none, casted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
 	cret = C.gst_harness_buffers_in_queue(carg0)
 	runtime.KeepAlive(h)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // BuffersReceived wraps gst_harness_buffers_received
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_buffers_received
-func (h *Harness) BuffersReceived() uint {
+func (h *Harness) BuffersReceived() uint32 {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  C.guint       // return, none, casted
+	var cret C.guint        // return, none, casted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
 	cret = C.gst_harness_buffers_received(carg0)
 	runtime.KeepAlive(h)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // CrankMultipleClockWaits wraps gst_harness_crank_multiple_clock_waits
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_crank_multiple_clock_waits
-func (h *Harness) CrankMultipleClockWaits(waits uint) bool {
+func (h *Harness) CrankMultipleClockWaits(waits uint32) bool {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 C.guint       // in, none, casted
-	var cret  C.gboolean    // return
+	var cret C.gboolean     // return
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 	carg1 = C.guint(waits)
@@ -1487,11 +1486,11 @@ func (h *Harness) CrankMultipleClockWaits(waits uint) bool {
 }
 
 // CrankSingleClockWait wraps gst_harness_crank_single_clock_wait
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_crank_single_clock_wait
 func (h *Harness) CrankSingleClockWait() bool {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  C.gboolean    // return
+	var cret C.gboolean     // return
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -1508,12 +1507,12 @@ func (h *Harness) CrankSingleClockWait() bool {
 }
 
 // CreateBuffer wraps gst_harness_create_buffer
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_create_buffer
 func (h *Harness) CreateBuffer(size uint) *gst.Buffer {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 C.gsize       // in, none, casted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret *C.GstBuffer   // return, full, converted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 	carg1 = C.gsize(size)
@@ -1530,7 +1529,7 @@ func (h *Harness) CreateBuffer(size uint) *gst.Buffer {
 }
 
 // DumpToFile wraps gst_harness_dump_to_file
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_dump_to_file
 func (h *Harness) DumpToFile(filename string) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1546,50 +1545,50 @@ func (h *Harness) DumpToFile(filename string) {
 }
 
 // EventsInQueue wraps gst_harness_events_in_queue
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_events_in_queue
-func (h *Harness) EventsInQueue() uint {
+func (h *Harness) EventsInQueue() uint32 {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  C.guint       // return, none, casted
+	var cret C.guint        // return, none, casted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
 	cret = C.gst_harness_events_in_queue(carg0)
 	runtime.KeepAlive(h)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // EventsReceived wraps gst_harness_events_received
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_events_received
-func (h *Harness) EventsReceived() uint {
+func (h *Harness) EventsReceived() uint32 {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  C.guint       // return, none, casted
+	var cret C.guint        // return, none, casted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
 	cret = C.gst_harness_events_received(carg0)
 	runtime.KeepAlive(h)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // FindElement wraps gst_harness_find_element
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_find_element
 func (h *Harness) FindElement(elementName string) gst.Element {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.gchar      // in, none, string
-	var cret  *C.GstElement // return, full, converted, nullable
+	var cret *C.GstElement  // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 	carg1 = (*C.gchar)(transfer.GLibString(elementName))
@@ -1609,11 +1608,11 @@ func (h *Harness) FindElement(elementName string) gst.Element {
 }
 
 // GetLastPushedTimestamp wraps gst_harness_get_last_pushed_timestamp
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_get_last_pushed_timestamp
 func (h *Harness) GetLastPushedTimestamp() gst.ClockTime {
-	var carg0 *C.GstHarness  // in, none, converted
-	var cret  C.GstClockTime // return, none, casted, alias
+	var carg0 *C.GstHarness // in, none, converted
+	var cret C.GstClockTime // return, none, casted, alias
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -1628,11 +1627,11 @@ func (h *Harness) GetLastPushedTimestamp() gst.ClockTime {
 }
 
 // GetTestclock wraps gst_harness_get_testclock
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_get_testclock
 func (h *Harness) GetTestclock() TestClock {
-	var carg0 *C.GstHarness   // in, none, converted
-	var cret  *C.GstTestClock // return, full, converted, nullable
+	var carg0 *C.GstHarness  // in, none, converted
+	var cret *C.GstTestClock // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -1649,7 +1648,7 @@ func (h *Harness) GetTestclock() TestClock {
 }
 
 // Play wraps gst_harness_play
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_play
 func (h *Harness) Play() {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1661,11 +1660,11 @@ func (h *Harness) Play() {
 }
 
 // Pull wraps gst_harness_pull
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_pull
 func (h *Harness) Pull() *gst.Buffer {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GstBuffer  // return, full, converted, nullable
+	var cret *C.GstBuffer   // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -1682,11 +1681,11 @@ func (h *Harness) Pull() *gst.Buffer {
 }
 
 // PullEvent wraps gst_harness_pull_event
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_pull_event
 func (h *Harness) PullEvent() *gst.Event {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GstEvent   // return, full, converted, nullable
+	var cret *C.GstEvent    // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -1703,19 +1702,19 @@ func (h *Harness) PullEvent() *gst.Event {
 }
 
 // PullUntilEOS wraps gst_harness_pull_until_eos
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_pull_until_eos
 func (h *Harness) PullUntilEOS() (*gst.Buffer, bool) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstBuffer  // out, full, converted, nullable
-	var cret  C.gboolean    // return
+	var cret C.gboolean     // return
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
 	cret = C.gst_harness_pull_until_eos(carg0, &carg1)
 	runtime.KeepAlive(h)
 
-	var buf   *gst.Buffer
+	var buf *gst.Buffer
 	var goret bool
 
 	if carg1 != nil {
@@ -1729,11 +1728,11 @@ func (h *Harness) PullUntilEOS() (*gst.Buffer, bool) {
 }
 
 // PullUpstreamEvent wraps gst_harness_pull_upstream_event
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_pull_upstream_event
 func (h *Harness) PullUpstreamEvent() *gst.Event {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GstEvent   // return, full, converted, nullable
+	var cret *C.GstEvent    // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -1750,12 +1749,12 @@ func (h *Harness) PullUpstreamEvent() *gst.Event {
 }
 
 // Push wraps gst_harness_push
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_push
 func (h *Harness) Push(buffer *gst.Buffer) gst.FlowReturn {
-	var carg0 *C.GstHarness   // in, none, converted
-	var carg1 *C.GstBuffer    // in, full, converted
-	var cret  C.GstFlowReturn // return, none, casted
+	var carg0 *C.GstHarness  // in, none, converted
+	var carg1 *C.GstBuffer   // in, full, converted
+	var cret C.GstFlowReturn // return, none, casted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(buffer))
@@ -1772,12 +1771,12 @@ func (h *Harness) Push(buffer *gst.Buffer) gst.FlowReturn {
 }
 
 // PushAndPull wraps gst_harness_push_and_pull
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_push_and_pull
 func (h *Harness) PushAndPull(buffer *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstBuffer  // in, full, converted
-	var cret  *C.GstBuffer  // return, full, converted, nullable
+	var cret *C.GstBuffer   // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(buffer))
@@ -1796,12 +1795,12 @@ func (h *Harness) PushAndPull(buffer *gst.Buffer) *gst.Buffer {
 }
 
 // PushEvent wraps gst_harness_push_event
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_push_event
 func (h *Harness) PushEvent(event *gst.Event) bool {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstEvent   // in, full, converted
-	var cret  C.gboolean    // return
+	var cret C.gboolean     // return
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibFull(event))
@@ -1820,11 +1819,11 @@ func (h *Harness) PushEvent(event *gst.Event) bool {
 }
 
 // PushFromSrc wraps gst_harness_push_from_src
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_push_from_src
 func (h *Harness) PushFromSrc() gst.FlowReturn {
-	var carg0 *C.GstHarness   // in, none, converted
-	var cret  C.GstFlowReturn // return, none, casted
+	var carg0 *C.GstHarness  // in, none, converted
+	var cret C.GstFlowReturn // return, none, casted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -1839,11 +1838,11 @@ func (h *Harness) PushFromSrc() gst.FlowReturn {
 }
 
 // PushToSink wraps gst_harness_push_to_sink
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_push_to_sink
 func (h *Harness) PushToSink() gst.FlowReturn {
-	var carg0 *C.GstHarness   // in, none, converted
-	var cret  C.GstFlowReturn // return, none, casted
+	var carg0 *C.GstHarness  // in, none, converted
+	var cret C.GstFlowReturn // return, none, casted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -1858,12 +1857,12 @@ func (h *Harness) PushToSink() gst.FlowReturn {
 }
 
 // PushUpstreamEvent wraps gst_harness_push_upstream_event
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_push_upstream_event
 func (h *Harness) PushUpstreamEvent(event *gst.Event) bool {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstEvent   // in, full, converted
-	var cret  C.gboolean    // return
+	var cret C.gboolean     // return
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibFull(event))
@@ -1882,11 +1881,11 @@ func (h *Harness) PushUpstreamEvent(event *gst.Event) bool {
 }
 
 // QueryLatency wraps gst_harness_query_latency
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_query_latency
 func (h *Harness) QueryLatency() gst.ClockTime {
-	var carg0 *C.GstHarness  // in, none, converted
-	var cret  C.GstClockTime // return, none, casted, alias
+	var carg0 *C.GstHarness // in, none, converted
+	var cret C.GstClockTime // return, none, casted, alias
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -1901,7 +1900,7 @@ func (h *Harness) QueryLatency() gst.ClockTime {
 }
 
 // SetBlockingPushMode wraps gst_harness_set_blocking_push_mode
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_set_blocking_push_mode
 func (h *Harness) SetBlockingPushMode() {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1913,7 +1912,7 @@ func (h *Harness) SetBlockingPushMode() {
 }
 
 // SetCaps wraps gst_harness_set_caps
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_set_caps
 func (h *Harness) SetCaps(in *gst.Caps, out *gst.Caps) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1931,7 +1930,7 @@ func (h *Harness) SetCaps(in *gst.Caps, out *gst.Caps) {
 }
 
 // SetCapsStr wraps gst_harness_set_caps_str
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_set_caps_str
 func (h *Harness) SetCapsStr(in string, out string) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1951,7 +1950,7 @@ func (h *Harness) SetCapsStr(in string, out string) {
 }
 
 // SetDropBuffers wraps gst_harness_set_drop_buffers
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_set_drop_buffers
 func (h *Harness) SetDropBuffers(dropBuffers bool) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1968,7 +1967,7 @@ func (h *Harness) SetDropBuffers(dropBuffers bool) {
 }
 
 // SetForwarding wraps gst_harness_set_forwarding
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_set_forwarding
 func (h *Harness) SetForwarding(forwarding bool) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -1985,7 +1984,7 @@ func (h *Harness) SetForwarding(forwarding bool) {
 }
 
 // SetLive wraps gst_harness_set_live
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_set_live
 func (h *Harness) SetLive(isLive bool) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -2002,7 +2001,7 @@ func (h *Harness) SetLive(isLive bool) {
 }
 
 // SetProposeAllocator wraps gst_harness_set_propose_allocator
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_set_propose_allocator
 func (h *Harness) SetProposeAllocator(allocator gst.Allocator, params *gst.AllocationParams) {
 	var carg0 *C.GstHarness          // in, none, converted
@@ -2024,7 +2023,7 @@ func (h *Harness) SetProposeAllocator(allocator gst.Allocator, params *gst.Alloc
 }
 
 // SetSinkCaps wraps gst_harness_set_sink_caps
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_set_sink_caps
 func (h *Harness) SetSinkCaps(caps *gst.Caps) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -2039,7 +2038,7 @@ func (h *Harness) SetSinkCaps(caps *gst.Caps) {
 }
 
 // SetSinkCapsStr wraps gst_harness_set_sink_caps_str
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_set_sink_caps_str
 func (h *Harness) SetSinkCapsStr(str string) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -2055,7 +2054,7 @@ func (h *Harness) SetSinkCapsStr(str string) {
 }
 
 // SetSrcCaps wraps gst_harness_set_src_caps
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_set_src_caps
 func (h *Harness) SetSrcCaps(caps *gst.Caps) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -2070,7 +2069,7 @@ func (h *Harness) SetSrcCaps(caps *gst.Caps) {
 }
 
 // SetSrcCapsStr wraps gst_harness_set_src_caps_str
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_set_src_caps_str
 func (h *Harness) SetSrcCapsStr(str string) {
 	var carg0 *C.GstHarness // in, none, converted
@@ -2086,12 +2085,12 @@ func (h *Harness) SetSrcCapsStr(str string) {
 }
 
 // SetTime wraps gst_harness_set_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_set_time
 func (h *Harness) SetTime(time gst.ClockTime) bool {
 	var carg0 *C.GstHarness  // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
-	var cret  C.gboolean     // return
+	var cret C.gboolean      // return
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 	carg1 = C.GstClockTime(time)
@@ -2110,7 +2109,7 @@ func (h *Harness) SetTime(time gst.ClockTime) bool {
 }
 
 // SetUpstreamLatency wraps gst_harness_set_upstream_latency
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_set_upstream_latency
 func (h *Harness) SetUpstreamLatency(latency gst.ClockTime) {
 	var carg0 *C.GstHarness  // in, none, converted
@@ -2125,12 +2124,12 @@ func (h *Harness) SetUpstreamLatency(latency gst.ClockTime) {
 }
 
 // SinkPushMany wraps gst_harness_sink_push_many
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_sink_push_many
 func (h *Harness) SinkPushMany(pushes int32) gst.FlowReturn {
-	var carg0 *C.GstHarness   // in, none, converted
-	var carg1 C.gint          // in, none, casted
-	var cret  C.GstFlowReturn // return, none, casted
+	var carg0 *C.GstHarness  // in, none, converted
+	var carg1 C.gint         // in, none, casted
+	var cret C.GstFlowReturn // return, none, casted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 	carg1 = C.gint(pushes)
@@ -2147,13 +2146,13 @@ func (h *Harness) SinkPushMany(pushes int32) gst.FlowReturn {
 }
 
 // SrcCrankAndPushMany wraps gst_harness_src_crank_and_push_many
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_src_crank_and_push_many
 func (h *Harness) SrcCrankAndPushMany(cranks int32, pushes int32) gst.FlowReturn {
-	var carg0 *C.GstHarness   // in, none, converted
-	var carg1 C.gint          // in, none, casted
-	var carg2 C.gint          // in, none, casted
-	var cret  C.GstFlowReturn // return, none, casted
+	var carg0 *C.GstHarness  // in, none, converted
+	var carg1 C.gint         // in, none, casted
+	var carg2 C.gint         // in, none, casted
+	var cret C.GstFlowReturn // return, none, casted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 	carg1 = C.gint(cranks)
@@ -2172,11 +2171,11 @@ func (h *Harness) SrcCrankAndPushMany(cranks int32, pushes int32) gst.FlowReturn
 }
 
 // SrcPushEvent wraps gst_harness_src_push_event
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_src_push_event
 func (h *Harness) SrcPushEvent() bool {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  C.gboolean    // return
+	var cret C.gboolean     // return
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -2193,11 +2192,11 @@ func (h *Harness) SrcPushEvent() bool {
 }
 
 // TakeAllDataAsBuffer wraps gst_harness_take_all_data_as_buffer
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_take_all_data_as_buffer
 func (h *Harness) TakeAllDataAsBuffer() *gst.Buffer {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret *C.GstBuffer   // return, full, converted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -2212,11 +2211,11 @@ func (h *Harness) TakeAllDataAsBuffer() *gst.Buffer {
 }
 
 // TakeAllDataAsBytes wraps gst_harness_take_all_data_as_bytes
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_take_all_data_as_bytes
 func (h *Harness) TakeAllDataAsBytes() *glib.Bytes {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GBytes     // return, full, converted
+	var cret *C.GBytes      // return, full, converted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -2231,7 +2230,7 @@ func (h *Harness) TakeAllDataAsBytes() *glib.Bytes {
 }
 
 // Teardown wraps gst_harness_teardown
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_teardown
 func (h *Harness) Teardown() {
 	var carg0 *C.GstHarness // in, none, converted
@@ -2243,11 +2242,11 @@ func (h *Harness) Teardown() {
 }
 
 // TryPull wraps gst_harness_try_pull
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_try_pull
 func (h *Harness) TryPull() *gst.Buffer {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GstBuffer  // return, full, converted, nullable
+	var cret *C.GstBuffer   // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -2264,11 +2263,11 @@ func (h *Harness) TryPull() *gst.Buffer {
 }
 
 // TryPullEvent wraps gst_harness_try_pull_event
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_try_pull_event
 func (h *Harness) TryPullEvent() *gst.Event {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GstEvent   // return, full, converted, nullable
+	var cret *C.GstEvent    // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -2285,11 +2284,11 @@ func (h *Harness) TryPullEvent() *gst.Event {
 }
 
 // TryPullUpstreamEvent wraps gst_harness_try_pull_upstream_event
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_try_pull_upstream_event
 func (h *Harness) TryPullUpstreamEvent() *gst.Event {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GstEvent   // return, full, converted, nullable
+	var cret *C.GstEvent    // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -2306,45 +2305,45 @@ func (h *Harness) TryPullUpstreamEvent() *gst.Event {
 }
 
 // UpstreamEventsInQueue wraps gst_harness_upstream_events_in_queue
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_upstream_events_in_queue
-func (h *Harness) UpstreamEventsInQueue() uint {
+func (h *Harness) UpstreamEventsInQueue() uint32 {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  C.guint       // return, none, casted
+	var cret C.guint        // return, none, casted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
 	cret = C.gst_harness_upstream_events_in_queue(carg0)
 	runtime.KeepAlive(h)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // UpstreamEventsReceived wraps gst_harness_upstream_events_received
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_upstream_events_received
-func (h *Harness) UpstreamEventsReceived() uint {
+func (h *Harness) UpstreamEventsReceived() uint32 {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  C.guint       // return, none, casted
+	var cret C.guint        // return, none, casted
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
 	cret = C.gst_harness_upstream_events_received(carg0)
 	runtime.KeepAlive(h)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // UseSystemclock wraps gst_harness_use_systemclock
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_use_systemclock
 func (h *Harness) UseSystemclock() {
 	var carg0 *C.GstHarness // in, none, converted
@@ -2356,7 +2355,7 @@ func (h *Harness) UseSystemclock() {
 }
 
 // UseTestclock wraps gst_harness_use_testclock
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_use_testclock
 func (h *Harness) UseTestclock() {
 	var carg0 *C.GstHarness // in, none, converted
@@ -2368,13 +2367,13 @@ func (h *Harness) UseTestclock() {
 }
 
 // WaitForClockIDWaits wraps gst_harness_wait_for_clock_id_waits
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#gst_harness_wait_for_clock_id_waits
-func (h *Harness) WaitForClockIDWaits(waits uint, timeout uint) bool {
+func (h *Harness) WaitForClockIDWaits(waits uint32, timeout uint32) bool {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 C.guint       // in, none, casted
 	var carg2 C.guint       // in, none, casted
-	var cret  C.gboolean    // return
+	var cret C.gboolean     // return
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 	carg1 = C.guint(waits)
@@ -2395,7 +2394,7 @@ func (h *Harness) WaitForClockIDWaits(waits uint, timeout uint) bool {
 }
 
 // HarnessThread wraps GstHarnessThread
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstharness.html#GstHarnessThread
 type HarnessThread struct {
 	*harnessThread
@@ -2441,7 +2440,7 @@ func UnsafeHarnessThreadFromGlibFull(p unsafe.Pointer) *HarnessThread {
 	}
 	runtime.SetFinalizer(
 		wrapped.harnessThread,
-		func (intern *harnessThread) {
+		func(intern *harnessThread) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2449,7 +2448,7 @@ func UnsafeHarnessThreadFromGlibFull(p unsafe.Pointer) *HarnessThread {
 }
 
 // UnsafeHarnessThreadFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [HarnessThread] is expected to work anymore.
 func UnsafeHarnessThreadFree(h *HarnessThread) {
 	C.free(unsafe.Pointer(h.native))
@@ -2477,7 +2476,7 @@ func UnsafeHarnessThreadToGlibFull(h *HarnessThread) unsafe.Pointer {
 }
 
 // StreamConsistency wraps GstStreamConsistency
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gstconsistencychecker.html#GstStreamConsistency
 type StreamConsistency struct {
 	*streamConsistency
@@ -2523,7 +2522,7 @@ func UnsafeStreamConsistencyFromGlibFull(p unsafe.Pointer) *StreamConsistency {
 	}
 	runtime.SetFinalizer(
 		wrapped.streamConsistency,
-		func (intern *streamConsistency) {
+		func(intern *streamConsistency) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2531,7 +2530,7 @@ func UnsafeStreamConsistencyFromGlibFull(p unsafe.Pointer) *StreamConsistency {
 }
 
 // UnsafeStreamConsistencyFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [StreamConsistency] is expected to work anymore.
 func UnsafeStreamConsistencyFree(s *StreamConsistency) {
 	C.free(unsafe.Pointer(s.native))
@@ -2559,9 +2558,9 @@ func UnsafeStreamConsistencyToGlibFull(s *StreamConsistency) unsafe.Pointer {
 }
 
 // TestClockClass wraps GstTestClockClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#GstTestClockClass
-// 
+//
 // TestClockClass is the type struct for [TestClock]
 type TestClockClass struct {
 	*testClockClass
@@ -2589,7 +2588,7 @@ func UnsafeTestClockClassFromGlibBorrow(p unsafe.Pointer) *TestClockClass {
 }
 
 // UnsafeTestClockClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [TestClockClass] is expected to work anymore.
 func UnsafeTestClockClassFree(t *TestClockClass) {
 	C.free(unsafe.Pointer(t.native))
@@ -2612,4 +2611,3 @@ func (t *TestClockClass) ParentClass() *gst.ClockClass {
 	runtime.AddCleanup(parent, func(_ *TestClockClass) {}, t)
 	return parent
 }
-

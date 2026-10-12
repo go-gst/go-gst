@@ -59,25 +59,26 @@ func init() {
 }
 
 // TAG_ID3V2_HEADER_SIZE wraps GST_TAG_ID3V2_HEADER_SIZE
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_ID3V2_HEADER_SIZE
 const TAG_ID3V2_HEADER_SIZE = 10
+
 // TagDemuxResult wraps GstTagDemuxResult
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#GstTagDemuxResult
 type TagDemuxResult C.int
 
 const (
 	// TagDemuxResultBrokenTag wraps GST_TAG_DEMUX_RESULT_BROKEN_TAG
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#GST_TAG_DEMUX_RESULT_BROKEN_TAG
 	TagDemuxResultBrokenTag TagDemuxResult = 0
 	// TagDemuxResultAgain wraps GST_TAG_DEMUX_RESULT_AGAIN
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#GST_TAG_DEMUX_RESULT_AGAIN
 	TagDemuxResultAgain TagDemuxResult = 1
 	// TagDemuxResultOK wraps GST_TAG_DEMUX_RESULT_OK
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#GST_TAG_DEMUX_RESULT_OK
 	TagDemuxResultOK TagDemuxResult = 2
 )
@@ -98,97 +99,101 @@ func (e TagDemuxResult) SetGoValue(v *gobject.Value) {
 
 func (e TagDemuxResult) String() string {
 	switch e {
-		case TagDemuxResultAgain: return "TagDemuxResultAgain"
-		case TagDemuxResultBrokenTag: return "TagDemuxResultBrokenTag"
-		case TagDemuxResultOK: return "TagDemuxResultOK"
-		default: return fmt.Sprintf("TagDemuxResult(%d)", e)
+	case TagDemuxResultAgain:
+		return "TagDemuxResultAgain"
+	case TagDemuxResultBrokenTag:
+		return "TagDemuxResultBrokenTag"
+	case TagDemuxResultOK:
+		return "TagDemuxResultOK"
+	default:
+		return fmt.Sprintf("TagDemuxResult(%d)", e)
 	}
 }
 
 // TagImageType wraps GstTagImageType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GstTagImageType
 type TagImageType C.int
 
 const (
 	// TagImageTypeNone wraps GST_TAG_IMAGE_TYPE_NONE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_NONE
 	TagImageTypeNone TagImageType = -1
 	// TagImageTypeUndefined wraps GST_TAG_IMAGE_TYPE_UNDEFINED
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_UNDEFINED
 	TagImageTypeUndefined TagImageType = 0
 	// TagImageTypeFrontCover wraps GST_TAG_IMAGE_TYPE_FRONT_COVER
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_FRONT_COVER
 	TagImageTypeFrontCover TagImageType = 1
 	// TagImageTypeBackCover wraps GST_TAG_IMAGE_TYPE_BACK_COVER
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_BACK_COVER
 	TagImageTypeBackCover TagImageType = 2
 	// TagImageTypeLeafletPage wraps GST_TAG_IMAGE_TYPE_LEAFLET_PAGE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_LEAFLET_PAGE
 	TagImageTypeLeafletPage TagImageType = 3
 	// TagImageTypeMedium wraps GST_TAG_IMAGE_TYPE_MEDIUM
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_MEDIUM
 	TagImageTypeMedium TagImageType = 4
 	// TagImageTypeLeadArtist wraps GST_TAG_IMAGE_TYPE_LEAD_ARTIST
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_LEAD_ARTIST
 	TagImageTypeLeadArtist TagImageType = 5
 	// TagImageTypeArtist wraps GST_TAG_IMAGE_TYPE_ARTIST
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_ARTIST
 	TagImageTypeArtist TagImageType = 6
 	// TagImageTypeConductor wraps GST_TAG_IMAGE_TYPE_CONDUCTOR
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_CONDUCTOR
 	TagImageTypeConductor TagImageType = 7
 	// TagImageTypeBandOrchestra wraps GST_TAG_IMAGE_TYPE_BAND_ORCHESTRA
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_BAND_ORCHESTRA
 	TagImageTypeBandOrchestra TagImageType = 8
 	// TagImageTypeComposer wraps GST_TAG_IMAGE_TYPE_COMPOSER
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_COMPOSER
 	TagImageTypeComposer TagImageType = 9
 	// TagImageTypeLyricist wraps GST_TAG_IMAGE_TYPE_LYRICIST
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_LYRICIST
 	TagImageTypeLyricist TagImageType = 10
 	// TagImageTypeRecordingLocation wraps GST_TAG_IMAGE_TYPE_RECORDING_LOCATION
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_RECORDING_LOCATION
 	TagImageTypeRecordingLocation TagImageType = 11
 	// TagImageTypeDuringRecording wraps GST_TAG_IMAGE_TYPE_DURING_RECORDING
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_DURING_RECORDING
 	TagImageTypeDuringRecording TagImageType = 12
 	// TagImageTypeDuringPerformance wraps GST_TAG_IMAGE_TYPE_DURING_PERFORMANCE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_DURING_PERFORMANCE
 	TagImageTypeDuringPerformance TagImageType = 13
 	// TagImageTypeVideoCapture wraps GST_TAG_IMAGE_TYPE_VIDEO_CAPTURE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_VIDEO_CAPTURE
 	TagImageTypeVideoCapture TagImageType = 14
 	// TagImageTypeFish wraps GST_TAG_IMAGE_TYPE_FISH
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_FISH
 	TagImageTypeFish TagImageType = 15
 	// TagImageTypeIllustration wraps GST_TAG_IMAGE_TYPE_ILLUSTRATION
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_ILLUSTRATION
 	TagImageTypeIllustration TagImageType = 16
 	// TagImageTypeBandArtistLogo wraps GST_TAG_IMAGE_TYPE_BAND_ARTIST_LOGO
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_BAND_ARTIST_LOGO
 	TagImageTypeBandArtistLogo TagImageType = 17
 	// TagImageTypePublisherStudioLogo wraps GST_TAG_IMAGE_TYPE_PUBLISHER_STUDIO_LOGO
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_PUBLISHER_STUDIO_LOGO
 	TagImageTypePublisherStudioLogo TagImageType = 18
 )
@@ -209,90 +214,111 @@ func (e TagImageType) SetGoValue(v *gobject.Value) {
 
 func (e TagImageType) String() string {
 	switch e {
-		case TagImageTypeArtist: return "TagImageTypeArtist"
-		case TagImageTypeBackCover: return "TagImageTypeBackCover"
-		case TagImageTypeBandArtistLogo: return "TagImageTypeBandArtistLogo"
-		case TagImageTypeBandOrchestra: return "TagImageTypeBandOrchestra"
-		case TagImageTypeComposer: return "TagImageTypeComposer"
-		case TagImageTypeConductor: return "TagImageTypeConductor"
-		case TagImageTypeDuringPerformance: return "TagImageTypeDuringPerformance"
-		case TagImageTypeDuringRecording: return "TagImageTypeDuringRecording"
-		case TagImageTypeFish: return "TagImageTypeFish"
-		case TagImageTypeFrontCover: return "TagImageTypeFrontCover"
-		case TagImageTypeIllustration: return "TagImageTypeIllustration"
-		case TagImageTypeLeadArtist: return "TagImageTypeLeadArtist"
-		case TagImageTypeLeafletPage: return "TagImageTypeLeafletPage"
-		case TagImageTypeLyricist: return "TagImageTypeLyricist"
-		case TagImageTypeMedium: return "TagImageTypeMedium"
-		case TagImageTypeNone: return "TagImageTypeNone"
-		case TagImageTypePublisherStudioLogo: return "TagImageTypePublisherStudioLogo"
-		case TagImageTypeRecordingLocation: return "TagImageTypeRecordingLocation"
-		case TagImageTypeUndefined: return "TagImageTypeUndefined"
-		case TagImageTypeVideoCapture: return "TagImageTypeVideoCapture"
-		default: return fmt.Sprintf("TagImageType(%d)", e)
+	case TagImageTypeArtist:
+		return "TagImageTypeArtist"
+	case TagImageTypeBackCover:
+		return "TagImageTypeBackCover"
+	case TagImageTypeBandArtistLogo:
+		return "TagImageTypeBandArtistLogo"
+	case TagImageTypeBandOrchestra:
+		return "TagImageTypeBandOrchestra"
+	case TagImageTypeComposer:
+		return "TagImageTypeComposer"
+	case TagImageTypeConductor:
+		return "TagImageTypeConductor"
+	case TagImageTypeDuringPerformance:
+		return "TagImageTypeDuringPerformance"
+	case TagImageTypeDuringRecording:
+		return "TagImageTypeDuringRecording"
+	case TagImageTypeFish:
+		return "TagImageTypeFish"
+	case TagImageTypeFrontCover:
+		return "TagImageTypeFrontCover"
+	case TagImageTypeIllustration:
+		return "TagImageTypeIllustration"
+	case TagImageTypeLeadArtist:
+		return "TagImageTypeLeadArtist"
+	case TagImageTypeLeafletPage:
+		return "TagImageTypeLeafletPage"
+	case TagImageTypeLyricist:
+		return "TagImageTypeLyricist"
+	case TagImageTypeMedium:
+		return "TagImageTypeMedium"
+	case TagImageTypeNone:
+		return "TagImageTypeNone"
+	case TagImageTypePublisherStudioLogo:
+		return "TagImageTypePublisherStudioLogo"
+	case TagImageTypeRecordingLocation:
+		return "TagImageTypeRecordingLocation"
+	case TagImageTypeUndefined:
+		return "TagImageTypeUndefined"
+	case TagImageTypeVideoCapture:
+		return "TagImageTypeVideoCapture"
+	default:
+		return fmt.Sprintf("TagImageType(%d)", e)
 	}
 }
 
 // TagLicenseFlags wraps GstTagLicenseFlags
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GstTagLicenseFlags
 type TagLicenseFlags C.gint
 
 const (
 	// TagLicensePermitsReproduction wraps GST_TAG_LICENSE_PERMITS_REPRODUCTION
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_PERMITS_REPRODUCTION
 	TagLicensePermitsReproduction TagLicenseFlags = 1
 	// TagLicensePermitsDistribution wraps GST_TAG_LICENSE_PERMITS_DISTRIBUTION
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_PERMITS_DISTRIBUTION
 	TagLicensePermitsDistribution TagLicenseFlags = 2
 	// TagLicensePermitsDerivativeWorks wraps GST_TAG_LICENSE_PERMITS_DERIVATIVE_WORKS
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_PERMITS_DERIVATIVE_WORKS
 	TagLicensePermitsDerivativeWorks TagLicenseFlags = 4
 	// TagLicensePermitsSharing wraps GST_TAG_LICENSE_PERMITS_SHARING
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_PERMITS_SHARING
 	TagLicensePermitsSharing TagLicenseFlags = 8
 	// TagLicenseRequiresNotice wraps GST_TAG_LICENSE_REQUIRES_NOTICE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_REQUIRES_NOTICE
 	TagLicenseRequiresNotice TagLicenseFlags = 256
 	// TagLicenseRequiresAttribution wraps GST_TAG_LICENSE_REQUIRES_ATTRIBUTION
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_REQUIRES_ATTRIBUTION
 	TagLicenseRequiresAttribution TagLicenseFlags = 512
 	// TagLicenseRequiresShareAlike wraps GST_TAG_LICENSE_REQUIRES_SHARE_ALIKE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_REQUIRES_SHARE_ALIKE
 	TagLicenseRequiresShareAlike TagLicenseFlags = 1024
 	// TagLicenseRequiresSourceCode wraps GST_TAG_LICENSE_REQUIRES_SOURCE_CODE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_REQUIRES_SOURCE_CODE
 	TagLicenseRequiresSourceCode TagLicenseFlags = 2048
 	// TagLicenseRequiresCopyleft wraps GST_TAG_LICENSE_REQUIRES_COPYLEFT
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_REQUIRES_COPYLEFT
 	TagLicenseRequiresCopyleft TagLicenseFlags = 4096
 	// TagLicenseRequiresLesserCopyleft wraps GST_TAG_LICENSE_REQUIRES_LESSER_COPYLEFT
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_REQUIRES_LESSER_COPYLEFT
 	TagLicenseRequiresLesserCopyleft TagLicenseFlags = 8192
 	// TagLicenseProhibitsCommercialUse wraps GST_TAG_LICENSE_PROHIBITS_COMMERCIAL_USE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_PROHIBITS_COMMERCIAL_USE
 	TagLicenseProhibitsCommercialUse TagLicenseFlags = 65536
 	// TagLicenseProhibitsHighIncomeNationUse wraps GST_TAG_LICENSE_PROHIBITS_HIGH_INCOME_NATION_USE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_PROHIBITS_HIGH_INCOME_NATION_USE
 	TagLicenseProhibitsHighIncomeNationUse TagLicenseFlags = 131072
 	// TagLicenseCreativeCommonsLicense wraps GST_TAG_LICENSE_CREATIVE_COMMONS_LICENSE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_CREATIVE_COMMONS_LICENSE
 	TagLicenseCreativeCommonsLicense TagLicenseFlags = 16777216
 	// TagLicenseFreeSoftwareFoundationLicense wraps GST_TAG_LICENSE_FREE_SOFTWARE_FOUNDATION_LICENSE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_FREE_SOFTWARE_FOUNDATION_LICENSE
 	TagLicenseFreeSoftwareFoundationLicense TagLicenseFlags = 33554432
 )
@@ -300,6 +326,7 @@ const (
 func marshalTagLicenseFlags(p unsafe.Pointer) (any, error) {
 	return TagLicenseFlags(gobject.ValueFromNative(p).Flags()), nil
 }
+
 // Has returns true if t contains other
 func (t TagLicenseFlags) Has(other TagLicenseFlags) bool {
 	return (t & other) == other
@@ -367,11 +394,11 @@ func (f TagLicenseFlags) String() string {
 }
 
 // TagCheckLanguageCode wraps gst_tag_check_language_code
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagCheckLanguageCode(langCode string) bool {
-	var carg1 *C.gchar   // in, none, string
-	var cret  C.gboolean // return
+	var carg1 *C.gchar  // in, none, string
+	var cret C.gboolean // return
 
 	carg1 = (*C.gchar)(transfer.GLibString(langCode))
 	defer C.g_free(C.gpointer(carg1))
@@ -389,13 +416,13 @@ func TagCheckLanguageCode(langCode string) bool {
 }
 
 // TagFreeformStringToUTF8 wraps gst_tag_freeform_string_to_utf8
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagFreeformStringToUTF8(data string, envVars []string) string {
 	var carg1 *C.gchar  // in, transfer: none, C Pointers: 1, Name: array[unknown], array (inner unknown, length-by: carg2)
 	var carg2 C.gint    // implicit
 	var carg3 **C.gchar // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
-	var cret  *C.gchar  // return, full, string, nullable-string
+	var cret *C.gchar   // return, full, string, nullable-string
 
 	_ = data
 	_ = carg1
@@ -420,11 +447,11 @@ func TagFreeformStringToUTF8(data string, envVars []string) string {
 }
 
 // TagFromId3Tag wraps gst_tag_from_id3_tag
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagFromId3Tag(id3Tag string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(id3Tag))
 	defer C.g_free(C.gpointer(carg1))
@@ -442,12 +469,12 @@ func TagFromId3Tag(id3Tag string) string {
 }
 
 // TagFromId3UserTag wraps gst_tag_from_id3_user_tag
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagFromId3UserTag(typ string, id3UserTag string) string {
 	var carg1 *C.gchar // in, none, string
 	var carg2 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(typ))
 	defer C.g_free(C.gpointer(carg1))
@@ -468,11 +495,11 @@ func TagFromId3UserTag(typ string, id3UserTag string) string {
 }
 
 // TagFromVorbisTag wraps gst_tag_from_vorbis_tag
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagFromVorbisTag(vorbisTag string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(vorbisTag))
 	defer C.g_free(C.gpointer(carg1))
@@ -490,30 +517,30 @@ func TagFromVorbisTag(vorbisTag string) string {
 }
 
 // TagGetId3v2TagSize wraps gst_tag_get_id3v2_tag_size
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
-func TagGetId3v2TagSize(buffer *gst.Buffer) uint {
+func TagGetId3v2TagSize(buffer *gst.Buffer) uint32 {
 	var carg1 *C.GstBuffer // in, none, converted
-	var cret  C.guint      // return, none, casted
+	var cret C.guint       // return, none, casted
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	cret = C.gst_tag_get_id3v2_tag_size(carg1)
 	runtime.KeepAlive(buffer)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // TagGetLanguageCodeIso6391 wraps gst_tag_get_language_code_iso_639_1
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagGetLanguageCodeIso6391(langCode string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(langCode))
 	defer C.g_free(C.gpointer(carg1))
@@ -531,11 +558,11 @@ func TagGetLanguageCodeIso6391(langCode string) string {
 }
 
 // TagGetLanguageCodeIso6392b wraps gst_tag_get_language_code_iso_639_2B
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagGetLanguageCodeIso6392b(langCode string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(langCode))
 	defer C.g_free(C.gpointer(carg1))
@@ -553,11 +580,11 @@ func TagGetLanguageCodeIso6392b(langCode string) string {
 }
 
 // TagGetLanguageCodeIso6392t wraps gst_tag_get_language_code_iso_639_2T
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagGetLanguageCodeIso6392t(langCode string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(langCode))
 	defer C.g_free(C.gpointer(carg1))
@@ -575,10 +602,10 @@ func TagGetLanguageCodeIso6392t(langCode string) string {
 }
 
 // TagGetLanguageCodes wraps gst_tag_get_language_codes
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagGetLanguageCodes() []string {
-	var cret **C.gchar // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
+	var cret **C.gchar // return, transfer: full, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 
 	cret = C.gst_tag_get_language_codes()
 
@@ -592,11 +619,11 @@ func TagGetLanguageCodes() []string {
 }
 
 // TagGetLanguageName wraps gst_tag_get_language_name
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagGetLanguageName(languageCode string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(languageCode))
 	defer C.g_free(C.gpointer(carg1))
@@ -614,11 +641,11 @@ func TagGetLanguageName(languageCode string) string {
 }
 
 // TagGetLicenseDescription wraps gst_tag_get_license_description
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagGetLicenseDescription(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(licenseRef))
 	defer C.g_free(C.gpointer(carg1))
@@ -636,11 +663,11 @@ func TagGetLicenseDescription(licenseRef string) string {
 }
 
 // TagGetLicenseFlags wraps gst_tag_get_license_flags
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagGetLicenseFlags(licenseRef string) TagLicenseFlags {
-	var carg1 *C.gchar             // in, none, string
-	var cret  C.GstTagLicenseFlags // return, none, casted
+	var carg1 *C.gchar            // in, none, string
+	var cret C.GstTagLicenseFlags // return, none, casted
 
 	carg1 = (*C.gchar)(transfer.GLibString(licenseRef))
 	defer C.g_free(C.gpointer(carg1))
@@ -656,11 +683,11 @@ func TagGetLicenseFlags(licenseRef string) TagLicenseFlags {
 }
 
 // TagGetLicenseJurisdiction wraps gst_tag_get_license_jurisdiction
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagGetLicenseJurisdiction(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(licenseRef))
 	defer C.g_free(C.gpointer(carg1))
@@ -678,11 +705,11 @@ func TagGetLicenseJurisdiction(licenseRef string) string {
 }
 
 // TagGetLicenseNick wraps gst_tag_get_license_nick
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagGetLicenseNick(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(licenseRef))
 	defer C.g_free(C.gpointer(carg1))
@@ -700,11 +727,11 @@ func TagGetLicenseNick(licenseRef string) string {
 }
 
 // TagGetLicenseTitle wraps gst_tag_get_license_title
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagGetLicenseTitle(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(licenseRef))
 	defer C.g_free(C.gpointer(carg1))
@@ -722,11 +749,11 @@ func TagGetLicenseTitle(licenseRef string) string {
 }
 
 // TagGetLicenseVersion wraps gst_tag_get_license_version
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagGetLicenseVersion(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(licenseRef))
 	defer C.g_free(C.gpointer(carg1))
@@ -744,10 +771,10 @@ func TagGetLicenseVersion(licenseRef string) string {
 }
 
 // TagGetLicenses wraps gst_tag_get_licenses
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagGetLicenses() []string {
-	var cret **C.gchar // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
+	var cret **C.gchar // return, transfer: full, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 
 	cret = C.gst_tag_get_licenses()
 
@@ -761,26 +788,26 @@ func TagGetLicenses() []string {
 }
 
 // TagId3GenreCount wraps gst_tag_id3_genre_count
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
-func TagId3GenreCount() uint {
+func TagId3GenreCount() uint32 {
 	var cret C.guint // return, none, casted
 
 	cret = C.gst_tag_id3_genre_count()
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // TagId3GenreGet wraps gst_tag_id3_genre_get
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
-func TagId3GenreGet(id uint) string {
-	var carg1 C.guint  // in, none, casted
-	var cret  *C.gchar // return, none, string, nullable-string
+func TagId3GenreGet(id uint32) string {
+	var carg1 C.guint // in, none, casted
+	var cret *C.gchar // return, none, string, nullable-string
 
 	carg1 = C.guint(id)
 
@@ -797,13 +824,13 @@ func TagId3GenreGet(id uint) string {
 }
 
 // TagImageDataToImageSample wraps gst_tag_image_data_to_image_sample
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagImageDataToImageSample(imageData []uint8, imageType TagImageType) *gst.Sample {
 	var carg1 *C.guint8         // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint           // implicit
 	var carg3 C.GstTagImageType // in, none, casted
-	var cret  *C.GstSample      // return, full, converted, nullable
+	var cret *C.GstSample       // return, full, converted, nullable
 
 	_ = imageData
 	_ = carg1
@@ -825,14 +852,14 @@ func TagImageDataToImageSample(imageData []uint8, imageType TagImageType) *gst.S
 }
 
 // TagListAddId3Image wraps gst_tag_list_add_id3_image
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
-func TagListAddId3Image(tagList *gst.TagList, imageData []uint8, id3PictureType uint) bool {
+func TagListAddId3Image(tagList *gst.TagList, imageData []uint8, id3PictureType uint32) bool {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var carg3 C.guint       // implicit
 	var carg4 C.guint       // in, none, casted
-	var cret  C.gboolean    // return
+	var cret C.gboolean     // return
 
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(tagList))
 	_ = imageData
@@ -856,13 +883,13 @@ func TagListAddId3Image(tagList *gst.TagList, imageData []uint8, id3PictureType 
 }
 
 // TagListFromExifBuffer wraps gst_tag_list_from_exif_buffer
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagListFromExifBuffer(buffer *gst.Buffer, byteOrder int32, baseOffset uint32) *gst.TagList {
-	var carg1 *C.GstBuffer  // in, none, converted
-	var carg2 C.gint        // in, none, casted
-	var carg3 C.guint32     // in, none, casted
-	var cret  *C.GstTagList // return, full, converted
+	var carg1 *C.GstBuffer // in, none, converted
+	var carg2 C.gint       // in, none, casted
+	var carg3 C.guint32    // in, none, casted
+	var cret *C.GstTagList // return, full, converted
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	carg2 = C.gint(byteOrder)
@@ -881,11 +908,11 @@ func TagListFromExifBuffer(buffer *gst.Buffer, byteOrder int32, baseOffset uint3
 }
 
 // TagListFromExifBufferWithTiffHeader wraps gst_tag_list_from_exif_buffer_with_tiff_header
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagListFromExifBufferWithTiffHeader(buffer *gst.Buffer) *gst.TagList {
-	var carg1 *C.GstBuffer  // in, none, converted
-	var cret  *C.GstTagList // return, full, converted
+	var carg1 *C.GstBuffer // in, none, converted
+	var cret *C.GstTagList // return, full, converted
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
@@ -900,11 +927,11 @@ func TagListFromExifBufferWithTiffHeader(buffer *gst.Buffer) *gst.TagList {
 }
 
 // TagListFromId3v2Tag wraps gst_tag_list_from_id3v2_tag
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagListFromId3v2Tag(buffer *gst.Buffer) *gst.TagList {
-	var carg1 *C.GstBuffer  // in, none, converted
-	var cret  *C.GstTagList // return, full, converted, nullable
+	var carg1 *C.GstBuffer // in, none, converted
+	var cret *C.GstTagList // return, full, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
@@ -921,15 +948,15 @@ func TagListFromId3v2Tag(buffer *gst.Buffer) *gst.TagList {
 }
 
 // TagListFromVorbiscomment wraps gst_tag_list_from_vorbiscomment
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagListFromVorbiscomment(data []uint8, idData []uint8) (string, *gst.TagList) {
-	var carg1 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
-	var carg2 C.gsize       // implicit
-	var carg3 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg4)
-	var carg4 C.guint       // implicit
-	var carg5 *C.gchar      // out, full, string
-	var cret  *C.GstTagList // return, full, converted, nullable
+	var carg1 *C.guint8    // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
+	var carg2 C.gsize      // implicit
+	var carg3 *C.guint8    // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg4)
+	var carg4 C.guint      // implicit
+	var carg5 *C.gchar     // out, full, string
+	var cret *C.GstTagList // return, full, converted, nullable
 
 	_ = data
 	_ = carg1
@@ -945,7 +972,7 @@ func TagListFromVorbiscomment(data []uint8, idData []uint8) (string, *gst.TagLis
 	runtime.KeepAlive(idData)
 
 	var vendorString string
-	var goret        *gst.TagList
+	var goret *gst.TagList
 
 	vendorString = C.GoString((*C.char)(unsafe.Pointer(carg5)))
 	defer C.g_free(C.gpointer(carg5))
@@ -957,14 +984,14 @@ func TagListFromVorbiscomment(data []uint8, idData []uint8) (string, *gst.TagLis
 }
 
 // TagListFromVorbiscommentBuffer wraps gst_tag_list_from_vorbiscomment_buffer
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagListFromVorbiscommentBuffer(buffer *gst.Buffer, idData []uint8) (string, *gst.TagList) {
-	var carg1 *C.GstBuffer  // in, none, converted
-	var carg2 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
-	var carg3 C.guint       // implicit
-	var carg4 *C.gchar      // out, full, string
-	var cret  *C.GstTagList // return, full, converted, nullable
+	var carg1 *C.GstBuffer // in, none, converted
+	var carg2 *C.guint8    // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
+	var carg3 C.guint      // implicit
+	var carg4 *C.gchar     // out, full, string
+	var cret *C.GstTagList // return, full, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	_ = idData
@@ -977,7 +1004,7 @@ func TagListFromVorbiscommentBuffer(buffer *gst.Buffer, idData []uint8) (string,
 	runtime.KeepAlive(idData)
 
 	var vendorString string
-	var goret        *gst.TagList
+	var goret *gst.TagList
 
 	vendorString = C.GoString((*C.char)(unsafe.Pointer(carg4)))
 	defer C.g_free(C.gpointer(carg4))
@@ -989,11 +1016,11 @@ func TagListFromVorbiscommentBuffer(buffer *gst.Buffer, idData []uint8) (string,
 }
 
 // TagListFromXmpBuffer wraps gst_tag_list_from_xmp_buffer
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagListFromXmpBuffer(buffer *gst.Buffer) *gst.TagList {
-	var carg1 *C.GstBuffer  // in, none, converted
-	var cret  *C.GstTagList // return, full, converted, nullable
+	var carg1 *C.GstBuffer // in, none, converted
+	var cret *C.GstTagList // return, full, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
@@ -1010,11 +1037,11 @@ func TagListFromXmpBuffer(buffer *gst.Buffer) *gst.TagList {
 }
 
 // TagListNewFromId3v1 wraps gst_tag_list_new_from_id3v1
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagListNewFromId3v1(data [128]uint8) *gst.TagList {
-	var carg1 *C.guint8     // in, none, array fixed size (inner: guint8, size: 128)
-	var cret  *C.GstTagList // return, full, converted, nullable
+	var carg1 *C.guint8    // in, none, array fixed size (inner: guint8, size: 128)
+	var cret *C.GstTagList // return, full, converted, nullable
 
 	{
 		var carr [128]C.guint8
@@ -1037,13 +1064,13 @@ func TagListNewFromId3v1(data [128]uint8) *gst.TagList {
 }
 
 // TagListToExifBuffer wraps gst_tag_list_to_exif_buffer
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagListToExifBuffer(taglist *gst.TagList, byteOrder int32, baseOffset uint32) *gst.Buffer {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 C.gint        // in, none, casted
 	var carg3 C.guint32     // in, none, casted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret *C.GstBuffer   // return, full, converted
 
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(taglist))
 	carg2 = C.gint(byteOrder)
@@ -1062,11 +1089,11 @@ func TagListToExifBuffer(taglist *gst.TagList, byteOrder int32, baseOffset uint3
 }
 
 // TagListToExifBufferWithTiffHeader wraps gst_tag_list_to_exif_buffer_with_tiff_header
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagListToExifBufferWithTiffHeader(taglist *gst.TagList) *gst.Buffer {
 	var carg1 *C.GstTagList // in, none, converted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret *C.GstBuffer   // return, full, converted
 
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(taglist))
 
@@ -1081,14 +1108,14 @@ func TagListToExifBufferWithTiffHeader(taglist *gst.TagList) *gst.Buffer {
 }
 
 // TagListToVorbiscommentBuffer wraps gst_tag_list_to_vorbiscomment_buffer
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagListToVorbiscommentBuffer(list *gst.TagList, idData []uint8, vendorString string) *gst.Buffer {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var carg3 C.guint       // implicit
 	var carg4 *C.gchar      // in, none, string, nullable-string
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret *C.GstBuffer   // return, full, converted
 
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(list))
 	_ = idData
@@ -1113,13 +1140,13 @@ func TagListToVorbiscommentBuffer(list *gst.TagList, idData []uint8, vendorStrin
 }
 
 // TagListToXmpBuffer wraps gst_tag_list_to_xmp_buffer
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagListToXmpBuffer(list *gst.TagList, readOnly bool, schemas []string) *gst.Buffer {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 C.gboolean    // in
 	var carg3 **C.gchar     // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
-	var cret  *C.GstBuffer  // return, full, converted, nullable
+	var cret *C.GstBuffer   // return, full, converted, nullable
 
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(list))
 	if readOnly {
@@ -1144,7 +1171,7 @@ func TagListToXmpBuffer(list *gst.TagList, readOnly bool, schemas []string) *gst
 }
 
 // TagParseExtendedComment wraps gst_tag_parse_extended_comment
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagParseExtendedComment(extComment string, failIfNoKey bool) (string, string, string, bool) {
 	var carg1 *C.gchar   // in, none, string
@@ -1152,7 +1179,7 @@ func TagParseExtendedComment(extComment string, failIfNoKey bool) (string, strin
 	var carg2 *C.gchar   // out, full, string, nullable-string
 	var carg3 *C.gchar   // out, full, string, nullable-string
 	var carg4 *C.gchar   // out, full, string
-	var cret  C.gboolean // return
+	var cret C.gboolean  // return
 
 	carg1 = (*C.gchar)(transfer.GLibString(extComment))
 	defer C.g_free(C.gpointer(carg1))
@@ -1164,8 +1191,8 @@ func TagParseExtendedComment(extComment string, failIfNoKey bool) (string, strin
 	runtime.KeepAlive(extComment)
 	runtime.KeepAlive(failIfNoKey)
 
-	var key   string
-	var lang  string
+	var key string
+	var lang string
 	var value string
 	var goret bool
 
@@ -1187,7 +1214,7 @@ func TagParseExtendedComment(extComment string, failIfNoKey bool) (string, strin
 }
 
 // TagRegisterMusicbrainzTags wraps gst_tag_register_musicbrainz_tags
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagRegisterMusicbrainzTags() {
 
@@ -1195,11 +1222,11 @@ func TagRegisterMusicbrainzTags() {
 }
 
 // TagToId3Tag wraps gst_tag_to_id3_tag
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagToId3Tag(gstTag string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(gstTag))
 	defer C.g_free(C.gpointer(carg1))
@@ -1217,12 +1244,12 @@ func TagToId3Tag(gstTag string) string {
 }
 
 // TagToVorbisComments wraps gst_tag_to_vorbis_comments
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagToVorbisComments(list *gst.TagList, tag string) []string {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 *C.gchar      // in, none, string
-	var cret  *C.GList      // container, transfer: full
+	var cret *C.GList       // container, transfer: full
 
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(list))
 	carg2 = (*C.gchar)(transfer.GLibString(tag))
@@ -1248,11 +1275,11 @@ func TagToVorbisComments(list *gst.TagList, tag string) []string {
 }
 
 // TagToVorbisTag wraps gst_tag_to_vorbis_tag
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagToVorbisTag(gstTag string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string, nullable-string
+	var cret *C.gchar  // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(transfer.GLibString(gstTag))
 	defer C.g_free(C.gpointer(carg1))
@@ -1270,10 +1297,10 @@ func TagToVorbisTag(gstTag string) string {
 }
 
 // TagXmpListSchemas wraps gst_tag_xmp_list_schemas
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func TagXmpListSchemas() []string {
-	var cret **C.gchar // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
+	var cret **C.gchar // return, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 
 	cret = C.gst_tag_xmp_list_schemas()
 
@@ -1287,7 +1314,7 @@ func TagXmpListSchemas() []string {
 }
 
 // VorbisTagAdd wraps gst_vorbis_tag_add
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag
 func VorbisTagAdd(list *gst.TagList, tag string, value string) {
 	var carg1 *C.GstTagList // in, none, converted
@@ -1309,39 +1336,40 @@ func VorbisTagAdd(list *gst.TagList, tag string, value string) {
 // TagXmpWriterInstance is the instance type used by all types implementing GstTagXmpWriter. It is used internally by the bindings. Users should use the interface [TagXmpWriter] instead.
 type TagXmpWriterInstance struct {
 	_ [0]func() // equal guard
+
 	Instance gobject.ObjectInstance
 }
 
 var _ TagXmpWriter = (*TagXmpWriterInstance)(nil)
 
 // TagXmpWriter wraps GstTagXmpWriter
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#GstTagXmpWriter
 type TagXmpWriter interface {
 	upcastToGstTagXmpWriter() *TagXmpWriterInstance
 
 	// AddAllSchemas wraps gst_tag_xmp_writer_add_all_schemas
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#gst_tag_xmp_writer_add_all_schemas
 	AddAllSchemas()
 	// AddSchema wraps gst_tag_xmp_writer_add_schema
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#gst_tag_xmp_writer_add_schema
 	AddSchema(string)
 	// HasSchema wraps gst_tag_xmp_writer_has_schema
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#gst_tag_xmp_writer_has_schema
 	HasSchema(string) bool
 	// RemoveAllSchemas wraps gst_tag_xmp_writer_remove_all_schemas
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#gst_tag_xmp_writer_remove_all_schemas
 	RemoveAllSchemas()
 	// RemoveSchema wraps gst_tag_xmp_writer_remove_schema
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#gst_tag_xmp_writer_remove_schema
 	RemoveSchema(string)
 	// TagListToXmpBuffer wraps gst_tag_xmp_writer_tag_list_to_xmp_buffer
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#gst_tag_xmp_writer_tag_list_to_xmp_buffer
 	TagListToXmpBuffer(*gst.TagList, bool) *gst.Buffer
 }
@@ -1390,7 +1418,7 @@ func UnsafeTagXmpWriterToGlibFull(c TagXmpWriter) unsafe.Pointer {
 }
 
 // AddAllSchemas wraps gst_tag_xmp_writer_add_all_schemas
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#gst_tag_xmp_writer_add_all_schemas
 func (config *TagXmpWriterInstance) AddAllSchemas() {
 	var carg0 *C.GstTagXmpWriter // in, none, converted
@@ -1402,7 +1430,7 @@ func (config *TagXmpWriterInstance) AddAllSchemas() {
 }
 
 // AddSchema wraps gst_tag_xmp_writer_add_schema
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#gst_tag_xmp_writer_add_schema
 func (config *TagXmpWriterInstance) AddSchema(schema string) {
 	var carg0 *C.GstTagXmpWriter // in, none, converted
@@ -1418,12 +1446,12 @@ func (config *TagXmpWriterInstance) AddSchema(schema string) {
 }
 
 // HasSchema wraps gst_tag_xmp_writer_has_schema
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#gst_tag_xmp_writer_has_schema
 func (config *TagXmpWriterInstance) HasSchema(schema string) bool {
 	var carg0 *C.GstTagXmpWriter // in, none, converted
 	var carg1 *C.gchar           // in, none, string
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstTagXmpWriter)(UnsafeTagXmpWriterToGlibNone(config))
 	carg1 = (*C.gchar)(transfer.GLibString(schema))
@@ -1443,7 +1471,7 @@ func (config *TagXmpWriterInstance) HasSchema(schema string) bool {
 }
 
 // RemoveAllSchemas wraps gst_tag_xmp_writer_remove_all_schemas
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#gst_tag_xmp_writer_remove_all_schemas
 func (config *TagXmpWriterInstance) RemoveAllSchemas() {
 	var carg0 *C.GstTagXmpWriter // in, none, converted
@@ -1455,7 +1483,7 @@ func (config *TagXmpWriterInstance) RemoveAllSchemas() {
 }
 
 // RemoveSchema wraps gst_tag_xmp_writer_remove_schema
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#gst_tag_xmp_writer_remove_schema
 func (config *TagXmpWriterInstance) RemoveSchema(schema string) {
 	var carg0 *C.GstTagXmpWriter // in, none, converted
@@ -1471,13 +1499,13 @@ func (config *TagXmpWriterInstance) RemoveSchema(schema string) {
 }
 
 // TagListToXmpBuffer wraps gst_tag_xmp_writer_tag_list_to_xmp_buffer
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#gst_tag_xmp_writer_tag_list_to_xmp_buffer
 func (config *TagXmpWriterInstance) TagListToXmpBuffer(taglist *gst.TagList, readOnly bool) *gst.Buffer {
 	var carg0 *C.GstTagXmpWriter // in, none, converted
 	var carg1 *C.GstTagList      // in, none, converted
 	var carg2 C.gboolean         // in
-	var cret  *C.GstBuffer       // return, full, converted
+	var cret *C.GstBuffer        // return, full, converted
 
 	carg0 = (*C.GstTagXmpWriter)(UnsafeTagXmpWriterToGlibNone(config))
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(taglist))
@@ -1506,7 +1534,7 @@ type TagDemuxInstance struct {
 var _ TagDemux = (*TagDemuxInstance)(nil)
 
 // TagDemux wraps GstTagDemux
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#GstTagDemux
 type TagDemux interface {
 	gst.Element
@@ -1516,12 +1544,12 @@ type TagDemux interface {
 
 	// ParentIdentifyTag calls the default implementations of the `GstTagDemux.identify_tag` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#identify_tag
-	ParentIdentifyTag(buffer *gst.Buffer, startTag bool, tagSize *uint) bool
+	ParentIdentifyTag(buffer *gst.Buffer, startTag bool, tagSize *uint32) bool
 	// ParentMergeTags calls the default implementations of the `GstTagDemux.merge_tags` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#merge_tags
 	ParentMergeTags(startTags *gst.TagList, endTags *gst.TagList) *gst.TagList
 }
@@ -1541,7 +1569,7 @@ func unsafeWrapTagDemux(base *gobject.ObjectInstance) *TagDemuxInstance {
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeTagDemux,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapTagDemux(inst)
 		},
 	)
@@ -1586,12 +1614,12 @@ type TagDemuxOverrides[Instance TagDemux] struct {
 	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
 	gst.ElementOverrides[Instance]
 
-	// // IdentifyTag allows you to override the implementation of the virtual method identify_tag.
-	// 
+	// IdentifyTag allows you to override the implementation of the virtual method identify_tag.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#identify_tag
-	IdentifyTag func(Instance, *gst.Buffer, bool, *uint) bool
-	// // MergeTags allows you to override the implementation of the virtual method merge_tags.
-	// 
+	IdentifyTag func(Instance, *gst.Buffer, bool, *uint32) bool
+	// MergeTags allows you to override the implementation of the virtual method merge_tags.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#merge_tags
 	MergeTags func(Instance, *gst.TagList, *gst.TagList) *gst.TagList
 }
@@ -1609,11 +1637,11 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 			unsafe.Pointer(pclass),
 			"_goglib_gsttag1_TagDemux_identify_tag",
 			func(carg0 *C.GstTagDemux, carg1 *C.GstBuffer, carg2 C.gboolean, carg3 *C.guint) (cret C.gboolean) {
-				var demux    Instance    // go GstTagDemux subclass
-				var buffer   *gst.Buffer // in, none, converted
-				var startTag bool        // in
-				var tagSize  *uint       // in, transfer: none, C Pointers: 1, Name: guint
-				var goret    bool        // return
+				var demux Instance     // go GstTagDemux subclass
+				var buffer *gst.Buffer // in, none, converted
+				var startTag bool      // in
+				var tagSize *uint32    // in, transfer: none, C Pointers: 1, Name: guint
+				var goret bool         // return
 
 				demux = UnsafeTagDemuxFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
@@ -1622,7 +1650,7 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 				}
 				_ = tagSize
 				_ = carg3
-				panic("unimplemented conversion of *uint (guint*) because of unknown reason")
+				panic("unimplemented conversion of *uint32 (guint*) because of unknown reason")
 
 				goret = overrides.IdentifyTag(demux, buffer, startTag, tagSize)
 
@@ -1641,10 +1669,10 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 			unsafe.Pointer(pclass),
 			"_goglib_gsttag1_TagDemux_merge_tags",
 			func(carg0 *C.GstTagDemux, carg1 *C.GstTagList, carg2 *C.GstTagList) (cret *C.GstTagList) {
-				var demux     Instance     // go GstTagDemux subclass
+				var demux Instance         // go GstTagDemux subclass
 				var startTags *gst.TagList // in, none, converted
-				var endTags   *gst.TagList // in, none, converted
-				var goret     *gst.TagList // return, full, converted
+				var endTags *gst.TagList   // in, none, converted
+				var goret *gst.TagList     // return, full, converted
 
 				demux = UnsafeTagDemuxFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				startTags = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg1))
@@ -1662,14 +1690,14 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 
 // ParentIdentifyTag calls the default implementations of the `GstTagDemux.identify_tag` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#identify_tag
-func (demux *TagDemuxInstance) ParentIdentifyTag(buffer *gst.Buffer, startTag bool, tagSize *uint) bool {
+func (demux *TagDemuxInstance) ParentIdentifyTag(buffer *gst.Buffer, startTag bool, tagSize *uint32) bool {
 	var carg0 *C.GstTagDemux
 	var carg1 *C.GstBuffer // in, none, converted
 	var carg2 C.gboolean   // in, none, converted
 	var carg3 *C.guint     // in
-	var cret  C.gboolean   // return
+	var cret C.gboolean    // return
 
 	parentclass := (*C.GstTagDemuxClass)(classdata.PeekParentClass(UnsafeTagDemuxToGlibNone(demux)))
 
@@ -1680,7 +1708,7 @@ func (demux *TagDemuxInstance) ParentIdentifyTag(buffer *gst.Buffer, startTag bo
 	}
 	_ = tagSize
 	_ = carg3
-	panic("unimplemented conversion of *uint (guint*) because of no basic converter found")
+	panic("unimplemented conversion of *uint32 (guint*) because of no basic converter found")
 
 	cret = C._goglib_gsttag1_TagDemux_virtual_identify_tag(unsafe.Pointer(parentclass.identify_tag), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(demux)
@@ -1699,13 +1727,13 @@ func (demux *TagDemuxInstance) ParentIdentifyTag(buffer *gst.Buffer, startTag bo
 
 // ParentMergeTags calls the default implementations of the `GstTagDemux.merge_tags` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#merge_tags
 func (demux *TagDemuxInstance) ParentMergeTags(startTags *gst.TagList, endTags *gst.TagList) *gst.TagList {
 	var carg0 *C.GstTagDemux
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 *C.GstTagList // in, none, converted
-	var cret  *C.GstTagList // return, full, converted
+	var cret *C.GstTagList  // return, full, converted
 
 	parentclass := (*C.GstTagDemuxClass)(classdata.PeekParentClass(UnsafeTagDemuxToGlibNone(demux)))
 
@@ -1728,12 +1756,12 @@ func (demux *TagDemuxInstance) ParentMergeTags(startTags *gst.TagList, endTags *
 // RegisterTagDemuxSubClass is used to register a go subclass of GstTagDemux. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterTagDemuxSubClass[InstanceT TagDemux](
-		name string,
-		classInit func(class *TagDemuxClass),
-		constructor func() InstanceT,
-		overrides TagDemuxOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *TagDemuxClass),
+	constructor func() InstanceT,
+	overrides TagDemuxOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -1744,7 +1772,7 @@ func RegisterTagDemuxSubClass[InstanceT TagDemux](
 		TypeTagDemux,
 		UnsafeTagDemuxClassFromGlibBorrow,
 		UnsafeApplyTagDemuxOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapTagDemux(obj)
 		},
 		interfaceInits...,
@@ -1762,7 +1790,7 @@ type TagMuxInstance struct {
 var _ TagMux = (*TagMuxInstance)(nil)
 
 // TagMux wraps GstTagMux
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/gsttagmux.html#GstTagMux
 type TagMux interface {
 	gst.Element
@@ -1773,12 +1801,12 @@ type TagMux interface {
 
 	// ParentRenderEndTag calls the default implementations of the `GstTagMux.render_end_tag` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagmux.html#render_end_tag
 	ParentRenderEndTag(tagList *gst.TagList) *gst.Buffer
 	// ParentRenderStartTag calls the default implementations of the `GstTagMux.render_start_tag` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagmux.html#render_start_tag
 	ParentRenderStartTag(tagList *gst.TagList) *gst.Buffer
 }
@@ -1801,7 +1829,7 @@ func unsafeWrapTagMux(base *gobject.ObjectInstance) *TagMuxInstance {
 func init() {
 	gobject.RegisterObjectCasting(
 		TypeTagMux,
-		func (inst *gobject.ObjectInstance) gobject.Object {
+		func(inst *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapTagMux(inst)
 		},
 	)
@@ -1846,12 +1874,12 @@ type TagMuxOverrides[Instance TagMux] struct {
 	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
 	gst.ElementOverrides[Instance]
 
-	// // RenderEndTag allows you to override the implementation of the virtual method render_end_tag.
-	// 
+	// RenderEndTag allows you to override the implementation of the virtual method render_end_tag.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagmux.html#render_end_tag
 	RenderEndTag func(Instance, *gst.TagList) *gst.Buffer
-	// // RenderStartTag allows you to override the implementation of the virtual method render_start_tag.
-	// 
+	// RenderStartTag allows you to override the implementation of the virtual method render_start_tag.
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagmux.html#render_start_tag
 	RenderStartTag func(Instance, *gst.TagList) *gst.Buffer
 }
@@ -1869,9 +1897,9 @@ func UnsafeApplyTagMuxOverrides[Instance TagMux](gclass unsafe.Pointer, override
 			unsafe.Pointer(pclass),
 			"_goglib_gsttag1_TagMux_render_end_tag",
 			func(carg0 *C.GstTagMux, carg1 *C.GstTagList) (cret *C.GstBuffer) {
-				var mux     Instance     // go GstTagMux subclass
+				var mux Instance         // go GstTagMux subclass
 				var tagList *gst.TagList // in, none, converted
-				var goret   *gst.Buffer  // return, full, converted
+				var goret *gst.Buffer    // return, full, converted
 
 				mux = UnsafeTagMuxFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				tagList = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg1))
@@ -1891,9 +1919,9 @@ func UnsafeApplyTagMuxOverrides[Instance TagMux](gclass unsafe.Pointer, override
 			unsafe.Pointer(pclass),
 			"_goglib_gsttag1_TagMux_render_start_tag",
 			func(carg0 *C.GstTagMux, carg1 *C.GstTagList) (cret *C.GstBuffer) {
-				var mux     Instance     // go GstTagMux subclass
+				var mux Instance         // go GstTagMux subclass
 				var tagList *gst.TagList // in, none, converted
-				var goret   *gst.Buffer  // return, full, converted
+				var goret *gst.Buffer    // return, full, converted
 
 				mux = UnsafeTagMuxFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				tagList = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg1))
@@ -1910,12 +1938,12 @@ func UnsafeApplyTagMuxOverrides[Instance TagMux](gclass unsafe.Pointer, override
 
 // ParentRenderEndTag calls the default implementations of the `GstTagMux.render_end_tag` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/gsttagmux.html#render_end_tag
 func (mux *TagMuxInstance) ParentRenderEndTag(tagList *gst.TagList) *gst.Buffer {
 	var carg0 *C.GstTagMux
 	var carg1 *C.GstTagList // in, none, converted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret *C.GstBuffer   // return, full, converted
 
 	parentclass := (*C.GstTagMuxClass)(classdata.PeekParentClass(UnsafeTagMuxToGlibNone(mux)))
 
@@ -1935,12 +1963,12 @@ func (mux *TagMuxInstance) ParentRenderEndTag(tagList *gst.TagList) *gst.Buffer 
 
 // ParentRenderStartTag calls the default implementations of the `GstTagMux.render_start_tag` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/gsttagmux.html#render_start_tag
 func (mux *TagMuxInstance) ParentRenderStartTag(tagList *gst.TagList) *gst.Buffer {
 	var carg0 *C.GstTagMux
 	var carg1 *C.GstTagList // in, none, converted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret *C.GstBuffer   // return, full, converted
 
 	parentclass := (*C.GstTagMuxClass)(classdata.PeekParentClass(UnsafeTagMuxToGlibNone(mux)))
 
@@ -1961,12 +1989,12 @@ func (mux *TagMuxInstance) ParentRenderStartTag(tagList *gst.TagList) *gst.Buffe
 // RegisterTagMuxSubClass is used to register a go subclass of GstTagMux. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterTagMuxSubClass[InstanceT TagMux](
-		name string,
-		classInit func(class *TagMuxClass),
-		constructor func() InstanceT,
-		overrides TagMuxOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+	name string,
+	classInit func(class *TagMuxClass),
+	constructor func() InstanceT,
+	overrides TagMuxOverrides[InstanceT],
+	signals map[string]gobject.SignalDefinition,
+	interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
 ) gobject.Type {
 	return gobject.UnsafeRegisterSubClass(
 		name,
@@ -1977,7 +2005,7 @@ func RegisterTagMuxSubClass[InstanceT TagMux](
 		TypeTagMux,
 		UnsafeTagMuxClassFromGlibBorrow,
 		UnsafeApplyTagMuxOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
+		func(obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapTagMux(obj)
 		},
 		interfaceInits...,
@@ -1985,9 +2013,9 @@ func RegisterTagMuxSubClass[InstanceT TagMux](
 }
 
 // TagDemuxClass wraps GstTagDemuxClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#GstTagDemuxClass
-// 
+//
 // TagDemuxClass is the type struct for [TagDemux]
 type TagDemuxClass struct {
 	*tagDemuxClass
@@ -2015,7 +2043,7 @@ func UnsafeTagDemuxClassFromGlibBorrow(p unsafe.Pointer) *TagDemuxClass {
 }
 
 // UnsafeTagDemuxClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [TagDemuxClass] is expected to work anymore.
 func UnsafeTagDemuxClassFree(t *TagDemuxClass) {
 	C.free(unsafe.Pointer(t.native))
@@ -2040,9 +2068,9 @@ func (t *TagDemuxClass) ParentClass() *gst.ElementClass {
 }
 
 // TagMuxClass wraps GstTagMuxClass
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/gsttagmux.html#GstTagMuxClass
-// 
+//
 // TagMuxClass is the type struct for [TagMux]
 type TagMuxClass struct {
 	*tagMuxClass
@@ -2070,7 +2098,7 @@ func UnsafeTagMuxClassFromGlibBorrow(p unsafe.Pointer) *TagMuxClass {
 }
 
 // UnsafeTagMuxClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [TagMuxClass] is expected to work anymore.
 func UnsafeTagMuxClassFree(t *TagMuxClass) {
 	C.free(unsafe.Pointer(t.native))
@@ -2095,7 +2123,7 @@ func (t *TagMuxClass) ParentClass() *gst.ElementClass {
 }
 
 // TagXmpWriterInterface wraps GstTagXmpWriterInterface
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/tag/xmpwriter.html#GstTagXmpWriterInterface
 type TagXmpWriterInterface struct {
 	*tagXmpWriterInterface
@@ -2141,7 +2169,7 @@ func UnsafeTagXmpWriterInterfaceFromGlibFull(p unsafe.Pointer) *TagXmpWriterInte
 	}
 	runtime.SetFinalizer(
 		wrapped.tagXmpWriterInterface,
-		func (intern *tagXmpWriterInterface) {
+		func(intern *tagXmpWriterInterface) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2149,7 +2177,7 @@ func UnsafeTagXmpWriterInterfaceFromGlibFull(p unsafe.Pointer) *TagXmpWriterInte
 }
 
 // UnsafeTagXmpWriterInterfaceFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [TagXmpWriterInterface] is expected to work anymore.
 func UnsafeTagXmpWriterInterfaceFree(t *TagXmpWriterInterface) {
 	C.free(unsafe.Pointer(t.native))
@@ -2175,4 +2203,3 @@ func UnsafeTagXmpWriterInterfaceToGlibFull(t *TagXmpWriterInterface) unsafe.Poin
 	t.native = nil // TagXmpWriterInterface is invalid from here on
 	return _p
 }
-

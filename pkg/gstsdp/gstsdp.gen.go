@@ -35,507 +35,567 @@ func init() {
 }
 
 // MIKEY_VERSION wraps GST_MIKEY_VERSION
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_VERSION
 const MIKEY_VERSION = 1
+
 // MIKEYCacheType wraps GstMIKEYCacheType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYCacheType
 type MIKEYCacheType C.int
 
 const (
 	// MikeyCacheNone wraps GST_MIKEY_CACHE_NONE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_CACHE_NONE
 	MikeyCacheNone MIKEYCacheType = 0
 	// MikeyCacheAlways wraps GST_MIKEY_CACHE_ALWAYS
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_CACHE_ALWAYS
 	MikeyCacheAlways MIKEYCacheType = 1
 	// MikeyCacheForCsb wraps GST_MIKEY_CACHE_FOR_CSB
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_CACHE_FOR_CSB
 	MikeyCacheForCsb MIKEYCacheType = 2
 )
 
-
 func (e MIKEYCacheType) String() string {
 	switch e {
-		case MikeyCacheAlways: return "MikeyCacheAlways"
-		case MikeyCacheForCsb: return "MikeyCacheForCsb"
-		case MikeyCacheNone: return "MikeyCacheNone"
-		default: return fmt.Sprintf("MIKEYCacheType(%d)", e)
+	case MikeyCacheAlways:
+		return "MikeyCacheAlways"
+	case MikeyCacheForCsb:
+		return "MikeyCacheForCsb"
+	case MikeyCacheNone:
+		return "MikeyCacheNone"
+	default:
+		return fmt.Sprintf("MIKEYCacheType(%d)", e)
 	}
 }
 
 // MIKEYEncAlg wraps GstMIKEYEncAlg
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYEncAlg
 type MIKEYEncAlg C.int
 
 const (
 	// MikeyEncNull wraps GST_MIKEY_ENC_NULL
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_ENC_NULL
 	MikeyEncNull MIKEYEncAlg = 0
 	// MikeyEncAesCm128 wraps GST_MIKEY_ENC_AES_CM_128
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_ENC_AES_CM_128
 	MikeyEncAesCm128 MIKEYEncAlg = 1
 	// MikeyEncAesKw128 wraps GST_MIKEY_ENC_AES_KW_128
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_ENC_AES_KW_128
 	MikeyEncAesKw128 MIKEYEncAlg = 2
 	// MikeyEncAesGcm128 wraps GST_MIKEY_ENC_AES_GCM_128
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_ENC_AES_GCM_128
 	MikeyEncAesGcm128 MIKEYEncAlg = 6
 )
 
-
 func (e MIKEYEncAlg) String() string {
 	switch e {
-		case MikeyEncAesCm128: return "MikeyEncAesCm128"
-		case MikeyEncAesGcm128: return "MikeyEncAesGcm128"
-		case MikeyEncAesKw128: return "MikeyEncAesKw128"
-		case MikeyEncNull: return "MikeyEncNull"
-		default: return fmt.Sprintf("MIKEYEncAlg(%d)", e)
+	case MikeyEncAesCm128:
+		return "MikeyEncAesCm128"
+	case MikeyEncAesGcm128:
+		return "MikeyEncAesGcm128"
+	case MikeyEncAesKw128:
+		return "MikeyEncAesKw128"
+	case MikeyEncNull:
+		return "MikeyEncNull"
+	default:
+		return fmt.Sprintf("MIKEYEncAlg(%d)", e)
 	}
 }
 
 // MIKEYKVType wraps GstMIKEYKVType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYKVType
 type MIKEYKVType C.int
 
 const (
 	// MikeyKvNull wraps GST_MIKEY_KV_NULL
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_KV_NULL
 	MikeyKvNull MIKEYKVType = 0
 	// MikeyKvSpi wraps GST_MIKEY_KV_SPI
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_KV_SPI
 	MikeyKvSpi MIKEYKVType = 1
 	// MikeyKvInterval wraps GST_MIKEY_KV_INTERVAL
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_KV_INTERVAL
 	MikeyKvInterval MIKEYKVType = 2
 )
 
-
 func (e MIKEYKVType) String() string {
 	switch e {
-		case MikeyKvInterval: return "MikeyKvInterval"
-		case MikeyKvNull: return "MikeyKvNull"
-		case MikeyKvSpi: return "MikeyKvSpi"
-		default: return fmt.Sprintf("MIKEYKVType(%d)", e)
+	case MikeyKvInterval:
+		return "MikeyKvInterval"
+	case MikeyKvNull:
+		return "MikeyKvNull"
+	case MikeyKvSpi:
+		return "MikeyKvSpi"
+	default:
+		return fmt.Sprintf("MIKEYKVType(%d)", e)
 	}
 }
 
 // MIKEYKeyDataType wraps GstMIKEYKeyDataType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYKeyDataType
 type MIKEYKeyDataType C.int
 
 const (
 	// MikeyKdTgk wraps GST_MIKEY_KD_TGK
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_KD_TGK
 	MikeyKdTgk MIKEYKeyDataType = 0
 	// MikeyKdTek wraps GST_MIKEY_KD_TEK
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_KD_TEK
 	MikeyKdTek MIKEYKeyDataType = 2
 )
 
-
 func (e MIKEYKeyDataType) String() string {
 	switch e {
-		case MikeyKdTek: return "MikeyKdTek"
-		case MikeyKdTgk: return "MikeyKdTgk"
-		default: return fmt.Sprintf("MIKEYKeyDataType(%d)", e)
+	case MikeyKdTek:
+		return "MikeyKdTek"
+	case MikeyKdTgk:
+		return "MikeyKdTgk"
+	default:
+		return fmt.Sprintf("MIKEYKeyDataType(%d)", e)
 	}
 }
 
 // MIKEYMacAlg wraps GstMIKEYMacAlg
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYMacAlg
 type MIKEYMacAlg C.int
 
 const (
 	// MikeyMacNull wraps GST_MIKEY_MAC_NULL
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_MAC_NULL
 	MikeyMacNull MIKEYMacAlg = 0
 	// MikeyMacHmacSha1160 wraps GST_MIKEY_MAC_HMAC_SHA_1_160
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_MAC_HMAC_SHA_1_160
 	MikeyMacHmacSha1160 MIKEYMacAlg = 1
 )
 
-
 func (e MIKEYMacAlg) String() string {
 	switch e {
-		case MikeyMacHmacSha1160: return "MikeyMacHmacSha1160"
-		case MikeyMacNull: return "MikeyMacNull"
-		default: return fmt.Sprintf("MIKEYMacAlg(%d)", e)
+	case MikeyMacHmacSha1160:
+		return "MikeyMacHmacSha1160"
+	case MikeyMacNull:
+		return "MikeyMacNull"
+	default:
+		return fmt.Sprintf("MIKEYMacAlg(%d)", e)
 	}
 }
 
 // MIKEYMapType wraps GstMIKEYMapType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYMapType
 type MIKEYMapType C.int
 
 const (
 	// MikeyMapTypeSrtp wraps GST_MIKEY_MAP_TYPE_SRTP
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_MAP_TYPE_SRTP
 	MikeyMapTypeSrtp MIKEYMapType = 0
 )
 
-
 func (e MIKEYMapType) String() string {
 	switch e {
-		case MikeyMapTypeSrtp: return "MikeyMapTypeSrtp"
-		default: return fmt.Sprintf("MIKEYMapType(%d)", e)
+	case MikeyMapTypeSrtp:
+		return "MikeyMapTypeSrtp"
+	default:
+		return fmt.Sprintf("MIKEYMapType(%d)", e)
 	}
 }
 
 // MIKEYPRFFunc wraps GstMIKEYPRFFunc
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYPRFFunc
 type MIKEYPRFFunc C.int
 
 const (
 	// MikeyPrfMikey1 wraps GST_MIKEY_PRF_MIKEY_1
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PRF_MIKEY_1
 	MikeyPrfMikey1 MIKEYPRFFunc = 0
 )
 
-
 func (e MIKEYPRFFunc) String() string {
 	switch e {
-		case MikeyPrfMikey1: return "MikeyPrfMikey1"
-		default: return fmt.Sprintf("MIKEYPRFFunc(%d)", e)
+	case MikeyPrfMikey1:
+		return "MikeyPrfMikey1"
+	default:
+		return fmt.Sprintf("MIKEYPRFFunc(%d)", e)
 	}
 }
 
 // MIKEYPayloadType wraps GstMIKEYPayloadType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYPayloadType
 type MIKEYPayloadType C.int
 
 const (
 	// MikeyPtLast wraps GST_MIKEY_PT_LAST
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_LAST
 	MikeyPtLast MIKEYPayloadType = 0
 	// MikeyPtKemac wraps GST_MIKEY_PT_KEMAC
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_KEMAC
 	MikeyPtKemac MIKEYPayloadType = 1
 	// MikeyPtPke wraps GST_MIKEY_PT_PKE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_PKE
 	MikeyPtPke MIKEYPayloadType = 2
 	// MikeyPtDh wraps GST_MIKEY_PT_DH
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_DH
 	MikeyPtDh MIKEYPayloadType = 3
 	// MikeyPtSign wraps GST_MIKEY_PT_SIGN
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_SIGN
 	MikeyPtSign MIKEYPayloadType = 4
 	// MikeyPtT wraps GST_MIKEY_PT_T
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_T
 	MikeyPtT MIKEYPayloadType = 5
 	// MikeyPtID wraps GST_MIKEY_PT_ID
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_ID
 	MikeyPtID MIKEYPayloadType = 6
 	// MikeyPtCert wraps GST_MIKEY_PT_CERT
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_CERT
 	MikeyPtCert MIKEYPayloadType = 7
 	// MikeyPtChash wraps GST_MIKEY_PT_CHASH
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_CHASH
 	MikeyPtChash MIKEYPayloadType = 8
 	// MikeyPtV wraps GST_MIKEY_PT_V
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_V
 	MikeyPtV MIKEYPayloadType = 9
 	// MikeyPtSp wraps GST_MIKEY_PT_SP
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_SP
 	MikeyPtSp MIKEYPayloadType = 10
 	// MikeyPtRand wraps GST_MIKEY_PT_RAND
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_RAND
 	MikeyPtRand MIKEYPayloadType = 11
 	// MikeyPtErr wraps GST_MIKEY_PT_ERR
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_ERR
 	MikeyPtErr MIKEYPayloadType = 12
 	// MikeyPtKeyData wraps GST_MIKEY_PT_KEY_DATA
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_KEY_DATA
 	MikeyPtKeyData MIKEYPayloadType = 20
 	// MikeyPtGenExt wraps GST_MIKEY_PT_GEN_EXT
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_GEN_EXT
 	MikeyPtGenExt MIKEYPayloadType = 21
 )
 
-
 func (e MIKEYPayloadType) String() string {
 	switch e {
-		case MikeyPtCert: return "MikeyPtCert"
-		case MikeyPtChash: return "MikeyPtChash"
-		case MikeyPtDh: return "MikeyPtDh"
-		case MikeyPtErr: return "MikeyPtErr"
-		case MikeyPtGenExt: return "MikeyPtGenExt"
-		case MikeyPtID: return "MikeyPtID"
-		case MikeyPtKemac: return "MikeyPtKemac"
-		case MikeyPtKeyData: return "MikeyPtKeyData"
-		case MikeyPtLast: return "MikeyPtLast"
-		case MikeyPtPke: return "MikeyPtPke"
-		case MikeyPtRand: return "MikeyPtRand"
-		case MikeyPtSign: return "MikeyPtSign"
-		case MikeyPtSp: return "MikeyPtSp"
-		case MikeyPtT: return "MikeyPtT"
-		case MikeyPtV: return "MikeyPtV"
-		default: return fmt.Sprintf("MIKEYPayloadType(%d)", e)
+	case MikeyPtCert:
+		return "MikeyPtCert"
+	case MikeyPtChash:
+		return "MikeyPtChash"
+	case MikeyPtDh:
+		return "MikeyPtDh"
+	case MikeyPtErr:
+		return "MikeyPtErr"
+	case MikeyPtGenExt:
+		return "MikeyPtGenExt"
+	case MikeyPtID:
+		return "MikeyPtID"
+	case MikeyPtKemac:
+		return "MikeyPtKemac"
+	case MikeyPtKeyData:
+		return "MikeyPtKeyData"
+	case MikeyPtLast:
+		return "MikeyPtLast"
+	case MikeyPtPke:
+		return "MikeyPtPke"
+	case MikeyPtRand:
+		return "MikeyPtRand"
+	case MikeyPtSign:
+		return "MikeyPtSign"
+	case MikeyPtSp:
+		return "MikeyPtSp"
+	case MikeyPtT:
+		return "MikeyPtT"
+	case MikeyPtV:
+		return "MikeyPtV"
+	default:
+		return fmt.Sprintf("MIKEYPayloadType(%d)", e)
 	}
 }
 
 // MIKEYSecProto wraps GstMIKEYSecProto
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYSecProto
 type MIKEYSecProto C.int
 
 const (
 	// MikeySecProtoSrtp wraps GST_MIKEY_SEC_PROTO_SRTP
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SEC_PROTO_SRTP
 	MikeySecProtoSrtp MIKEYSecProto = 0
 )
 
-
 func (e MIKEYSecProto) String() string {
 	switch e {
-		case MikeySecProtoSrtp: return "MikeySecProtoSrtp"
-		default: return fmt.Sprintf("MIKEYSecProto(%d)", e)
+	case MikeySecProtoSrtp:
+		return "MikeySecProtoSrtp"
+	default:
+		return fmt.Sprintf("MIKEYSecProto(%d)", e)
 	}
 }
 
 // MIKEYSecSRTP wraps GstMIKEYSecSRTP
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYSecSRTP
 type MIKEYSecSRTP C.int
 
 const (
 	// MikeySpSrtpEncAlg wraps GST_MIKEY_SP_SRTP_ENC_ALG
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_ENC_ALG
 	MikeySpSrtpEncAlg MIKEYSecSRTP = 0
 	// MikeySpSrtpEncKeyLen wraps GST_MIKEY_SP_SRTP_ENC_KEY_LEN
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_ENC_KEY_LEN
 	MikeySpSrtpEncKeyLen MIKEYSecSRTP = 1
 	// MikeySpSrtpAuthAlg wraps GST_MIKEY_SP_SRTP_AUTH_ALG
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_AUTH_ALG
 	MikeySpSrtpAuthAlg MIKEYSecSRTP = 2
 	// MikeySpSrtpAuthKeyLen wraps GST_MIKEY_SP_SRTP_AUTH_KEY_LEN
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_AUTH_KEY_LEN
 	MikeySpSrtpAuthKeyLen MIKEYSecSRTP = 3
 	// MikeySpSrtpSaltKeyLen wraps GST_MIKEY_SP_SRTP_SALT_KEY_LEN
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_SALT_KEY_LEN
 	MikeySpSrtpSaltKeyLen MIKEYSecSRTP = 4
 	// MikeySpSrtpPrf wraps GST_MIKEY_SP_SRTP_PRF
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_PRF
 	MikeySpSrtpPrf MIKEYSecSRTP = 5
 	// MikeySpSrtpKeyDerivRate wraps GST_MIKEY_SP_SRTP_KEY_DERIV_RATE
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_KEY_DERIV_RATE
 	MikeySpSrtpKeyDerivRate MIKEYSecSRTP = 6
 	// MikeySpSrtpSrtpEnc wraps GST_MIKEY_SP_SRTP_SRTP_ENC
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_SRTP_ENC
 	MikeySpSrtpSrtpEnc MIKEYSecSRTP = 7
 	// MikeySpSrtpSrtcpEnc wraps GST_MIKEY_SP_SRTP_SRTCP_ENC
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_SRTCP_ENC
 	MikeySpSrtpSrtcpEnc MIKEYSecSRTP = 8
 	// MikeySpSrtpFecOrder wraps GST_MIKEY_SP_SRTP_FEC_ORDER
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_FEC_ORDER
 	MikeySpSrtpFecOrder MIKEYSecSRTP = 9
 	// MikeySpSrtpSrtpAuth wraps GST_MIKEY_SP_SRTP_SRTP_AUTH
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_SRTP_AUTH
 	MikeySpSrtpSrtpAuth MIKEYSecSRTP = 10
 	// MikeySpSrtpAuthTagLen wraps GST_MIKEY_SP_SRTP_AUTH_TAG_LEN
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_AUTH_TAG_LEN
 	MikeySpSrtpAuthTagLen MIKEYSecSRTP = 11
 	// MikeySpSrtpSrtpPrefixLen wraps GST_MIKEY_SP_SRTP_SRTP_PREFIX_LEN
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_SRTP_PREFIX_LEN
 	MikeySpSrtpSrtpPrefixLen MIKEYSecSRTP = 12
 	// MikeySpSrtpAeadAuthTagLen wraps GST_MIKEY_SP_SRTP_AEAD_AUTH_TAG_LEN
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_AEAD_AUTH_TAG_LEN
 	MikeySpSrtpAeadAuthTagLen MIKEYSecSRTP = 20
 )
 
-
 func (e MIKEYSecSRTP) String() string {
 	switch e {
-		case MikeySpSrtpAeadAuthTagLen: return "MikeySpSrtpAeadAuthTagLen"
-		case MikeySpSrtpAuthAlg: return "MikeySpSrtpAuthAlg"
-		case MikeySpSrtpAuthKeyLen: return "MikeySpSrtpAuthKeyLen"
-		case MikeySpSrtpAuthTagLen: return "MikeySpSrtpAuthTagLen"
-		case MikeySpSrtpEncAlg: return "MikeySpSrtpEncAlg"
-		case MikeySpSrtpEncKeyLen: return "MikeySpSrtpEncKeyLen"
-		case MikeySpSrtpFecOrder: return "MikeySpSrtpFecOrder"
-		case MikeySpSrtpKeyDerivRate: return "MikeySpSrtpKeyDerivRate"
-		case MikeySpSrtpPrf: return "MikeySpSrtpPrf"
-		case MikeySpSrtpSaltKeyLen: return "MikeySpSrtpSaltKeyLen"
-		case MikeySpSrtpSrtcpEnc: return "MikeySpSrtpSrtcpEnc"
-		case MikeySpSrtpSrtpAuth: return "MikeySpSrtpSrtpAuth"
-		case MikeySpSrtpSrtpEnc: return "MikeySpSrtpSrtpEnc"
-		case MikeySpSrtpSrtpPrefixLen: return "MikeySpSrtpSrtpPrefixLen"
-		default: return fmt.Sprintf("MIKEYSecSRTP(%d)", e)
+	case MikeySpSrtpAeadAuthTagLen:
+		return "MikeySpSrtpAeadAuthTagLen"
+	case MikeySpSrtpAuthAlg:
+		return "MikeySpSrtpAuthAlg"
+	case MikeySpSrtpAuthKeyLen:
+		return "MikeySpSrtpAuthKeyLen"
+	case MikeySpSrtpAuthTagLen:
+		return "MikeySpSrtpAuthTagLen"
+	case MikeySpSrtpEncAlg:
+		return "MikeySpSrtpEncAlg"
+	case MikeySpSrtpEncKeyLen:
+		return "MikeySpSrtpEncKeyLen"
+	case MikeySpSrtpFecOrder:
+		return "MikeySpSrtpFecOrder"
+	case MikeySpSrtpKeyDerivRate:
+		return "MikeySpSrtpKeyDerivRate"
+	case MikeySpSrtpPrf:
+		return "MikeySpSrtpPrf"
+	case MikeySpSrtpSaltKeyLen:
+		return "MikeySpSrtpSaltKeyLen"
+	case MikeySpSrtpSrtcpEnc:
+		return "MikeySpSrtpSrtcpEnc"
+	case MikeySpSrtpSrtpAuth:
+		return "MikeySpSrtpSrtpAuth"
+	case MikeySpSrtpSrtpEnc:
+		return "MikeySpSrtpSrtpEnc"
+	case MikeySpSrtpSrtpPrefixLen:
+		return "MikeySpSrtpSrtpPrefixLen"
+	default:
+		return fmt.Sprintf("MIKEYSecSRTP(%d)", e)
 	}
 }
 
 // MIKEYTSType wraps GstMIKEYTSType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYTSType
 type MIKEYTSType C.int
 
 const (
 	// MikeyTsTypeNtpUtc wraps GST_MIKEY_TS_TYPE_NTP_UTC
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TS_TYPE_NTP_UTC
 	MikeyTsTypeNtpUtc MIKEYTSType = 0
 	// MikeyTsTypeNtp wraps GST_MIKEY_TS_TYPE_NTP
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TS_TYPE_NTP
 	MikeyTsTypeNtp MIKEYTSType = 1
 	// MikeyTsTypeCounter wraps GST_MIKEY_TS_TYPE_COUNTER
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TS_TYPE_COUNTER
 	MikeyTsTypeCounter MIKEYTSType = 2
 )
 
-
 func (e MIKEYTSType) String() string {
 	switch e {
-		case MikeyTsTypeCounter: return "MikeyTsTypeCounter"
-		case MikeyTsTypeNtp: return "MikeyTsTypeNtp"
-		case MikeyTsTypeNtpUtc: return "MikeyTsTypeNtpUtc"
-		default: return fmt.Sprintf("MIKEYTSType(%d)", e)
+	case MikeyTsTypeCounter:
+		return "MikeyTsTypeCounter"
+	case MikeyTsTypeNtp:
+		return "MikeyTsTypeNtp"
+	case MikeyTsTypeNtpUtc:
+		return "MikeyTsTypeNtpUtc"
+	default:
+		return fmt.Sprintf("MIKEYTSType(%d)", e)
 	}
 }
 
 // MIKEYType wraps GstMIKEYType
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYType
 type MIKEYType C.int
 
 const (
 	// MikeyTypeInvalid wraps GST_MIKEY_TYPE_INVALID
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_INVALID
 	MikeyTypeInvalid MIKEYType = -1
 	// MikeyTypePskInit wraps GST_MIKEY_TYPE_PSK_INIT
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_PSK_INIT
 	MikeyTypePskInit MIKEYType = 0
 	// MikeyTypePskVerify wraps GST_MIKEY_TYPE_PSK_VERIFY
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_PSK_VERIFY
 	MikeyTypePskVerify MIKEYType = 1
 	// MikeyTypePkInit wraps GST_MIKEY_TYPE_PK_INIT
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_PK_INIT
 	MikeyTypePkInit MIKEYType = 2
 	// MikeyTypePkVerify wraps GST_MIKEY_TYPE_PK_VERIFY
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_PK_VERIFY
 	MikeyTypePkVerify MIKEYType = 3
 	// MikeyTypeDhInit wraps GST_MIKEY_TYPE_DH_INIT
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_DH_INIT
 	MikeyTypeDhInit MIKEYType = 4
 	// MikeyTypeDhResp wraps GST_MIKEY_TYPE_DH_RESP
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_DH_RESP
 	MikeyTypeDhResp MIKEYType = 5
 	// MikeyTypeError wraps GST_MIKEY_TYPE_ERROR
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_ERROR
 	MikeyTypeError MIKEYType = 6
 )
 
-
 func (e MIKEYType) String() string {
 	switch e {
-		case MikeyTypeDhInit: return "MikeyTypeDhInit"
-		case MikeyTypeDhResp: return "MikeyTypeDhResp"
-		case MikeyTypeError: return "MikeyTypeError"
-		case MikeyTypeInvalid: return "MikeyTypeInvalid"
-		case MikeyTypePkInit: return "MikeyTypePkInit"
-		case MikeyTypePkVerify: return "MikeyTypePkVerify"
-		case MikeyTypePskInit: return "MikeyTypePskInit"
-		case MikeyTypePskVerify: return "MikeyTypePskVerify"
-		default: return fmt.Sprintf("MIKEYType(%d)", e)
+	case MikeyTypeDhInit:
+		return "MikeyTypeDhInit"
+	case MikeyTypeDhResp:
+		return "MikeyTypeDhResp"
+	case MikeyTypeError:
+		return "MikeyTypeError"
+	case MikeyTypeInvalid:
+		return "MikeyTypeInvalid"
+	case MikeyTypePkInit:
+		return "MikeyTypePkInit"
+	case MikeyTypePkVerify:
+		return "MikeyTypePkVerify"
+	case MikeyTypePskInit:
+		return "MikeyTypePskInit"
+	case MikeyTypePskVerify:
+		return "MikeyTypePskVerify"
+	default:
+		return fmt.Sprintf("MIKEYType(%d)", e)
 	}
 }
 
 // SDPResult wraps GstSDPResult
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdp.html#GstSDPResult
 type SDPResult C.int
 
 const (
 	// SdpOK wraps GST_SDP_OK
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdp.html#GST_SDP_OK
 	SdpOK SDPResult = 0
 	// SdpEinval wraps GST_SDP_EINVAL
-	// 
+	//
 	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdp.html#GST_SDP_EINVAL
 	SdpEinval SDPResult = -1
 )
 
-
 func (e SDPResult) String() string {
 	switch e {
-		case SdpEinval: return "SdpEinval"
-		case SdpOK: return "SdpOK"
-		default: return fmt.Sprintf("SDPResult(%d)", e)
+	case SdpEinval:
+		return "SdpEinval"
+	case SdpOK:
+		return "SdpOK"
+	default:
+		return fmt.Sprintf("SDPResult(%d)", e)
 	}
 }
 
 // SdpAddressIsMulticast wraps gst_sdp_address_is_multicast
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp
 func SdpAddressIsMulticast(nettype string, addrtype string, addr string) bool {
-	var carg1 *C.gchar   // in, none, string
-	var carg2 *C.gchar   // in, none, string
-	var carg3 *C.gchar   // in, none, string
-	var cret  C.gboolean // return
+	var carg1 *C.gchar  // in, none, string
+	var carg2 *C.gchar  // in, none, string
+	var carg3 *C.gchar  // in, none, string
+	var cret C.gboolean // return
 
 	carg1 = (*C.gchar)(transfer.GLibString(nettype))
 	defer C.g_free(C.gpointer(carg1))
@@ -559,12 +619,12 @@ func SdpAddressIsMulticast(nettype string, addrtype string, addr string) bool {
 }
 
 // SdpMakeKeymgmt wraps gst_sdp_make_keymgmt
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp
 func SdpMakeKeymgmt(uri string, base64 string) string {
 	var carg1 *C.gchar // in, none, string
 	var carg2 *C.gchar // in, none, string
-	var cret  *C.gchar // return, full, string
+	var cret *C.gchar  // return, full, string
 
 	carg1 = (*C.gchar)(transfer.GLibString(uri))
 	defer C.g_free(C.gpointer(carg1))
@@ -584,7 +644,7 @@ func SdpMakeKeymgmt(uri string, base64 string) string {
 }
 
 // MIKEYDecryptInfo wraps GstMIKEYDecryptInfo
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYDecryptInfo
 type MIKEYDecryptInfo struct {
 	*mIKEYDecryptInfo
@@ -630,7 +690,7 @@ func UnsafeMIKEYDecryptInfoFromGlibFull(p unsafe.Pointer) *MIKEYDecryptInfo {
 	}
 	runtime.SetFinalizer(
 		wrapped.mIKEYDecryptInfo,
-		func (intern *mIKEYDecryptInfo) {
+		func(intern *mIKEYDecryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -638,7 +698,7 @@ func UnsafeMIKEYDecryptInfoFromGlibFull(p unsafe.Pointer) *MIKEYDecryptInfo {
 }
 
 // UnsafeMIKEYDecryptInfoFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [MIKEYDecryptInfo] is expected to work anymore.
 func UnsafeMIKEYDecryptInfoFree(m *MIKEYDecryptInfo) {
 	C.free(unsafe.Pointer(m.native))
@@ -666,7 +726,7 @@ func UnsafeMIKEYDecryptInfoToGlibFull(m *MIKEYDecryptInfo) unsafe.Pointer {
 }
 
 // MIKEYEncryptInfo wraps GstMIKEYEncryptInfo
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYEncryptInfo
 type MIKEYEncryptInfo struct {
 	*mIKEYEncryptInfo
@@ -712,7 +772,7 @@ func UnsafeMIKEYEncryptInfoFromGlibFull(p unsafe.Pointer) *MIKEYEncryptInfo {
 	}
 	runtime.SetFinalizer(
 		wrapped.mIKEYEncryptInfo,
-		func (intern *mIKEYEncryptInfo) {
+		func(intern *mIKEYEncryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -720,7 +780,7 @@ func UnsafeMIKEYEncryptInfoFromGlibFull(p unsafe.Pointer) *MIKEYEncryptInfo {
 }
 
 // UnsafeMIKEYEncryptInfoFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [MIKEYEncryptInfo] is expected to work anymore.
 func UnsafeMIKEYEncryptInfoFree(m *MIKEYEncryptInfo) {
 	C.free(unsafe.Pointer(m.native))
@@ -748,7 +808,7 @@ func UnsafeMIKEYEncryptInfoToGlibFull(m *MIKEYEncryptInfo) unsafe.Pointer {
 }
 
 // MIKEYMapSRTP wraps GstMIKEYMapSRTP
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYMapSRTP
 type MIKEYMapSRTP struct {
 	*mIKEYMapSRTP
@@ -794,7 +854,7 @@ func UnsafeMIKEYMapSRTPFromGlibFull(p unsafe.Pointer) *MIKEYMapSRTP {
 	}
 	runtime.SetFinalizer(
 		wrapped.mIKEYMapSRTP,
-		func (intern *mIKEYMapSRTP) {
+		func(intern *mIKEYMapSRTP) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -802,7 +862,7 @@ func UnsafeMIKEYMapSRTPFromGlibFull(p unsafe.Pointer) *MIKEYMapSRTP {
 }
 
 // UnsafeMIKEYMapSRTPFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [MIKEYMapSRTP] is expected to work anymore.
 func UnsafeMIKEYMapSRTPFree(m *MIKEYMapSRTP) {
 	C.free(unsafe.Pointer(m.native))
@@ -830,7 +890,7 @@ func UnsafeMIKEYMapSRTPToGlibFull(m *MIKEYMapSRTP) unsafe.Pointer {
 }
 
 // MIKEYMessage wraps GstMIKEYMessage
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYMessage
 type MIKEYMessage struct {
 	*mIKEYMessage
@@ -891,7 +951,7 @@ func UnsafeMIKEYMessageFromGlibFull(p unsafe.Pointer) *MIKEYMessage {
 	}
 	runtime.SetFinalizer(
 		wrapped.mIKEYMessage,
-		func (intern *mIKEYMessage) {
+		func(intern *mIKEYMessage) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -899,7 +959,7 @@ func UnsafeMIKEYMessageFromGlibFull(p unsafe.Pointer) *MIKEYMessage {
 }
 
 // UnsafeMIKEYMessageFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [MIKEYMessage] is expected to work anymore.
 func UnsafeMIKEYMessageFree(m *MIKEYMessage) {
 	C.free(unsafe.Pointer(m.native))
@@ -927,7 +987,7 @@ func UnsafeMIKEYMessageToGlibFull(m *MIKEYMessage) unsafe.Pointer {
 }
 
 // NewMIKEYMessage wraps gst_mikey_message_new
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_new
 func NewMIKEYMessage() *MIKEYMessage {
 	var cret *C.GstMIKEYMessage // return, full, converted
@@ -942,12 +1002,12 @@ func NewMIKEYMessage() *MIKEYMessage {
 }
 
 // NewMIKEYMessageFromBytes wraps gst_mikey_message_new_from_bytes
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_new_from_bytes
 func NewMIKEYMessageFromBytes(bytes *glib.Bytes, info *MIKEYDecryptInfo) (*MIKEYMessage, error) {
 	var carg1 *C.GBytes              // in, none, converted
 	var carg2 *C.GstMIKEYDecryptInfo // in, none, converted
-	var cret  *C.GstMIKEYMessage     // return, full, converted, nullable
+	var cret *C.GstMIKEYMessage      // return, full, converted, nullable
 	var _cerr *C.GError              // out, full, converted, nullable
 
 	carg1 = (*C.GBytes)(glib.UnsafeBytesToGlibNone(bytes))
@@ -957,7 +1017,7 @@ func NewMIKEYMessageFromBytes(bytes *glib.Bytes, info *MIKEYDecryptInfo) (*MIKEY
 	runtime.KeepAlive(bytes)
 	runtime.KeepAlive(info)
 
-	var goret  *MIKEYMessage
+	var goret *MIKEYMessage
 	var _goerr error
 
 	if cret != nil {
@@ -971,11 +1031,11 @@ func NewMIKEYMessageFromBytes(bytes *glib.Bytes, info *MIKEYDecryptInfo) (*MIKEY
 }
 
 // NewMIKEYMessageFromCaps wraps gst_mikey_message_new_from_caps
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_new_from_caps
 func NewMIKEYMessageFromCaps(caps *gst.Caps) *MIKEYMessage {
-	var carg1 *C.GstCaps         // in, none, converted
-	var cret  *C.GstMIKEYMessage // return, full, converted, nullable
+	var carg1 *C.GstCaps        // in, none, converted
+	var cret *C.GstMIKEYMessage // return, full, converted, nullable
 
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
@@ -992,14 +1052,14 @@ func NewMIKEYMessageFromCaps(caps *gst.Caps) *MIKEYMessage {
 }
 
 // AddCsSrtp wraps gst_mikey_message_add_cs_srtp
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_add_cs_srtp
 func (msg *MIKEYMessage) AddCsSrtp(policy uint8, ssrc uint32, roc uint32) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.guint8           // in, none, casted
 	var carg2 C.guint32          // in, none, casted
 	var carg3 C.guint32          // in, none, casted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.guint8(policy)
@@ -1022,12 +1082,12 @@ func (msg *MIKEYMessage) AddCsSrtp(policy uint8, ssrc uint32, roc uint32) bool {
 }
 
 // AddPayload wraps gst_mikey_message_add_payload
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_add_payload
 func (msg *MIKEYMessage) AddPayload(payload *MIKEYPayload) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 *C.GstMIKEYPayload // in, full, converted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibFull(payload))
@@ -1046,14 +1106,14 @@ func (msg *MIKEYMessage) AddPayload(payload *MIKEYPayload) bool {
 }
 
 // AddPke wraps gst_mikey_message_add_pke
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_add_pke
 func (msg *MIKEYMessage) AddPke(c MIKEYCacheType, data []uint8) bool {
 	var carg0 *C.GstMIKEYMessage  // in, none, converted
 	var carg1 C.GstMIKEYCacheType // in, none, casted
 	var carg2 C.guint16           // implicit
 	var carg3 *C.guint8           // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
-	var cret  C.gboolean          // return
+	var cret C.gboolean           // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.GstMIKEYCacheType(c)
@@ -1077,13 +1137,13 @@ func (msg *MIKEYMessage) AddPke(c MIKEYCacheType, data []uint8) bool {
 }
 
 // AddRand wraps gst_mikey_message_add_rand
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_add_rand
 func (msg *MIKEYMessage) AddRand(rand []uint8) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.guint8           // implicit
 	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg1)
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	_ = rand
@@ -1105,12 +1165,12 @@ func (msg *MIKEYMessage) AddRand(rand []uint8) bool {
 }
 
 // AddRandLen wraps gst_mikey_message_add_rand_len
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_add_rand_len
 func (msg *MIKEYMessage) AddRandLen(len uint8) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.guint8           // in, none, casted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.guint8(len)
@@ -1129,11 +1189,11 @@ func (msg *MIKEYMessage) AddRandLen(len uint8) bool {
 }
 
 // AddTNowNtpUtc wraps gst_mikey_message_add_t_now_ntp_utc
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_add_t_now_ntp_utc
 func (msg *MIKEYMessage) AddTNowNtpUtc() bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 
@@ -1150,11 +1210,11 @@ func (msg *MIKEYMessage) AddTNowNtpUtc() bool {
 }
 
 // Base64Encode wraps gst_mikey_message_base64_encode
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_base64_encode
 func (msg *MIKEYMessage) Base64Encode() string {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
-	var cret  *C.gchar           // return, full, string
+	var cret *C.gchar            // return, full, string
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 
@@ -1170,13 +1230,13 @@ func (msg *MIKEYMessage) Base64Encode() string {
 }
 
 // FindPayload wraps gst_mikey_message_find_payload
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_find_payload
-func (msg *MIKEYMessage) FindPayload(typ MIKEYPayloadType, nth uint) *MIKEYPayload {
+func (msg *MIKEYMessage) FindPayload(typ MIKEYPayloadType, nth uint32) *MIKEYPayload {
 	var carg0 *C.GstMIKEYMessage    // in, none, converted
 	var carg1 C.GstMIKEYPayloadType // in, none, casted
 	var carg2 C.guint               // in, none, casted
-	var cret  *C.GstMIKEYPayload    // return, none, converted, nullable
+	var cret *C.GstMIKEYPayload     // return, none, converted, nullable
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.GstMIKEYPayloadType(typ)
@@ -1197,12 +1257,12 @@ func (msg *MIKEYMessage) FindPayload(typ MIKEYPayloadType, nth uint) *MIKEYPaylo
 }
 
 // GetCsSrtp wraps gst_mikey_message_get_cs_srtp
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_get_cs_srtp
-func (msg *MIKEYMessage) GetCsSrtp(idx uint) *MIKEYMapSRTP {
+func (msg *MIKEYMessage) GetCsSrtp(idx uint32) *MIKEYMapSRTP {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstMIKEYMapSRTP // return, none, converted, nullable
+	var cret *C.GstMIKEYMapSRTP  // return, none, converted, nullable
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -1221,50 +1281,50 @@ func (msg *MIKEYMessage) GetCsSrtp(idx uint) *MIKEYMapSRTP {
 }
 
 // GetNCs wraps gst_mikey_message_get_n_cs
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_get_n_cs
-func (msg *MIKEYMessage) GetNCs() uint {
+func (msg *MIKEYMessage) GetNCs() uint32 {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
-	var cret  C.guint            // return, none, casted
+	var cret C.guint             // return, none, casted
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 
 	cret = C.gst_mikey_message_get_n_cs(carg0)
 	runtime.KeepAlive(msg)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // GetNPayloads wraps gst_mikey_message_get_n_payloads
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_get_n_payloads
-func (msg *MIKEYMessage) GetNPayloads() uint {
+func (msg *MIKEYMessage) GetNPayloads() uint32 {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
-	var cret  C.guint            // return, none, casted
+	var cret C.guint             // return, none, casted
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 
 	cret = C.gst_mikey_message_get_n_payloads(carg0)
 	runtime.KeepAlive(msg)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // GetPayload wraps gst_mikey_message_get_payload
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_get_payload
-func (msg *MIKEYMessage) GetPayload(idx uint) *MIKEYPayload {
+func (msg *MIKEYMessage) GetPayload(idx uint32) *MIKEYPayload {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstMIKEYPayload // return, none, converted, nullable
+	var cret *C.GstMIKEYPayload  // return, none, converted, nullable
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -1283,13 +1343,13 @@ func (msg *MIKEYMessage) GetPayload(idx uint) *MIKEYPayload {
 }
 
 // InsertCsSrtp wraps gst_mikey_message_insert_cs_srtp
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_insert_cs_srtp
 func (msg *MIKEYMessage) InsertCsSrtp(idx int32, _map *MIKEYMapSRTP) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var carg2 *C.GstMIKEYMapSRTP // in, none, converted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.gint(idx)
@@ -1310,13 +1370,13 @@ func (msg *MIKEYMessage) InsertCsSrtp(idx int32, _map *MIKEYMapSRTP) bool {
 }
 
 // InsertPayload wraps gst_mikey_message_insert_payload
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_insert_payload
-func (msg *MIKEYMessage) InsertPayload(idx uint, payload *MIKEYPayload) bool {
+func (msg *MIKEYMessage) InsertPayload(idx uint32, payload *MIKEYPayload) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.guint            // in, none, casted
 	var carg2 *C.GstMIKEYPayload // in, full, converted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -1337,12 +1397,12 @@ func (msg *MIKEYMessage) InsertPayload(idx uint, payload *MIKEYPayload) bool {
 }
 
 // RemoveCsSrtp wraps gst_mikey_message_remove_cs_srtp
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_remove_cs_srtp
 func (msg *MIKEYMessage) RemoveCsSrtp(idx int32) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.gint             // in, none, casted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.gint(idx)
@@ -1361,12 +1421,12 @@ func (msg *MIKEYMessage) RemoveCsSrtp(idx int32) bool {
 }
 
 // RemovePayload wraps gst_mikey_message_remove_payload
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_remove_payload
-func (msg *MIKEYMessage) RemovePayload(idx uint) bool {
+func (msg *MIKEYMessage) RemovePayload(idx uint32) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -1385,13 +1445,13 @@ func (msg *MIKEYMessage) RemovePayload(idx uint) bool {
 }
 
 // ReplaceCsSrtp wraps gst_mikey_message_replace_cs_srtp
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_replace_cs_srtp
 func (msg *MIKEYMessage) ReplaceCsSrtp(idx int32, _map *MIKEYMapSRTP) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var carg2 *C.GstMIKEYMapSRTP // in, none, converted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.gint(idx)
@@ -1412,13 +1472,13 @@ func (msg *MIKEYMessage) ReplaceCsSrtp(idx int32, _map *MIKEYMapSRTP) bool {
 }
 
 // ReplacePayload wraps gst_mikey_message_replace_payload
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_replace_payload
-func (msg *MIKEYMessage) ReplacePayload(idx uint, payload *MIKEYPayload) bool {
+func (msg *MIKEYMessage) ReplacePayload(idx uint32, payload *MIKEYPayload) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.guint            // in, none, casted
 	var carg2 *C.GstMIKEYPayload // in, full, converted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -1439,7 +1499,7 @@ func (msg *MIKEYMessage) ReplacePayload(idx uint, payload *MIKEYPayload) bool {
 }
 
 // SetInfo wraps gst_mikey_message_set_info
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_set_info
 func (msg *MIKEYMessage) SetInfo(version uint8, typ MIKEYType, v bool, prfFunc MIKEYPRFFunc, csbId uint32, mapType MIKEYMapType) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
@@ -1449,7 +1509,7 @@ func (msg *MIKEYMessage) SetInfo(version uint8, typ MIKEYType, v bool, prfFunc M
 	var carg4 C.GstMIKEYPRFFunc  // in, none, casted
 	var carg5 C.guint32          // in, none, casted
 	var carg6 C.GstMIKEYMapType  // in, none, casted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.guint8(version)
@@ -1480,12 +1540,12 @@ func (msg *MIKEYMessage) SetInfo(version uint8, typ MIKEYType, v bool, prfFunc M
 }
 
 // ToBytes wraps gst_mikey_message_to_bytes
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_to_bytes
 func (msg *MIKEYMessage) ToBytes(info *MIKEYEncryptInfo) (*glib.Bytes, error) {
 	var carg0 *C.GstMIKEYMessage     // in, none, converted
 	var carg1 *C.GstMIKEYEncryptInfo // in, none, converted
-	var cret  *C.GBytes              // return, full, converted, nullable
+	var cret *C.GBytes               // return, full, converted, nullable
 	var _cerr *C.GError              // out, full, converted, nullable
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
@@ -1495,7 +1555,7 @@ func (msg *MIKEYMessage) ToBytes(info *MIKEYEncryptInfo) (*glib.Bytes, error) {
 	runtime.KeepAlive(msg)
 	runtime.KeepAlive(info)
 
-	var goret  *glib.Bytes
+	var goret *glib.Bytes
 	var _goerr error
 
 	if cret != nil {
@@ -1509,12 +1569,12 @@ func (msg *MIKEYMessage) ToBytes(info *MIKEYEncryptInfo) (*glib.Bytes, error) {
 }
 
 // ToCaps wraps gst_mikey_message_to_caps
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_message_to_caps
 func (msg *MIKEYMessage) ToCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
@@ -1533,7 +1593,7 @@ func (msg *MIKEYMessage) ToCaps(caps *gst.Caps) bool {
 }
 
 // MIKEYPayload wraps GstMIKEYPayload
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYPayload
 type MIKEYPayload struct {
 	*mIKEYPayload
@@ -1594,7 +1654,7 @@ func UnsafeMIKEYPayloadFromGlibFull(p unsafe.Pointer) *MIKEYPayload {
 	}
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayload,
-		func (intern *mIKEYPayload) {
+		func(intern *mIKEYPayload) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -1602,7 +1662,7 @@ func UnsafeMIKEYPayloadFromGlibFull(p unsafe.Pointer) *MIKEYPayload {
 }
 
 // UnsafeMIKEYPayloadFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [MIKEYPayload] is expected to work anymore.
 func UnsafeMIKEYPayloadFree(m *MIKEYPayload) {
 	C.free(unsafe.Pointer(m.native))
@@ -1630,11 +1690,11 @@ func UnsafeMIKEYPayloadToGlibFull(m *MIKEYPayload) unsafe.Pointer {
 }
 
 // NewMIKEYPayload wraps gst_mikey_payload_new
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_new
 func NewMIKEYPayload(typ MIKEYPayloadType) *MIKEYPayload {
 	var carg1 C.GstMIKEYPayloadType // in, none, casted
-	var cret  *C.GstMIKEYPayload    // return, full, converted, nullable
+	var cret *C.GstMIKEYPayload     // return, full, converted, nullable
 
 	carg1 = C.GstMIKEYPayloadType(typ)
 
@@ -1651,12 +1711,12 @@ func NewMIKEYPayload(typ MIKEYPayloadType) *MIKEYPayload {
 }
 
 // KemacAddSub wraps gst_mikey_payload_kemac_add_sub
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_kemac_add_sub
 func (payload *MIKEYPayload) KemacAddSub(newpay *MIKEYPayload) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 *C.GstMIKEYPayload // in, full, converted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	carg1 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibFull(newpay))
@@ -1675,31 +1735,31 @@ func (payload *MIKEYPayload) KemacAddSub(newpay *MIKEYPayload) bool {
 }
 
 // KemacGetNSub wraps gst_mikey_payload_kemac_get_n_sub
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_kemac_get_n_sub
-func (payload *MIKEYPayload) KemacGetNSub() uint {
+func (payload *MIKEYPayload) KemacGetNSub() uint32 {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
-	var cret  C.guint            // return, none, casted
+	var cret C.guint             // return, none, casted
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 
 	cret = C.gst_mikey_payload_kemac_get_n_sub(carg0)
 	runtime.KeepAlive(payload)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // KemacGetSub wraps gst_mikey_payload_kemac_get_sub
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_kemac_get_sub
-func (payload *MIKEYPayload) KemacGetSub(idx uint) *MIKEYPayload {
+func (payload *MIKEYPayload) KemacGetSub(idx uint32) *MIKEYPayload {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstMIKEYPayload // return, none, converted, nullable
+	var cret *C.GstMIKEYPayload  // return, none, converted, nullable
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	carg1 = C.guint(idx)
@@ -1718,12 +1778,12 @@ func (payload *MIKEYPayload) KemacGetSub(idx uint) *MIKEYPayload {
 }
 
 // KemacRemoveSub wraps gst_mikey_payload_kemac_remove_sub
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_kemac_remove_sub
-func (payload *MIKEYPayload) KemacRemoveSub(idx uint) bool {
+func (payload *MIKEYPayload) KemacRemoveSub(idx uint32) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	carg1 = C.guint(idx)
@@ -1742,13 +1802,13 @@ func (payload *MIKEYPayload) KemacRemoveSub(idx uint) bool {
 }
 
 // KemacSet wraps gst_mikey_payload_kemac_set
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_kemac_set
 func (payload *MIKEYPayload) KemacSet(encAlg MIKEYEncAlg, macAlg MIKEYMacAlg) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.GstMIKEYEncAlg   // in, none, casted
 	var carg2 C.GstMIKEYMacAlg   // in, none, casted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	carg1 = C.GstMIKEYEncAlg(encAlg)
@@ -1769,7 +1829,7 @@ func (payload *MIKEYPayload) KemacSet(encAlg MIKEYEncAlg, macAlg MIKEYMacAlg) bo
 }
 
 // KeyDataSetInterval wraps gst_mikey_payload_key_data_set_interval
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_key_data_set_interval
 func (payload *MIKEYPayload) KeyDataSetInterval(vfData []uint8, vtData []uint8) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
@@ -1777,7 +1837,7 @@ func (payload *MIKEYPayload) KeyDataSetInterval(vfData []uint8, vtData []uint8) 
 	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg1)
 	var carg3 C.guint8           // implicit
 	var carg4 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	_ = vfData
@@ -1804,14 +1864,14 @@ func (payload *MIKEYPayload) KeyDataSetInterval(vfData []uint8, vtData []uint8) 
 }
 
 // KeyDataSetKey wraps gst_mikey_payload_key_data_set_key
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_key_data_set_key
 func (payload *MIKEYPayload) KeyDataSetKey(keyType MIKEYKeyDataType, keyData []uint8) bool {
 	var carg0 *C.GstMIKEYPayload    // in, none, converted
 	var carg1 C.GstMIKEYKeyDataType // in, none, casted
 	var carg2 C.guint16             // implicit
 	var carg3 *C.guint8             // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
-	var cret  C.gboolean            // return
+	var cret C.gboolean             // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	carg1 = C.GstMIKEYKeyDataType(keyType)
@@ -1835,13 +1895,13 @@ func (payload *MIKEYPayload) KeyDataSetKey(keyType MIKEYKeyDataType, keyData []u
 }
 
 // KeyDataSetSalt wraps gst_mikey_payload_key_data_set_salt
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_key_data_set_salt
 func (payload *MIKEYPayload) KeyDataSetSalt(saltData []uint8) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint16          // implicit
 	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], nullable, array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg1)
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	_ = saltData
@@ -1863,13 +1923,13 @@ func (payload *MIKEYPayload) KeyDataSetSalt(saltData []uint8) bool {
 }
 
 // KeyDataSetSpi wraps gst_mikey_payload_key_data_set_spi
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_key_data_set_spi
 func (payload *MIKEYPayload) KeyDataSetSpi(spiData []uint8) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint8           // implicit
 	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg1)
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	_ = spiData
@@ -1891,14 +1951,14 @@ func (payload *MIKEYPayload) KeyDataSetSpi(spiData []uint8) bool {
 }
 
 // PkeSet wraps gst_mikey_payload_pke_set
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_pke_set
 func (payload *MIKEYPayload) PkeSet(c MIKEYCacheType, data []uint8) bool {
 	var carg0 *C.GstMIKEYPayload  // in, none, converted
 	var carg1 C.GstMIKEYCacheType // in, none, casted
 	var carg2 C.guint16           // implicit
 	var carg3 *C.guint8           // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
-	var cret  C.gboolean          // return
+	var cret C.gboolean           // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	carg1 = C.GstMIKEYCacheType(c)
@@ -1922,13 +1982,13 @@ func (payload *MIKEYPayload) PkeSet(c MIKEYCacheType, data []uint8) bool {
 }
 
 // RandSet wraps gst_mikey_payload_rand_set
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_rand_set
 func (payload *MIKEYPayload) RandSet(rand []uint8) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint8           // implicit
 	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg1)
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	_ = rand
@@ -1950,14 +2010,14 @@ func (payload *MIKEYPayload) RandSet(rand []uint8) bool {
 }
 
 // SpAddParam wraps gst_mikey_payload_sp_add_param
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_sp_add_param
 func (payload *MIKEYPayload) SpAddParam(typ uint8, val []uint8) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint8           // in, none, casted
 	var carg2 C.guint8           // implicit
 	var carg3 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	carg1 = C.guint8(typ)
@@ -1981,31 +2041,31 @@ func (payload *MIKEYPayload) SpAddParam(typ uint8, val []uint8) bool {
 }
 
 // SpGetNParams wraps gst_mikey_payload_sp_get_n_params
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_sp_get_n_params
-func (payload *MIKEYPayload) SpGetNParams() uint {
+func (payload *MIKEYPayload) SpGetNParams() uint32 {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
-	var cret  C.guint            // return, none, casted
+	var cret C.guint             // return, none, casted
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 
 	cret = C.gst_mikey_payload_sp_get_n_params(carg0)
 	runtime.KeepAlive(payload)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // SpGetParam wraps gst_mikey_payload_sp_get_param
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_sp_get_param
-func (payload *MIKEYPayload) SpGetParam(idx uint) *MIKEYPayloadSPParam {
-	var carg0 *C.GstMIKEYPayload        // in, none, converted
-	var carg1 C.guint                   // in, none, casted
-	var cret  *C.GstMIKEYPayloadSPParam // return, none, converted, nullable
+func (payload *MIKEYPayload) SpGetParam(idx uint32) *MIKEYPayloadSPParam {
+	var carg0 *C.GstMIKEYPayload       // in, none, converted
+	var carg1 C.guint                  // in, none, casted
+	var cret *C.GstMIKEYPayloadSPParam // return, none, converted, nullable
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	carg1 = C.guint(idx)
@@ -2024,12 +2084,12 @@ func (payload *MIKEYPayload) SpGetParam(idx uint) *MIKEYPayloadSPParam {
 }
 
 // SpRemoveParam wraps gst_mikey_payload_sp_remove_param
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_sp_remove_param
-func (payload *MIKEYPayload) SpRemoveParam(idx uint) bool {
+func (payload *MIKEYPayload) SpRemoveParam(idx uint32) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	carg1 = C.guint(idx)
@@ -2048,13 +2108,13 @@ func (payload *MIKEYPayload) SpRemoveParam(idx uint) bool {
 }
 
 // SpSet wraps gst_mikey_payload_sp_set
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#gst_mikey_payload_sp_set
-func (payload *MIKEYPayload) SpSet(policy uint, proto MIKEYSecProto) bool {
+func (payload *MIKEYPayload) SpSet(policy uint32, proto MIKEYSecProto) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint            // in, none, casted
 	var carg2 C.GstMIKEYSecProto // in, none, casted
-	var cret  C.gboolean         // return
+	var cret C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	carg1 = C.guint(policy)
@@ -2075,7 +2135,7 @@ func (payload *MIKEYPayload) SpSet(policy uint, proto MIKEYSecProto) bool {
 }
 
 // MIKEYPayloadKEMAC wraps GstMIKEYPayloadKEMAC
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYPayloadKEMAC
 type MIKEYPayloadKEMAC struct {
 	*mIKEYPayloadKEMAC
@@ -2121,7 +2181,7 @@ func UnsafeMIKEYPayloadKEMACFromGlibFull(p unsafe.Pointer) *MIKEYPayloadKEMAC {
 	}
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadKEMAC,
-		func (intern *mIKEYPayloadKEMAC) {
+		func(intern *mIKEYPayloadKEMAC) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2129,7 +2189,7 @@ func UnsafeMIKEYPayloadKEMACFromGlibFull(p unsafe.Pointer) *MIKEYPayloadKEMAC {
 }
 
 // UnsafeMIKEYPayloadKEMACFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [MIKEYPayloadKEMAC] is expected to work anymore.
 func UnsafeMIKEYPayloadKEMACFree(m *MIKEYPayloadKEMAC) {
 	C.free(unsafe.Pointer(m.native))
@@ -2157,7 +2217,7 @@ func UnsafeMIKEYPayloadKEMACToGlibFull(m *MIKEYPayloadKEMAC) unsafe.Pointer {
 }
 
 // MIKEYPayloadKeyData wraps GstMIKEYPayloadKeyData
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYPayloadKeyData
 type MIKEYPayloadKeyData struct {
 	*mIKEYPayloadKeyData
@@ -2203,7 +2263,7 @@ func UnsafeMIKEYPayloadKeyDataFromGlibFull(p unsafe.Pointer) *MIKEYPayloadKeyDat
 	}
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadKeyData,
-		func (intern *mIKEYPayloadKeyData) {
+		func(intern *mIKEYPayloadKeyData) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2211,7 +2271,7 @@ func UnsafeMIKEYPayloadKeyDataFromGlibFull(p unsafe.Pointer) *MIKEYPayloadKeyDat
 }
 
 // UnsafeMIKEYPayloadKeyDataFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [MIKEYPayloadKeyData] is expected to work anymore.
 func UnsafeMIKEYPayloadKeyDataFree(m *MIKEYPayloadKeyData) {
 	C.free(unsafe.Pointer(m.native))
@@ -2239,7 +2299,7 @@ func UnsafeMIKEYPayloadKeyDataToGlibFull(m *MIKEYPayloadKeyData) unsafe.Pointer 
 }
 
 // MIKEYPayloadPKE wraps GstMIKEYPayloadPKE
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYPayloadPKE
 type MIKEYPayloadPKE struct {
 	*mIKEYPayloadPKE
@@ -2285,7 +2345,7 @@ func UnsafeMIKEYPayloadPKEFromGlibFull(p unsafe.Pointer) *MIKEYPayloadPKE {
 	}
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadPKE,
-		func (intern *mIKEYPayloadPKE) {
+		func(intern *mIKEYPayloadPKE) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2293,7 +2353,7 @@ func UnsafeMIKEYPayloadPKEFromGlibFull(p unsafe.Pointer) *MIKEYPayloadPKE {
 }
 
 // UnsafeMIKEYPayloadPKEFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [MIKEYPayloadPKE] is expected to work anymore.
 func UnsafeMIKEYPayloadPKEFree(m *MIKEYPayloadPKE) {
 	C.free(unsafe.Pointer(m.native))
@@ -2321,7 +2381,7 @@ func UnsafeMIKEYPayloadPKEToGlibFull(m *MIKEYPayloadPKE) unsafe.Pointer {
 }
 
 // MIKEYPayloadRAND wraps GstMIKEYPayloadRAND
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYPayloadRAND
 type MIKEYPayloadRAND struct {
 	*mIKEYPayloadRAND
@@ -2367,7 +2427,7 @@ func UnsafeMIKEYPayloadRANDFromGlibFull(p unsafe.Pointer) *MIKEYPayloadRAND {
 	}
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadRAND,
-		func (intern *mIKEYPayloadRAND) {
+		func(intern *mIKEYPayloadRAND) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2375,7 +2435,7 @@ func UnsafeMIKEYPayloadRANDFromGlibFull(p unsafe.Pointer) *MIKEYPayloadRAND {
 }
 
 // UnsafeMIKEYPayloadRANDFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [MIKEYPayloadRAND] is expected to work anymore.
 func UnsafeMIKEYPayloadRANDFree(m *MIKEYPayloadRAND) {
 	C.free(unsafe.Pointer(m.native))
@@ -2403,7 +2463,7 @@ func UnsafeMIKEYPayloadRANDToGlibFull(m *MIKEYPayloadRAND) unsafe.Pointer {
 }
 
 // MIKEYPayloadSP wraps GstMIKEYPayloadSP
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYPayloadSP
 type MIKEYPayloadSP struct {
 	*mIKEYPayloadSP
@@ -2449,7 +2509,7 @@ func UnsafeMIKEYPayloadSPFromGlibFull(p unsafe.Pointer) *MIKEYPayloadSP {
 	}
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadSP,
-		func (intern *mIKEYPayloadSP) {
+		func(intern *mIKEYPayloadSP) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2457,7 +2517,7 @@ func UnsafeMIKEYPayloadSPFromGlibFull(p unsafe.Pointer) *MIKEYPayloadSP {
 }
 
 // UnsafeMIKEYPayloadSPFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [MIKEYPayloadSP] is expected to work anymore.
 func UnsafeMIKEYPayloadSPFree(m *MIKEYPayloadSP) {
 	C.free(unsafe.Pointer(m.native))
@@ -2485,7 +2545,7 @@ func UnsafeMIKEYPayloadSPToGlibFull(m *MIKEYPayloadSP) unsafe.Pointer {
 }
 
 // MIKEYPayloadSPParam wraps GstMIKEYPayloadSPParam
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYPayloadSPParam
 type MIKEYPayloadSPParam struct {
 	*mIKEYPayloadSPParam
@@ -2531,7 +2591,7 @@ func UnsafeMIKEYPayloadSPParamFromGlibFull(p unsafe.Pointer) *MIKEYPayloadSPPara
 	}
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadSPParam,
-		func (intern *mIKEYPayloadSPParam) {
+		func(intern *mIKEYPayloadSPParam) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2539,7 +2599,7 @@ func UnsafeMIKEYPayloadSPParamFromGlibFull(p unsafe.Pointer) *MIKEYPayloadSPPara
 }
 
 // UnsafeMIKEYPayloadSPParamFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [MIKEYPayloadSPParam] is expected to work anymore.
 func UnsafeMIKEYPayloadSPParamFree(m *MIKEYPayloadSPParam) {
 	C.free(unsafe.Pointer(m.native))
@@ -2567,7 +2627,7 @@ func UnsafeMIKEYPayloadSPParamToGlibFull(m *MIKEYPayloadSPParam) unsafe.Pointer 
 }
 
 // MIKEYPayloadT wraps GstMIKEYPayloadT
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GstMIKEYPayloadT
 type MIKEYPayloadT struct {
 	*mIKEYPayloadT
@@ -2613,7 +2673,7 @@ func UnsafeMIKEYPayloadTFromGlibFull(p unsafe.Pointer) *MIKEYPayloadT {
 	}
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadT,
-		func (intern *mIKEYPayloadT) {
+		func(intern *mIKEYPayloadT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2621,7 +2681,7 @@ func UnsafeMIKEYPayloadTFromGlibFull(p unsafe.Pointer) *MIKEYPayloadT {
 }
 
 // UnsafeMIKEYPayloadTFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [MIKEYPayloadT] is expected to work anymore.
 func UnsafeMIKEYPayloadTFree(m *MIKEYPayloadT) {
 	C.free(unsafe.Pointer(m.native))
@@ -2649,7 +2709,7 @@ func UnsafeMIKEYPayloadTToGlibFull(m *MIKEYPayloadT) unsafe.Pointer {
 }
 
 // SDPAttribute wraps GstSDPAttribute
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#GstSDPAttribute
 type SDPAttribute struct {
 	*sDPAttribute
@@ -2695,7 +2755,7 @@ func UnsafeSDPAttributeFromGlibFull(p unsafe.Pointer) *SDPAttribute {
 	}
 	runtime.SetFinalizer(
 		wrapped.sDPAttribute,
-		func (intern *sDPAttribute) {
+		func(intern *sDPAttribute) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2703,7 +2763,7 @@ func UnsafeSDPAttributeFromGlibFull(p unsafe.Pointer) *SDPAttribute {
 }
 
 // UnsafeSDPAttributeFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [SDPAttribute] is expected to work anymore.
 func UnsafeSDPAttributeFree(s *SDPAttribute) {
 	C.free(unsafe.Pointer(s.native))
@@ -2731,11 +2791,11 @@ func UnsafeSDPAttributeToGlibFull(s *SDPAttribute) unsafe.Pointer {
 }
 
 // Clear wraps gst_sdp_attribute_clear
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_attribute_clear
 func (attr *SDPAttribute) Clear() SDPResult {
 	var carg0 *C.GstSDPAttribute // in, none, converted
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPAttribute)(UnsafeSDPAttributeToGlibNone(attr))
 
@@ -2750,13 +2810,13 @@ func (attr *SDPAttribute) Clear() SDPResult {
 }
 
 // Set wraps gst_sdp_attribute_set
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_attribute_set
 func (attr *SDPAttribute) Set(key string, value string) SDPResult {
 	var carg0 *C.GstSDPAttribute // in, none, converted
 	var carg1 *C.gchar           // in, none, string
 	var carg2 *C.gchar           // in, none, string, nullable-string
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPAttribute)(UnsafeSDPAttributeToGlibNone(attr))
 	carg1 = (*C.gchar)(transfer.GLibString(key))
@@ -2779,7 +2839,7 @@ func (attr *SDPAttribute) Set(key string, value string) SDPResult {
 }
 
 // SDPBandwidth wraps GstSDPBandwidth
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#GstSDPBandwidth
 type SDPBandwidth struct {
 	*sDPBandwidth
@@ -2825,7 +2885,7 @@ func UnsafeSDPBandwidthFromGlibFull(p unsafe.Pointer) *SDPBandwidth {
 	}
 	runtime.SetFinalizer(
 		wrapped.sDPBandwidth,
-		func (intern *sDPBandwidth) {
+		func(intern *sDPBandwidth) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2833,7 +2893,7 @@ func UnsafeSDPBandwidthFromGlibFull(p unsafe.Pointer) *SDPBandwidth {
 }
 
 // UnsafeSDPBandwidthFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [SDPBandwidth] is expected to work anymore.
 func UnsafeSDPBandwidthFree(s *SDPBandwidth) {
 	C.free(unsafe.Pointer(s.native))
@@ -2861,11 +2921,11 @@ func UnsafeSDPBandwidthToGlibFull(s *SDPBandwidth) unsafe.Pointer {
 }
 
 // Clear wraps gst_sdp_bandwidth_clear
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_bandwidth_clear
 func (bw *SDPBandwidth) Clear() SDPResult {
 	var carg0 *C.GstSDPBandwidth // in, none, converted
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPBandwidth)(UnsafeSDPBandwidthToGlibNone(bw))
 
@@ -2880,13 +2940,13 @@ func (bw *SDPBandwidth) Clear() SDPResult {
 }
 
 // Set wraps gst_sdp_bandwidth_set
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_bandwidth_set
-func (bw *SDPBandwidth) Set(bwtype string, bandwidth uint) SDPResult {
+func (bw *SDPBandwidth) Set(bwtype string, bandwidth uint32) SDPResult {
 	var carg0 *C.GstSDPBandwidth // in, none, converted
 	var carg1 *C.gchar           // in, none, string
 	var carg2 C.guint            // in, none, casted
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPBandwidth)(UnsafeSDPBandwidthToGlibNone(bw))
 	carg1 = (*C.gchar)(transfer.GLibString(bwtype))
@@ -2906,7 +2966,7 @@ func (bw *SDPBandwidth) Set(bwtype string, bandwidth uint) SDPResult {
 }
 
 // SDPConnection wraps GstSDPConnection
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#GstSDPConnection
 type SDPConnection struct {
 	*sDPConnection
@@ -2952,7 +3012,7 @@ func UnsafeSDPConnectionFromGlibFull(p unsafe.Pointer) *SDPConnection {
 	}
 	runtime.SetFinalizer(
 		wrapped.sDPConnection,
-		func (intern *sDPConnection) {
+		func(intern *sDPConnection) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2960,7 +3020,7 @@ func UnsafeSDPConnectionFromGlibFull(p unsafe.Pointer) *SDPConnection {
 }
 
 // UnsafeSDPConnectionFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [SDPConnection] is expected to work anymore.
 func UnsafeSDPConnectionFree(s *SDPConnection) {
 	C.free(unsafe.Pointer(s.native))
@@ -2988,11 +3048,11 @@ func UnsafeSDPConnectionToGlibFull(s *SDPConnection) unsafe.Pointer {
 }
 
 // Clear wraps gst_sdp_connection_clear
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_connection_clear
 func (conn *SDPConnection) Clear() SDPResult {
 	var carg0 *C.GstSDPConnection // in, none, converted
-	var cret  C.GstSDPResult      // return, none, casted
+	var cret C.GstSDPResult       // return, none, casted
 
 	carg0 = (*C.GstSDPConnection)(UnsafeSDPConnectionToGlibNone(conn))
 
@@ -3007,16 +3067,16 @@ func (conn *SDPConnection) Clear() SDPResult {
 }
 
 // Set wraps gst_sdp_connection_set
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_connection_set
-func (conn *SDPConnection) Set(nettype string, addrtype string, address string, ttl uint, addrNumber uint) SDPResult {
+func (conn *SDPConnection) Set(nettype string, addrtype string, address string, ttl uint32, addrNumber uint32) SDPResult {
 	var carg0 *C.GstSDPConnection // in, none, converted
 	var carg1 *C.gchar            // in, none, string
 	var carg2 *C.gchar            // in, none, string
 	var carg3 *C.gchar            // in, none, string
 	var carg4 C.guint             // in, none, casted
 	var carg5 C.guint             // in, none, casted
-	var cret  C.GstSDPResult      // return, none, casted
+	var cret C.GstSDPResult       // return, none, casted
 
 	carg0 = (*C.GstSDPConnection)(UnsafeSDPConnectionToGlibNone(conn))
 	carg1 = (*C.gchar)(transfer.GLibString(nettype))
@@ -3044,7 +3104,7 @@ func (conn *SDPConnection) Set(nettype string, addrtype string, address string, 
 }
 
 // SDPKey wraps GstSDPKey
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#GstSDPKey
 type SDPKey struct {
 	*sDPKey
@@ -3090,7 +3150,7 @@ func UnsafeSDPKeyFromGlibFull(p unsafe.Pointer) *SDPKey {
 	}
 	runtime.SetFinalizer(
 		wrapped.sDPKey,
-		func (intern *sDPKey) {
+		func(intern *sDPKey) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -3098,7 +3158,7 @@ func UnsafeSDPKeyFromGlibFull(p unsafe.Pointer) *SDPKey {
 }
 
 // UnsafeSDPKeyFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [SDPKey] is expected to work anymore.
 func UnsafeSDPKeyFree(s *SDPKey) {
 	C.free(unsafe.Pointer(s.native))
@@ -3126,7 +3186,7 @@ func UnsafeSDPKeyToGlibFull(s *SDPKey) unsafe.Pointer {
 }
 
 // SDPMedia wraps GstSDPMedia
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#GstSDPMedia
 type SDPMedia struct {
 	*sDPMedia
@@ -3172,7 +3232,7 @@ func UnsafeSDPMediaFromGlibFull(p unsafe.Pointer) *SDPMedia {
 	}
 	runtime.SetFinalizer(
 		wrapped.sDPMedia,
-		func (intern *sDPMedia) {
+		func(intern *sDPMedia) {
 			C.gst_sdp_media_free(intern.native)
 		},
 	)
@@ -3180,7 +3240,7 @@ func UnsafeSDPMediaFromGlibFull(p unsafe.Pointer) *SDPMedia {
 }
 
 // UnsafeSDPMediaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [SDPMedia] is expected to work anymore.
 func UnsafeSDPMediaFree(s *SDPMedia) {
 	C.gst_sdp_media_free(s.native)
@@ -3208,11 +3268,11 @@ func UnsafeSDPMediaToGlibFull(s *SDPMedia) unsafe.Pointer {
 }
 
 // NewSDPMedia wraps gst_sdp_media_new
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_new
 func NewSDPMedia() (*SDPMedia, SDPResult) {
 	var carg1 *C.GstSDPMedia // out, full, converted
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	cret = C.gst_sdp_media_new(&carg1)
 
@@ -3226,13 +3286,13 @@ func NewSDPMedia() (*SDPMedia, SDPResult) {
 }
 
 // AddAttribute wraps gst_sdp_media_add_attribute
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_add_attribute
 func (media *SDPMedia) AddAttribute(key string, value string) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 *C.gchar       // in, none, string, nullable-string
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = (*C.gchar)(transfer.GLibString(key))
@@ -3255,13 +3315,13 @@ func (media *SDPMedia) AddAttribute(key string, value string) SDPResult {
 }
 
 // AddBandwidth wraps gst_sdp_media_add_bandwidth
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_add_bandwidth
-func (media *SDPMedia) AddBandwidth(bwtype string, bandwidth uint) SDPResult {
+func (media *SDPMedia) AddBandwidth(bwtype string, bandwidth uint32) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // in, none, casted
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = (*C.gchar)(transfer.GLibString(bwtype))
@@ -3281,16 +3341,16 @@ func (media *SDPMedia) AddBandwidth(bwtype string, bandwidth uint) SDPResult {
 }
 
 // AddConnection wraps gst_sdp_media_add_connection
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_add_connection
-func (media *SDPMedia) AddConnection(nettype string, addrtype string, address string, ttl uint, addrNumber uint) SDPResult {
+func (media *SDPMedia) AddConnection(nettype string, addrtype string, address string, ttl uint32, addrNumber uint32) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 *C.gchar       // in, none, string
 	var carg3 *C.gchar       // in, none, string
 	var carg4 C.guint        // in, none, casted
 	var carg5 C.guint        // in, none, casted
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = (*C.gchar)(transfer.GLibString(nettype))
@@ -3318,12 +3378,12 @@ func (media *SDPMedia) AddConnection(nettype string, addrtype string, address st
 }
 
 // AddFormat wraps gst_sdp_media_add_format
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_add_format
 func (media *SDPMedia) AddFormat(format string) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.gchar       // in, none, string
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = (*C.gchar)(transfer.GLibString(format))
@@ -3341,11 +3401,11 @@ func (media *SDPMedia) AddFormat(format string) SDPResult {
 }
 
 // AsText wraps gst_sdp_media_as_text
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_as_text
 func (media *SDPMedia) AsText() string {
 	var carg0 *C.GstSDPMedia // in, none, converted
-	var cret  *C.gchar       // return, full, string
+	var cret *C.gchar        // return, full, string
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
@@ -3361,31 +3421,31 @@ func (media *SDPMedia) AsText() string {
 }
 
 // AttributesLen wraps gst_sdp_media_attributes_len
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_attributes_len
-func (media *SDPMedia) AttributesLen() uint {
+func (media *SDPMedia) AttributesLen() uint32 {
 	var carg0 *C.GstSDPMedia // in, none, converted
-	var cret  C.guint        // return, none, casted
+	var cret C.guint         // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
 	cret = C.gst_sdp_media_attributes_len(carg0)
 	runtime.KeepAlive(media)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // AttributesToCaps wraps gst_sdp_media_attributes_to_caps
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_attributes_to_caps
 func (media *SDPMedia) AttributesToCaps(caps *gst.Caps) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.GstCaps     // in, none, converted
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
@@ -3402,57 +3462,57 @@ func (media *SDPMedia) AttributesToCaps(caps *gst.Caps) SDPResult {
 }
 
 // BandwidthsLen wraps gst_sdp_media_bandwidths_len
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_bandwidths_len
-func (media *SDPMedia) BandwidthsLen() uint {
+func (media *SDPMedia) BandwidthsLen() uint32 {
 	var carg0 *C.GstSDPMedia // in, none, converted
-	var cret  C.guint        // return, none, casted
+	var cret C.guint         // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
 	cret = C.gst_sdp_media_bandwidths_len(carg0)
 	runtime.KeepAlive(media)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // ConnectionsLen wraps gst_sdp_media_connections_len
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_connections_len
-func (media *SDPMedia) ConnectionsLen() uint {
+func (media *SDPMedia) ConnectionsLen() uint32 {
 	var carg0 *C.GstSDPMedia // in, none, converted
-	var cret  C.guint        // return, none, casted
+	var cret C.guint         // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
 	cret = C.gst_sdp_media_connections_len(carg0)
 	runtime.KeepAlive(media)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // Copy wraps gst_sdp_media_copy
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_copy
 func (media *SDPMedia) Copy() (*SDPMedia, SDPResult) {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.GstSDPMedia // out, full, converted
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
 	cret = C.gst_sdp_media_copy(carg0, &carg1)
 	runtime.KeepAlive(media)
 
-	var copy  *SDPMedia
+	var copy *SDPMedia
 	var goret SDPResult
 
 	copy = UnsafeSDPMediaFromGlibFull(unsafe.Pointer(carg1))
@@ -3462,31 +3522,31 @@ func (media *SDPMedia) Copy() (*SDPMedia, SDPResult) {
 }
 
 // FormatsLen wraps gst_sdp_media_formats_len
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_formats_len
-func (media *SDPMedia) FormatsLen() uint {
+func (media *SDPMedia) FormatsLen() uint32 {
 	var carg0 *C.GstSDPMedia // in, none, converted
-	var cret  C.guint        // return, none, casted
+	var cret C.guint         // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
 	cret = C.gst_sdp_media_formats_len(carg0)
 	runtime.KeepAlive(media)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // GetAttribute wraps gst_sdp_media_get_attribute
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_get_attribute
-func (media *SDPMedia) GetAttribute(idx uint) *SDPAttribute {
-	var carg0 *C.GstSDPMedia     // in, none, converted
-	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstSDPAttribute // return, borrow, converted
+func (media *SDPMedia) GetAttribute(idx uint32) *SDPAttribute {
+	var carg0 *C.GstSDPMedia    // in, none, converted
+	var carg1 C.guint           // in, none, casted
+	var cret *C.GstSDPAttribute // return, borrow, converted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -3504,12 +3564,12 @@ func (media *SDPMedia) GetAttribute(idx uint) *SDPAttribute {
 }
 
 // GetAttributeVal wraps gst_sdp_media_get_attribute_val
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_get_attribute_val
 func (media *SDPMedia) GetAttributeVal(key string) string {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.gchar       // in, none, string
-	var cret  *C.gchar       // return, none, string, nullable-string
+	var cret *C.gchar        // return, none, string, nullable-string
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = (*C.gchar)(transfer.GLibString(key))
@@ -3529,13 +3589,13 @@ func (media *SDPMedia) GetAttributeVal(key string) string {
 }
 
 // GetAttributeValN wraps gst_sdp_media_get_attribute_val_n
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_get_attribute_val_n
-func (media *SDPMedia) GetAttributeValN(key string, nth uint) string {
+func (media *SDPMedia) GetAttributeValN(key string, nth uint32) string {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // in, none, casted
-	var cret  *C.gchar       // return, none, string, nullable-string
+	var cret *C.gchar        // return, none, string, nullable-string
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = (*C.gchar)(transfer.GLibString(key))
@@ -3557,12 +3617,12 @@ func (media *SDPMedia) GetAttributeValN(key string, nth uint) string {
 }
 
 // GetBandwidth wraps gst_sdp_media_get_bandwidth
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_get_bandwidth
-func (media *SDPMedia) GetBandwidth(idx uint) *SDPBandwidth {
-	var carg0 *C.GstSDPMedia     // in, none, converted
-	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstSDPBandwidth // return, borrow, converted
+func (media *SDPMedia) GetBandwidth(idx uint32) *SDPBandwidth {
+	var carg0 *C.GstSDPMedia    // in, none, converted
+	var carg1 C.guint           // in, none, casted
+	var cret *C.GstSDPBandwidth // return, borrow, converted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -3580,12 +3640,12 @@ func (media *SDPMedia) GetBandwidth(idx uint) *SDPBandwidth {
 }
 
 // GetCapsFromMedia wraps gst_sdp_media_get_caps_from_media
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_get_caps_from_media
 func (media *SDPMedia) GetCapsFromMedia(pt int32) *gst.Caps {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 C.gint         // in, none, casted
-	var cret  *C.GstCaps     // return, full, converted, nullable
+	var cret *C.GstCaps      // return, full, converted, nullable
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.gint(pt)
@@ -3604,12 +3664,12 @@ func (media *SDPMedia) GetCapsFromMedia(pt int32) *gst.Caps {
 }
 
 // GetConnection wraps gst_sdp_media_get_connection
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_get_connection
-func (media *SDPMedia) GetConnection(idx uint) *SDPConnection {
-	var carg0 *C.GstSDPMedia      // in, none, converted
-	var carg1 C.guint             // in, none, casted
-	var cret  *C.GstSDPConnection // return, borrow, converted
+func (media *SDPMedia) GetConnection(idx uint32) *SDPConnection {
+	var carg0 *C.GstSDPMedia     // in, none, converted
+	var carg1 C.guint            // in, none, casted
+	var cret *C.GstSDPConnection // return, borrow, converted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -3627,12 +3687,12 @@ func (media *SDPMedia) GetConnection(idx uint) *SDPConnection {
 }
 
 // GetFormat wraps gst_sdp_media_get_format
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_get_format
-func (media *SDPMedia) GetFormat(idx uint) string {
+func (media *SDPMedia) GetFormat(idx uint32) string {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 C.guint        // in, none, casted
-	var cret  *C.gchar       // return, none, string
+	var cret *C.gchar        // return, none, string
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -3649,11 +3709,11 @@ func (media *SDPMedia) GetFormat(idx uint) string {
 }
 
 // GetInformation wraps gst_sdp_media_get_information
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_get_information
 func (media *SDPMedia) GetInformation() string {
 	var carg0 *C.GstSDPMedia // in, none, converted
-	var cret  *C.gchar       // return, none, string
+	var cret *C.gchar        // return, none, string
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
@@ -3668,11 +3728,11 @@ func (media *SDPMedia) GetInformation() string {
 }
 
 // GetKey wraps gst_sdp_media_get_key
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_get_key
 func (media *SDPMedia) GetKey() *SDPKey {
 	var carg0 *C.GstSDPMedia // in, none, converted
-	var cret  *C.GstSDPKey   // return, none, converted
+	var cret *C.GstSDPKey    // return, none, converted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
@@ -3687,11 +3747,11 @@ func (media *SDPMedia) GetKey() *SDPKey {
 }
 
 // GetMedia wraps gst_sdp_media_get_media
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_get_media
 func (media *SDPMedia) GetMedia() string {
 	var carg0 *C.GstSDPMedia // in, none, converted
-	var cret  *C.gchar       // return, none, string
+	var cret *C.gchar        // return, none, string
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
@@ -3706,49 +3766,49 @@ func (media *SDPMedia) GetMedia() string {
 }
 
 // GetNumPorts wraps gst_sdp_media_get_num_ports
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_get_num_ports
-func (media *SDPMedia) GetNumPorts() uint {
+func (media *SDPMedia) GetNumPorts() uint32 {
 	var carg0 *C.GstSDPMedia // in, none, converted
-	var cret  C.guint        // return, none, casted
+	var cret C.guint         // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
 	cret = C.gst_sdp_media_get_num_ports(carg0)
 	runtime.KeepAlive(media)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // GetPort wraps gst_sdp_media_get_port
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_get_port
-func (media *SDPMedia) GetPort() uint {
+func (media *SDPMedia) GetPort() uint32 {
 	var carg0 *C.GstSDPMedia // in, none, converted
-	var cret  C.guint        // return, none, casted
+	var cret C.guint         // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
 	cret = C.gst_sdp_media_get_port(carg0)
 	runtime.KeepAlive(media)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // GetProto wraps gst_sdp_media_get_proto
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_get_proto
 func (media *SDPMedia) GetProto() string {
 	var carg0 *C.GstSDPMedia // in, none, converted
-	var cret  *C.gchar       // return, none, string
+	var cret *C.gchar        // return, none, string
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
@@ -3763,13 +3823,13 @@ func (media *SDPMedia) GetProto() string {
 }
 
 // InsertAttribute wraps gst_sdp_media_insert_attribute
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_insert_attribute
 func (media *SDPMedia) InsertAttribute(idx int32, attr *SDPAttribute) SDPResult {
 	var carg0 *C.GstSDPMedia     // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var carg2 *C.GstSDPAttribute // in, none, converted
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.gint(idx)
@@ -3788,13 +3848,13 @@ func (media *SDPMedia) InsertAttribute(idx int32, attr *SDPAttribute) SDPResult 
 }
 
 // InsertBandwidth wraps gst_sdp_media_insert_bandwidth
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_insert_bandwidth
 func (media *SDPMedia) InsertBandwidth(idx int32, bw *SDPBandwidth) SDPResult {
 	var carg0 *C.GstSDPMedia     // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var carg2 *C.GstSDPBandwidth // in, none, converted
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.gint(idx)
@@ -3813,13 +3873,13 @@ func (media *SDPMedia) InsertBandwidth(idx int32, bw *SDPBandwidth) SDPResult {
 }
 
 // InsertConnection wraps gst_sdp_media_insert_connection
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_insert_connection
 func (media *SDPMedia) InsertConnection(idx int32, conn *SDPConnection) SDPResult {
 	var carg0 *C.GstSDPMedia      // in, none, converted
 	var carg1 C.gint              // in, none, casted
 	var carg2 *C.GstSDPConnection // in, none, converted
-	var cret  C.GstSDPResult      // return, none, casted
+	var cret C.GstSDPResult       // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.gint(idx)
@@ -3838,13 +3898,13 @@ func (media *SDPMedia) InsertConnection(idx int32, conn *SDPConnection) SDPResul
 }
 
 // InsertFormat wraps gst_sdp_media_insert_format
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_insert_format
 func (media *SDPMedia) InsertFormat(idx int32, format string) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 C.gint         // in, none, casted
 	var carg2 *C.gchar       // in, none, string
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.gint(idx)
@@ -3864,12 +3924,12 @@ func (media *SDPMedia) InsertFormat(idx int32, format string) SDPResult {
 }
 
 // ParseKeymgmt wraps gst_sdp_media_parse_keymgmt
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_parse_keymgmt
 func (media *SDPMedia) ParseKeymgmt() (*MIKEYMessage, SDPResult) {
 	var carg0 *C.GstSDPMedia     // in, none, converted
 	var carg1 *C.GstMIKEYMessage // out, full, converted
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
@@ -3886,12 +3946,12 @@ func (media *SDPMedia) ParseKeymgmt() (*MIKEYMessage, SDPResult) {
 }
 
 // RemoveAttribute wraps gst_sdp_media_remove_attribute
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_remove_attribute
-func (media *SDPMedia) RemoveAttribute(idx uint) SDPResult {
+func (media *SDPMedia) RemoveAttribute(idx uint32) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 C.guint        // in, none, casted
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -3908,12 +3968,12 @@ func (media *SDPMedia) RemoveAttribute(idx uint) SDPResult {
 }
 
 // RemoveBandwidth wraps gst_sdp_media_remove_bandwidth
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_remove_bandwidth
-func (media *SDPMedia) RemoveBandwidth(idx uint) SDPResult {
+func (media *SDPMedia) RemoveBandwidth(idx uint32) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 C.guint        // in, none, casted
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -3930,12 +3990,12 @@ func (media *SDPMedia) RemoveBandwidth(idx uint) SDPResult {
 }
 
 // RemoveConnection wraps gst_sdp_media_remove_connection
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_remove_connection
-func (media *SDPMedia) RemoveConnection(idx uint) SDPResult {
+func (media *SDPMedia) RemoveConnection(idx uint32) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 C.guint        // in, none, casted
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -3952,12 +4012,12 @@ func (media *SDPMedia) RemoveConnection(idx uint) SDPResult {
 }
 
 // RemoveFormat wraps gst_sdp_media_remove_format
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_remove_format
-func (media *SDPMedia) RemoveFormat(idx uint) SDPResult {
+func (media *SDPMedia) RemoveFormat(idx uint32) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 C.guint        // in, none, casted
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -3974,13 +4034,13 @@ func (media *SDPMedia) RemoveFormat(idx uint) SDPResult {
 }
 
 // ReplaceAttribute wraps gst_sdp_media_replace_attribute
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_replace_attribute
-func (media *SDPMedia) ReplaceAttribute(idx uint, attr *SDPAttribute) SDPResult {
+func (media *SDPMedia) ReplaceAttribute(idx uint32, attr *SDPAttribute) SDPResult {
 	var carg0 *C.GstSDPMedia     // in, none, converted
 	var carg1 C.guint            // in, none, casted
 	var carg2 *C.GstSDPAttribute // in, none, converted
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -3999,13 +4059,13 @@ func (media *SDPMedia) ReplaceAttribute(idx uint, attr *SDPAttribute) SDPResult 
 }
 
 // ReplaceBandwidth wraps gst_sdp_media_replace_bandwidth
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_replace_bandwidth
-func (media *SDPMedia) ReplaceBandwidth(idx uint, bw *SDPBandwidth) SDPResult {
+func (media *SDPMedia) ReplaceBandwidth(idx uint32, bw *SDPBandwidth) SDPResult {
 	var carg0 *C.GstSDPMedia     // in, none, converted
 	var carg1 C.guint            // in, none, casted
 	var carg2 *C.GstSDPBandwidth // in, none, converted
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -4024,13 +4084,13 @@ func (media *SDPMedia) ReplaceBandwidth(idx uint, bw *SDPBandwidth) SDPResult {
 }
 
 // ReplaceConnection wraps gst_sdp_media_replace_connection
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_replace_connection
-func (media *SDPMedia) ReplaceConnection(idx uint, conn *SDPConnection) SDPResult {
+func (media *SDPMedia) ReplaceConnection(idx uint32, conn *SDPConnection) SDPResult {
 	var carg0 *C.GstSDPMedia      // in, none, converted
 	var carg1 C.guint             // in, none, casted
 	var carg2 *C.GstSDPConnection // in, none, converted
-	var cret  C.GstSDPResult      // return, none, casted
+	var cret C.GstSDPResult       // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -4049,13 +4109,13 @@ func (media *SDPMedia) ReplaceConnection(idx uint, conn *SDPConnection) SDPResul
 }
 
 // ReplaceFormat wraps gst_sdp_media_replace_format
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_replace_format
-func (media *SDPMedia) ReplaceFormat(idx uint, format string) SDPResult {
+func (media *SDPMedia) ReplaceFormat(idx uint32, format string) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 C.guint        // in, none, casted
 	var carg2 *C.gchar       // in, none, string
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -4075,12 +4135,12 @@ func (media *SDPMedia) ReplaceFormat(idx uint, format string) SDPResult {
 }
 
 // SetInformation wraps gst_sdp_media_set_information
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_set_information
 func (media *SDPMedia) SetInformation(information string) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.gchar       // in, none, string
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = (*C.gchar)(transfer.GLibString(information))
@@ -4098,13 +4158,13 @@ func (media *SDPMedia) SetInformation(information string) SDPResult {
 }
 
 // SetKey wraps gst_sdp_media_set_key
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_set_key
 func (media *SDPMedia) SetKey(typ string, data string) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 *C.gchar       // in, none, string
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = (*C.gchar)(transfer.GLibString(typ))
@@ -4125,12 +4185,12 @@ func (media *SDPMedia) SetKey(typ string, data string) SDPResult {
 }
 
 // SetMedia wraps gst_sdp_media_set_media
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_set_media
 func (media *SDPMedia) SetMedia(med string) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.gchar       // in, none, string
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = (*C.gchar)(transfer.GLibString(med))
@@ -4148,13 +4208,13 @@ func (media *SDPMedia) SetMedia(med string) SDPResult {
 }
 
 // SetPortInfo wraps gst_sdp_media_set_port_info
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_set_port_info
-func (media *SDPMedia) SetPortInfo(port uint, numPorts uint) SDPResult {
+func (media *SDPMedia) SetPortInfo(port uint32, numPorts uint32) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 C.guint        // in, none, casted
 	var carg2 C.guint        // in, none, casted
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(port)
@@ -4173,12 +4233,12 @@ func (media *SDPMedia) SetPortInfo(port uint, numPorts uint) SDPResult {
 }
 
 // SetProto wraps gst_sdp_media_set_proto
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_set_proto
 func (media *SDPMedia) SetProto(proto string) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.gchar       // in, none, string
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = (*C.gchar)(transfer.GLibString(proto))
@@ -4196,11 +4256,11 @@ func (media *SDPMedia) SetProto(proto string) SDPResult {
 }
 
 // Uninit wraps gst_sdp_media_uninit
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_uninit
 func (media *SDPMedia) Uninit() SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
-	var cret  C.GstSDPResult // return, none, casted
+	var cret C.GstSDPResult  // return, none, casted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 
@@ -4215,7 +4275,7 @@ func (media *SDPMedia) Uninit() SDPResult {
 }
 
 // SDPMessage wraps GstSDPMessage
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#GstSDPMessage
 type SDPMessage struct {
 	*sDPMessage
@@ -4276,7 +4336,7 @@ func UnsafeSDPMessageFromGlibFull(p unsafe.Pointer) *SDPMessage {
 	}
 	runtime.SetFinalizer(
 		wrapped.sDPMessage,
-		func (intern *sDPMessage) {
+		func(intern *sDPMessage) {
 			C.gst_sdp_message_free(intern.native)
 		},
 	)
@@ -4284,7 +4344,7 @@ func UnsafeSDPMessageFromGlibFull(p unsafe.Pointer) *SDPMessage {
 }
 
 // UnsafeSDPMessageFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [SDPMessage] is expected to work anymore.
 func UnsafeSDPMessageFree(s *SDPMessage) {
 	C.gst_sdp_message_free(s.native)
@@ -4312,12 +4372,12 @@ func UnsafeSDPMessageToGlibFull(s *SDPMessage) unsafe.Pointer {
 }
 
 // SDPMessageAsURI wraps gst_sdp_message_as_uri
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_as_uri
 func SDPMessageAsURI(scheme string, msg *SDPMessage) string {
 	var carg1 *C.gchar         // in, none, string
 	var carg2 *C.GstSDPMessage // in, none, converted
-	var cret  *C.gchar         // return, full, string
+	var cret *C.gchar          // return, full, string
 
 	carg1 = (*C.gchar)(transfer.GLibString(scheme))
 	defer C.g_free(C.gpointer(carg1))
@@ -4336,15 +4396,15 @@ func SDPMessageAsURI(scheme string, msg *SDPMessage) string {
 }
 
 // NewSDPMessage wraps gst_sdp_message_new
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_new
 func NewSDPMessage() (*SDPMessage, SDPResult) {
 	var carg1 *C.GstSDPMessage // out, full, converted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	cret = C.gst_sdp_message_new(&carg1)
 
-	var msg   *SDPMessage
+	var msg *SDPMessage
 	var goret SDPResult
 
 	msg = UnsafeSDPMessageFromGlibFull(unsafe.Pointer(carg1))
@@ -4354,12 +4414,12 @@ func NewSDPMessage() (*SDPMessage, SDPResult) {
 }
 
 // NewSDPMessageFromText wraps gst_sdp_message_new_from_text
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_new_from_text
 func NewSDPMessageFromText(text string) (*SDPMessage, SDPResult) {
 	var carg1 *C.gchar         // in, none, string
 	var carg2 *C.GstSDPMessage // out, full, converted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg1 = (*C.gchar)(transfer.GLibString(text))
 	defer C.g_free(C.gpointer(carg1))
@@ -4367,7 +4427,7 @@ func NewSDPMessageFromText(text string) (*SDPMessage, SDPResult) {
 	cret = C.gst_sdp_message_new_from_text(carg1, &carg2)
 	runtime.KeepAlive(text)
 
-	var msg   *SDPMessage
+	var msg *SDPMessage
 	var goret SDPResult
 
 	msg = UnsafeSDPMessageFromGlibFull(unsafe.Pointer(carg2))
@@ -4377,13 +4437,13 @@ func NewSDPMessageFromText(text string) (*SDPMessage, SDPResult) {
 }
 
 // SDPMessageParseBuffer wraps gst_sdp_message_parse_buffer
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_parse_buffer
 func SDPMessageParseBuffer(data []uint8, msg *SDPMessage) SDPResult {
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint          // implicit
 	var carg3 *C.GstSDPMessage // in, none, converted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	_ = data
 	_ = carg1
@@ -4403,12 +4463,12 @@ func SDPMessageParseBuffer(data []uint8, msg *SDPMessage) SDPResult {
 }
 
 // SDPMessageParseURI wraps gst_sdp_message_parse_uri
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_parse_uri
 func SDPMessageParseURI(uri string, msg *SDPMessage) SDPResult {
 	var carg1 *C.gchar         // in, none, string
 	var carg2 *C.GstSDPMessage // in, none, converted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg1 = (*C.gchar)(transfer.GLibString(uri))
 	defer C.g_free(C.gpointer(carg1))
@@ -4426,13 +4486,13 @@ func SDPMessageParseURI(uri string, msg *SDPMessage) SDPResult {
 }
 
 // AddAttribute wraps gst_sdp_message_add_attribute
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_add_attribute
 func (msg *SDPMessage) AddAttribute(key string, value string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
 	var carg2 *C.gchar         // in, none, string, nullable-string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(key))
@@ -4455,13 +4515,13 @@ func (msg *SDPMessage) AddAttribute(key string, value string) SDPResult {
 }
 
 // AddBandwidth wraps gst_sdp_message_add_bandwidth
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_add_bandwidth
-func (msg *SDPMessage) AddBandwidth(bwtype string, bandwidth uint) SDPResult {
+func (msg *SDPMessage) AddBandwidth(bwtype string, bandwidth uint32) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
 	var carg2 C.guint          // in, none, casted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(bwtype))
@@ -4481,12 +4541,12 @@ func (msg *SDPMessage) AddBandwidth(bwtype string, bandwidth uint) SDPResult {
 }
 
 // AddEmail wraps gst_sdp_message_add_email
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_add_email
 func (msg *SDPMessage) AddEmail(email string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(email))
@@ -4504,12 +4564,12 @@ func (msg *SDPMessage) AddEmail(email string) SDPResult {
 }
 
 // AddMedia wraps gst_sdp_message_add_media
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_add_media
 func (msg *SDPMessage) AddMedia(media *SDPMedia) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.GstSDPMedia   // in, none, converted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
@@ -4526,12 +4586,12 @@ func (msg *SDPMessage) AddMedia(media *SDPMedia) SDPResult {
 }
 
 // AddPhone wraps gst_sdp_message_add_phone
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_add_phone
 func (msg *SDPMessage) AddPhone(phone string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(phone))
@@ -4549,14 +4609,14 @@ func (msg *SDPMessage) AddPhone(phone string) SDPResult {
 }
 
 // AddTime wraps gst_sdp_message_add_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_add_time
 func (msg *SDPMessage) AddTime(start string, stop string, repeat []string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
 	var carg2 *C.gchar         // in, none, string
 	var carg3 **C.gchar        // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(start))
@@ -4581,13 +4641,13 @@ func (msg *SDPMessage) AddTime(start string, stop string, repeat []string) SDPRe
 }
 
 // AddZone wraps gst_sdp_message_add_zone
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_add_zone
 func (msg *SDPMessage) AddZone(adjTime string, typedTime string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
 	var carg2 *C.gchar         // in, none, string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(adjTime))
@@ -4608,11 +4668,11 @@ func (msg *SDPMessage) AddZone(adjTime string, typedTime string) SDPResult {
 }
 
 // AsText wraps gst_sdp_message_as_text
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_as_text
 func (msg *SDPMessage) AsText() string {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  *C.gchar         // return, full, string
+	var cret *C.gchar          // return, full, string
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
@@ -4628,31 +4688,31 @@ func (msg *SDPMessage) AsText() string {
 }
 
 // AttributesLen wraps gst_sdp_message_attributes_len
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_attributes_len
-func (msg *SDPMessage) AttributesLen() uint {
+func (msg *SDPMessage) AttributesLen() uint32 {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  C.guint          // return, none, casted
+	var cret C.guint           // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
 	cret = C.gst_sdp_message_attributes_len(carg0)
 	runtime.KeepAlive(msg)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // AttributesToCaps wraps gst_sdp_message_attributes_to_caps
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_attributes_to_caps
 func (msg *SDPMessage) AttributesToCaps(caps *gst.Caps) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.GstCaps       // in, none, converted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
@@ -4669,38 +4729,38 @@ func (msg *SDPMessage) AttributesToCaps(caps *gst.Caps) SDPResult {
 }
 
 // BandwidthsLen wraps gst_sdp_message_bandwidths_len
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_bandwidths_len
-func (msg *SDPMessage) BandwidthsLen() uint {
+func (msg *SDPMessage) BandwidthsLen() uint32 {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  C.guint          // return, none, casted
+	var cret C.guint           // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
 	cret = C.gst_sdp_message_bandwidths_len(carg0)
 	runtime.KeepAlive(msg)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // Copy wraps gst_sdp_message_copy
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_copy
 func (msg *SDPMessage) Copy() (*SDPMessage, SDPResult) {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.GstSDPMessage // out, full, converted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
 	cret = C.gst_sdp_message_copy(carg0, &carg1)
 	runtime.KeepAlive(msg)
 
-	var copy  *SDPMessage
+	var copy *SDPMessage
 	var goret SDPResult
 
 	copy = UnsafeSDPMessageFromGlibFull(unsafe.Pointer(carg1))
@@ -4710,11 +4770,11 @@ func (msg *SDPMessage) Copy() (*SDPMessage, SDPResult) {
 }
 
 // Dump wraps gst_sdp_message_dump
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_dump
 func (msg *SDPMessage) Dump() SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
@@ -4729,31 +4789,31 @@ func (msg *SDPMessage) Dump() SDPResult {
 }
 
 // EmailsLen wraps gst_sdp_message_emails_len
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_emails_len
-func (msg *SDPMessage) EmailsLen() uint {
+func (msg *SDPMessage) EmailsLen() uint32 {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  C.guint          // return, none, casted
+	var cret C.guint           // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
 	cret = C.gst_sdp_message_emails_len(carg0)
 	runtime.KeepAlive(msg)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // GetAttribute wraps gst_sdp_message_get_attribute
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_attribute
-func (msg *SDPMessage) GetAttribute(idx uint) *SDPAttribute {
-	var carg0 *C.GstSDPMessage   // in, none, converted
-	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstSDPAttribute // return, borrow, converted
+func (msg *SDPMessage) GetAttribute(idx uint32) *SDPAttribute {
+	var carg0 *C.GstSDPMessage  // in, none, converted
+	var carg1 C.guint           // in, none, casted
+	var cret *C.GstSDPAttribute // return, borrow, converted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -4771,12 +4831,12 @@ func (msg *SDPMessage) GetAttribute(idx uint) *SDPAttribute {
 }
 
 // GetAttributeVal wraps gst_sdp_message_get_attribute_val
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_attribute_val
 func (msg *SDPMessage) GetAttributeVal(key string) string {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
-	var cret  *C.gchar         // return, none, string, nullable-string
+	var cret *C.gchar          // return, none, string, nullable-string
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(key))
@@ -4796,13 +4856,13 @@ func (msg *SDPMessage) GetAttributeVal(key string) string {
 }
 
 // GetAttributeValN wraps gst_sdp_message_get_attribute_val_n
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_attribute_val_n
-func (msg *SDPMessage) GetAttributeValN(key string, nth uint) string {
+func (msg *SDPMessage) GetAttributeValN(key string, nth uint32) string {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
 	var carg2 C.guint          // in, none, casted
-	var cret  *C.gchar         // return, none, string, nullable-string
+	var cret *C.gchar          // return, none, string, nullable-string
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(key))
@@ -4824,12 +4884,12 @@ func (msg *SDPMessage) GetAttributeValN(key string, nth uint) string {
 }
 
 // GetBandwidth wraps gst_sdp_message_get_bandwidth
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_bandwidth
-func (msg *SDPMessage) GetBandwidth(idx uint) *SDPBandwidth {
-	var carg0 *C.GstSDPMessage   // in, none, converted
-	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstSDPBandwidth // return, borrow, converted
+func (msg *SDPMessage) GetBandwidth(idx uint32) *SDPBandwidth {
+	var carg0 *C.GstSDPMessage  // in, none, converted
+	var carg1 C.guint           // in, none, casted
+	var cret *C.GstSDPBandwidth // return, borrow, converted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -4847,11 +4907,11 @@ func (msg *SDPMessage) GetBandwidth(idx uint) *SDPBandwidth {
 }
 
 // GetConnection wraps gst_sdp_message_get_connection
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_connection
 func (msg *SDPMessage) GetConnection() *SDPConnection {
-	var carg0 *C.GstSDPMessage    // in, none, converted
-	var cret  *C.GstSDPConnection // return, none, converted
+	var carg0 *C.GstSDPMessage   // in, none, converted
+	var cret *C.GstSDPConnection // return, none, converted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
@@ -4866,12 +4926,12 @@ func (msg *SDPMessage) GetConnection() *SDPConnection {
 }
 
 // GetEmail wraps gst_sdp_message_get_email
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_email
-func (msg *SDPMessage) GetEmail(idx uint) string {
+func (msg *SDPMessage) GetEmail(idx uint32) string {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  *C.gchar         // return, none, string
+	var cret *C.gchar          // return, none, string
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -4888,11 +4948,11 @@ func (msg *SDPMessage) GetEmail(idx uint) string {
 }
 
 // GetInformation wraps gst_sdp_message_get_information
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_information
 func (msg *SDPMessage) GetInformation() string {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  *C.gchar         // return, none, string
+	var cret *C.gchar          // return, none, string
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
@@ -4907,11 +4967,11 @@ func (msg *SDPMessage) GetInformation() string {
 }
 
 // GetKey wraps gst_sdp_message_get_key
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_key
 func (msg *SDPMessage) GetKey() *SDPKey {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  *C.GstSDPKey     // return, none, converted
+	var cret *C.GstSDPKey      // return, none, converted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
@@ -4926,12 +4986,12 @@ func (msg *SDPMessage) GetKey() *SDPKey {
 }
 
 // GetMedia wraps gst_sdp_message_get_media
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_media
-func (msg *SDPMessage) GetMedia(idx uint) *SDPMedia {
+func (msg *SDPMessage) GetMedia(idx uint32) *SDPMedia {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  *C.GstSDPMedia   // return, borrow, converted
+	var cret *C.GstSDPMedia    // return, borrow, converted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -4949,11 +5009,11 @@ func (msg *SDPMessage) GetMedia(idx uint) *SDPMedia {
 }
 
 // GetOrigin wraps gst_sdp_message_get_origin
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_origin
 func (msg *SDPMessage) GetOrigin() *SDPOrigin {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  *C.GstSDPOrigin  // return, none, converted
+	var cret *C.GstSDPOrigin   // return, none, converted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
@@ -4968,12 +5028,12 @@ func (msg *SDPMessage) GetOrigin() *SDPOrigin {
 }
 
 // GetPhone wraps gst_sdp_message_get_phone
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_phone
-func (msg *SDPMessage) GetPhone(idx uint) string {
+func (msg *SDPMessage) GetPhone(idx uint32) string {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  *C.gchar         // return, none, string
+	var cret *C.gchar          // return, none, string
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -4990,11 +5050,11 @@ func (msg *SDPMessage) GetPhone(idx uint) string {
 }
 
 // GetSessionName wraps gst_sdp_message_get_session_name
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_session_name
 func (msg *SDPMessage) GetSessionName() string {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  *C.gchar         // return, none, string
+	var cret *C.gchar          // return, none, string
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
@@ -5009,12 +5069,12 @@ func (msg *SDPMessage) GetSessionName() string {
 }
 
 // GetTime wraps gst_sdp_message_get_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_time
-func (msg *SDPMessage) GetTime(idx uint) *SDPTime {
+func (msg *SDPMessage) GetTime(idx uint32) *SDPTime {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  *C.GstSDPTime    // return, borrow, converted
+	var cret *C.GstSDPTime     // return, borrow, converted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5032,11 +5092,11 @@ func (msg *SDPMessage) GetTime(idx uint) *SDPTime {
 }
 
 // GetURI wraps gst_sdp_message_get_uri
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_uri
 func (msg *SDPMessage) GetURI() string {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  *C.gchar         // return, none, string
+	var cret *C.gchar          // return, none, string
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
@@ -5051,11 +5111,11 @@ func (msg *SDPMessage) GetURI() string {
 }
 
 // GetVersion wraps gst_sdp_message_get_version
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_version
 func (msg *SDPMessage) GetVersion() string {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  *C.gchar         // return, none, string
+	var cret *C.gchar          // return, none, string
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
@@ -5070,12 +5130,12 @@ func (msg *SDPMessage) GetVersion() string {
 }
 
 // GetZone wraps gst_sdp_message_get_zone
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_get_zone
-func (msg *SDPMessage) GetZone(idx uint) *SDPZone {
+func (msg *SDPMessage) GetZone(idx uint32) *SDPZone {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  *C.GstSDPZone    // return, borrow, converted
+	var cret *C.GstSDPZone     // return, borrow, converted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5093,13 +5153,13 @@ func (msg *SDPMessage) GetZone(idx uint) *SDPZone {
 }
 
 // InsertAttribute wraps gst_sdp_message_insert_attribute
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_insert_attribute
 func (msg *SDPMessage) InsertAttribute(idx int32, attr *SDPAttribute) SDPResult {
 	var carg0 *C.GstSDPMessage   // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var carg2 *C.GstSDPAttribute // in, none, converted
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.gint(idx)
@@ -5118,13 +5178,13 @@ func (msg *SDPMessage) InsertAttribute(idx int32, attr *SDPAttribute) SDPResult 
 }
 
 // InsertBandwidth wraps gst_sdp_message_insert_bandwidth
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_insert_bandwidth
 func (msg *SDPMessage) InsertBandwidth(idx int32, bw *SDPBandwidth) SDPResult {
 	var carg0 *C.GstSDPMessage   // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var carg2 *C.GstSDPBandwidth // in, none, converted
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.gint(idx)
@@ -5143,13 +5203,13 @@ func (msg *SDPMessage) InsertBandwidth(idx int32, bw *SDPBandwidth) SDPResult {
 }
 
 // InsertEmail wraps gst_sdp_message_insert_email
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_insert_email
 func (msg *SDPMessage) InsertEmail(idx int32, email string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.gint           // in, none, casted
 	var carg2 *C.gchar         // in, none, string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.gint(idx)
@@ -5169,13 +5229,13 @@ func (msg *SDPMessage) InsertEmail(idx int32, email string) SDPResult {
 }
 
 // InsertPhone wraps gst_sdp_message_insert_phone
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_insert_phone
 func (msg *SDPMessage) InsertPhone(idx int32, phone string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.gint           // in, none, casted
 	var carg2 *C.gchar         // in, none, string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.gint(idx)
@@ -5195,13 +5255,13 @@ func (msg *SDPMessage) InsertPhone(idx int32, phone string) SDPResult {
 }
 
 // InsertTime wraps gst_sdp_message_insert_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_insert_time
 func (msg *SDPMessage) InsertTime(idx int32, t *SDPTime) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.gint           // in, none, casted
 	var carg2 *C.GstSDPTime    // in, none, converted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.gint(idx)
@@ -5220,13 +5280,13 @@ func (msg *SDPMessage) InsertTime(idx int32, t *SDPTime) SDPResult {
 }
 
 // InsertZone wraps gst_sdp_message_insert_zone
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_insert_zone
 func (msg *SDPMessage) InsertZone(idx int32, zone *SDPZone) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.gint           // in, none, casted
 	var carg2 *C.GstSDPZone    // in, none, converted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.gint(idx)
@@ -5245,31 +5305,31 @@ func (msg *SDPMessage) InsertZone(idx int32, zone *SDPZone) SDPResult {
 }
 
 // MediasLen wraps gst_sdp_message_medias_len
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_medias_len
-func (msg *SDPMessage) MediasLen() uint {
+func (msg *SDPMessage) MediasLen() uint32 {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  C.guint          // return, none, casted
+	var cret C.guint           // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
 	cret = C.gst_sdp_message_medias_len(carg0)
 	runtime.KeepAlive(msg)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // ParseKeymgmt wraps gst_sdp_message_parse_keymgmt
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_parse_keymgmt
 func (msg *SDPMessage) ParseKeymgmt() (*MIKEYMessage, SDPResult) {
 	var carg0 *C.GstSDPMessage   // in, none, converted
 	var carg1 *C.GstMIKEYMessage // out, full, converted
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
@@ -5286,31 +5346,31 @@ func (msg *SDPMessage) ParseKeymgmt() (*MIKEYMessage, SDPResult) {
 }
 
 // PhonesLen wraps gst_sdp_message_phones_len
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_phones_len
-func (msg *SDPMessage) PhonesLen() uint {
+func (msg *SDPMessage) PhonesLen() uint32 {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  C.guint          // return, none, casted
+	var cret C.guint           // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
 	cret = C.gst_sdp_message_phones_len(carg0)
 	runtime.KeepAlive(msg)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // RemoveAttribute wraps gst_sdp_message_remove_attribute
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_remove_attribute
-func (msg *SDPMessage) RemoveAttribute(idx uint) SDPResult {
+func (msg *SDPMessage) RemoveAttribute(idx uint32) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5327,12 +5387,12 @@ func (msg *SDPMessage) RemoveAttribute(idx uint) SDPResult {
 }
 
 // RemoveBandwidth wraps gst_sdp_message_remove_bandwidth
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_remove_bandwidth
-func (msg *SDPMessage) RemoveBandwidth(idx uint) SDPResult {
+func (msg *SDPMessage) RemoveBandwidth(idx uint32) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5349,12 +5409,12 @@ func (msg *SDPMessage) RemoveBandwidth(idx uint) SDPResult {
 }
 
 // RemoveEmail wraps gst_sdp_message_remove_email
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_remove_email
-func (msg *SDPMessage) RemoveEmail(idx uint) SDPResult {
+func (msg *SDPMessage) RemoveEmail(idx uint32) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5371,12 +5431,12 @@ func (msg *SDPMessage) RemoveEmail(idx uint) SDPResult {
 }
 
 // RemoveMedia wraps gst_sdp_message_remove_media
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_remove_media
-func (msg *SDPMessage) RemoveMedia(idx uint) SDPResult {
+func (msg *SDPMessage) RemoveMedia(idx uint32) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5393,12 +5453,12 @@ func (msg *SDPMessage) RemoveMedia(idx uint) SDPResult {
 }
 
 // RemovePhone wraps gst_sdp_message_remove_phone
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_remove_phone
-func (msg *SDPMessage) RemovePhone(idx uint) SDPResult {
+func (msg *SDPMessage) RemovePhone(idx uint32) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5415,12 +5475,12 @@ func (msg *SDPMessage) RemovePhone(idx uint) SDPResult {
 }
 
 // RemoveTime wraps gst_sdp_message_remove_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_remove_time
-func (msg *SDPMessage) RemoveTime(idx uint) SDPResult {
+func (msg *SDPMessage) RemoveTime(idx uint32) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5437,12 +5497,12 @@ func (msg *SDPMessage) RemoveTime(idx uint) SDPResult {
 }
 
 // RemoveZone wraps gst_sdp_message_remove_zone
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_remove_zone
-func (msg *SDPMessage) RemoveZone(idx uint) SDPResult {
+func (msg *SDPMessage) RemoveZone(idx uint32) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5459,13 +5519,13 @@ func (msg *SDPMessage) RemoveZone(idx uint) SDPResult {
 }
 
 // ReplaceAttribute wraps gst_sdp_message_replace_attribute
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_replace_attribute
-func (msg *SDPMessage) ReplaceAttribute(idx uint, attr *SDPAttribute) SDPResult {
+func (msg *SDPMessage) ReplaceAttribute(idx uint32, attr *SDPAttribute) SDPResult {
 	var carg0 *C.GstSDPMessage   // in, none, converted
 	var carg1 C.guint            // in, none, casted
 	var carg2 *C.GstSDPAttribute // in, none, converted
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5484,13 +5544,13 @@ func (msg *SDPMessage) ReplaceAttribute(idx uint, attr *SDPAttribute) SDPResult 
 }
 
 // ReplaceBandwidth wraps gst_sdp_message_replace_bandwidth
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_replace_bandwidth
-func (msg *SDPMessage) ReplaceBandwidth(idx uint, bw *SDPBandwidth) SDPResult {
+func (msg *SDPMessage) ReplaceBandwidth(idx uint32, bw *SDPBandwidth) SDPResult {
 	var carg0 *C.GstSDPMessage   // in, none, converted
 	var carg1 C.guint            // in, none, casted
 	var carg2 *C.GstSDPBandwidth // in, none, converted
-	var cret  C.GstSDPResult     // return, none, casted
+	var cret C.GstSDPResult      // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5509,13 +5569,13 @@ func (msg *SDPMessage) ReplaceBandwidth(idx uint, bw *SDPBandwidth) SDPResult {
 }
 
 // ReplaceEmail wraps gst_sdp_message_replace_email
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_replace_email
-func (msg *SDPMessage) ReplaceEmail(idx uint, email string) SDPResult {
+func (msg *SDPMessage) ReplaceEmail(idx uint32, email string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
 	var carg2 *C.gchar         // in, none, string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5535,13 +5595,13 @@ func (msg *SDPMessage) ReplaceEmail(idx uint, email string) SDPResult {
 }
 
 // ReplacePhone wraps gst_sdp_message_replace_phone
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_replace_phone
-func (msg *SDPMessage) ReplacePhone(idx uint, phone string) SDPResult {
+func (msg *SDPMessage) ReplacePhone(idx uint32, phone string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
 	var carg2 *C.gchar         // in, none, string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5561,13 +5621,13 @@ func (msg *SDPMessage) ReplacePhone(idx uint, phone string) SDPResult {
 }
 
 // ReplaceTime wraps gst_sdp_message_replace_time
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_replace_time
-func (msg *SDPMessage) ReplaceTime(idx uint, t *SDPTime) SDPResult {
+func (msg *SDPMessage) ReplaceTime(idx uint32, t *SDPTime) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
 	var carg2 *C.GstSDPTime    // in, none, converted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5586,13 +5646,13 @@ func (msg *SDPMessage) ReplaceTime(idx uint, t *SDPTime) SDPResult {
 }
 
 // ReplaceZone wraps gst_sdp_message_replace_zone
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_replace_zone
-func (msg *SDPMessage) ReplaceZone(idx uint, zone *SDPZone) SDPResult {
+func (msg *SDPMessage) ReplaceZone(idx uint32, zone *SDPZone) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
 	var carg2 *C.GstSDPZone    // in, none, converted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5611,16 +5671,16 @@ func (msg *SDPMessage) ReplaceZone(idx uint, zone *SDPZone) SDPResult {
 }
 
 // SetConnection wraps gst_sdp_message_set_connection
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_set_connection
-func (msg *SDPMessage) SetConnection(nettype string, addrtype string, address string, ttl uint, addrNumber uint) SDPResult {
+func (msg *SDPMessage) SetConnection(nettype string, addrtype string, address string, ttl uint32, addrNumber uint32) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
 	var carg2 *C.gchar         // in, none, string
 	var carg3 *C.gchar         // in, none, string
 	var carg4 C.guint          // in, none, casted
 	var carg5 C.guint          // in, none, casted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(nettype))
@@ -5648,12 +5708,12 @@ func (msg *SDPMessage) SetConnection(nettype string, addrtype string, address st
 }
 
 // SetInformation wraps gst_sdp_message_set_information
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_set_information
 func (msg *SDPMessage) SetInformation(information string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(information))
@@ -5671,13 +5731,13 @@ func (msg *SDPMessage) SetInformation(information string) SDPResult {
 }
 
 // SetKey wraps gst_sdp_message_set_key
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_set_key
 func (msg *SDPMessage) SetKey(typ string, data string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
 	var carg2 *C.gchar         // in, none, string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(typ))
@@ -5698,7 +5758,7 @@ func (msg *SDPMessage) SetKey(typ string, data string) SDPResult {
 }
 
 // SetOrigin wraps gst_sdp_message_set_origin
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_set_origin
 func (msg *SDPMessage) SetOrigin(username string, sessId string, sessVersion string, nettype string, addrtype string, addr string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
@@ -5708,7 +5768,7 @@ func (msg *SDPMessage) SetOrigin(username string, sessId string, sessVersion str
 	var carg4 *C.gchar         // in, none, string
 	var carg5 *C.gchar         // in, none, string
 	var carg6 *C.gchar         // in, none, string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(username))
@@ -5741,12 +5801,12 @@ func (msg *SDPMessage) SetOrigin(username string, sessId string, sessVersion str
 }
 
 // SetSessionName wraps gst_sdp_message_set_session_name
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_set_session_name
 func (msg *SDPMessage) SetSessionName(sessionName string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(sessionName))
@@ -5764,12 +5824,12 @@ func (msg *SDPMessage) SetSessionName(sessionName string) SDPResult {
 }
 
 // SetURI wraps gst_sdp_message_set_uri
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_set_uri
 func (msg *SDPMessage) SetURI(uri string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(uri))
@@ -5787,12 +5847,12 @@ func (msg *SDPMessage) SetURI(uri string) SDPResult {
 }
 
 // SetVersion wraps gst_sdp_message_set_version
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_set_version
 func (msg *SDPMessage) SetVersion(version string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(transfer.GLibString(version))
@@ -5810,30 +5870,30 @@ func (msg *SDPMessage) SetVersion(version string) SDPResult {
 }
 
 // TimesLen wraps gst_sdp_message_times_len
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_times_len
-func (msg *SDPMessage) TimesLen() uint {
+func (msg *SDPMessage) TimesLen() uint32 {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  C.guint          // return, none, casted
+	var cret C.guint           // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
 	cret = C.gst_sdp_message_times_len(carg0)
 	runtime.KeepAlive(msg)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // Uninit wraps gst_sdp_message_uninit
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_uninit
 func (msg *SDPMessage) Uninit() SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  C.GstSDPResult   // return, none, casted
+	var cret C.GstSDPResult    // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
@@ -5848,26 +5908,26 @@ func (msg *SDPMessage) Uninit() SDPResult {
 }
 
 // ZonesLen wraps gst_sdp_message_zones_len
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_message_zones_len
-func (msg *SDPMessage) ZonesLen() uint {
+func (msg *SDPMessage) ZonesLen() uint32 {
 	var carg0 *C.GstSDPMessage // in, none, converted
-	var cret  C.guint          // return, none, casted
+	var cret C.guint           // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
 	cret = C.gst_sdp_message_zones_len(carg0)
 	runtime.KeepAlive(msg)
 
-	var goret uint
+	var goret uint32
 
-	goret = uint(cret)
+	goret = uint32(cret)
 
 	return goret
 }
 
 // SDPOrigin wraps GstSDPOrigin
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#GstSDPOrigin
 type SDPOrigin struct {
 	*sDPOrigin
@@ -5913,7 +5973,7 @@ func UnsafeSDPOriginFromGlibFull(p unsafe.Pointer) *SDPOrigin {
 	}
 	runtime.SetFinalizer(
 		wrapped.sDPOrigin,
-		func (intern *sDPOrigin) {
+		func(intern *sDPOrigin) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5921,7 +5981,7 @@ func UnsafeSDPOriginFromGlibFull(p unsafe.Pointer) *SDPOrigin {
 }
 
 // UnsafeSDPOriginFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [SDPOrigin] is expected to work anymore.
 func UnsafeSDPOriginFree(s *SDPOrigin) {
 	C.free(unsafe.Pointer(s.native))
@@ -5949,7 +6009,7 @@ func UnsafeSDPOriginToGlibFull(s *SDPOrigin) unsafe.Pointer {
 }
 
 // SDPTime wraps GstSDPTime
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#GstSDPTime
 type SDPTime struct {
 	*sDPTime
@@ -5995,7 +6055,7 @@ func UnsafeSDPTimeFromGlibFull(p unsafe.Pointer) *SDPTime {
 	}
 	runtime.SetFinalizer(
 		wrapped.sDPTime,
-		func (intern *sDPTime) {
+		func(intern *sDPTime) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -6003,7 +6063,7 @@ func UnsafeSDPTimeFromGlibFull(p unsafe.Pointer) *SDPTime {
 }
 
 // UnsafeSDPTimeFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [SDPTime] is expected to work anymore.
 func UnsafeSDPTimeFree(s *SDPTime) {
 	C.free(unsafe.Pointer(s.native))
@@ -6031,11 +6091,11 @@ func UnsafeSDPTimeToGlibFull(s *SDPTime) unsafe.Pointer {
 }
 
 // Clear wraps gst_sdp_time_clear
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_time_clear
 func (t *SDPTime) Clear() SDPResult {
-	var carg0 *C.GstSDPTime  // in, none, converted
-	var cret  C.GstSDPResult // return, none, casted
+	var carg0 *C.GstSDPTime // in, none, converted
+	var cret C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPTime)(UnsafeSDPTimeToGlibNone(t))
 
@@ -6050,14 +6110,14 @@ func (t *SDPTime) Clear() SDPResult {
 }
 
 // Set wraps gst_sdp_time_set
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_time_set
 func (t *SDPTime) Set(start string, stop string, repeat []string) SDPResult {
-	var carg0 *C.GstSDPTime  // in, none, converted
-	var carg1 *C.gchar       // in, none, string
-	var carg2 *C.gchar       // in, none, string
-	var carg3 **C.gchar      // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
-	var cret  C.GstSDPResult // return, none, casted
+	var carg0 *C.GstSDPTime // in, none, converted
+	var carg1 *C.gchar      // in, none, string
+	var carg2 *C.gchar      // in, none, string
+	var carg3 **C.gchar     // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
+	var cret C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPTime)(UnsafeSDPTimeToGlibNone(t))
 	carg1 = (*C.gchar)(transfer.GLibString(start))
@@ -6082,7 +6142,7 @@ func (t *SDPTime) Set(start string, stop string, repeat []string) SDPResult {
 }
 
 // SDPZone wraps GstSDPZone
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#GstSDPZone
 type SDPZone struct {
 	*sDPZone
@@ -6128,7 +6188,7 @@ func UnsafeSDPZoneFromGlibFull(p unsafe.Pointer) *SDPZone {
 	}
 	runtime.SetFinalizer(
 		wrapped.sDPZone,
-		func (intern *sDPZone) {
+		func(intern *sDPZone) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -6136,7 +6196,7 @@ func UnsafeSDPZoneFromGlibFull(p unsafe.Pointer) *SDPZone {
 }
 
 // UnsafeSDPZoneFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
-// 
+//
 // After this is called, no other method on [SDPZone] is expected to work anymore.
 func UnsafeSDPZoneFree(s *SDPZone) {
 	C.free(unsafe.Pointer(s.native))
@@ -6164,11 +6224,11 @@ func UnsafeSDPZoneToGlibFull(s *SDPZone) unsafe.Pointer {
 }
 
 // Clear wraps gst_sdp_zone_clear
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_zone_clear
 func (zone *SDPZone) Clear() SDPResult {
-	var carg0 *C.GstSDPZone  // in, none, converted
-	var cret  C.GstSDPResult // return, none, casted
+	var carg0 *C.GstSDPZone // in, none, converted
+	var cret C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPZone)(UnsafeSDPZoneToGlibNone(zone))
 
@@ -6183,13 +6243,13 @@ func (zone *SDPZone) Clear() SDPResult {
 }
 
 // Set wraps gst_sdp_zone_set
-// 
+//
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_zone_set
 func (zone *SDPZone) Set(adjTime string, typedTime string) SDPResult {
-	var carg0 *C.GstSDPZone  // in, none, converted
-	var carg1 *C.gchar       // in, none, string
-	var carg2 *C.gchar       // in, none, string
-	var cret  C.GstSDPResult // return, none, casted
+	var carg0 *C.GstSDPZone // in, none, converted
+	var carg1 *C.gchar      // in, none, string
+	var carg2 *C.gchar      // in, none, string
+	var cret C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPZone)(UnsafeSDPZoneToGlibNone(zone))
 	carg1 = (*C.gchar)(transfer.GLibString(adjTime))
@@ -6208,4 +6268,3 @@ func (zone *SDPZone) Set(adjTime string, typedTime string) SDPResult {
 
 	return goret
 }
-

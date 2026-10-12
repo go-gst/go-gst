@@ -23,10 +23,10 @@ func _goglib_gstcheck1_CheckLogFilterFunc(carg1 *C.gchar, carg2 C.GLogLevelFlags
 		fn = v.(CheckLogFilterFunc)
 	}
 
-	var logDomain string             // in, none, string
-	var logLevel  glib.LogLevelFlags // in, none, casted
-	var message   string             // in, none, string
-	var goret     bool               // return
+	var logDomain string            // in, none, string
+	var logLevel glib.LogLevelFlags // in, none, casted
+	var message string              // in, none, string
+	var goret bool                  // return
 
 	logDomain = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 	logLevel = glib.LogLevelFlags(carg2)
@@ -40,4 +40,3 @@ func _goglib_gstcheck1_CheckLogFilterFunc(carg1 *C.gchar, carg2 C.GLogLevelFlags
 
 	return cret
 }
-
