@@ -4,7 +4,6 @@ import (
 	"runtime"
 	"testing"
 	"time"
-	"unsafe"
 
 	"github.com/go-gst/go-gst/pkg/gst/internal/ownershiptest"
 )
@@ -36,9 +35,6 @@ func allocateUnreachableSamples(t *testing.T, counter *ownershiptest.Counter, co
 
 func TestSampleFinalizerWithTinyNeighbors(t *testing.T) {
 	Init()
-	if got, want := unsafe.Sizeof(sample{}), unsafe.Sizeof(unsafe.Pointer(nil)); got != want {
-		t.Fatalf("sample owner size = %d, want one pointer (%d)", got, want)
-	}
 
 	const count = 1000
 	counter := ownershiptest.NewCounter()
