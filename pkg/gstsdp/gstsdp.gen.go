@@ -592,7 +592,8 @@ type MIKEYDecryptInfo struct {
 
 // mIKEYDecryptInfo is the struct that's finalized
 type mIKEYDecryptInfo struct {
-	native *C.GstMIKEYDecryptInfo
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeMIKEYDecryptInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -600,7 +601,7 @@ func (m *MIKEYDecryptInfo) instance() *C.GstMIKEYDecryptInfo {
 	if m == nil {
 		return nil
 	}
-	return m.native
+	return (*C.GstMIKEYDecryptInfo)(m.native)
 }
 
 // UnsafeMIKEYDecryptInfoFromGlibBorrow is used to convert raw C.GstMIKEYDecryptInfo pointers to go. This is used by the bindings internally.
@@ -608,7 +609,7 @@ func UnsafeMIKEYDecryptInfoFromGlibBorrow(p unsafe.Pointer) *MIKEYDecryptInfo {
 	if p == nil {
 		return nil
 	}
-	return &MIKEYDecryptInfo{&mIKEYDecryptInfo{(*C.GstMIKEYDecryptInfo)(p)}}
+	return &MIKEYDecryptInfo{&mIKEYDecryptInfo{p}}
 }
 
 // UnsafeMIKEYDecryptInfoFromGlibNone is used to convert raw C.GstMIKEYDecryptInfo pointers to go without transferring ownership. This is used by the bindings internally.
@@ -674,7 +675,8 @@ type MIKEYEncryptInfo struct {
 
 // mIKEYEncryptInfo is the struct that's finalized
 type mIKEYEncryptInfo struct {
-	native *C.GstMIKEYEncryptInfo
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeMIKEYEncryptInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -682,7 +684,7 @@ func (m *MIKEYEncryptInfo) instance() *C.GstMIKEYEncryptInfo {
 	if m == nil {
 		return nil
 	}
-	return m.native
+	return (*C.GstMIKEYEncryptInfo)(m.native)
 }
 
 // UnsafeMIKEYEncryptInfoFromGlibBorrow is used to convert raw C.GstMIKEYEncryptInfo pointers to go. This is used by the bindings internally.
@@ -690,7 +692,7 @@ func UnsafeMIKEYEncryptInfoFromGlibBorrow(p unsafe.Pointer) *MIKEYEncryptInfo {
 	if p == nil {
 		return nil
 	}
-	return &MIKEYEncryptInfo{&mIKEYEncryptInfo{(*C.GstMIKEYEncryptInfo)(p)}}
+	return &MIKEYEncryptInfo{&mIKEYEncryptInfo{p}}
 }
 
 // UnsafeMIKEYEncryptInfoFromGlibNone is used to convert raw C.GstMIKEYEncryptInfo pointers to go without transferring ownership. This is used by the bindings internally.

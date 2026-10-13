@@ -4091,7 +4091,8 @@ type WebRTCDTLSTransportClass struct {
 
 // webRTCDTLSTransportClass is the struct that's finalized
 type webRTCDTLSTransportClass struct {
-	native *C.GstWebRTCDTLSTransportClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeWebRTCDTLSTransportClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4099,7 +4100,7 @@ func (w *WebRTCDTLSTransportClass) instance() *C.GstWebRTCDTLSTransportClass {
 	if w == nil {
 		return nil
 	}
-	return w.native
+	return (*C.GstWebRTCDTLSTransportClass)(w.native)
 }
 
 // UnsafeWebRTCDTLSTransportClassFromGlibBorrow is used to convert raw C.GstWebRTCDTLSTransportClass pointers to go. This is used by the bindings internally.
@@ -4107,7 +4108,7 @@ func UnsafeWebRTCDTLSTransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCDTLST
 	if p == nil {
 		return nil
 	}
-	return &WebRTCDTLSTransportClass{&webRTCDTLSTransportClass{(*C.GstWebRTCDTLSTransportClass)(p)}}
+	return &WebRTCDTLSTransportClass{&webRTCDTLSTransportClass{p}}
 }
 
 // UnsafeWebRTCDTLSTransportClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -4146,7 +4147,8 @@ type WebRTCDataChannelClass struct {
 
 // webRTCDataChannelClass is the struct that's finalized
 type webRTCDataChannelClass struct {
-	native *C.GstWebRTCDataChannelClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeWebRTCDataChannelClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4154,7 +4156,7 @@ func (w *WebRTCDataChannelClass) instance() *C.GstWebRTCDataChannelClass {
 	if w == nil {
 		return nil
 	}
-	return w.native
+	return (*C.GstWebRTCDataChannelClass)(w.native)
 }
 
 // UnsafeWebRTCDataChannelClassFromGlibBorrow is used to convert raw C.GstWebRTCDataChannelClass pointers to go. This is used by the bindings internally.
@@ -4162,7 +4164,7 @@ func UnsafeWebRTCDataChannelClassFromGlibBorrow(p unsafe.Pointer) *WebRTCDataCha
 	if p == nil {
 		return nil
 	}
-	return &WebRTCDataChannelClass{&webRTCDataChannelClass{(*C.GstWebRTCDataChannelClass)(p)}}
+	return &WebRTCDataChannelClass{&webRTCDataChannelClass{p}}
 }
 
 // UnsafeWebRTCDataChannelClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -4482,7 +4484,8 @@ type WebRTCRTPReceiverClass struct {
 
 // webRTCRTPReceiverClass is the struct that's finalized
 type webRTCRTPReceiverClass struct {
-	native *C.GstWebRTCRTPReceiverClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeWebRTCRTPReceiverClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4490,7 +4493,7 @@ func (w *WebRTCRTPReceiverClass) instance() *C.GstWebRTCRTPReceiverClass {
 	if w == nil {
 		return nil
 	}
-	return w.native
+	return (*C.GstWebRTCRTPReceiverClass)(w.native)
 }
 
 // UnsafeWebRTCRTPReceiverClassFromGlibBorrow is used to convert raw C.GstWebRTCRTPReceiverClass pointers to go. This is used by the bindings internally.
@@ -4498,7 +4501,7 @@ func UnsafeWebRTCRTPReceiverClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPRece
 	if p == nil {
 		return nil
 	}
-	return &WebRTCRTPReceiverClass{&webRTCRTPReceiverClass{(*C.GstWebRTCRTPReceiverClass)(p)}}
+	return &WebRTCRTPReceiverClass{&webRTCRTPReceiverClass{p}}
 }
 
 // UnsafeWebRTCRTPReceiverClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -4537,7 +4540,8 @@ type WebRTCRTPSenderClass struct {
 
 // webRTCRTPSenderClass is the struct that's finalized
 type webRTCRTPSenderClass struct {
-	native *C.GstWebRTCRTPSenderClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeWebRTCRTPSenderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4545,7 +4549,7 @@ func (w *WebRTCRTPSenderClass) instance() *C.GstWebRTCRTPSenderClass {
 	if w == nil {
 		return nil
 	}
-	return w.native
+	return (*C.GstWebRTCRTPSenderClass)(w.native)
 }
 
 // UnsafeWebRTCRTPSenderClassFromGlibBorrow is used to convert raw C.GstWebRTCRTPSenderClass pointers to go. This is used by the bindings internally.
@@ -4553,7 +4557,7 @@ func UnsafeWebRTCRTPSenderClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPSender
 	if p == nil {
 		return nil
 	}
-	return &WebRTCRTPSenderClass{&webRTCRTPSenderClass{(*C.GstWebRTCRTPSenderClass)(p)}}
+	return &WebRTCRTPSenderClass{&webRTCRTPSenderClass{p}}
 }
 
 // UnsafeWebRTCRTPSenderClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -4592,7 +4596,8 @@ type WebRTCRTPTransceiverClass struct {
 
 // webRTCRTPTransceiverClass is the struct that's finalized
 type webRTCRTPTransceiverClass struct {
-	native *C.GstWebRTCRTPTransceiverClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeWebRTCRTPTransceiverClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4600,7 +4605,7 @@ func (w *WebRTCRTPTransceiverClass) instance() *C.GstWebRTCRTPTransceiverClass {
 	if w == nil {
 		return nil
 	}
-	return w.native
+	return (*C.GstWebRTCRTPTransceiverClass)(w.native)
 }
 
 // UnsafeWebRTCRTPTransceiverClassFromGlibBorrow is used to convert raw C.GstWebRTCRTPTransceiverClass pointers to go. This is used by the bindings internally.
@@ -4608,7 +4613,7 @@ func UnsafeWebRTCRTPTransceiverClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPT
 	if p == nil {
 		return nil
 	}
-	return &WebRTCRTPTransceiverClass{&webRTCRTPTransceiverClass{(*C.GstWebRTCRTPTransceiverClass)(p)}}
+	return &WebRTCRTPTransceiverClass{&webRTCRTPTransceiverClass{p}}
 }
 
 // UnsafeWebRTCRTPTransceiverClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -4647,7 +4652,8 @@ type WebRTCSCTPTransportClass struct {
 
 // webRTCSCTPTransportClass is the struct that's finalized
 type webRTCSCTPTransportClass struct {
-	native *C.GstWebRTCSCTPTransportClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeWebRTCSCTPTransportClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4655,7 +4661,7 @@ func (w *WebRTCSCTPTransportClass) instance() *C.GstWebRTCSCTPTransportClass {
 	if w == nil {
 		return nil
 	}
-	return w.native
+	return (*C.GstWebRTCSCTPTransportClass)(w.native)
 }
 
 // UnsafeWebRTCSCTPTransportClassFromGlibBorrow is used to convert raw C.GstWebRTCSCTPTransportClass pointers to go. This is used by the bindings internally.
@@ -4663,7 +4669,7 @@ func UnsafeWebRTCSCTPTransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCSCTPT
 	if p == nil {
 		return nil
 	}
-	return &WebRTCSCTPTransportClass{&webRTCSCTPTransportClass{(*C.GstWebRTCSCTPTransportClass)(p)}}
+	return &WebRTCSCTPTransportClass{&webRTCSCTPTransportClass{p}}
 }
 
 // UnsafeWebRTCSCTPTransportClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.

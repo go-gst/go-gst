@@ -11704,7 +11704,8 @@ type AdapterClass struct {
 
 // adapterClass is the struct that's finalized
 type adapterClass struct {
-	native *C.GstAdapterClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeAdapterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11712,7 +11713,7 @@ func (a *AdapterClass) instance() *C.GstAdapterClass {
 	if a == nil {
 		return nil
 	}
-	return a.native
+	return (*C.GstAdapterClass)(a.native)
 }
 
 // UnsafeAdapterClassFromGlibBorrow is used to convert raw C.GstAdapterClass pointers to go. This is used by the bindings internally.
@@ -11720,7 +11721,7 @@ func UnsafeAdapterClassFromGlibBorrow(p unsafe.Pointer) *AdapterClass {
 	if p == nil {
 		return nil
 	}
-	return &AdapterClass{&adapterClass{(*C.GstAdapterClass)(p)}}
+	return &AdapterClass{&adapterClass{p}}
 }
 
 // UnsafeAdapterClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -15611,7 +15612,8 @@ type FlowCombiner struct {
 
 // flowCombiner is the struct that's finalized
 type flowCombiner struct {
-	native *C.GstFlowCombiner
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeFlowCombinerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -15619,7 +15621,7 @@ func (f *FlowCombiner) instance() *C.GstFlowCombiner {
 	if f == nil {
 		return nil
 	}
-	return f.native
+	return (*C.GstFlowCombiner)(f.native)
 }
 
 var _ gobject.GoValueInitializer = (*FlowCombiner)(nil)
@@ -15642,7 +15644,7 @@ func UnsafeFlowCombinerFromGlibBorrow(p unsafe.Pointer) *FlowCombiner {
 	if p == nil {
 		return nil
 	}
-	return &FlowCombiner{&flowCombiner{(*C.GstFlowCombiner)(p)}}
+	return &FlowCombiner{&flowCombiner{p}}
 }
 
 // UnsafeFlowCombinerFromGlibNone is used to convert raw C.GstFlowCombiner pointers to go without transferring ownership. This is used by the bindings internally.
@@ -15656,7 +15658,7 @@ func UnsafeFlowCombinerFromGlibNone(p unsafe.Pointer) *FlowCombiner {
 	runtime.SetFinalizer(
 		wrapped.flowCombiner,
 		func (intern *flowCombiner) {
-			C.gst_flow_combiner_unref(intern.native)
+			C.gst_flow_combiner_unref((*C.GstFlowCombiner)(intern.native))
 		},
 	)
 	return wrapped
@@ -15671,7 +15673,7 @@ func UnsafeFlowCombinerFromGlibFull(p unsafe.Pointer) *FlowCombiner {
 	runtime.SetFinalizer(
 		wrapped.flowCombiner,
 		func (intern *flowCombiner) {
-			C.gst_flow_combiner_unref(intern.native)
+			C.gst_flow_combiner_unref((*C.GstFlowCombiner)(intern.native))
 		},
 	)
 	return wrapped
@@ -15688,7 +15690,7 @@ func UnsafeFlowCombinerRef(f *FlowCombiner) {
 // 
 // After this is called, no other method on [FlowCombiner] is expected to work anymore.
 func UnsafeFlowCombinerUnref(f *FlowCombiner) {
-	C.gst_flow_combiner_unref(f.native)
+	C.gst_flow_combiner_unref((*C.GstFlowCombiner)(f.native))
 	runtime.SetFinalizer(f.flowCombiner, nil)
 }
 

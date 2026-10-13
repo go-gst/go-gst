@@ -29259,7 +29259,8 @@ type AtomicQueue struct {
 
 // atomicQueue is the struct that's finalized
 type atomicQueue struct {
-	native *C.GstAtomicQueue
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeAtomicQueueToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -29267,7 +29268,7 @@ func (a *AtomicQueue) instance() *C.GstAtomicQueue {
 	if a == nil {
 		return nil
 	}
-	return a.native
+	return (*C.GstAtomicQueue)(a.native)
 }
 
 var _ gobject.GoValueInitializer = (*AtomicQueue)(nil)
@@ -29290,7 +29291,7 @@ func UnsafeAtomicQueueFromGlibBorrow(p unsafe.Pointer) *AtomicQueue {
 	if p == nil {
 		return nil
 	}
-	return &AtomicQueue{&atomicQueue{(*C.GstAtomicQueue)(p)}}
+	return &AtomicQueue{&atomicQueue{p}}
 }
 
 // UnsafeAtomicQueueFromGlibNone is used to convert raw C.GstAtomicQueue pointers to go without transferring ownership. This is used by the bindings internally.
@@ -29304,7 +29305,7 @@ func UnsafeAtomicQueueFromGlibNone(p unsafe.Pointer) *AtomicQueue {
 	runtime.SetFinalizer(
 		wrapped.atomicQueue,
 		func (intern *atomicQueue) {
-			C.gst_atomic_queue_unref(intern.native)
+			C.gst_atomic_queue_unref((*C.GstAtomicQueue)(intern.native))
 		},
 	)
 	return wrapped
@@ -29319,7 +29320,7 @@ func UnsafeAtomicQueueFromGlibFull(p unsafe.Pointer) *AtomicQueue {
 	runtime.SetFinalizer(
 		wrapped.atomicQueue,
 		func (intern *atomicQueue) {
-			C.gst_atomic_queue_unref(intern.native)
+			C.gst_atomic_queue_unref((*C.GstAtomicQueue)(intern.native))
 		},
 	)
 	return wrapped
@@ -29336,7 +29337,7 @@ func UnsafeAtomicQueueRef(a *AtomicQueue) {
 // 
 // After this is called, no other method on [AtomicQueue] is expected to work anymore.
 func UnsafeAtomicQueueUnref(a *AtomicQueue) {
-	C.gst_atomic_queue_unref(a.native)
+	C.gst_atomic_queue_unref((*C.GstAtomicQueue)(a.native))
 	runtime.SetFinalizer(a.atomicQueue, nil)
 }
 
@@ -30642,7 +30643,8 @@ type BufferList struct {
 
 // bufferList is the struct that's finalized
 type bufferList struct {
-	native *C.GstBufferList
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeBufferListToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -30650,7 +30652,7 @@ func (b *BufferList) instance() *C.GstBufferList {
 	if b == nil {
 		return nil
 	}
-	return b.native
+	return (*C.GstBufferList)(b.native)
 }
 
 var _ gobject.GoValueInitializer = (*BufferList)(nil)
@@ -30673,7 +30675,7 @@ func UnsafeBufferListFromGlibBorrow(p unsafe.Pointer) *BufferList {
 	if p == nil {
 		return nil
 	}
-	return &BufferList{&bufferList{(*C.GstBufferList)(p)}}
+	return &BufferList{&bufferList{p}}
 }
 
 // UnsafeBufferListFromGlibNone is used to convert raw C.GstBufferList pointers to go without transferring ownership. This is used by the bindings internally.
@@ -32327,7 +32329,8 @@ type CapsFeatures struct {
 
 // capsFeatures is the struct that's finalized
 type capsFeatures struct {
-	native *C.GstCapsFeatures
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeCapsFeaturesToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -32335,7 +32338,7 @@ func (c *CapsFeatures) instance() *C.GstCapsFeatures {
 	if c == nil {
 		return nil
 	}
-	return c.native
+	return (*C.GstCapsFeatures)(c.native)
 }
 
 var _ gobject.GoValueInitializer = (*CapsFeatures)(nil)
@@ -32358,7 +32361,7 @@ func UnsafeCapsFeaturesFromGlibBorrow(p unsafe.Pointer) *CapsFeatures {
 	if p == nil {
 		return nil
 	}
-	return &CapsFeatures{&capsFeatures{(*C.GstCapsFeatures)(p)}}
+	return &CapsFeatures{&capsFeatures{p}}
 }
 
 // UnsafeCapsFeaturesFromGlibNone is used to convert raw C.GstCapsFeatures pointers to go without transferring ownership. This is used by the bindings internally.
@@ -32381,7 +32384,7 @@ func UnsafeCapsFeaturesFromGlibFull(p unsafe.Pointer) *CapsFeatures {
 	runtime.SetFinalizer(
 		wrapped.capsFeatures,
 		func (intern *capsFeatures) {
-			C.gst_caps_features_free(intern.native)
+			C.gst_caps_features_free((*C.GstCapsFeatures)(intern.native))
 		},
 	)
 	return wrapped
@@ -32391,7 +32394,7 @@ func UnsafeCapsFeaturesFromGlibFull(p unsafe.Pointer) *CapsFeatures {
 // 
 // After this is called, no other method on [CapsFeatures] is expected to work anymore.
 func UnsafeCapsFeaturesFree(c *CapsFeatures) {
-	C.gst_caps_features_free(c.native)
+	C.gst_caps_features_free((*C.GstCapsFeatures)(c.native))
 	runtime.SetFinalizer(c.capsFeatures, nil)
 }
 
@@ -33011,7 +33014,8 @@ type Context struct {
 
 // _context is the struct that's finalized
 type _context struct {
-	native *C.GstContext
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeContextToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -33019,7 +33023,7 @@ func (c *Context) instance() *C.GstContext {
 	if c == nil {
 		return nil
 	}
-	return c.native
+	return (*C.GstContext)(c.native)
 }
 
 var _ gobject.GoValueInitializer = (*Context)(nil)
@@ -33042,7 +33046,7 @@ func UnsafeContextFromGlibBorrow(p unsafe.Pointer) *Context {
 	if p == nil {
 		return nil
 	}
-	return &Context{&_context{(*C.GstContext)(p)}}
+	return &Context{&_context{p}}
 }
 
 // UnsafeContextFromGlibNone is used to convert raw C.GstContext pointers to go without transferring ownership. This is used by the bindings internally.
@@ -33056,7 +33060,7 @@ func UnsafeContextFromGlibNone(p unsafe.Pointer) *Context {
 	runtime.SetFinalizer(
 		wrapped._context,
 		func (intern *_context) {
-			C.gst_context_unref(intern.native)
+			C.gst_context_unref((*C.GstContext)(intern.native))
 		},
 	)
 	return wrapped
@@ -33071,7 +33075,7 @@ func UnsafeContextFromGlibFull(p unsafe.Pointer) *Context {
 	runtime.SetFinalizer(
 		wrapped._context,
 		func (intern *_context) {
-			C.gst_context_unref(intern.native)
+			C.gst_context_unref((*C.GstContext)(intern.native))
 		},
 	)
 	return wrapped
@@ -33088,7 +33092,7 @@ func UnsafeContextRef(c *Context) {
 // 
 // After this is called, no other method on [Context] is expected to work anymore.
 func UnsafeContextUnref(c *Context) {
-	C.gst_context_unref(c.native)
+	C.gst_context_unref((*C.GstContext)(c.native))
 	runtime.SetFinalizer(c._context, nil)
 }
 
@@ -33504,7 +33508,8 @@ type DateTime struct {
 
 // dateTime is the struct that's finalized
 type dateTime struct {
-	native *C.GstDateTime
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeDateTimeToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -33512,7 +33517,7 @@ func (d *DateTime) instance() *C.GstDateTime {
 	if d == nil {
 		return nil
 	}
-	return d.native
+	return (*C.GstDateTime)(d.native)
 }
 
 var _ gobject.GoValueInitializer = (*DateTime)(nil)
@@ -33535,7 +33540,7 @@ func UnsafeDateTimeFromGlibBorrow(p unsafe.Pointer) *DateTime {
 	if p == nil {
 		return nil
 	}
-	return &DateTime{&dateTime{(*C.GstDateTime)(p)}}
+	return &DateTime{&dateTime{p}}
 }
 
 // UnsafeDateTimeFromGlibNone is used to convert raw C.GstDateTime pointers to go without transferring ownership. This is used by the bindings internally.
@@ -33549,7 +33554,7 @@ func UnsafeDateTimeFromGlibNone(p unsafe.Pointer) *DateTime {
 	runtime.SetFinalizer(
 		wrapped.dateTime,
 		func (intern *dateTime) {
-			C.gst_date_time_unref(intern.native)
+			C.gst_date_time_unref((*C.GstDateTime)(intern.native))
 		},
 	)
 	return wrapped
@@ -33564,7 +33569,7 @@ func UnsafeDateTimeFromGlibFull(p unsafe.Pointer) *DateTime {
 	runtime.SetFinalizer(
 		wrapped.dateTime,
 		func (intern *dateTime) {
-			C.gst_date_time_unref(intern.native)
+			C.gst_date_time_unref((*C.GstDateTime)(intern.native))
 		},
 	)
 	return wrapped
@@ -33581,7 +33586,7 @@ func UnsafeDateTimeRef(d *DateTime) {
 // 
 // After this is called, no other method on [DateTime] is expected to work anymore.
 func UnsafeDateTimeUnref(d *DateTime) {
-	C.gst_date_time_unref(d.native)
+	C.gst_date_time_unref((*C.GstDateTime)(d.native))
 	runtime.SetFinalizer(d.dateTime, nil)
 }
 
@@ -34365,7 +34370,8 @@ type DebugMessage struct {
 
 // debugMessage is the struct that's finalized
 type debugMessage struct {
-	native *C.GstDebugMessage
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeDebugMessageToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -34373,7 +34379,7 @@ func (d *DebugMessage) instance() *C.GstDebugMessage {
 	if d == nil {
 		return nil
 	}
-	return d.native
+	return (*C.GstDebugMessage)(d.native)
 }
 
 // UnsafeDebugMessageFromGlibBorrow is used to convert raw C.GstDebugMessage pointers to go. This is used by the bindings internally.
@@ -34381,7 +34387,7 @@ func UnsafeDebugMessageFromGlibBorrow(p unsafe.Pointer) *DebugMessage {
 	if p == nil {
 		return nil
 	}
-	return &DebugMessage{&debugMessage{(*C.GstDebugMessage)(p)}}
+	return &DebugMessage{&debugMessage{p}}
 }
 
 // UnsafeDebugMessageFromGlibNone is used to convert raw C.GstDebugMessage pointers to go without transferring ownership. This is used by the bindings internally.
@@ -34772,7 +34778,8 @@ type DeviceProviderFactoryClass struct {
 
 // deviceProviderFactoryClass is the struct that's finalized
 type deviceProviderFactoryClass struct {
-	native *C.GstDeviceProviderFactoryClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeDeviceProviderFactoryClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -34780,7 +34787,7 @@ func (d *DeviceProviderFactoryClass) instance() *C.GstDeviceProviderFactoryClass
 	if d == nil {
 		return nil
 	}
-	return d.native
+	return (*C.GstDeviceProviderFactoryClass)(d.native)
 }
 
 // UnsafeDeviceProviderFactoryClassFromGlibBorrow is used to convert raw C.GstDeviceProviderFactoryClass pointers to go. This is used by the bindings internally.
@@ -34788,7 +34795,7 @@ func UnsafeDeviceProviderFactoryClassFromGlibBorrow(p unsafe.Pointer) *DevicePro
 	if p == nil {
 		return nil
 	}
-	return &DeviceProviderFactoryClass{&deviceProviderFactoryClass{(*C.GstDeviceProviderFactoryClass)(p)}}
+	return &DeviceProviderFactoryClass{&deviceProviderFactoryClass{p}}
 }
 
 // UnsafeDeviceProviderFactoryClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -34827,7 +34834,8 @@ type DynamicTypeFactoryClass struct {
 
 // dynamicTypeFactoryClass is the struct that's finalized
 type dynamicTypeFactoryClass struct {
-	native *C.GstDynamicTypeFactoryClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeDynamicTypeFactoryClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -34835,7 +34843,7 @@ func (d *DynamicTypeFactoryClass) instance() *C.GstDynamicTypeFactoryClass {
 	if d == nil {
 		return nil
 	}
-	return d.native
+	return (*C.GstDynamicTypeFactoryClass)(d.native)
 }
 
 // UnsafeDynamicTypeFactoryClassFromGlibBorrow is used to convert raw C.GstDynamicTypeFactoryClass pointers to go. This is used by the bindings internally.
@@ -34843,7 +34851,7 @@ func UnsafeDynamicTypeFactoryClassFromGlibBorrow(p unsafe.Pointer) *DynamicTypeF
 	if p == nil {
 		return nil
 	}
-	return &DynamicTypeFactoryClass{&dynamicTypeFactoryClass{(*C.GstDynamicTypeFactoryClass)(p)}}
+	return &DynamicTypeFactoryClass{&dynamicTypeFactoryClass{p}}
 }
 
 // UnsafeDynamicTypeFactoryClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -35155,7 +35163,8 @@ type ElementFactoryClass struct {
 
 // elementFactoryClass is the struct that's finalized
 type elementFactoryClass struct {
-	native *C.GstElementFactoryClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeElementFactoryClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -35163,7 +35172,7 @@ func (e *ElementFactoryClass) instance() *C.GstElementFactoryClass {
 	if e == nil {
 		return nil
 	}
-	return e.native
+	return (*C.GstElementFactoryClass)(e.native)
 }
 
 // UnsafeElementFactoryClassFromGlibBorrow is used to convert raw C.GstElementFactoryClass pointers to go. This is used by the bindings internally.
@@ -35171,7 +35180,7 @@ func UnsafeElementFactoryClassFromGlibBorrow(p unsafe.Pointer) *ElementFactoryCl
 	if p == nil {
 		return nil
 	}
-	return &ElementFactoryClass{&elementFactoryClass{(*C.GstElementFactoryClass)(p)}}
+	return &ElementFactoryClass{&elementFactoryClass{p}}
 }
 
 // UnsafeElementFactoryClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -41155,7 +41164,8 @@ type ParseContext struct {
 
 // parseContext is the struct that's finalized
 type parseContext struct {
-	native *C.GstParseContext
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeParseContextToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -41163,7 +41173,7 @@ func (p *ParseContext) instance() *C.GstParseContext {
 	if p == nil {
 		return nil
 	}
-	return p.native
+	return (*C.GstParseContext)(p.native)
 }
 
 var _ gobject.GoValueInitializer = (*ParseContext)(nil)
@@ -41186,7 +41196,7 @@ func UnsafeParseContextFromGlibBorrow(p unsafe.Pointer) *ParseContext {
 	if p == nil {
 		return nil
 	}
-	return &ParseContext{&parseContext{(*C.GstParseContext)(p)}}
+	return &ParseContext{&parseContext{p}}
 }
 
 // UnsafeParseContextFromGlibNone is used to convert raw C.GstParseContext pointers to go without transferring ownership. This is used by the bindings internally.
@@ -41209,7 +41219,7 @@ func UnsafeParseContextFromGlibFull(p unsafe.Pointer) *ParseContext {
 	runtime.SetFinalizer(
 		wrapped.parseContext,
 		func (intern *parseContext) {
-			C.gst_parse_context_free(intern.native)
+			C.gst_parse_context_free((*C.GstParseContext)(intern.native))
 		},
 	)
 	return wrapped
@@ -41219,7 +41229,7 @@ func UnsafeParseContextFromGlibFull(p unsafe.Pointer) *ParseContext {
 // 
 // After this is called, no other method on [ParseContext] is expected to work anymore.
 func UnsafeParseContextFree(p *ParseContext) {
-	C.gst_parse_context_free(p.native)
+	C.gst_parse_context_free((*C.GstParseContext)(p.native))
 	runtime.SetFinalizer(p.parseContext, nil)
 }
 
@@ -41368,7 +41378,8 @@ type PluginClass struct {
 
 // pluginClass is the struct that's finalized
 type pluginClass struct {
-	native *C.GstPluginClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafePluginClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -41376,7 +41387,7 @@ func (p *PluginClass) instance() *C.GstPluginClass {
 	if p == nil {
 		return nil
 	}
-	return p.native
+	return (*C.GstPluginClass)(p.native)
 }
 
 // UnsafePluginClassFromGlibBorrow is used to convert raw C.GstPluginClass pointers to go. This is used by the bindings internally.
@@ -41384,7 +41395,7 @@ func UnsafePluginClassFromGlibBorrow(p unsafe.Pointer) *PluginClass {
 	if p == nil {
 		return nil
 	}
-	return &PluginClass{&pluginClass{(*C.GstPluginClass)(p)}}
+	return &PluginClass{&pluginClass{p}}
 }
 
 // UnsafePluginClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -41505,7 +41516,8 @@ type PluginFeatureClass struct {
 
 // pluginFeatureClass is the struct that's finalized
 type pluginFeatureClass struct {
-	native *C.GstPluginFeatureClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafePluginFeatureClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -41513,7 +41525,7 @@ func (p *PluginFeatureClass) instance() *C.GstPluginFeatureClass {
 	if p == nil {
 		return nil
 	}
-	return p.native
+	return (*C.GstPluginFeatureClass)(p.native)
 }
 
 // UnsafePluginFeatureClassFromGlibBorrow is used to convert raw C.GstPluginFeatureClass pointers to go. This is used by the bindings internally.
@@ -41521,7 +41533,7 @@ func UnsafePluginFeatureClassFromGlibBorrow(p unsafe.Pointer) *PluginFeatureClas
 	if p == nil {
 		return nil
 	}
-	return &PluginFeatureClass{&pluginFeatureClass{(*C.GstPluginFeatureClass)(p)}}
+	return &PluginFeatureClass{&pluginFeatureClass{p}}
 }
 
 // UnsafePluginFeatureClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -41558,7 +41570,8 @@ type Poll struct {
 
 // poll is the struct that's finalized
 type poll struct {
-	native *C.GstPoll
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafePollToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -41566,7 +41579,7 @@ func (p *Poll) instance() *C.GstPoll {
 	if p == nil {
 		return nil
 	}
-	return p.native
+	return (*C.GstPoll)(p.native)
 }
 
 // UnsafePollFromGlibBorrow is used to convert raw C.GstPoll pointers to go. This is used by the bindings internally.
@@ -41574,7 +41587,7 @@ func UnsafePollFromGlibBorrow(p unsafe.Pointer) *Poll {
 	if p == nil {
 		return nil
 	}
-	return &Poll{&poll{(*C.GstPoll)(p)}}
+	return &Poll{&poll{p}}
 }
 
 // UnsafePollFromGlibNone is used to convert raw C.GstPoll pointers to go without transferring ownership. This is used by the bindings internally.
@@ -41597,7 +41610,7 @@ func UnsafePollFromGlibFull(p unsafe.Pointer) *Poll {
 	runtime.SetFinalizer(
 		wrapped.poll,
 		func (intern *poll) {
-			C.gst_poll_free(intern.native)
+			C.gst_poll_free((*C.GstPoll)(intern.native))
 		},
 	)
 	return wrapped
@@ -41607,7 +41620,7 @@ func UnsafePollFromGlibFull(p unsafe.Pointer) *Poll {
 // 
 // After this is called, no other method on [Poll] is expected to work anymore.
 func UnsafePollFree(p *Poll) {
-	C.gst_poll_free(p.native)
+	C.gst_poll_free((*C.GstPoll)(p.native))
 	runtime.SetFinalizer(p.poll, nil)
 }
 
@@ -44443,7 +44456,8 @@ type Sample struct {
 
 // sample is the struct that's finalized
 type sample struct {
-	native *C.GstSample
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeSampleToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -44451,7 +44465,7 @@ func (s *Sample) instance() *C.GstSample {
 	if s == nil {
 		return nil
 	}
-	return s.native
+	return (*C.GstSample)(s.native)
 }
 
 var _ gobject.GoValueInitializer = (*Sample)(nil)
@@ -44474,7 +44488,7 @@ func UnsafeSampleFromGlibBorrow(p unsafe.Pointer) *Sample {
 	if p == nil {
 		return nil
 	}
-	return &Sample{&sample{(*C.GstSample)(p)}}
+	return &Sample{&sample{p}}
 }
 
 // UnsafeSampleFromGlibNone is used to convert raw C.GstSample pointers to go without transferring ownership. This is used by the bindings internally.
@@ -48558,7 +48572,8 @@ type Toc struct {
 
 // toc is the struct that's finalized
 type toc struct {
-	native *C.GstToc
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeTocToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -48566,7 +48581,7 @@ func (t *Toc) instance() *C.GstToc {
 	if t == nil {
 		return nil
 	}
-	return t.native
+	return (*C.GstToc)(t.native)
 }
 
 var _ gobject.GoValueInitializer = (*Toc)(nil)
@@ -48589,7 +48604,7 @@ func UnsafeTocFromGlibBorrow(p unsafe.Pointer) *Toc {
 	if p == nil {
 		return nil
 	}
-	return &Toc{&toc{(*C.GstToc)(p)}}
+	return &Toc{&toc{p}}
 }
 
 // UnsafeTocFromGlibNone is used to convert raw C.GstToc pointers to go without transferring ownership. This is used by the bindings internally.
@@ -48844,7 +48859,8 @@ type TocEntry struct {
 
 // tocEntry is the struct that's finalized
 type tocEntry struct {
-	native *C.GstTocEntry
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeTocEntryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -48852,7 +48868,7 @@ func (t *TocEntry) instance() *C.GstTocEntry {
 	if t == nil {
 		return nil
 	}
-	return t.native
+	return (*C.GstTocEntry)(t.native)
 }
 
 var _ gobject.GoValueInitializer = (*TocEntry)(nil)
@@ -48875,7 +48891,7 @@ func UnsafeTocEntryFromGlibBorrow(p unsafe.Pointer) *TocEntry {
 	if p == nil {
 		return nil
 	}
-	return &TocEntry{&tocEntry{(*C.GstTocEntry)(p)}}
+	return &TocEntry{&tocEntry{p}}
 }
 
 // UnsafeTocEntryFromGlibNone is used to convert raw C.GstTocEntry pointers to go without transferring ownership. This is used by the bindings internally.
@@ -49468,7 +49484,8 @@ type TracerFactoryClass struct {
 
 // tracerFactoryClass is the struct that's finalized
 type tracerFactoryClass struct {
-	native *C.GstTracerFactoryClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeTracerFactoryClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -49476,7 +49493,7 @@ func (t *TracerFactoryClass) instance() *C.GstTracerFactoryClass {
 	if t == nil {
 		return nil
 	}
-	return t.native
+	return (*C.GstTracerFactoryClass)(t.native)
 }
 
 // UnsafeTracerFactoryClassFromGlibBorrow is used to convert raw C.GstTracerFactoryClass pointers to go. This is used by the bindings internally.
@@ -49484,7 +49501,7 @@ func UnsafeTracerFactoryClassFromGlibBorrow(p unsafe.Pointer) *TracerFactoryClas
 	if p == nil {
 		return nil
 	}
-	return &TracerFactoryClass{&tracerFactoryClass{(*C.GstTracerFactoryClass)(p)}}
+	return &TracerFactoryClass{&tracerFactoryClass{p}}
 }
 
 // UnsafeTracerFactoryClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -49523,7 +49540,8 @@ type TracerRecordClass struct {
 
 // tracerRecordClass is the struct that's finalized
 type tracerRecordClass struct {
-	native *C.GstTracerRecordClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeTracerRecordClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -49531,7 +49549,7 @@ func (t *TracerRecordClass) instance() *C.GstTracerRecordClass {
 	if t == nil {
 		return nil
 	}
-	return t.native
+	return (*C.GstTracerRecordClass)(t.native)
 }
 
 // UnsafeTracerRecordClassFromGlibBorrow is used to convert raw C.GstTracerRecordClass pointers to go. This is used by the bindings internally.
@@ -49539,7 +49557,7 @@ func UnsafeTracerRecordClassFromGlibBorrow(p unsafe.Pointer) *TracerRecordClass 
 	if p == nil {
 		return nil
 	}
-	return &TracerRecordClass{&tracerRecordClass{(*C.GstTracerRecordClass)(p)}}
+	return &TracerRecordClass{&tracerRecordClass{p}}
 }
 
 // UnsafeTracerRecordClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -49764,7 +49782,8 @@ type TypeFindFactoryClass struct {
 
 // typeFindFactoryClass is the struct that's finalized
 type typeFindFactoryClass struct {
-	native *C.GstTypeFindFactoryClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeTypeFindFactoryClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -49772,7 +49791,7 @@ func (t *TypeFindFactoryClass) instance() *C.GstTypeFindFactoryClass {
 	if t == nil {
 		return nil
 	}
-	return t.native
+	return (*C.GstTypeFindFactoryClass)(t.native)
 }
 
 // UnsafeTypeFindFactoryClassFromGlibBorrow is used to convert raw C.GstTypeFindFactoryClass pointers to go. This is used by the bindings internally.
@@ -49780,7 +49799,7 @@ func UnsafeTypeFindFactoryClassFromGlibBorrow(p unsafe.Pointer) *TypeFindFactory
 	if p == nil {
 		return nil
 	}
-	return &TypeFindFactoryClass{&typeFindFactoryClass{(*C.GstTypeFindFactoryClass)(p)}}
+	return &TypeFindFactoryClass{&typeFindFactoryClass{p}}
 }
 
 // UnsafeTypeFindFactoryClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -49899,7 +49918,8 @@ type Uri struct {
 
 // uri is the struct that's finalized
 type uri struct {
-	native *C.GstUri
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeUriToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -49907,7 +49927,7 @@ func (u *Uri) instance() *C.GstUri {
 	if u == nil {
 		return nil
 	}
-	return u.native
+	return (*C.GstUri)(u.native)
 }
 
 var _ gobject.GoValueInitializer = (*Uri)(nil)
@@ -49930,7 +49950,7 @@ func UnsafeUriFromGlibBorrow(p unsafe.Pointer) *Uri {
 	if p == nil {
 		return nil
 	}
-	return &Uri{&uri{(*C.GstUri)(p)}}
+	return &Uri{&uri{p}}
 }
 
 // UnsafeUriFromGlibNone is used to convert raw C.GstUri pointers to go without transferring ownership. This is used by the bindings internally.
@@ -49944,7 +49964,7 @@ func UnsafeUriFromGlibNone(p unsafe.Pointer) *Uri {
 	runtime.SetFinalizer(
 		wrapped.uri,
 		func (intern *uri) {
-			C.gst_uri_unref(intern.native)
+			C.gst_uri_unref((*C.GstUri)(intern.native))
 		},
 	)
 	return wrapped
@@ -49959,7 +49979,7 @@ func UnsafeUriFromGlibFull(p unsafe.Pointer) *Uri {
 	runtime.SetFinalizer(
 		wrapped.uri,
 		func (intern *uri) {
-			C.gst_uri_unref(intern.native)
+			C.gst_uri_unref((*C.GstUri)(intern.native))
 		},
 	)
 	return wrapped
@@ -49976,7 +49996,7 @@ func UnsafeUriRef(u *Uri) {
 // 
 // After this is called, no other method on [Uri] is expected to work anymore.
 func UnsafeUriUnref(u *Uri) {
-	C.gst_uri_unref(u.native)
+	C.gst_uri_unref((*C.GstUri)(u.native))
 	runtime.SetFinalizer(u.uri, nil)
 }
 

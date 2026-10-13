@@ -1061,7 +1061,8 @@ type CheckLogFilter struct {
 
 // checkLogFilter is the struct that's finalized
 type checkLogFilter struct {
-	native *C.GstCheckLogFilter
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeCheckLogFilterToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1069,7 +1070,7 @@ func (c *CheckLogFilter) instance() *C.GstCheckLogFilter {
 	if c == nil {
 		return nil
 	}
-	return c.native
+	return (*C.GstCheckLogFilter)(c.native)
 }
 
 // UnsafeCheckLogFilterFromGlibBorrow is used to convert raw C.GstCheckLogFilter pointers to go. This is used by the bindings internally.
@@ -1077,7 +1078,7 @@ func UnsafeCheckLogFilterFromGlibBorrow(p unsafe.Pointer) *CheckLogFilter {
 	if p == nil {
 		return nil
 	}
-	return &CheckLogFilter{&checkLogFilter{(*C.GstCheckLogFilter)(p)}}
+	return &CheckLogFilter{&checkLogFilter{p}}
 }
 
 // UnsafeCheckLogFilterFromGlibNone is used to convert raw C.GstCheckLogFilter pointers to go without transferring ownership. This is used by the bindings internally.
@@ -2403,7 +2404,8 @@ type HarnessThread struct {
 
 // harnessThread is the struct that's finalized
 type harnessThread struct {
-	native *C.GstHarnessThread
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeHarnessThreadToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2411,7 +2413,7 @@ func (h *HarnessThread) instance() *C.GstHarnessThread {
 	if h == nil {
 		return nil
 	}
-	return h.native
+	return (*C.GstHarnessThread)(h.native)
 }
 
 // UnsafeHarnessThreadFromGlibBorrow is used to convert raw C.GstHarnessThread pointers to go. This is used by the bindings internally.
@@ -2419,7 +2421,7 @@ func UnsafeHarnessThreadFromGlibBorrow(p unsafe.Pointer) *HarnessThread {
 	if p == nil {
 		return nil
 	}
-	return &HarnessThread{&harnessThread{(*C.GstHarnessThread)(p)}}
+	return &HarnessThread{&harnessThread{p}}
 }
 
 // UnsafeHarnessThreadFromGlibNone is used to convert raw C.GstHarnessThread pointers to go without transferring ownership. This is used by the bindings internally.
@@ -2485,7 +2487,8 @@ type StreamConsistency struct {
 
 // streamConsistency is the struct that's finalized
 type streamConsistency struct {
-	native *C.GstStreamConsistency
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeStreamConsistencyToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2493,7 +2496,7 @@ func (s *StreamConsistency) instance() *C.GstStreamConsistency {
 	if s == nil {
 		return nil
 	}
-	return s.native
+	return (*C.GstStreamConsistency)(s.native)
 }
 
 // UnsafeStreamConsistencyFromGlibBorrow is used to convert raw C.GstStreamConsistency pointers to go. This is used by the bindings internally.
@@ -2501,7 +2504,7 @@ func UnsafeStreamConsistencyFromGlibBorrow(p unsafe.Pointer) *StreamConsistency 
 	if p == nil {
 		return nil
 	}
-	return &StreamConsistency{&streamConsistency{(*C.GstStreamConsistency)(p)}}
+	return &StreamConsistency{&streamConsistency{p}}
 }
 
 // UnsafeStreamConsistencyFromGlibNone is used to convert raw C.GstStreamConsistency pointers to go without transferring ownership. This is used by the bindings internally.

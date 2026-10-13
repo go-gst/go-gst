@@ -2622,7 +2622,8 @@ type RTSPConnection struct {
 
 // rTSPConnection is the struct that's finalized
 type rTSPConnection struct {
-	native *C.GstRTSPConnection
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeRTSPConnectionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2630,7 +2631,7 @@ func (r *RTSPConnection) instance() *C.GstRTSPConnection {
 	if r == nil {
 		return nil
 	}
-	return r.native
+	return (*C.GstRTSPConnection)(r.native)
 }
 
 // UnsafeRTSPConnectionFromGlibBorrow is used to convert raw C.GstRTSPConnection pointers to go. This is used by the bindings internally.
@@ -2638,7 +2639,7 @@ func UnsafeRTSPConnectionFromGlibBorrow(p unsafe.Pointer) *RTSPConnection {
 	if p == nil {
 		return nil
 	}
-	return &RTSPConnection{&rTSPConnection{(*C.GstRTSPConnection)(p)}}
+	return &RTSPConnection{&rTSPConnection{p}}
 }
 
 // UnsafeRTSPConnectionFromGlibNone is used to convert raw C.GstRTSPConnection pointers to go without transferring ownership. This is used by the bindings internally.
@@ -2661,7 +2662,7 @@ func UnsafeRTSPConnectionFromGlibFull(p unsafe.Pointer) *RTSPConnection {
 	runtime.SetFinalizer(
 		wrapped.rTSPConnection,
 		func (intern *rTSPConnection) {
-			C.gst_rtsp_connection_free(intern.native)
+			C.gst_rtsp_connection_free((*C.GstRTSPConnection)(intern.native))
 		},
 	)
 	return wrapped
@@ -2671,7 +2672,7 @@ func UnsafeRTSPConnectionFromGlibFull(p unsafe.Pointer) *RTSPConnection {
 // 
 // After this is called, no other method on [RTSPConnection] is expected to work anymore.
 func UnsafeRTSPConnectionFree(r *RTSPConnection) {
-	C.gst_rtsp_connection_free(r.native)
+	C.gst_rtsp_connection_free((*C.GstRTSPConnection)(r.native))
 	runtime.SetFinalizer(r.rTSPConnection, nil)
 }
 
@@ -5333,7 +5334,8 @@ type RTSPWatch struct {
 
 // rTSPWatch is the struct that's finalized
 type rTSPWatch struct {
-	native *C.GstRTSPWatch
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeRTSPWatchToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -5341,7 +5343,7 @@ func (r *RTSPWatch) instance() *C.GstRTSPWatch {
 	if r == nil {
 		return nil
 	}
-	return r.native
+	return (*C.GstRTSPWatch)(r.native)
 }
 
 // UnsafeRTSPWatchFromGlibBorrow is used to convert raw C.GstRTSPWatch pointers to go. This is used by the bindings internally.
@@ -5349,7 +5351,7 @@ func UnsafeRTSPWatchFromGlibBorrow(p unsafe.Pointer) *RTSPWatch {
 	if p == nil {
 		return nil
 	}
-	return &RTSPWatch{&rTSPWatch{(*C.GstRTSPWatch)(p)}}
+	return &RTSPWatch{&rTSPWatch{p}}
 }
 
 // UnsafeRTSPWatchFromGlibNone is used to convert raw C.GstRTSPWatch pointers to go without transferring ownership. This is used by the bindings internally.
@@ -5372,7 +5374,7 @@ func UnsafeRTSPWatchFromGlibFull(p unsafe.Pointer) *RTSPWatch {
 	runtime.SetFinalizer(
 		wrapped.rTSPWatch,
 		func (intern *rTSPWatch) {
-			C.gst_rtsp_watch_unref(intern.native)
+			C.gst_rtsp_watch_unref((*C.GstRTSPWatch)(intern.native))
 		},
 	)
 	return wrapped
@@ -5382,7 +5384,7 @@ func UnsafeRTSPWatchFromGlibFull(p unsafe.Pointer) *RTSPWatch {
 // 
 // After this is called, no other method on [RTSPWatch] is expected to work anymore.
 func UnsafeRTSPWatchUnref(r *RTSPWatch) {
-	C.gst_rtsp_watch_unref(r.native)
+	C.gst_rtsp_watch_unref((*C.GstRTSPWatch)(r.native))
 	runtime.SetFinalizer(r.rTSPWatch, nil)
 }
 
