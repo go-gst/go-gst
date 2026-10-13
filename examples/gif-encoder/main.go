@@ -7,6 +7,7 @@ import (
 	"flag"
 	"fmt"
 	"image"
+	"image/draw"
 	"image/gif"
 	"image/jpeg"
 	"os"
@@ -111,72 +112,74 @@ func encodeGif() error {
 		// will be a new jpeg image from the pipeline.
 		var frameNum int
 
-		appSink.ConnectEOS(func(self gstapp.AppSink) {
-			fmt.Println("\nWriting the results of the gif to", outFile)
-			file, err := os.Create(outFile)
-			if err != nil {
-				fmt.Println("Could not create output file:", err)
-				return
-			}
-			defer file.Close()
-			if err := gif.EncodeAll(file, outGif); err != nil {
-				fmt.Println("Could not encode images to gif format!", err)
-			}
-			// Signal the pipeline that we've completed EOS.
-			// (this should not be required, need to investigate)
-			pipeline.GetBus().Post(gst.NewMessageEOS(appSink))
-		})
+		// The palette of the output gif, it is the same for every frame.
+		palette := gstvideo.VideoFormatGetPalette(gstvideo.VideoFormatRgb8p)
 
-		appSink.ConnectNewSample(func(sink gstapp.AppSink) gst.FlowReturn {
-			// Increment the frame number counter
-			frameNum++
-
-			if frameNum > totalFrames {
-				// If we've reached the total number of frames we are expecting. We can
-				// signal the main loop to quit.
-				// This needs to be done from a goroutine to not block the app sink
-				// callback.
-				return gst.FlowEOS
-			}
-
-			// Pull the sample from the sink
-			sample := sink.PullSample()
-			if sample == nil {
-				return gst.FlowOK
-			}
-
-			fmt.Printf("\033[2K\r")
-			fmt.Printf("Processing image frame %d/%d", frameNum, totalFrames)
-
-			// Retrieve the buffer from the sample.
-			buffer := sample.GetBuffer()
-
-			mapped, ok := buffer.Map(gst.MapRead)
-			if !ok {
-				panic("Failed to map buffer")
-			}
-
-			// mapped buffers implement io.Reader
-			img, err := jpeg.Decode(mapped)
-			if err != nil {
-				self.MessageError(gst.LibraryErrorQuark(), int32(gst.LibraryErrorFailed), "Error decoding jpeg frame", err.Error())
-				return gst.FlowError
-			}
-
-			// Create a new paletted image with the same bounds as the pulled one
-			frame := image.NewPaletted(img.Bounds(), gstvideo.VideoFormatGetPalette(gstvideo.VideoFormatRgb8p))
-
-			// Iterate the bounds of the image and set the pixels in their correct place.
-			for x := 1; x <= img.Bounds().Dx(); x++ {
-				for y := 1; y <= img.Bounds().Dy(); y++ {
-					frame.Set(x, y, img.At(x, y))
+		appSink.SetCallbacks(&gstapp.AppSinkCallbacks{
+			EOS: func(self gstapp.AppSink) {
+				fmt.Println("\nWriting the results of the gif to", outFile)
+				file, err := os.Create(outFile)
+				if err != nil {
+					fmt.Println("Could not create output file:", err)
+					return
 				}
-			}
+				defer file.Close()
+				if err := gif.EncodeAll(file, outGif); err != nil {
+					fmt.Println("Could not encode images to gif format!", err)
+				}
+				// Signal the pipeline that we've completed EOS.
+				// (this should not be required, need to investigate)
+				pipeline.GetBus().Post(gst.NewMessageEOS(appSink))
+			},
 
-			// Append the image data to the gif
-			outGif.Image = append(outGif.Image, frame)
-			outGif.Delay = append(outGif.Delay, 0)
-			return gst.FlowOK
+			NewSample: func(sink gstapp.AppSink) gst.FlowReturn {
+				// Increment the frame number counter
+				frameNum++
+
+				if frameNum > totalFrames {
+					// If we've reached the total number of frames we are expecting. We can
+					// signal the main loop to quit.
+					// This needs to be done from a goroutine to not block the app sink
+					// callback.
+					return gst.FlowEOS
+				}
+
+				// Pull the sample from the sink
+				sample := sink.PullSample()
+				if sample == nil {
+					return gst.FlowOK
+				}
+
+				fmt.Printf("\033[2K\r")
+				fmt.Printf("Processing image frame %d/%d", frameNum, totalFrames)
+
+				// Retrieve the buffer from the sample.
+				buffer := sample.GetBuffer()
+
+				mapped, ok := buffer.Map(gst.MapRead)
+				if !ok {
+					panic("Failed to map buffer")
+				}
+				defer mapped.Unmap()
+
+				// mapped buffers implement io.Reader
+				img, err := jpeg.Decode(mapped)
+				if err != nil {
+					self.MessageError(gst.LibraryErrorQuark(), int32(gst.LibraryErrorFailed), "Error decoding jpeg frame", err.Error())
+					return gst.FlowError
+				}
+
+				// Create a new paletted image with the same bounds as the pulled one
+				frame := image.NewPaletted(img.Bounds(), palette)
+
+				// Copy the pixels of the image into the paletted frame.
+				draw.Draw(frame, frame.Bounds(), img, img.Bounds().Min, draw.Src)
+
+				// Append the image data to the gif
+				outGif.Image = append(outGif.Image, frame)
+				outGif.Delay = append(outGif.Delay, 0)
+				return gst.FlowOK
+			},
 		})
 
 		// Link the src pad to the queue

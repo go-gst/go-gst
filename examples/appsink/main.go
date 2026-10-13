@@ -33,7 +33,7 @@ func createPipeline() (gst.Pipeline, error) {
 		"audio/x-raw, format=S16LE, layout=interleaved, channels=1",
 	))
 
-	sink.ConnectNewSample(func(sink gstapp.AppSink) gst.FlowReturn {
+	sink.SetCallbacks(&gstapp.AppSinkCallbacks{NewSample: func(sink gstapp.AppSink) gst.FlowReturn {
 		// Pull the sample that triggered this callback
 		sample := sink.PullSample()
 		if sample == nil {
@@ -70,7 +70,7 @@ func createPipeline() (gst.Pipeline, error) {
 		fmt.Println("rms:", rms)
 
 		return gst.FlowOK
-	})
+	}})
 
 	return pipeline, nil
 }

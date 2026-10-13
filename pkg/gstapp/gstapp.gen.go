@@ -195,6 +195,7 @@ var _ AppSink = (*AppSinkInstance)(nil)
 // 
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#GstAppSink
 type AppSink interface {
+	AppSinkExtManual // handwritten functions
 	gstbase.BaseSink
 	gst.URIHandler
 	upcastToGstAppSink() *AppSinkInstance
@@ -295,26 +296,6 @@ type AppSink interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html#gst_app_sink_try_pull_sample
 	TryPullSample(gst.ClockTime) *gst.Sample
-	// ConnectEOS connects the provided callback to the "eos" signal
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
-	ConnectEOS(func(AppSink)) gobject.SignalHandle
-	// ConnectNewPreroll connects the provided callback to the "new-preroll" signal
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
-	ConnectNewPreroll(func(AppSink) gst.FlowReturn) gobject.SignalHandle
-	// ConnectNewSample connects the provided callback to the "new-sample" signal
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
-	ConnectNewSample(func(AppSink) gst.FlowReturn) gobject.SignalHandle
-	// ConnectNewSerializedEvent connects the provided callback to the "new-serialized-event" signal
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
-	ConnectNewSerializedEvent(func(AppSink) bool) gobject.SignalHandle
-	// ConnectProposeAllocation connects the provided callback to the "propose-allocation" signal
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
-	ConnectProposeAllocation(func(AppSink, *gst.Query) bool) gobject.SignalHandle
 	// EmitPullPreroll emits the "pull-preroll" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
@@ -891,41 +872,6 @@ func (appsink *AppSinkInstance) TryPullSample(timeout gst.ClockTime) *gst.Sample
 	return goret
 }
 
-// ConnectEOS connects the provided callback to the "eos" signal
-// 
-// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
-func (o *AppSinkInstance) ConnectEOS(fn func(AppSink)) gobject.SignalHandle {
-	return o.Connect("eos", fn)
-}
-
-// ConnectNewPreroll connects the provided callback to the "new-preroll" signal
-// 
-// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
-func (o *AppSinkInstance) ConnectNewPreroll(fn func(AppSink) gst.FlowReturn) gobject.SignalHandle {
-	return o.Connect("new-preroll", fn)
-}
-
-// ConnectNewSample connects the provided callback to the "new-sample" signal
-// 
-// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
-func (o *AppSinkInstance) ConnectNewSample(fn func(AppSink) gst.FlowReturn) gobject.SignalHandle {
-	return o.Connect("new-sample", fn)
-}
-
-// ConnectNewSerializedEvent connects the provided callback to the "new-serialized-event" signal
-// 
-// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
-func (o *AppSinkInstance) ConnectNewSerializedEvent(fn func(AppSink) bool) gobject.SignalHandle {
-	return o.Connect("new-serialized-event", fn)
-}
-
-// ConnectProposeAllocation connects the provided callback to the "propose-allocation" signal
-// 
-// see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
-func (o *AppSinkInstance) ConnectProposeAllocation(fn func(AppSink, *gst.Query) bool) gobject.SignalHandle {
-	return o.Connect("propose-allocation", fn)
-}
-
 // EmitPullPreroll emits the "pull-preroll" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsink.html
@@ -1408,6 +1354,7 @@ var _ AppSrc = (*AppSrcInstance)(nil)
 // 
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html#GstAppSrc
 type AppSrc interface {
+	AppSrcExtManual // handwritten functions
 	gstbase.BaseSrc
 	gst.URIHandler
 	upcastToGstAppSrc() *AppSrcInstance
@@ -1524,14 +1471,6 @@ type AppSrc interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
 	EmitEndOfStream() gst.FlowReturn
-	// ConnectEnoughData connects the provided callback to the "enough-data" signal
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
-	ConnectEnoughData(func(AppSrc)) gobject.SignalHandle
-	// ConnectNeedData connects the provided callback to the "need-data" signal
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
-	ConnectNeedData(func(AppSrc, uint)) gobject.SignalHandle
 	// EmitPushBuffer emits the "push-buffer" signal
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
@@ -1544,10 +1483,6 @@ type AppSrc interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
 	EmitPushSample(*gst.Sample) gst.FlowReturn
-	// ConnectSeekData connects the provided callback to the "seek-data" signal
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
-	ConnectSeekData(func(AppSrc, uint64) bool) gobject.SignalHandle
 
 	// chain up virtual methods:
 
@@ -2150,20 +2085,6 @@ func (o *AppSrcInstance) EmitEndOfStream() gst.FlowReturn {
 	return o.Emit("end-of-stream").(gst.FlowReturn)
 }
 
-// ConnectEnoughData connects the provided callback to the "enough-data" signal
-// 
-// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
-func (o *AppSrcInstance) ConnectEnoughData(fn func(AppSrc)) gobject.SignalHandle {
-	return o.Connect("enough-data", fn)
-}
-
-// ConnectNeedData connects the provided callback to the "need-data" signal
-// 
-// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
-func (o *AppSrcInstance) ConnectNeedData(fn func(AppSrc, uint)) gobject.SignalHandle {
-	return o.Connect("need-data", fn)
-}
-
 // EmitPushBuffer emits the "push-buffer" signal
 // 
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
@@ -2183,13 +2104,6 @@ func (o *AppSrcInstance) EmitPushBufferList(arg0 *gst.BufferList) gst.FlowReturn
 // see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
 func (o *AppSrcInstance) EmitPushSample(arg0 *gst.Sample) gst.FlowReturn {
 	return o.Emit("push-sample", arg0).(gst.FlowReturn)
-}
-
-// ConnectSeekData connects the provided callback to the "seek-data" signal
-// 
-// see also https://gstreamer.freedesktop.org/documentation/app/gstappsrc.html
-func (o *AppSrcInstance) ConnectSeekData(fn func(AppSrc, uint64) bool) gobject.SignalHandle {
-	return o.Connect("seek-data", fn)
 }
 
 // AppSrcOverrides is the struct used to override the default implementation of virtual methods.

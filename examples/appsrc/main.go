@@ -59,12 +59,12 @@ func createPipeline() (gst.Pipeline, error) {
 	palette := gstvideo.VideoFormatGetPalette(gstvideo.VideoFormatRgb8p)
 
 	// Since our appsrc element operates in pull mode (it asks us to provide data),
-	// we add a handler for the need-data callback and provide new data from there.
+	// we install a NeedData callback and provide new data from there.
 	// In our case, we told gstreamer that we do 2 frames per second. While the
 	// buffers of all elements of the pipeline are still empty, this will be called
 	// a couple of times until all of them are filled. After this initial period,
 	// this handler will be called (on average) twice per second.
-	src.ConnectNeedData(func(self gstapp.AppSrc, _ uint) {
+	src.SetCallbacks(&gstapp.AppSrcCallbacks{NeedData: func(self gstapp.AppSrc, _ uint) {
 
 		// If we've reached the end of the palette, end the stream.
 		if i == len(palette) {
@@ -104,7 +104,7 @@ func createPipeline() (gst.Pipeline, error) {
 		self.PushBuffer(buffer)
 
 		i++
-	})
+	}})
 
 	return pipeline, nil
 }

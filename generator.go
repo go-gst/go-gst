@@ -107,6 +107,11 @@ var Data = genmain.Data{
 		MarkSDPMessageGettersAsBorrowed(),
 
 		GstLogFunctionDebugBorrows(),
+
+		// Replaced by the manually implemented SetCallbacks, which does not need to go through
+		// the GValue marshaler and can borrow the propose-allocation query:
+		RemoveSignals("GstApp-1.AppSink", "eos", "new-preroll", "new-sample", "new-serialized-event", "propose-allocation"),
+		RemoveSignals("GstApp-1.AppSrc", "need-data", "enough-data", "seek-data"),
 	},
 	Config: typesystem.Config{
 		Namespaces: map[string]typesystem.NamespaceConfig{
@@ -258,6 +263,8 @@ var Data = genmain.Data{
 		typesystem.MarkAsManuallyExtended("Gst-1", "Bus"),
 		typesystem.MarkAsManuallyExtended("Gst-1", "ChildProxy"),
 		typesystem.MarkAsManuallyExtended("Gst-1", "TagSetter"),
+		typesystem.MarkAsManuallyExtended("GstApp-1", "AppSink"),
+		typesystem.MarkAsManuallyExtended("GstApp-1", "AppSrc"),
 
 		// Virtual methods of BaseTransform collide with Element
 		func(r *typesystem.Registry) error {
@@ -474,6 +481,29 @@ func MarkSDPMessageGettersAsBorrowed() gir.Preprocessor {
 
 			f.ReturnValue.TransferOwnership.TransferOwnership = "borrow"
 
+		}
+	})
+}
+
+// RemoveSignals removes the given signals from the GIR class, so that no Connect/Emit methods are
+// generated for them. Exits via log.Fatalf if the class or any of the signals cannot be found.
+func RemoveSignals(fulltype string, signals ...string) gir.Preprocessor {
+	return gir.PreprocessorFunc(func(repos gir.Repositories) {
+		class, ok := repos.FindFullType(fulltype).(*gir.Class)
+		if !ok {
+			log.Fatalf("class %s not found", fulltype)
+		}
+
+		for _, name := range signals {
+			i := slices.IndexFunc(class.Signals, func(s *gir.Signal) bool {
+				return s.Name == name
+			})
+
+			if i == -1 {
+				log.Fatalf("signal %s::%s not found", fulltype, name)
+			}
+
+			class.Signals = slices.Delete(class.Signals, i, i+1)
 		}
 	})
 }
