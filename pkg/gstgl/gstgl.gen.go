@@ -12869,7 +12869,8 @@ type GLFuncs struct {
 
 // gLFuncs is the struct that's finalized
 type gLFuncs struct {
-	native *C.GstGLFuncs
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeGLFuncsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12877,7 +12878,7 @@ func (g *GLFuncs) instance() *C.GstGLFuncs {
 	if g == nil {
 		return nil
 	}
-	return g.native
+	return (*C.GstGLFuncs)(g.native)
 }
 
 // UnsafeGLFuncsFromGlibBorrow is used to convert raw C.GstGLFuncs pointers to go. This is used by the bindings internally.
@@ -12885,7 +12886,7 @@ func UnsafeGLFuncsFromGlibBorrow(p unsafe.Pointer) *GLFuncs {
 	if p == nil {
 		return nil
 	}
-	return &GLFuncs{&gLFuncs{(*C.GstGLFuncs)(p)}}
+	return &GLFuncs{&gLFuncs{p}}
 }
 
 // UnsafeGLFuncsFromGlibNone is used to convert raw C.GstGLFuncs pointers to go without transferring ownership. This is used by the bindings internally.

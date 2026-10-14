@@ -3254,7 +3254,8 @@ type PlayerAudioInfoClass struct {
 
 // playerAudioInfoClass is the struct that's finalized
 type playerAudioInfoClass struct {
-	native *C.GstPlayerAudioInfoClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafePlayerAudioInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3262,7 +3263,7 @@ func (p *PlayerAudioInfoClass) instance() *C.GstPlayerAudioInfoClass {
 	if p == nil {
 		return nil
 	}
-	return p.native
+	return (*C.GstPlayerAudioInfoClass)(p.native)
 }
 
 // UnsafePlayerAudioInfoClassFromGlibBorrow is used to convert raw C.GstPlayerAudioInfoClass pointers to go. This is used by the bindings internally.
@@ -3270,7 +3271,7 @@ func UnsafePlayerAudioInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayerAudioInfo
 	if p == nil {
 		return nil
 	}
-	return &PlayerAudioInfoClass{&playerAudioInfoClass{(*C.GstPlayerAudioInfoClass)(p)}}
+	return &PlayerAudioInfoClass{&playerAudioInfoClass{p}}
 }
 
 // UnsafePlayerAudioInfoClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -3309,7 +3310,8 @@ type PlayerClass struct {
 
 // playerClass is the struct that's finalized
 type playerClass struct {
-	native *C.GstPlayerClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafePlayerClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3317,7 +3319,7 @@ func (p *PlayerClass) instance() *C.GstPlayerClass {
 	if p == nil {
 		return nil
 	}
-	return p.native
+	return (*C.GstPlayerClass)(p.native)
 }
 
 // UnsafePlayerClassFromGlibBorrow is used to convert raw C.GstPlayerClass pointers to go. This is used by the bindings internally.
@@ -3325,7 +3327,7 @@ func UnsafePlayerClassFromGlibBorrow(p unsafe.Pointer) *PlayerClass {
 	if p == nil {
 		return nil
 	}
-	return &PlayerClass{&playerClass{(*C.GstPlayerClass)(p)}}
+	return &PlayerClass{&playerClass{p}}
 }
 
 // UnsafePlayerClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -3364,7 +3366,8 @@ type PlayerGMainContextSignalDispatcherClass struct {
 
 // playerGMainContextSignalDispatcherClass is the struct that's finalized
 type playerGMainContextSignalDispatcherClass struct {
-	native *C.GstPlayerGMainContextSignalDispatcherClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafePlayerGMainContextSignalDispatcherClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3372,7 +3375,7 @@ func (p *PlayerGMainContextSignalDispatcherClass) instance() *C.GstPlayerGMainCo
 	if p == nil {
 		return nil
 	}
-	return p.native
+	return (*C.GstPlayerGMainContextSignalDispatcherClass)(p.native)
 }
 
 // UnsafePlayerGMainContextSignalDispatcherClassFromGlibBorrow is used to convert raw C.GstPlayerGMainContextSignalDispatcherClass pointers to go. This is used by the bindings internally.
@@ -3380,7 +3383,7 @@ func UnsafePlayerGMainContextSignalDispatcherClassFromGlibBorrow(p unsafe.Pointe
 	if p == nil {
 		return nil
 	}
-	return &PlayerGMainContextSignalDispatcherClass{&playerGMainContextSignalDispatcherClass{(*C.GstPlayerGMainContextSignalDispatcherClass)(p)}}
+	return &PlayerGMainContextSignalDispatcherClass{&playerGMainContextSignalDispatcherClass{p}}
 }
 
 // UnsafePlayerGMainContextSignalDispatcherClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -3419,7 +3422,8 @@ type PlayerMediaInfoClass struct {
 
 // playerMediaInfoClass is the struct that's finalized
 type playerMediaInfoClass struct {
-	native *C.GstPlayerMediaInfoClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafePlayerMediaInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3427,7 +3431,7 @@ func (p *PlayerMediaInfoClass) instance() *C.GstPlayerMediaInfoClass {
 	if p == nil {
 		return nil
 	}
-	return p.native
+	return (*C.GstPlayerMediaInfoClass)(p.native)
 }
 
 // UnsafePlayerMediaInfoClassFromGlibBorrow is used to convert raw C.GstPlayerMediaInfoClass pointers to go. This is used by the bindings internally.
@@ -3435,7 +3439,7 @@ func UnsafePlayerMediaInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayerMediaInfo
 	if p == nil {
 		return nil
 	}
-	return &PlayerMediaInfoClass{&playerMediaInfoClass{(*C.GstPlayerMediaInfoClass)(p)}}
+	return &PlayerMediaInfoClass{&playerMediaInfoClass{p}}
 }
 
 // UnsafePlayerMediaInfoClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -3556,7 +3560,8 @@ type PlayerStreamInfoClass struct {
 
 // playerStreamInfoClass is the struct that's finalized
 type playerStreamInfoClass struct {
-	native *C.GstPlayerStreamInfoClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafePlayerStreamInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3564,7 +3569,7 @@ func (p *PlayerStreamInfoClass) instance() *C.GstPlayerStreamInfoClass {
 	if p == nil {
 		return nil
 	}
-	return p.native
+	return (*C.GstPlayerStreamInfoClass)(p.native)
 }
 
 // UnsafePlayerStreamInfoClassFromGlibBorrow is used to convert raw C.GstPlayerStreamInfoClass pointers to go. This is used by the bindings internally.
@@ -3572,7 +3577,7 @@ func UnsafePlayerStreamInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayerStreamIn
 	if p == nil {
 		return nil
 	}
-	return &PlayerStreamInfoClass{&playerStreamInfoClass{(*C.GstPlayerStreamInfoClass)(p)}}
+	return &PlayerStreamInfoClass{&playerStreamInfoClass{p}}
 }
 
 // UnsafePlayerStreamInfoClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -3611,7 +3616,8 @@ type PlayerSubtitleInfoClass struct {
 
 // playerSubtitleInfoClass is the struct that's finalized
 type playerSubtitleInfoClass struct {
-	native *C.GstPlayerSubtitleInfoClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafePlayerSubtitleInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3619,7 +3625,7 @@ func (p *PlayerSubtitleInfoClass) instance() *C.GstPlayerSubtitleInfoClass {
 	if p == nil {
 		return nil
 	}
-	return p.native
+	return (*C.GstPlayerSubtitleInfoClass)(p.native)
 }
 
 // UnsafePlayerSubtitleInfoClassFromGlibBorrow is used to convert raw C.GstPlayerSubtitleInfoClass pointers to go. This is used by the bindings internally.
@@ -3627,7 +3633,7 @@ func UnsafePlayerSubtitleInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayerSubtit
 	if p == nil {
 		return nil
 	}
-	return &PlayerSubtitleInfoClass{&playerSubtitleInfoClass{(*C.GstPlayerSubtitleInfoClass)(p)}}
+	return &PlayerSubtitleInfoClass{&playerSubtitleInfoClass{p}}
 }
 
 // UnsafePlayerSubtitleInfoClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -3666,7 +3672,8 @@ type PlayerVideoInfoClass struct {
 
 // playerVideoInfoClass is the struct that's finalized
 type playerVideoInfoClass struct {
-	native *C.GstPlayerVideoInfoClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafePlayerVideoInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3674,7 +3681,7 @@ func (p *PlayerVideoInfoClass) instance() *C.GstPlayerVideoInfoClass {
 	if p == nil {
 		return nil
 	}
-	return p.native
+	return (*C.GstPlayerVideoInfoClass)(p.native)
 }
 
 // UnsafePlayerVideoInfoClassFromGlibBorrow is used to convert raw C.GstPlayerVideoInfoClass pointers to go. This is used by the bindings internally.
@@ -3682,7 +3689,7 @@ func UnsafePlayerVideoInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayerVideoInfo
 	if p == nil {
 		return nil
 	}
-	return &PlayerVideoInfoClass{&playerVideoInfoClass{(*C.GstPlayerVideoInfoClass)(p)}}
+	return &PlayerVideoInfoClass{&playerVideoInfoClass{p}}
 }
 
 // UnsafePlayerVideoInfoClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -3721,7 +3728,8 @@ type PlayerVideoOverlayVideoRendererClass struct {
 
 // playerVideoOverlayVideoRendererClass is the struct that's finalized
 type playerVideoOverlayVideoRendererClass struct {
-	native *C.GstPlayerVideoOverlayVideoRendererClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafePlayerVideoOverlayVideoRendererClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3729,7 +3737,7 @@ func (p *PlayerVideoOverlayVideoRendererClass) instance() *C.GstPlayerVideoOverl
 	if p == nil {
 		return nil
 	}
-	return p.native
+	return (*C.GstPlayerVideoOverlayVideoRendererClass)(p.native)
 }
 
 // UnsafePlayerVideoOverlayVideoRendererClassFromGlibBorrow is used to convert raw C.GstPlayerVideoOverlayVideoRendererClass pointers to go. This is used by the bindings internally.
@@ -3737,7 +3745,7 @@ func UnsafePlayerVideoOverlayVideoRendererClassFromGlibBorrow(p unsafe.Pointer) 
 	if p == nil {
 		return nil
 	}
-	return &PlayerVideoOverlayVideoRendererClass{&playerVideoOverlayVideoRendererClass{(*C.GstPlayerVideoOverlayVideoRendererClass)(p)}}
+	return &PlayerVideoOverlayVideoRendererClass{&playerVideoOverlayVideoRendererClass{p}}
 }
 
 // UnsafePlayerVideoOverlayVideoRendererClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.

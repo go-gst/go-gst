@@ -11723,7 +11723,8 @@ type AudioChannelMixer struct {
 
 // audioChannelMixer is the struct that's finalized
 type audioChannelMixer struct {
-	native *C.GstAudioChannelMixer
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeAudioChannelMixerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11731,7 +11732,7 @@ func (a *AudioChannelMixer) instance() *C.GstAudioChannelMixer {
 	if a == nil {
 		return nil
 	}
-	return a.native
+	return (*C.GstAudioChannelMixer)(a.native)
 }
 
 // UnsafeAudioChannelMixerFromGlibBorrow is used to convert raw C.GstAudioChannelMixer pointers to go. This is used by the bindings internally.
@@ -11739,7 +11740,7 @@ func UnsafeAudioChannelMixerFromGlibBorrow(p unsafe.Pointer) *AudioChannelMixer 
 	if p == nil {
 		return nil
 	}
-	return &AudioChannelMixer{&audioChannelMixer{(*C.GstAudioChannelMixer)(p)}}
+	return &AudioChannelMixer{&audioChannelMixer{p}}
 }
 
 // UnsafeAudioChannelMixerFromGlibNone is used to convert raw C.GstAudioChannelMixer pointers to go without transferring ownership. This is used by the bindings internally.
@@ -11762,7 +11763,7 @@ func UnsafeAudioChannelMixerFromGlibFull(p unsafe.Pointer) *AudioChannelMixer {
 	runtime.SetFinalizer(
 		wrapped.audioChannelMixer,
 		func (intern *audioChannelMixer) {
-			C.gst_audio_channel_mixer_free(intern.native)
+			C.gst_audio_channel_mixer_free((*C.GstAudioChannelMixer)(intern.native))
 		},
 	)
 	return wrapped
@@ -11772,7 +11773,7 @@ func UnsafeAudioChannelMixerFromGlibFull(p unsafe.Pointer) *AudioChannelMixer {
 // 
 // After this is called, no other method on [AudioChannelMixer] is expected to work anymore.
 func UnsafeAudioChannelMixerFree(a *AudioChannelMixer) {
-	C.gst_audio_channel_mixer_free(a.native)
+	C.gst_audio_channel_mixer_free((*C.GstAudioChannelMixer)(a.native))
 	runtime.SetFinalizer(a.audioChannelMixer, nil)
 }
 
@@ -11978,7 +11979,8 @@ type AudioConverter struct {
 
 // audioConverter is the struct that's finalized
 type audioConverter struct {
-	native *C.GstAudioConverter
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeAudioConverterToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11986,7 +11988,7 @@ func (a *AudioConverter) instance() *C.GstAudioConverter {
 	if a == nil {
 		return nil
 	}
-	return a.native
+	return (*C.GstAudioConverter)(a.native)
 }
 
 var _ gobject.GoValueInitializer = (*AudioConverter)(nil)
@@ -12009,7 +12011,7 @@ func UnsafeAudioConverterFromGlibBorrow(p unsafe.Pointer) *AudioConverter {
 	if p == nil {
 		return nil
 	}
-	return &AudioConverter{&audioConverter{(*C.GstAudioConverter)(p)}}
+	return &AudioConverter{&audioConverter{p}}
 }
 
 // UnsafeAudioConverterFromGlibNone is used to convert raw C.GstAudioConverter pointers to go without transferring ownership. This is used by the bindings internally.
@@ -12032,7 +12034,7 @@ func UnsafeAudioConverterFromGlibFull(p unsafe.Pointer) *AudioConverter {
 	runtime.SetFinalizer(
 		wrapped.audioConverter,
 		func (intern *audioConverter) {
-			C.gst_audio_converter_free(intern.native)
+			C.gst_audio_converter_free((*C.GstAudioConverter)(intern.native))
 		},
 	)
 	return wrapped
@@ -12042,7 +12044,7 @@ func UnsafeAudioConverterFromGlibFull(p unsafe.Pointer) *AudioConverter {
 // 
 // After this is called, no other method on [AudioConverter] is expected to work anymore.
 func UnsafeAudioConverterFree(a *AudioConverter) {
-	C.gst_audio_converter_free(a.native)
+	C.gst_audio_converter_free((*C.GstAudioConverter)(a.native))
 	runtime.SetFinalizer(a.audioConverter, nil)
 }
 
@@ -13092,7 +13094,8 @@ type AudioQuantize struct {
 
 // audioQuantize is the struct that's finalized
 type audioQuantize struct {
-	native *C.GstAudioQuantize
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeAudioQuantizeToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13100,7 +13103,7 @@ func (a *AudioQuantize) instance() *C.GstAudioQuantize {
 	if a == nil {
 		return nil
 	}
-	return a.native
+	return (*C.GstAudioQuantize)(a.native)
 }
 
 // UnsafeAudioQuantizeFromGlibBorrow is used to convert raw C.GstAudioQuantize pointers to go. This is used by the bindings internally.
@@ -13108,7 +13111,7 @@ func UnsafeAudioQuantizeFromGlibBorrow(p unsafe.Pointer) *AudioQuantize {
 	if p == nil {
 		return nil
 	}
-	return &AudioQuantize{&audioQuantize{(*C.GstAudioQuantize)(p)}}
+	return &AudioQuantize{&audioQuantize{p}}
 }
 
 // UnsafeAudioQuantizeFromGlibNone is used to convert raw C.GstAudioQuantize pointers to go without transferring ownership. This is used by the bindings internally.
@@ -13131,7 +13134,7 @@ func UnsafeAudioQuantizeFromGlibFull(p unsafe.Pointer) *AudioQuantize {
 	runtime.SetFinalizer(
 		wrapped.audioQuantize,
 		func (intern *audioQuantize) {
-			C.gst_audio_quantize_free(intern.native)
+			C.gst_audio_quantize_free((*C.GstAudioQuantize)(intern.native))
 		},
 	)
 	return wrapped
@@ -13141,7 +13144,7 @@ func UnsafeAudioQuantizeFromGlibFull(p unsafe.Pointer) *AudioQuantize {
 // 
 // After this is called, no other method on [AudioQuantize] is expected to work anymore.
 func UnsafeAudioQuantizeFree(a *AudioQuantize) {
-	C.gst_audio_quantize_free(a.native)
+	C.gst_audio_quantize_free((*C.GstAudioQuantize)(a.native))
 	runtime.SetFinalizer(a.audioQuantize, nil)
 }
 
@@ -13186,7 +13189,8 @@ type AudioResampler struct {
 
 // audioResampler is the struct that's finalized
 type audioResampler struct {
-	native *C.GstAudioResampler
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeAudioResamplerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13194,7 +13198,7 @@ func (a *AudioResampler) instance() *C.GstAudioResampler {
 	if a == nil {
 		return nil
 	}
-	return a.native
+	return (*C.GstAudioResampler)(a.native)
 }
 
 // UnsafeAudioResamplerFromGlibBorrow is used to convert raw C.GstAudioResampler pointers to go. This is used by the bindings internally.
@@ -13202,7 +13206,7 @@ func UnsafeAudioResamplerFromGlibBorrow(p unsafe.Pointer) *AudioResampler {
 	if p == nil {
 		return nil
 	}
-	return &AudioResampler{&audioResampler{(*C.GstAudioResampler)(p)}}
+	return &AudioResampler{&audioResampler{p}}
 }
 
 // UnsafeAudioResamplerFromGlibNone is used to convert raw C.GstAudioResampler pointers to go without transferring ownership. This is used by the bindings internally.
@@ -13225,7 +13229,7 @@ func UnsafeAudioResamplerFromGlibFull(p unsafe.Pointer) *AudioResampler {
 	runtime.SetFinalizer(
 		wrapped.audioResampler,
 		func (intern *audioResampler) {
-			C.gst_audio_resampler_free(intern.native)
+			C.gst_audio_resampler_free((*C.GstAudioResampler)(intern.native))
 		},
 	)
 	return wrapped
@@ -13235,7 +13239,7 @@ func UnsafeAudioResamplerFromGlibFull(p unsafe.Pointer) *AudioResampler {
 // 
 // After this is called, no other method on [AudioResampler] is expected to work anymore.
 func UnsafeAudioResamplerFree(a *AudioResampler) {
-	C.gst_audio_resampler_free(a.native)
+	C.gst_audio_resampler_free((*C.GstAudioResampler)(a.native))
 	runtime.SetFinalizer(a.audioResampler, nil)
 }
 
@@ -13763,7 +13767,8 @@ type AudioStreamAlign struct {
 
 // audioStreamAlign is the struct that's finalized
 type audioStreamAlign struct {
-	native *C.GstAudioStreamAlign
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeAudioStreamAlignToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13771,7 +13776,7 @@ func (a *AudioStreamAlign) instance() *C.GstAudioStreamAlign {
 	if a == nil {
 		return nil
 	}
-	return a.native
+	return (*C.GstAudioStreamAlign)(a.native)
 }
 
 var _ gobject.GoValueInitializer = (*AudioStreamAlign)(nil)
@@ -13794,7 +13799,7 @@ func UnsafeAudioStreamAlignFromGlibBorrow(p unsafe.Pointer) *AudioStreamAlign {
 	if p == nil {
 		return nil
 	}
-	return &AudioStreamAlign{&audioStreamAlign{(*C.GstAudioStreamAlign)(p)}}
+	return &AudioStreamAlign{&audioStreamAlign{p}}
 }
 
 // UnsafeAudioStreamAlignFromGlibNone is used to convert raw C.GstAudioStreamAlign pointers to go without transferring ownership. This is used by the bindings internally.
@@ -13817,7 +13822,7 @@ func UnsafeAudioStreamAlignFromGlibFull(p unsafe.Pointer) *AudioStreamAlign {
 	runtime.SetFinalizer(
 		wrapped.audioStreamAlign,
 		func (intern *audioStreamAlign) {
-			C.gst_audio_stream_align_free(intern.native)
+			C.gst_audio_stream_align_free((*C.GstAudioStreamAlign)(intern.native))
 		},
 	)
 	return wrapped
@@ -13827,7 +13832,7 @@ func UnsafeAudioStreamAlignFromGlibFull(p unsafe.Pointer) *AudioStreamAlign {
 // 
 // After this is called, no other method on [AudioStreamAlign] is expected to work anymore.
 func UnsafeAudioStreamAlignFree(a *AudioStreamAlign) {
-	C.gst_audio_stream_align_free(a.native)
+	C.gst_audio_stream_align_free((*C.GstAudioStreamAlign)(a.native))
 	runtime.SetFinalizer(a.audioStreamAlign, nil)
 }
 
