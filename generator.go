@@ -246,13 +246,34 @@ var Data = genmain.Data{
 			"GstRtsp-1":   gstNamespace(),
 			"GstSdp-1":    gstNamespace(),
 			"GstTag-1":    gstNamespace(),
-			"GstVideo-1": gstNamespace(
-				// must be implemented manually
-				typesystem.IgnoreMatching("VideoCodecFrame.set_user_data"),
-				typesystem.IgnoreMatching("VideoCodecFrame.get_user_data"),
-				// returns a gconstpointer to an array, manually implemented instead
-				typesystem.IgnoreMatching("VideoFormat.get_palette"),
-			),
+			"GstVideo-1": {
+				MinVersion: GstVersion,
+				MaxVersion: GstVersion,
+				ManualTypes: []typesystem.Type{
+					&typesystem.Record{
+						BaseType: typesystem.BaseType{
+							GirName: "VideoMeta",
+							GoTyp:   "VideoMeta",
+							CGoTyp:  "C.GstVideoMeta",
+							CTyp:    "GstVideoMeta",
+						},
+						BaseConversions: typesystem.BaseConversions{
+							FromGlibBorrowFunction: "UnsafeVideoMetaFromGlibBorrow",
+							FromGlibFullFunction:   "UnsafeVideoMetaFromGlibFull",
+							FromGlibNoneFunction:   "UnsafeVideoMetaFromGlibNone",
+							ToGlibNoneFunction:     "UnsafeVideoMetaToGlibNone",
+							ToGlibFullFunction:     "UnsafeVideoMetaToGlibFull",
+						},
+					},
+				},
+				IgnoredDefinitions: []typesystem.IgnoreFunc{
+					// must be implemented manually
+					typesystem.IgnoreMatching("VideoCodecFrame.set_user_data"),
+					typesystem.IgnoreMatching("VideoCodecFrame.get_user_data"),
+					// returns a gconstpointer to an array, manually implemented instead
+					typesystem.IgnoreMatching("VideoFormat.get_palette"),
+				},
+			},
 			"GstWebRTC-1": gstNamespace(),
 		},
 	},
