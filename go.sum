@@ -1,2 +1,2 @@
-github.com/iameli/go-glib v0.0.4-0.20261013211756-2f69802326f8 h1:c7x+XAmWf5mcSLHO4WZwM/L9S54f6uRv58iDfR4SkUM=
-github.com/iameli/go-glib v0.0.4-0.20261013211756-2f69802326f8/go.mod h1:cHWRWZCiwhx4CmW92T0/+cxn69AquI7aj2mIk96WgEI=
+github.com/go-gst/go-glib v0.0.2 h1:2sclYOyJzyi2/iRQlNjXoDi0FBxt8NHFPQFdRV9qH38=
+github.com/go-gst/go-glib v0.0.2/go.mod h1:cHWRWZCiwhx4CmW92T0/+cxn69AquI7aj2mIk96WgEI=

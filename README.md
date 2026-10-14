@@ -45,15 +45,6 @@ See the `examples` folder [here](examples/).
 
 The bindings are mostly auto generated from GStreamer documentation files (GIR Files). If a function is missing that you need, please open an issue or manually implement them. Oftentimes the generator is missing some conversion function.
 
-Opaque record owners are generated with GC-scanned native pointers, so their
-finalizers cannot be pinned by neighboring live allocations in Go's tiny
-allocator. Regenerate bindings with `go generate` after updating the
-[`go-glib` generator](https://github.com/go-gst/go-glib). The native ownership
-regressions can be run with
-`go test ./pkg/gst -run 'TestSample(FinalizerWithTinyNeighbors|ExplicitReleaseClearsFinalizer)$' -count=1`.
-They observe destruction of actual samples, buffers, and memory using native
-weak notifications rather than finalizing replacement Go objects.
-
 ## Where are the v1.X.X versions?
 
 In https://github.com/go-gst/go-gst/pull/170 this repo was migrated to using a generator from GIR files. This makes all code in this repo:
