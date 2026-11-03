@@ -106,6 +106,8 @@ var Data = genmain.Data{
 
 		MarkSDPMessageGettersAsBorrowed(),
 
+		MarkMpegtsSectionGettersAsBorrowed(),
+
 		GstLogFunctionDebugBorrows(),
 
 		// Replaced by the manually implemented SetCallbacks, which does not need to go through
@@ -406,6 +408,8 @@ var miniObjectExtenders = []string{
 	"Gst-1.TagList",
 	"Gst-1.Toc",
 	"Gst-1.TocEntry",
+
+	"GstMpegts-1.Section",
 }
 
 // these are implemented as go function to proxy the type casting
@@ -481,6 +485,37 @@ func MarkSDPMessageGettersAsBorrowed() gir.Preprocessor {
 
 			f.ReturnValue.TransferOwnership.TransferOwnership = "borrow"
 
+		}
+	})
+}
+
+// gstmpegts.Section owns the tables its getters return, so the return values are borrowed
+func MarkMpegtsSectionGettersAsBorrowed() gir.Preprocessor {
+	return gir.PreprocessorFunc(func(r gir.Repositories) {
+		funcs := []string{
+			"GstMpegts-1.Section.get_atsc_cvct",
+			"GstMpegts-1.Section.get_atsc_eit",
+			"GstMpegts-1.Section.get_atsc_ett",
+			"GstMpegts-1.Section.get_atsc_mgt",
+			"GstMpegts-1.Section.get_atsc_rrt",
+			"GstMpegts-1.Section.get_atsc_stt",
+			"GstMpegts-1.Section.get_atsc_tvct",
+			"GstMpegts-1.Section.get_bat",
+			"GstMpegts-1.Section.get_eit",
+			"GstMpegts-1.Section.get_nit",
+			"GstMpegts-1.Section.get_pmt",
+			"GstMpegts-1.Section.get_scte_sit",
+			"GstMpegts-1.Section.get_sdt",
+			"GstMpegts-1.Section.get_sit",
+			"GstMpegts-1.Section.get_tot",
+		}
+
+		for _, fullfunc := range funcs {
+			f := r.FindFullType(fullfunc).(*gir.Method)
+
+			f.ReturnValue.TransferOwnership.TransferOwnership = "borrow"
+			// all of them return NULL if an error happened, even where the GIR does not mark them nullable
+			f.ReturnValue.Nullable = true
 		}
 	})
 }

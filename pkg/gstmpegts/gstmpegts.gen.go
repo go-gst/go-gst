@@ -10983,12 +10983,18 @@ func UnsafeSectionFromGlibBorrow(p unsafe.Pointer) *Section {
 
 // UnsafeSectionFromGlibNone is used to convert raw C.GstMpegtsSection pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeSectionFromGlibNone(p unsafe.Pointer) *Section {
+	miniObjectRef(unsafe.Pointer(p))
 	wrapped := UnsafeSectionFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	log.Println("WARNING: not attaching a finalizer to Section because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
+	runtime.SetFinalizer(
+		wrapped.section,
+		func(intern *section) {
+			miniObjectUnref(unsafe.Pointer(intern.native))
+		},
+	)
 	return wrapped
 }
 
@@ -11001,17 +11007,24 @@ func UnsafeSectionFromGlibFull(p unsafe.Pointer) *Section {
 	runtime.SetFinalizer(
 		wrapped.section,
 		func(intern *section) {
-			C.free(unsafe.Pointer(intern.native))
+			miniObjectUnref(unsafe.Pointer(intern.native))
 		},
 	)
 	return wrapped
 }
 
-// UnsafeSectionFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
+// UnsafeSectionRef increases the refcount on the underlying resource.
+//
+// When this is called without an associated call to [Section.UnsafeSectionUnref], then [Section] will leak memory.
+func UnsafeSectionRef(s *Section) {
+	miniObjectRef(unsafe.Pointer(s.native))
+}
+
+// UnsafeSectionUnref unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 //
 // After this is called, no other method on [Section] is expected to work anymore.
-func UnsafeSectionFree(s *Section) {
-	C.free(unsafe.Pointer(s.native))
+func UnsafeSectionUnref(s *Section) {
+	miniObjectUnref(unsafe.Pointer(s.native))
 	runtime.SetFinalizer(s.section, nil)
 }
 
@@ -11215,7 +11228,7 @@ func SectionFromSdt(sdt *SDT) *Section {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_cvct
 func (section *Section) GetAtscCvct() *AtscVCT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsAtscVCT  // return, none, converted, nullable
+	var cret *C.GstMpegtsAtscVCT  // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11225,7 +11238,8 @@ func (section *Section) GetAtscCvct() *AtscVCT {
 	var goret *AtscVCT
 
 	if cret != nil {
-		goret = UnsafeAtscVCTFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeAtscVCTFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
 	}
 
 	return goret
@@ -11236,7 +11250,7 @@ func (section *Section) GetAtscCvct() *AtscVCT {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_eit
 func (section *Section) GetAtscEit() *AtscEIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsAtscEIT  // return, none, converted
+	var cret *C.GstMpegtsAtscEIT  // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11245,7 +11259,10 @@ func (section *Section) GetAtscEit() *AtscEIT {
 
 	var goret *AtscEIT
 
-	goret = UnsafeAtscEITFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAtscEITFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
+	}
 
 	return goret
 }
@@ -11255,7 +11272,7 @@ func (section *Section) GetAtscEit() *AtscEIT {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_ett
 func (section *Section) GetAtscEtt() *AtscETT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsAtscETT  // return, none, converted
+	var cret *C.GstMpegtsAtscETT  // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11264,7 +11281,10 @@ func (section *Section) GetAtscEtt() *AtscETT {
 
 	var goret *AtscETT
 
-	goret = UnsafeAtscETTFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAtscETTFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
+	}
 
 	return goret
 }
@@ -11274,7 +11294,7 @@ func (section *Section) GetAtscEtt() *AtscETT {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_mgt
 func (section *Section) GetAtscMgt() *AtscMGT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsAtscMGT  // return, none, converted, nullable
+	var cret *C.GstMpegtsAtscMGT  // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11284,7 +11304,8 @@ func (section *Section) GetAtscMgt() *AtscMGT {
 	var goret *AtscMGT
 
 	if cret != nil {
-		goret = UnsafeAtscMGTFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeAtscMGTFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
 	}
 
 	return goret
@@ -11295,7 +11316,7 @@ func (section *Section) GetAtscMgt() *AtscMGT {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_rrt
 func (section *Section) GetAtscRrt() *AtscRRT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsAtscRRT  // return, none, converted
+	var cret *C.GstMpegtsAtscRRT  // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11304,7 +11325,10 @@ func (section *Section) GetAtscRrt() *AtscRRT {
 
 	var goret *AtscRRT
 
-	goret = UnsafeAtscRRTFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAtscRRTFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
+	}
 
 	return goret
 }
@@ -11314,7 +11338,7 @@ func (section *Section) GetAtscRrt() *AtscRRT {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_stt
 func (section *Section) GetAtscStt() *AtscSTT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsAtscSTT  // return, none, converted
+	var cret *C.GstMpegtsAtscSTT  // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11323,7 +11347,10 @@ func (section *Section) GetAtscStt() *AtscSTT {
 
 	var goret *AtscSTT
 
-	goret = UnsafeAtscSTTFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAtscSTTFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
+	}
 
 	return goret
 }
@@ -11333,7 +11360,7 @@ func (section *Section) GetAtscStt() *AtscSTT {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_tvct
 func (section *Section) GetAtscTvct() *AtscVCT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsAtscVCT  // return, none, converted, nullable
+	var cret *C.GstMpegtsAtscVCT  // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11343,7 +11370,8 @@ func (section *Section) GetAtscTvct() *AtscVCT {
 	var goret *AtscVCT
 
 	if cret != nil {
-		goret = UnsafeAtscVCTFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeAtscVCTFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
 	}
 
 	return goret
@@ -11354,7 +11382,7 @@ func (section *Section) GetAtscTvct() *AtscVCT {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_bat
 func (section *Section) GetBat() *BAT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsBAT      // return, none, converted, nullable
+	var cret *C.GstMpegtsBAT      // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11364,7 +11392,8 @@ func (section *Section) GetBat() *BAT {
 	var goret *BAT
 
 	if cret != nil {
-		goret = UnsafeBATFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeBATFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
 	}
 
 	return goret
@@ -11394,7 +11423,7 @@ func (section *Section) GetData() *glib.Bytes {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_eit
 func (section *Section) GetEit() *EIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsEIT      // return, none, converted, nullable
+	var cret *C.GstMpegtsEIT      // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11404,7 +11433,8 @@ func (section *Section) GetEit() *EIT {
 	var goret *EIT
 
 	if cret != nil {
-		goret = UnsafeEITFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeEITFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
 	}
 
 	return goret
@@ -11415,7 +11445,7 @@ func (section *Section) GetEit() *EIT {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_nit
 func (section *Section) GetNit() *NIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsNIT      // return, none, converted, nullable
+	var cret *C.GstMpegtsNIT      // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11425,7 +11455,8 @@ func (section *Section) GetNit() *NIT {
 	var goret *NIT
 
 	if cret != nil {
-		goret = UnsafeNITFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeNITFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
 	}
 
 	return goret
@@ -11436,7 +11467,7 @@ func (section *Section) GetNit() *NIT {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_pmt
 func (section *Section) GetPmt() *PMT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsPMT      // return, none, converted, nullable
+	var cret *C.GstMpegtsPMT      // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11446,7 +11477,8 @@ func (section *Section) GetPmt() *PMT {
 	var goret *PMT
 
 	if cret != nil {
-		goret = UnsafePMTFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafePMTFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
 	}
 
 	return goret
@@ -11457,7 +11489,7 @@ func (section *Section) GetPmt() *PMT {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_scte_sit
 func (section *Section) GetScteSit() *SCTESIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsSCTESIT  // return, none, converted, nullable
+	var cret *C.GstMpegtsSCTESIT  // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11467,7 +11499,8 @@ func (section *Section) GetScteSit() *SCTESIT {
 	var goret *SCTESIT
 
 	if cret != nil {
-		goret = UnsafeSCTESITFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeSCTESITFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
 	}
 
 	return goret
@@ -11478,7 +11511,7 @@ func (section *Section) GetScteSit() *SCTESIT {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_sdt
 func (section *Section) GetSdt() *SDT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsSDT      // return, none, converted, nullable
+	var cret *C.GstMpegtsSDT      // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11488,7 +11521,8 @@ func (section *Section) GetSdt() *SDT {
 	var goret *SDT
 
 	if cret != nil {
-		goret = UnsafeSDTFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeSDTFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
 	}
 
 	return goret
@@ -11499,7 +11533,7 @@ func (section *Section) GetSdt() *SDT {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_sit
 func (section *Section) GetSit() *SIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsSIT      // return, none, converted, nullable
+	var cret *C.GstMpegtsSIT      // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11509,7 +11543,8 @@ func (section *Section) GetSit() *SIT {
 	var goret *SIT
 
 	if cret != nil {
-		goret = UnsafeSITFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeSITFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
 	}
 
 	return goret
@@ -11541,7 +11576,7 @@ func (section *Section) GetTdt() *gst.DateTime {
 // see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_tot
 func (section *Section) GetTot() *TOT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret *C.GstMpegtsTOT      // return, none, converted, nullable
+	var cret *C.GstMpegtsTOT      // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -11551,7 +11586,8 @@ func (section *Section) GetTot() *TOT {
 	var goret *TOT
 
 	if cret != nil {
-		goret = UnsafeTOTFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeTOTFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Section) {}, section)
 	}
 
 	return goret
