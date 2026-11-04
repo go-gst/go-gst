@@ -410,6 +410,12 @@ var miniObjectExtenders = []string{
 	"Gst-1.TocEntry",
 
 	"GstMpegts-1.Section",
+
+	"GstSdp-1.MIKEYMessage",
+	"GstSdp-1.MIKEYPayload",
+
+	"GstVideo-1.VideoOverlayComposition",
+	"GstVideo-1.VideoOverlayRectangle",
 }
 
 // these are implemented as go function to proxy the type casting

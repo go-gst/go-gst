@@ -19060,12 +19060,19 @@ func UnsafeVideoOverlayCompositionFromGlibBorrow(p unsafe.Pointer) *VideoOverlay
 
 // UnsafeVideoOverlayCompositionFromGlibNone is used to convert raw C.GstVideoOverlayComposition pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayCompositionFromGlibNone(p unsafe.Pointer) *VideoOverlayComposition {
+	miniObjectRef(unsafe.Pointer(p))
 	wrapped := UnsafeVideoOverlayCompositionFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	return wrapped.Copy() // create an owned copy
+	runtime.SetFinalizer(
+		wrapped.videoOverlayComposition,
+		func(intern *videoOverlayComposition) {
+			miniObjectUnref(unsafe.Pointer(intern.native))
+		},
+	)
+	return wrapped
 }
 
 // UnsafeVideoOverlayCompositionFromGlibFull is used to convert raw C.GstVideoOverlayComposition pointers to go while taking ownership. This is used by the bindings internally.
@@ -19077,17 +19084,24 @@ func UnsafeVideoOverlayCompositionFromGlibFull(p unsafe.Pointer) *VideoOverlayCo
 	runtime.SetFinalizer(
 		wrapped.videoOverlayComposition,
 		func(intern *videoOverlayComposition) {
-			C.free(unsafe.Pointer(intern.native))
+			miniObjectUnref(unsafe.Pointer(intern.native))
 		},
 	)
 	return wrapped
 }
 
-// UnsafeVideoOverlayCompositionFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
+// UnsafeVideoOverlayCompositionRef increases the refcount on the underlying resource.
+//
+// When this is called without an associated call to [VideoOverlayComposition.UnsafeVideoOverlayCompositionUnref], then [VideoOverlayComposition] will leak memory.
+func UnsafeVideoOverlayCompositionRef(v *VideoOverlayComposition) {
+	miniObjectRef(unsafe.Pointer(v.native))
+}
+
+// UnsafeVideoOverlayCompositionUnref unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 //
 // After this is called, no other method on [VideoOverlayComposition] is expected to work anymore.
-func UnsafeVideoOverlayCompositionFree(v *VideoOverlayComposition) {
-	C.free(unsafe.Pointer(v.native))
+func UnsafeVideoOverlayCompositionUnref(v *VideoOverlayComposition) {
+	miniObjectUnref(unsafe.Pointer(v.native))
 	runtime.SetFinalizer(v.videoOverlayComposition, nil)
 }
 
@@ -19196,7 +19210,7 @@ func (comp *VideoOverlayComposition) Copy() *VideoOverlayComposition {
 func (comp *VideoOverlayComposition) GetRectangle(n uint32) *VideoOverlayRectangle {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var carg1 C.guint                       // in, none, casted
-	var cret *C.GstVideoOverlayRectangle    // return, none, converted, nullable
+	var cret *C.GstVideoOverlayRectangle    // return, borrow, converted, nullable
 
 	carg0 = (*C.GstVideoOverlayComposition)(UnsafeVideoOverlayCompositionToGlibNone(comp))
 	carg1 = C.guint(n)
@@ -19208,7 +19222,8 @@ func (comp *VideoOverlayComposition) GetRectangle(n uint32) *VideoOverlayRectang
 	var goret *VideoOverlayRectangle
 
 	if cret != nil {
-		goret = UnsafeVideoOverlayRectangleFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeVideoOverlayRectangleFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *VideoOverlayComposition) {}, comp)
 	}
 
 	return goret
@@ -19496,12 +19511,19 @@ func UnsafeVideoOverlayRectangleFromGlibBorrow(p unsafe.Pointer) *VideoOverlayRe
 
 // UnsafeVideoOverlayRectangleFromGlibNone is used to convert raw C.GstVideoOverlayRectangle pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayRectangleFromGlibNone(p unsafe.Pointer) *VideoOverlayRectangle {
+	miniObjectRef(unsafe.Pointer(p))
 	wrapped := UnsafeVideoOverlayRectangleFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	return wrapped.Copy() // create an owned copy
+	runtime.SetFinalizer(
+		wrapped.videoOverlayRectangle,
+		func(intern *videoOverlayRectangle) {
+			miniObjectUnref(unsafe.Pointer(intern.native))
+		},
+	)
+	return wrapped
 }
 
 // UnsafeVideoOverlayRectangleFromGlibFull is used to convert raw C.GstVideoOverlayRectangle pointers to go while taking ownership. This is used by the bindings internally.
@@ -19513,17 +19535,24 @@ func UnsafeVideoOverlayRectangleFromGlibFull(p unsafe.Pointer) *VideoOverlayRect
 	runtime.SetFinalizer(
 		wrapped.videoOverlayRectangle,
 		func(intern *videoOverlayRectangle) {
-			C.free(unsafe.Pointer(intern.native))
+			miniObjectUnref(unsafe.Pointer(intern.native))
 		},
 	)
 	return wrapped
 }
 
-// UnsafeVideoOverlayRectangleFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
+// UnsafeVideoOverlayRectangleRef increases the refcount on the underlying resource.
+//
+// When this is called without an associated call to [VideoOverlayRectangle.UnsafeVideoOverlayRectangleUnref], then [VideoOverlayRectangle] will leak memory.
+func UnsafeVideoOverlayRectangleRef(v *VideoOverlayRectangle) {
+	miniObjectRef(unsafe.Pointer(v.native))
+}
+
+// UnsafeVideoOverlayRectangleUnref unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 //
 // After this is called, no other method on [VideoOverlayRectangle] is expected to work anymore.
-func UnsafeVideoOverlayRectangleFree(v *VideoOverlayRectangle) {
-	C.free(unsafe.Pointer(v.native))
+func UnsafeVideoOverlayRectangleUnref(v *VideoOverlayRectangle) {
+	miniObjectUnref(unsafe.Pointer(v.native))
 	runtime.SetFinalizer(v.videoOverlayRectangle, nil)
 }
 
