@@ -94,3 +94,24 @@ func runMarshalTest[T any](t *testing.T, v T, expectErr bool) {
 		t.Fatalf("expected %#v, got %#v", v, zero)
 	}
 }
+
+func TestStructureUnmarshalMissingFields(t *testing.T) {
+	gst.Init()
+
+	structure, err := gst.MarshalStructure(Simple{1, "foo"})
+	if err != nil {
+		t.Fatalf("marshal error: %v", err)
+	}
+
+	var got Embedded
+
+	err = structure.UnmarshalInto(&got)
+	if err != nil {
+		t.Fatalf("could not unmarshal: %v", err)
+	}
+
+	want := Embedded{Simple: Simple{1, "foo"}}
+	if !reflect.DeepEqual(got, want) {
+		t.Fatalf("expected %#v, got %#v", want, got)
+	}
+}

@@ -35,7 +35,7 @@ import "C"
 // 	runtime.KeepAlive(v)
 // }
 
-// GetValue wraps gst_structure_get_value
+// GetValue wraps gst_structure_get_value. It returns nil if the field does not exist.
 func (structure *Structure) GetValue(fieldname string) any {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 *C.gchar        // in, none, string, casted *C.gchar
@@ -48,6 +48,11 @@ func (structure *Structure) GetValue(fieldname string) any {
 	cret = C.gst_structure_get_value(carg0, carg1)
 	runtime.KeepAlive(structure)
 	runtime.KeepAlive(fieldname)
+
+	if cret == nil {
+		// the field does not exist
+		return nil
+	}
 
 	var goret any
 
