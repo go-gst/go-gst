@@ -342,10 +342,16 @@ func main() {
 }
 
 // borrowedTypes are the types that need to be marked as borrowed when returned as transfer none because their reference count
-// is tied to their writability
+// is tied to their writability, or because they are owned by the buffer they are attached to
 var borrowedTypes = append([]string{
 	"Gst-1.MiniObject",
 	"Gst-1.Structure",
+
+	"Gst-1.Meta",
+	"Gst-1.CustomMeta",
+	"Gst-1.ParentBufferMeta",
+	"Gst-1.ProtectionMeta",
+	"Gst-1.ReferenceTimestampMeta",
 }, miniObjectExtenders...)
 
 // gst.MiniObject extenders must not take a ref on these methods, or they are made readonly

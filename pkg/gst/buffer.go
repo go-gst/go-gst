@@ -2,6 +2,7 @@ package gst
 
 import (
 	"runtime"
+	"unsafe"
 )
 
 // #cgo pkg-config: gstreamer-1.0
@@ -106,4 +107,11 @@ func (buffer *Buffer) OffsetEnd() uint64 {
 // It has the same format as Offset.
 func (buffer *Buffer) SetOffsetEnd(offsetEnd uint64) {
 	buffer.buffer.native.offset_end = C.guint64(offsetEnd)
+}
+
+// IsWritable returns whether the buffer can be modified in place.
+func (buffer *Buffer) IsWritable() bool {
+	ret := C.gst_mini_object_is_writable((*C.GstMiniObject)(unsafe.Pointer(buffer.buffer.native))) != 0
+	runtime.KeepAlive(buffer)
+	return ret
 }
