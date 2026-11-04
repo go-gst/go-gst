@@ -936,12 +936,18 @@ func UnsafeMIKEYMessageFromGlibBorrow(p unsafe.Pointer) *MIKEYMessage {
 
 // UnsafeMIKEYMessageFromGlibNone is used to convert raw C.GstMIKEYMessage pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeMIKEYMessageFromGlibNone(p unsafe.Pointer) *MIKEYMessage {
+	miniObjectRef(unsafe.Pointer(p))
 	wrapped := UnsafeMIKEYMessageFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	log.Println("WARNING: not attaching a finalizer to MIKEYMessage because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
+	runtime.SetFinalizer(
+		wrapped.mIKEYMessage,
+		func(intern *mIKEYMessage) {
+			miniObjectUnref(unsafe.Pointer(intern.native))
+		},
+	)
 	return wrapped
 }
 
@@ -954,17 +960,24 @@ func UnsafeMIKEYMessageFromGlibFull(p unsafe.Pointer) *MIKEYMessage {
 	runtime.SetFinalizer(
 		wrapped.mIKEYMessage,
 		func(intern *mIKEYMessage) {
-			C.free(unsafe.Pointer(intern.native))
+			miniObjectUnref(unsafe.Pointer(intern.native))
 		},
 	)
 	return wrapped
 }
 
-// UnsafeMIKEYMessageFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
+// UnsafeMIKEYMessageRef increases the refcount on the underlying resource.
+//
+// When this is called without an associated call to [MIKEYMessage.UnsafeMIKEYMessageUnref], then [MIKEYMessage] will leak memory.
+func UnsafeMIKEYMessageRef(m *MIKEYMessage) {
+	miniObjectRef(unsafe.Pointer(m.native))
+}
+
+// UnsafeMIKEYMessageUnref unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 //
 // After this is called, no other method on [MIKEYMessage] is expected to work anymore.
-func UnsafeMIKEYMessageFree(m *MIKEYMessage) {
-	C.free(unsafe.Pointer(m.native))
+func UnsafeMIKEYMessageUnref(m *MIKEYMessage) {
+	miniObjectUnref(unsafe.Pointer(m.native))
 	runtime.SetFinalizer(m.mIKEYMessage, nil)
 }
 
@@ -1238,7 +1251,7 @@ func (msg *MIKEYMessage) FindPayload(typ MIKEYPayloadType, nth uint32) *MIKEYPay
 	var carg0 *C.GstMIKEYMessage    // in, none, converted
 	var carg1 C.GstMIKEYPayloadType // in, none, casted
 	var carg2 C.guint               // in, none, casted
-	var cret *C.GstMIKEYPayload     // return, none, converted, nullable
+	var cret *C.GstMIKEYPayload     // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.GstMIKEYPayloadType(typ)
@@ -1252,7 +1265,8 @@ func (msg *MIKEYMessage) FindPayload(typ MIKEYPayloadType, nth uint32) *MIKEYPay
 	var goret *MIKEYPayload
 
 	if cret != nil {
-		goret = UnsafeMIKEYPayloadFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeMIKEYPayloadFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *MIKEYMessage) {}, msg)
 	}
 
 	return goret
@@ -1326,7 +1340,7 @@ func (msg *MIKEYMessage) GetNPayloads() uint32 {
 func (msg *MIKEYMessage) GetPayload(idx uint32) *MIKEYPayload {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret *C.GstMIKEYPayload  // return, none, converted, nullable
+	var cret *C.GstMIKEYPayload  // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -1338,7 +1352,8 @@ func (msg *MIKEYMessage) GetPayload(idx uint32) *MIKEYPayload {
 	var goret *MIKEYPayload
 
 	if cret != nil {
-		goret = UnsafeMIKEYPayloadFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeMIKEYPayloadFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *MIKEYMessage) {}, msg)
 	}
 
 	return goret
@@ -1639,12 +1654,18 @@ func UnsafeMIKEYPayloadFromGlibBorrow(p unsafe.Pointer) *MIKEYPayload {
 
 // UnsafeMIKEYPayloadFromGlibNone is used to convert raw C.GstMIKEYPayload pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeMIKEYPayloadFromGlibNone(p unsafe.Pointer) *MIKEYPayload {
+	miniObjectRef(unsafe.Pointer(p))
 	wrapped := UnsafeMIKEYPayloadFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	log.Println("WARNING: not attaching a finalizer to MIKEYPayload because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
+	runtime.SetFinalizer(
+		wrapped.mIKEYPayload,
+		func(intern *mIKEYPayload) {
+			miniObjectUnref(unsafe.Pointer(intern.native))
+		},
+	)
 	return wrapped
 }
 
@@ -1657,17 +1678,24 @@ func UnsafeMIKEYPayloadFromGlibFull(p unsafe.Pointer) *MIKEYPayload {
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayload,
 		func(intern *mIKEYPayload) {
-			C.free(unsafe.Pointer(intern.native))
+			miniObjectUnref(unsafe.Pointer(intern.native))
 		},
 	)
 	return wrapped
 }
 
-// UnsafeMIKEYPayloadFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
+// UnsafeMIKEYPayloadRef increases the refcount on the underlying resource.
+//
+// When this is called without an associated call to [MIKEYPayload.UnsafeMIKEYPayloadUnref], then [MIKEYPayload] will leak memory.
+func UnsafeMIKEYPayloadRef(m *MIKEYPayload) {
+	miniObjectRef(unsafe.Pointer(m.native))
+}
+
+// UnsafeMIKEYPayloadUnref unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 //
 // After this is called, no other method on [MIKEYPayload] is expected to work anymore.
-func UnsafeMIKEYPayloadFree(m *MIKEYPayload) {
-	C.free(unsafe.Pointer(m.native))
+func UnsafeMIKEYPayloadUnref(m *MIKEYPayload) {
+	miniObjectUnref(unsafe.Pointer(m.native))
 	runtime.SetFinalizer(m.mIKEYPayload, nil)
 }
 
@@ -1761,7 +1789,7 @@ func (payload *MIKEYPayload) KemacGetNSub() uint32 {
 func (payload *MIKEYPayload) KemacGetSub(idx uint32) *MIKEYPayload {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret *C.GstMIKEYPayload  // return, none, converted, nullable
+	var cret *C.GstMIKEYPayload  // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	carg1 = C.guint(idx)
@@ -1773,7 +1801,8 @@ func (payload *MIKEYPayload) KemacGetSub(idx uint32) *MIKEYPayload {
 	var goret *MIKEYPayload
 
 	if cret != nil {
-		goret = UnsafeMIKEYPayloadFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeMIKEYPayloadFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *MIKEYPayload) {}, payload)
 	}
 
 	return goret
