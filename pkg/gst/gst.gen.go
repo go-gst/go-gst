@@ -30058,7 +30058,7 @@ func BufferGetMaxMemory() uint32 {
 func (buffer *Buffer) AddCustomMeta(name string) *CustomMeta {
 	var carg0 *C.GstBuffer    // in, none, converted
 	var carg1 *C.gchar        // in, none, string
-	var cret *C.GstCustomMeta // return, none, converted, nullable
+	var cret *C.GstCustomMeta // return, borrow, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = (*C.gchar)(transfer.GLibString(name))
@@ -30071,7 +30071,8 @@ func (buffer *Buffer) AddCustomMeta(name string) *CustomMeta {
 	var goret *CustomMeta
 
 	if cret != nil {
-		goret = UnsafeCustomMetaFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeCustomMetaFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Buffer) {}, buffer)
 	}
 
 	return goret
@@ -30083,7 +30084,7 @@ func (buffer *Buffer) AddCustomMeta(name string) *CustomMeta {
 func (buffer *Buffer) AddParentBufferMeta(ref *Buffer) *ParentBufferMeta {
 	var carg0 *C.GstBuffer          // in, none, converted
 	var carg1 *C.GstBuffer          // in, none, converted
-	var cret *C.GstParentBufferMeta // return, none, converted, nullable
+	var cret *C.GstParentBufferMeta // return, borrow, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = (*C.GstBuffer)(UnsafeBufferToGlibNone(ref))
@@ -30095,7 +30096,8 @@ func (buffer *Buffer) AddParentBufferMeta(ref *Buffer) *ParentBufferMeta {
 	var goret *ParentBufferMeta
 
 	if cret != nil {
-		goret = UnsafeParentBufferMetaFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeParentBufferMetaFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Buffer) {}, buffer)
 	}
 
 	return goret
@@ -30107,7 +30109,7 @@ func (buffer *Buffer) AddParentBufferMeta(ref *Buffer) *ParentBufferMeta {
 func (buffer *Buffer) AddProtectionMeta(info *Structure) *ProtectionMeta {
 	var carg0 *C.GstBuffer        // in, none, converted
 	var carg1 *C.GstStructure     // in, full, converted
-	var cret *C.GstProtectionMeta // return, none, converted
+	var cret *C.GstProtectionMeta // return, borrow, converted
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = (*C.GstStructure)(UnsafeStructureToGlibFull(info))
@@ -30118,7 +30120,8 @@ func (buffer *Buffer) AddProtectionMeta(info *Structure) *ProtectionMeta {
 
 	var goret *ProtectionMeta
 
-	goret = UnsafeProtectionMetaFromGlibNone(unsafe.Pointer(cret))
+	goret = UnsafeProtectionMetaFromGlibBorrow(unsafe.Pointer(cret))
+	runtime.AddCleanup(goret, func(_ *Buffer) {}, buffer)
 
 	return goret
 }
@@ -30131,7 +30134,7 @@ func (buffer *Buffer) AddReferenceTimestampMeta(reference *Caps, timestamp Clock
 	var carg1 *C.GstCaps                  // in, none, converted
 	var carg2 C.GstClockTime              // in, none, casted, alias
 	var carg3 C.GstClockTime              // in, none, casted, alias
-	var cret *C.GstReferenceTimestampMeta // return, none, converted, nullable
+	var cret *C.GstReferenceTimestampMeta // return, borrow, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = (*C.GstCaps)(UnsafeCapsToGlibNone(reference))
@@ -30147,7 +30150,8 @@ func (buffer *Buffer) AddReferenceTimestampMeta(reference *Caps, timestamp Clock
 	var goret *ReferenceTimestampMeta
 
 	if cret != nil {
-		goret = UnsafeReferenceTimestampMetaFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeReferenceTimestampMetaFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Buffer) {}, buffer)
 	}
 
 	return goret
@@ -30392,7 +30396,7 @@ func (buffer *Buffer) GetAllMemory() *Memory {
 func (buffer *Buffer) GetCustomMeta(name string) *CustomMeta {
 	var carg0 *C.GstBuffer    // in, none, converted
 	var carg1 *C.gchar        // in, none, string
-	var cret *C.GstCustomMeta // return, none, converted, nullable
+	var cret *C.GstCustomMeta // return, borrow, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = (*C.gchar)(transfer.GLibString(name))
@@ -30405,7 +30409,8 @@ func (buffer *Buffer) GetCustomMeta(name string) *CustomMeta {
 	var goret *CustomMeta
 
 	if cret != nil {
-		goret = UnsafeCustomMetaFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeCustomMetaFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Buffer) {}, buffer)
 	}
 
 	return goret
@@ -30487,7 +30492,7 @@ func (buffer *Buffer) GetMemoryRange(idx uint32, length int32) *Memory {
 func (buffer *Buffer) GetMeta(api gobject.Type) *Meta {
 	var carg0 *C.GstBuffer // in, none, converted
 	var carg1 C.GType      // in, none, casted, alias
-	var cret *C.GstMeta    // return, none, converted, nullable
+	var cret *C.GstMeta    // return, borrow, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = C.GType(api)
@@ -30499,7 +30504,8 @@ func (buffer *Buffer) GetMeta(api gobject.Type) *Meta {
 	var goret *Meta
 
 	if cret != nil {
-		goret = UnsafeMetaFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeMetaFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Buffer) {}, buffer)
 	}
 
 	return goret
@@ -30533,7 +30539,7 @@ func (buffer *Buffer) GetNMeta(apiType gobject.Type) uint32 {
 func (buffer *Buffer) GetReferenceTimestampMeta(reference *Caps) *ReferenceTimestampMeta {
 	var carg0 *C.GstBuffer                // in, none, converted
 	var carg1 *C.GstCaps                  // in, none, converted, nullable
-	var cret *C.GstReferenceTimestampMeta // return, none, converted, nullable
+	var cret *C.GstReferenceTimestampMeta // return, borrow, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	if reference != nil {
@@ -30547,7 +30553,8 @@ func (buffer *Buffer) GetReferenceTimestampMeta(reference *Caps) *ReferenceTimes
 	var goret *ReferenceTimestampMeta
 
 	if cret != nil {
-		goret = UnsafeReferenceTimestampMetaFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeReferenceTimestampMetaFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Buffer) {}, buffer)
 	}
 
 	return goret
@@ -33867,7 +33874,7 @@ func UnsafeCustomMetaToGlibFull(c *CustomMeta) unsafe.Pointer {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmeta.html#gst_custom_meta_get_structure
 func (meta *CustomMeta) GetStructure() *Structure {
 	var carg0 *C.GstCustomMeta // in, none, converted
-	var cret *C.GstStructure   // return, none, converted
+	var cret *C.GstStructure   // return, borrow, converted
 
 	carg0 = (*C.GstCustomMeta)(UnsafeCustomMetaToGlibNone(meta))
 
@@ -33876,7 +33883,8 @@ func (meta *CustomMeta) GetStructure() *Structure {
 
 	var goret *Structure
 
-	goret = UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+	goret = UnsafeStructureFromGlibBorrow(unsafe.Pointer(cret))
+	runtime.AddCleanup(goret, func(_ *CustomMeta) {}, meta)
 
 	return goret
 }
