@@ -34,7 +34,7 @@ jobs:
       - name: Check formatting
         run: |
           files=$(gofmt -l .)
-          if [[ -z "$files" ]]; then
+          if [[ -n "$files" ]]; then
             echo "Unformatted files:"
             echo "$files"
             exit 1
