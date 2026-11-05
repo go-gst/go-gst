@@ -16065,7 +16065,8 @@ type VideoChromaResample struct {
 
 // videoChromaResample is the struct that's finalized
 type videoChromaResample struct {
-	native *C.GstVideoChromaResample
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeVideoChromaResamplerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -16073,7 +16074,7 @@ func (v *VideoChromaResample) instance() *C.GstVideoChromaResample {
 	if v == nil {
 		return nil
 	}
-	return v.native
+	return (*C.GstVideoChromaResample)(v.native)
 }
 
 // UnsafeVideoChromaResamplerFromGlibBorrow is used to convert raw C.GstVideoChromaResample pointers to go. This is used by the bindings internally.
@@ -16081,7 +16082,7 @@ func UnsafeVideoChromaResamplerFromGlibBorrow(p unsafe.Pointer) *VideoChromaResa
 	if p == nil {
 		return nil
 	}
-	return &VideoChromaResample{&videoChromaResample{(*C.GstVideoChromaResample)(p)}}
+	return &VideoChromaResample{&videoChromaResample{p}}
 }
 
 // UnsafeVideoChromaResamplerFromGlibNone is used to convert raw C.GstVideoChromaResample pointers to go without transferring ownership. This is used by the bindings internally.
@@ -16104,7 +16105,7 @@ func UnsafeVideoChromaResamplerFromGlibFull(p unsafe.Pointer) *VideoChromaResamp
 	runtime.SetFinalizer(
 		wrapped.videoChromaResample,
 		func(intern *videoChromaResample) {
-			C.gst_video_chroma_resample_free(intern.native)
+			C.gst_video_chroma_resample_free((*C.GstVideoChromaResample)(intern.native))
 		},
 	)
 	return wrapped
@@ -16114,7 +16115,7 @@ func UnsafeVideoChromaResamplerFromGlibFull(p unsafe.Pointer) *VideoChromaResamp
 //
 // After this is called, no other method on [VideoChromaResample] is expected to work anymore.
 func UnsafeVideoChromaResampleFree(v *VideoChromaResample) {
-	C.gst_video_chroma_resample_free(v.native)
+	C.gst_video_chroma_resample_free((*C.GstVideoChromaResample)(v.native))
 	runtime.SetFinalizer(v.videoChromaResample, nil)
 }
 
@@ -16965,7 +16966,8 @@ type VideoConverter struct {
 
 // videoConverter is the struct that's finalized
 type videoConverter struct {
-	native *C.GstVideoConverter
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeVideoConverterToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -16973,7 +16975,7 @@ func (v *VideoConverter) instance() *C.GstVideoConverter {
 	if v == nil {
 		return nil
 	}
-	return v.native
+	return (*C.GstVideoConverter)(v.native)
 }
 
 // UnsafeVideoConverterFromGlibBorrow is used to convert raw C.GstVideoConverter pointers to go. This is used by the bindings internally.
@@ -16981,7 +16983,7 @@ func UnsafeVideoConverterFromGlibBorrow(p unsafe.Pointer) *VideoConverter {
 	if p == nil {
 		return nil
 	}
-	return &VideoConverter{&videoConverter{(*C.GstVideoConverter)(p)}}
+	return &VideoConverter{&videoConverter{p}}
 }
 
 // UnsafeVideoConverterFromGlibNone is used to convert raw C.GstVideoConverter pointers to go without transferring ownership. This is used by the bindings internally.
@@ -17004,7 +17006,7 @@ func UnsafeVideoConverterFromGlibFull(p unsafe.Pointer) *VideoConverter {
 	runtime.SetFinalizer(
 		wrapped.videoConverter,
 		func(intern *videoConverter) {
-			C.gst_video_converter_free(intern.native)
+			C.gst_video_converter_free((*C.GstVideoConverter)(intern.native))
 		},
 	)
 	return wrapped
@@ -17014,7 +17016,7 @@ func UnsafeVideoConverterFromGlibFull(p unsafe.Pointer) *VideoConverter {
 //
 // After this is called, no other method on [VideoConverter] is expected to work anymore.
 func UnsafeVideoConverterFree(v *VideoConverter) {
-	C.gst_video_converter_free(v.native)
+	C.gst_video_converter_free((*C.GstVideoConverter)(v.native))
 	runtime.SetFinalizer(v.videoConverter, nil)
 }
 
@@ -17392,7 +17394,8 @@ type VideoDither struct {
 
 // videoDither is the struct that's finalized
 type videoDither struct {
-	native *C.GstVideoDither
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeVideoDitherToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -17400,7 +17403,7 @@ func (v *VideoDither) instance() *C.GstVideoDither {
 	if v == nil {
 		return nil
 	}
-	return v.native
+	return (*C.GstVideoDither)(v.native)
 }
 
 // UnsafeVideoDitherFromGlibBorrow is used to convert raw C.GstVideoDither pointers to go. This is used by the bindings internally.
@@ -17408,7 +17411,7 @@ func UnsafeVideoDitherFromGlibBorrow(p unsafe.Pointer) *VideoDither {
 	if p == nil {
 		return nil
 	}
-	return &VideoDither{&videoDither{(*C.GstVideoDither)(p)}}
+	return &VideoDither{&videoDither{p}}
 }
 
 // UnsafeVideoDitherFromGlibNone is used to convert raw C.GstVideoDither pointers to go without transferring ownership. This is used by the bindings internally.
@@ -17431,7 +17434,7 @@ func UnsafeVideoDitherFromGlibFull(p unsafe.Pointer) *VideoDither {
 	runtime.SetFinalizer(
 		wrapped.videoDither,
 		func(intern *videoDither) {
-			C.gst_video_dither_free(intern.native)
+			C.gst_video_dither_free((*C.GstVideoDither)(intern.native))
 		},
 	)
 	return wrapped
@@ -17441,7 +17444,7 @@ func UnsafeVideoDitherFromGlibFull(p unsafe.Pointer) *VideoDither {
 //
 // After this is called, no other method on [VideoDither] is expected to work anymore.
 func UnsafeVideoDitherFree(v *VideoDither) {
-	C.gst_video_dither_free(v.native)
+	C.gst_video_dither_free((*C.GstVideoDither)(v.native))
 	runtime.SetFinalizer(v.videoDither, nil)
 }
 
@@ -19020,7 +19023,8 @@ type VideoOverlayComposition struct {
 
 // videoOverlayComposition is the struct that's finalized
 type videoOverlayComposition struct {
-	native *C.GstVideoOverlayComposition
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeVideoOverlayCompositionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -19028,7 +19032,7 @@ func (v *VideoOverlayComposition) instance() *C.GstVideoOverlayComposition {
 	if v == nil {
 		return nil
 	}
-	return v.native
+	return (*C.GstVideoOverlayComposition)(v.native)
 }
 
 var _ gobject.GoValueInitializer = (*VideoOverlayComposition)(nil)
@@ -19051,7 +19055,7 @@ func UnsafeVideoOverlayCompositionFromGlibBorrow(p unsafe.Pointer) *VideoOverlay
 	if p == nil {
 		return nil
 	}
-	return &VideoOverlayComposition{&videoOverlayComposition{(*C.GstVideoOverlayComposition)(p)}}
+	return &VideoOverlayComposition{&videoOverlayComposition{p}}
 }
 
 // UnsafeVideoOverlayCompositionFromGlibNone is used to convert raw C.GstVideoOverlayComposition pointers to go without transferring ownership. This is used by the bindings internally.
@@ -19455,7 +19459,8 @@ type VideoOverlayRectangle struct {
 
 // videoOverlayRectangle is the struct that's finalized
 type videoOverlayRectangle struct {
-	native *C.GstVideoOverlayRectangle
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeVideoOverlayRectangleToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -19463,7 +19468,7 @@ func (v *VideoOverlayRectangle) instance() *C.GstVideoOverlayRectangle {
 	if v == nil {
 		return nil
 	}
-	return v.native
+	return (*C.GstVideoOverlayRectangle)(v.native)
 }
 
 var _ gobject.GoValueInitializer = (*VideoOverlayRectangle)(nil)
@@ -19486,7 +19491,7 @@ func UnsafeVideoOverlayRectangleFromGlibBorrow(p unsafe.Pointer) *VideoOverlayRe
 	if p == nil {
 		return nil
 	}
-	return &VideoOverlayRectangle{&videoOverlayRectangle{(*C.GstVideoOverlayRectangle)(p)}}
+	return &VideoOverlayRectangle{&videoOverlayRectangle{p}}
 }
 
 // UnsafeVideoOverlayRectangleFromGlibNone is used to convert raw C.GstVideoOverlayRectangle pointers to go without transferring ownership. This is used by the bindings internally.
@@ -20320,7 +20325,8 @@ type VideoScaler struct {
 
 // videoScaler is the struct that's finalized
 type videoScaler struct {
-	native *C.GstVideoScaler
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeVideoScalerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -20328,7 +20334,7 @@ func (v *VideoScaler) instance() *C.GstVideoScaler {
 	if v == nil {
 		return nil
 	}
-	return v.native
+	return (*C.GstVideoScaler)(v.native)
 }
 
 // UnsafeVideoScalerFromGlibBorrow is used to convert raw C.GstVideoScaler pointers to go. This is used by the bindings internally.
@@ -20336,7 +20342,7 @@ func UnsafeVideoScalerFromGlibBorrow(p unsafe.Pointer) *VideoScaler {
 	if p == nil {
 		return nil
 	}
-	return &VideoScaler{&videoScaler{(*C.GstVideoScaler)(p)}}
+	return &VideoScaler{&videoScaler{p}}
 }
 
 // UnsafeVideoScalerFromGlibNone is used to convert raw C.GstVideoScaler pointers to go without transferring ownership. This is used by the bindings internally.
@@ -20359,7 +20365,7 @@ func UnsafeVideoScalerFromGlibFull(p unsafe.Pointer) *VideoScaler {
 	runtime.SetFinalizer(
 		wrapped.videoScaler,
 		func(intern *videoScaler) {
-			C.gst_video_scaler_free(intern.native)
+			C.gst_video_scaler_free((*C.GstVideoScaler)(intern.native))
 		},
 	)
 	return wrapped
@@ -20369,7 +20375,7 @@ func UnsafeVideoScalerFromGlibFull(p unsafe.Pointer) *VideoScaler {
 //
 // After this is called, no other method on [VideoScaler] is expected to work anymore.
 func UnsafeVideoScalerFree(v *VideoScaler) {
-	C.gst_video_scaler_free(v.native)
+	C.gst_video_scaler_free((*C.GstVideoScaler)(v.native))
 	runtime.SetFinalizer(v.videoScaler, nil)
 }
 
@@ -21269,7 +21275,8 @@ type VideoVBIEncoder struct {
 
 // videoVBIEncoder is the struct that's finalized
 type videoVBIEncoder struct {
-	native *C.GstVideoVBIEncoder
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeVideoVBIEncoderToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -21277,7 +21284,7 @@ func (v *VideoVBIEncoder) instance() *C.GstVideoVBIEncoder {
 	if v == nil {
 		return nil
 	}
-	return v.native
+	return (*C.GstVideoVBIEncoder)(v.native)
 }
 
 var _ gobject.GoValueInitializer = (*VideoVBIEncoder)(nil)
@@ -21300,7 +21307,7 @@ func UnsafeVideoVBIEncoderFromGlibBorrow(p unsafe.Pointer) *VideoVBIEncoder {
 	if p == nil {
 		return nil
 	}
-	return &VideoVBIEncoder{&videoVBIEncoder{(*C.GstVideoVBIEncoder)(p)}}
+	return &VideoVBIEncoder{&videoVBIEncoder{p}}
 }
 
 // UnsafeVideoVBIEncoderFromGlibNone is used to convert raw C.GstVideoVBIEncoder pointers to go without transferring ownership. This is used by the bindings internally.
@@ -21322,7 +21329,7 @@ func UnsafeVideoVBIEncoderFromGlibFull(p unsafe.Pointer) *VideoVBIEncoder {
 	runtime.SetFinalizer(
 		wrapped.videoVBIEncoder,
 		func(intern *videoVBIEncoder) {
-			C.gst_video_vbi_encoder_free(intern.native)
+			C.gst_video_vbi_encoder_free((*C.GstVideoVBIEncoder)(intern.native))
 		},
 	)
 	return wrapped
@@ -21332,7 +21339,7 @@ func UnsafeVideoVBIEncoderFromGlibFull(p unsafe.Pointer) *VideoVBIEncoder {
 //
 // After this is called, no other method on [VideoVBIEncoder] is expected to work anymore.
 func UnsafeVideoVBIEncoderFree(v *VideoVBIEncoder) {
-	C.gst_video_vbi_encoder_free(v.native)
+	C.gst_video_vbi_encoder_free((*C.GstVideoVBIEncoder)(v.native))
 	runtime.SetFinalizer(v.videoVBIEncoder, nil)
 }
 
@@ -21464,7 +21471,8 @@ type VideoVBIParser struct {
 
 // videoVBIParser is the struct that's finalized
 type videoVBIParser struct {
-	native *C.GstVideoVBIParser
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeVideoVBIParserToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -21472,7 +21480,7 @@ func (v *VideoVBIParser) instance() *C.GstVideoVBIParser {
 	if v == nil {
 		return nil
 	}
-	return v.native
+	return (*C.GstVideoVBIParser)(v.native)
 }
 
 var _ gobject.GoValueInitializer = (*VideoVBIParser)(nil)
@@ -21495,7 +21503,7 @@ func UnsafeVideoVBIParserFromGlibBorrow(p unsafe.Pointer) *VideoVBIParser {
 	if p == nil {
 		return nil
 	}
-	return &VideoVBIParser{&videoVBIParser{(*C.GstVideoVBIParser)(p)}}
+	return &VideoVBIParser{&videoVBIParser{p}}
 }
 
 // UnsafeVideoVBIParserFromGlibNone is used to convert raw C.GstVideoVBIParser pointers to go without transferring ownership. This is used by the bindings internally.
@@ -21517,7 +21525,7 @@ func UnsafeVideoVBIParserFromGlibFull(p unsafe.Pointer) *VideoVBIParser {
 	runtime.SetFinalizer(
 		wrapped.videoVBIParser,
 		func(intern *videoVBIParser) {
-			C.gst_video_vbi_parser_free(intern.native)
+			C.gst_video_vbi_parser_free((*C.GstVideoVBIParser)(intern.native))
 		},
 	)
 	return wrapped
@@ -21527,7 +21535,7 @@ func UnsafeVideoVBIParserFromGlibFull(p unsafe.Pointer) *VideoVBIParser {
 //
 // After this is called, no other method on [VideoVBIParser] is expected to work anymore.
 func UnsafeVideoVBIParserFree(v *VideoVBIParser) {
-	C.gst_video_vbi_parser_free(v.native)
+	C.gst_video_vbi_parser_free((*C.GstVideoVBIParser)(v.native))
 	runtime.SetFinalizer(v.videoVBIParser, nil)
 }
 
