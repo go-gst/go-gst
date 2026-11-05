@@ -6038,7 +6038,8 @@ type EncodingAudioProfileClass struct {
 
 // encodingAudioProfileClass is the struct that's finalized
 type encodingAudioProfileClass struct {
-	native *C.GstEncodingAudioProfileClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeEncodingAudioProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6046,7 +6047,7 @@ func (e *EncodingAudioProfileClass) instance() *C.GstEncodingAudioProfileClass {
 	if e == nil {
 		return nil
 	}
-	return e.native
+	return (*C.GstEncodingAudioProfileClass)(e.native)
 }
 
 // UnsafeEncodingAudioProfileClassFromGlibBorrow is used to convert raw C.GstEncodingAudioProfileClass pointers to go. This is used by the bindings internally.
@@ -6054,7 +6055,7 @@ func UnsafeEncodingAudioProfileClassFromGlibBorrow(p unsafe.Pointer) *EncodingAu
 	if p == nil {
 		return nil
 	}
-	return &EncodingAudioProfileClass{&encodingAudioProfileClass{(*C.GstEncodingAudioProfileClass)(p)}}
+	return &EncodingAudioProfileClass{&encodingAudioProfileClass{p}}
 }
 
 // UnsafeEncodingAudioProfileClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -6093,7 +6094,8 @@ type EncodingContainerProfileClass struct {
 
 // encodingContainerProfileClass is the struct that's finalized
 type encodingContainerProfileClass struct {
-	native *C.GstEncodingContainerProfileClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeEncodingContainerProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6101,7 +6103,7 @@ func (e *EncodingContainerProfileClass) instance() *C.GstEncodingContainerProfil
 	if e == nil {
 		return nil
 	}
-	return e.native
+	return (*C.GstEncodingContainerProfileClass)(e.native)
 }
 
 // UnsafeEncodingContainerProfileClassFromGlibBorrow is used to convert raw C.GstEncodingContainerProfileClass pointers to go. This is used by the bindings internally.
@@ -6109,7 +6111,7 @@ func UnsafeEncodingContainerProfileClassFromGlibBorrow(p unsafe.Pointer) *Encodi
 	if p == nil {
 		return nil
 	}
-	return &EncodingContainerProfileClass{&encodingContainerProfileClass{(*C.GstEncodingContainerProfileClass)(p)}}
+	return &EncodingContainerProfileClass{&encodingContainerProfileClass{p}}
 }
 
 // UnsafeEncodingContainerProfileClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -6148,7 +6150,8 @@ type EncodingProfileClass struct {
 
 // encodingProfileClass is the struct that's finalized
 type encodingProfileClass struct {
-	native *C.GstEncodingProfileClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeEncodingProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6156,7 +6159,7 @@ func (e *EncodingProfileClass) instance() *C.GstEncodingProfileClass {
 	if e == nil {
 		return nil
 	}
-	return e.native
+	return (*C.GstEncodingProfileClass)(e.native)
 }
 
 // UnsafeEncodingProfileClassFromGlibBorrow is used to convert raw C.GstEncodingProfileClass pointers to go. This is used by the bindings internally.
@@ -6164,7 +6167,7 @@ func UnsafeEncodingProfileClassFromGlibBorrow(p unsafe.Pointer) *EncodingProfile
 	if p == nil {
 		return nil
 	}
-	return &EncodingProfileClass{&encodingProfileClass{(*C.GstEncodingProfileClass)(p)}}
+	return &EncodingProfileClass{&encodingProfileClass{p}}
 }
 
 // UnsafeEncodingProfileClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -6203,7 +6206,8 @@ type EncodingVideoProfileClass struct {
 
 // encodingVideoProfileClass is the struct that's finalized
 type encodingVideoProfileClass struct {
-	native *C.GstEncodingVideoProfileClass
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeEncodingVideoProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6211,7 +6215,7 @@ func (e *EncodingVideoProfileClass) instance() *C.GstEncodingVideoProfileClass {
 	if e == nil {
 		return nil
 	}
-	return e.native
+	return (*C.GstEncodingVideoProfileClass)(e.native)
 }
 
 // UnsafeEncodingVideoProfileClassFromGlibBorrow is used to convert raw C.GstEncodingVideoProfileClass pointers to go. This is used by the bindings internally.
@@ -6219,7 +6223,7 @@ func UnsafeEncodingVideoProfileClassFromGlibBorrow(p unsafe.Pointer) *EncodingVi
 	if p == nil {
 		return nil
 	}
-	return &EncodingVideoProfileClass{&encodingVideoProfileClass{(*C.GstEncodingVideoProfileClass)(p)}}
+	return &EncodingVideoProfileClass{&encodingVideoProfileClass{p}}
 }
 
 // UnsafeEncodingVideoProfileClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
@@ -6256,7 +6260,8 @@ type InstallPluginsContext struct {
 
 // installPluginsContext is the struct that's finalized
 type installPluginsContext struct {
-	native *C.GstInstallPluginsContext
+	// Use a GC-scanned pointer so live tiny allocations cannot pin the finalizer.
+	native unsafe.Pointer
 }
 
 // UnsafeInstallPluginsContextToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6264,7 +6269,7 @@ func (i *InstallPluginsContext) instance() *C.GstInstallPluginsContext {
 	if i == nil {
 		return nil
 	}
-	return i.native
+	return (*C.GstInstallPluginsContext)(i.native)
 }
 
 var _ gobject.GoValueInitializer = (*InstallPluginsContext)(nil)
@@ -6287,7 +6292,7 @@ func UnsafeInstallPluginsContextFromGlibBorrow(p unsafe.Pointer) *InstallPlugins
 	if p == nil {
 		return nil
 	}
-	return &InstallPluginsContext{&installPluginsContext{(*C.GstInstallPluginsContext)(p)}}
+	return &InstallPluginsContext{&installPluginsContext{p}}
 }
 
 // UnsafeInstallPluginsContextFromGlibNone is used to convert raw C.GstInstallPluginsContext pointers to go without transferring ownership. This is used by the bindings internally.
@@ -6309,7 +6314,7 @@ func UnsafeInstallPluginsContextFromGlibFull(p unsafe.Pointer) *InstallPluginsCo
 	runtime.SetFinalizer(
 		wrapped.installPluginsContext,
 		func(intern *installPluginsContext) {
-			C.gst_install_plugins_context_free(intern.native)
+			C.gst_install_plugins_context_free((*C.GstInstallPluginsContext)(intern.native))
 		},
 	)
 	return wrapped
@@ -6319,7 +6324,7 @@ func UnsafeInstallPluginsContextFromGlibFull(p unsafe.Pointer) *InstallPluginsCo
 //
 // After this is called, no other method on [InstallPluginsContext] is expected to work anymore.
 func UnsafeInstallPluginsContextFree(i *InstallPluginsContext) {
-	C.gst_install_plugins_context_free(i.native)
+	C.gst_install_plugins_context_free((*C.GstInstallPluginsContext)(i.native))
 	runtime.SetFinalizer(i.installPluginsContext, nil)
 }
 
