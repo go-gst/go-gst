@@ -41337,7 +41337,7 @@ func UnsafePadProbeInfoToGlibFull(p *PadProbeInfo) unsafe.Pointer {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#gst_pad_probe_info_get_buffer
 func (info *PadProbeInfo) GetBuffer() *Buffer {
 	var carg0 *C.GstPadProbeInfo // in, none, converted
-	var cret *C.GstBuffer        // return, none, converted, nullable
+	var cret *C.GstBuffer        // return, borrow, converted, nullable
 
 	carg0 = (*C.GstPadProbeInfo)(UnsafePadProbeInfoToGlibNone(info))
 
@@ -41347,7 +41347,8 @@ func (info *PadProbeInfo) GetBuffer() *Buffer {
 	var goret *Buffer
 
 	if cret != nil {
-		goret = UnsafeBufferFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeBufferFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *PadProbeInfo) {}, info)
 	}
 
 	return goret
@@ -41358,7 +41359,7 @@ func (info *PadProbeInfo) GetBuffer() *Buffer {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#gst_pad_probe_info_get_buffer_list
 func (info *PadProbeInfo) GetBufferList() *BufferList {
 	var carg0 *C.GstPadProbeInfo // in, none, converted
-	var cret *C.GstBufferList    // return, none, converted, nullable
+	var cret *C.GstBufferList    // return, borrow, converted, nullable
 
 	carg0 = (*C.GstPadProbeInfo)(UnsafePadProbeInfoToGlibNone(info))
 
@@ -41368,7 +41369,8 @@ func (info *PadProbeInfo) GetBufferList() *BufferList {
 	var goret *BufferList
 
 	if cret != nil {
-		goret = UnsafeBufferListFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeBufferListFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *PadProbeInfo) {}, info)
 	}
 
 	return goret
@@ -41379,7 +41381,7 @@ func (info *PadProbeInfo) GetBufferList() *BufferList {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#gst_pad_probe_info_get_event
 func (info *PadProbeInfo) GetEvent() *Event {
 	var carg0 *C.GstPadProbeInfo // in, none, converted
-	var cret *C.GstEvent         // return, none, converted, nullable
+	var cret *C.GstEvent         // return, borrow, converted, nullable
 
 	carg0 = (*C.GstPadProbeInfo)(UnsafePadProbeInfoToGlibNone(info))
 
@@ -41389,7 +41391,8 @@ func (info *PadProbeInfo) GetEvent() *Event {
 	var goret *Event
 
 	if cret != nil {
-		goret = UnsafeEventFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeEventFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *PadProbeInfo) {}, info)
 	}
 
 	return goret
@@ -41400,7 +41403,7 @@ func (info *PadProbeInfo) GetEvent() *Event {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#gst_pad_probe_info_get_query
 func (info *PadProbeInfo) GetQuery() *Query {
 	var carg0 *C.GstPadProbeInfo // in, none, converted
-	var cret *C.GstQuery         // return, none, converted, nullable
+	var cret *C.GstQuery         // return, borrow, converted, nullable
 
 	carg0 = (*C.GstPadProbeInfo)(UnsafePadProbeInfoToGlibNone(info))
 
@@ -41410,7 +41413,8 @@ func (info *PadProbeInfo) GetQuery() *Query {
 	var goret *Query
 
 	if cret != nil {
-		goret = UnsafeQueryFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeQueryFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *PadProbeInfo) {}, info)
 	}
 
 	return goret
