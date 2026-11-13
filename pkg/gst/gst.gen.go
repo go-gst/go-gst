@@ -30222,6 +30222,27 @@ func (buf1 *Buffer) AppendRegion(buf2 *Buffer, offset int, size int) *Buffer {
 	return goret
 }
 
+// Copy wraps gst_buffer_copy
+//
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#gst_buffer_copy
+func (buf *Buffer) Copy() *Buffer {
+	var carg0 *C.GstBuffer // in, none, converted
+	var cret *C.GstBuffer  // return, full, converted, nullable
+
+	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buf))
+
+	cret = C.gst_buffer_copy(carg0)
+	runtime.KeepAlive(buf)
+
+	var goret *Buffer
+
+	if cret != nil {
+		goret = UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
 // CopyDeep wraps gst_buffer_copy_deep
 //
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#gst_buffer_copy_deep
@@ -31209,6 +31230,25 @@ func (list *BufferList) CalculateSize() uint {
 	var goret uint
 
 	goret = uint(cret)
+
+	return goret
+}
+
+// Copy wraps gst_buffer_list_copy
+//
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbufferlist.html#gst_buffer_list_copy
+func (list *BufferList) Copy() *BufferList {
+	var carg0 *C.GstBufferList // in, none, converted
+	var cret *C.GstBufferList  // return, full, converted
+
+	carg0 = (*C.GstBufferList)(UnsafeBufferListToGlibNone(list))
+
+	cret = C.gst_buffer_list_copy(carg0)
+	runtime.KeepAlive(list)
+
+	var goret *BufferList
+
+	goret = UnsafeBufferListFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -36289,6 +36329,25 @@ func NewEventTocSelect(uid string) *Event {
 	return goret
 }
 
+// Copy wraps gst_event_copy
+//
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#gst_event_copy
+func (event *Event) Copy() *Event {
+	var carg0 *C.GstEvent // in, none, converted
+	var cret *C.GstEvent  // return, full, converted
+
+	carg0 = (*C.GstEvent)(UnsafeEventToGlibNone(event))
+
+	cret = C.gst_event_copy(carg0)
+	runtime.KeepAlive(event)
+
+	var goret *Event
+
+	goret = UnsafeEventFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
 // CopySegment wraps gst_event_copy_segment
 //
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#gst_event_copy_segment
@@ -41337,7 +41396,7 @@ func UnsafePadProbeInfoToGlibFull(p *PadProbeInfo) unsafe.Pointer {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#gst_pad_probe_info_get_buffer
 func (info *PadProbeInfo) GetBuffer() *Buffer {
 	var carg0 *C.GstPadProbeInfo // in, none, converted
-	var cret *C.GstBuffer        // return, none, converted, nullable
+	var cret *C.GstBuffer        // return, borrow, converted, nullable
 
 	carg0 = (*C.GstPadProbeInfo)(UnsafePadProbeInfoToGlibNone(info))
 
@@ -41347,7 +41406,8 @@ func (info *PadProbeInfo) GetBuffer() *Buffer {
 	var goret *Buffer
 
 	if cret != nil {
-		goret = UnsafeBufferFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeBufferFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *PadProbeInfo) {}, info)
 	}
 
 	return goret
@@ -41358,7 +41418,7 @@ func (info *PadProbeInfo) GetBuffer() *Buffer {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#gst_pad_probe_info_get_buffer_list
 func (info *PadProbeInfo) GetBufferList() *BufferList {
 	var carg0 *C.GstPadProbeInfo // in, none, converted
-	var cret *C.GstBufferList    // return, none, converted, nullable
+	var cret *C.GstBufferList    // return, borrow, converted, nullable
 
 	carg0 = (*C.GstPadProbeInfo)(UnsafePadProbeInfoToGlibNone(info))
 
@@ -41368,7 +41428,8 @@ func (info *PadProbeInfo) GetBufferList() *BufferList {
 	var goret *BufferList
 
 	if cret != nil {
-		goret = UnsafeBufferListFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeBufferListFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *PadProbeInfo) {}, info)
 	}
 
 	return goret
@@ -41379,7 +41440,7 @@ func (info *PadProbeInfo) GetBufferList() *BufferList {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#gst_pad_probe_info_get_event
 func (info *PadProbeInfo) GetEvent() *Event {
 	var carg0 *C.GstPadProbeInfo // in, none, converted
-	var cret *C.GstEvent         // return, none, converted, nullable
+	var cret *C.GstEvent         // return, borrow, converted, nullable
 
 	carg0 = (*C.GstPadProbeInfo)(UnsafePadProbeInfoToGlibNone(info))
 
@@ -41389,7 +41450,8 @@ func (info *PadProbeInfo) GetEvent() *Event {
 	var goret *Event
 
 	if cret != nil {
-		goret = UnsafeEventFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeEventFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *PadProbeInfo) {}, info)
 	}
 
 	return goret
@@ -41400,7 +41462,7 @@ func (info *PadProbeInfo) GetEvent() *Event {
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#gst_pad_probe_info_get_query
 func (info *PadProbeInfo) GetQuery() *Query {
 	var carg0 *C.GstPadProbeInfo // in, none, converted
-	var cret *C.GstQuery         // return, none, converted, nullable
+	var cret *C.GstQuery         // return, borrow, converted, nullable
 
 	carg0 = (*C.GstPadProbeInfo)(UnsafePadProbeInfoToGlibNone(info))
 
@@ -41410,7 +41472,8 @@ func (info *PadProbeInfo) GetQuery() *Query {
 	var goret *Query
 
 	if cret != nil {
-		goret = UnsafeQueryFromGlibNone(unsafe.Pointer(cret))
+		goret = UnsafeQueryFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *PadProbeInfo) {}, info)
 	}
 
 	return goret
@@ -43339,6 +43402,25 @@ func (query *Query) AddSchedulingMode(mode PadMode) {
 	C.gst_query_add_scheduling_mode(carg0, carg1)
 	runtime.KeepAlive(query)
 	runtime.KeepAlive(mode)
+}
+
+// Copy wraps gst_query_copy
+//
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#gst_query_copy
+func (q *Query) Copy() *Query {
+	var carg0 *C.GstQuery // in, none, converted
+	var cret *C.GstQuery  // return, full, converted
+
+	carg0 = (*C.GstQuery)(UnsafeQueryToGlibNone(q))
+
+	cret = C.gst_query_copy(carg0)
+	runtime.KeepAlive(q)
+
+	var goret *Query
+
+	goret = UnsafeQueryFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
 }
 
 // FindAllocationMeta wraps gst_query_find_allocation_meta

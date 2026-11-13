@@ -40,6 +40,10 @@ var Data = genmain.Data{
 
 	Preprocessors: []gir.Preprocessor{
 		gir.MustIntrospect("Gst-1.Message.copy"),
+		gir.MustIntrospect("Gst-1.Buffer.copy"),
+		gir.MustIntrospect("Gst-1.BufferList.copy"),
+		gir.MustIntrospect("Gst-1.Event.copy"),
+		gir.MustIntrospect("Gst-1.Query.copy"),
 
 		// Bitfield has a member of same name:
 		gir.PreprocessorFunc(func(r gir.Repositories) {
@@ -107,6 +111,8 @@ var Data = genmain.Data{
 		MarkSDPMessageGettersAsBorrowed(),
 
 		MarkMpegtsSectionGettersAsBorrowed(),
+
+		MarkPadProbeInfoGettersAsBorrowed(),
 
 		GstLogFunctionDebugBorrows(),
 
@@ -528,6 +534,24 @@ func MarkMpegtsSectionGettersAsBorrowed() gir.Preprocessor {
 			f.ReturnValue.TransferOwnership.TransferOwnership = "borrow"
 			// all of them return NULL if an error happened, even where the GIR does not mark them nullable
 			f.ReturnValue.Nullable = true
+		}
+	})
+}
+
+// The data of a gst.PadProbeInfo is only valid during the probe callback, so its getters borrow
+func MarkPadProbeInfoGettersAsBorrowed() gir.Preprocessor {
+	return gir.PreprocessorFunc(func(r gir.Repositories) {
+		funcs := []string{
+			"Gst-1.PadProbeInfo.get_buffer",
+			"Gst-1.PadProbeInfo.get_buffer_list",
+			"Gst-1.PadProbeInfo.get_event",
+			"Gst-1.PadProbeInfo.get_query",
+		}
+
+		for _, fullfunc := range funcs {
+			f := r.FindFullType(fullfunc).(*gir.Method)
+
+			f.ReturnValue.TransferOwnership.TransferOwnership = "borrow"
 		}
 	})
 }
