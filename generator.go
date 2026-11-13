@@ -40,6 +40,10 @@ var Data = genmain.Data{
 
 	Preprocessors: []gir.Preprocessor{
 		gir.MustIntrospect("Gst-1.Message.copy"),
+		gir.MustIntrospect("Gst-1.Buffer.copy"),
+		gir.MustIntrospect("Gst-1.BufferList.copy"),
+		gir.MustIntrospect("Gst-1.Event.copy"),
+		gir.MustIntrospect("Gst-1.Query.copy"),
 
 		// Bitfield has a member of same name:
 		gir.PreprocessorFunc(func(r gir.Repositories) {

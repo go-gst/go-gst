@@ -30222,6 +30222,27 @@ func (buf1 *Buffer) AppendRegion(buf2 *Buffer, offset int, size int) *Buffer {
 	return goret
 }
 
+// Copy wraps gst_buffer_copy
+//
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#gst_buffer_copy
+func (buf *Buffer) Copy() *Buffer {
+	var carg0 *C.GstBuffer // in, none, converted
+	var cret *C.GstBuffer  // return, full, converted, nullable
+
+	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buf))
+
+	cret = C.gst_buffer_copy(carg0)
+	runtime.KeepAlive(buf)
+
+	var goret *Buffer
+
+	if cret != nil {
+		goret = UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
 // CopyDeep wraps gst_buffer_copy_deep
 //
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#gst_buffer_copy_deep
@@ -31209,6 +31230,25 @@ func (list *BufferList) CalculateSize() uint {
 	var goret uint
 
 	goret = uint(cret)
+
+	return goret
+}
+
+// Copy wraps gst_buffer_list_copy
+//
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbufferlist.html#gst_buffer_list_copy
+func (list *BufferList) Copy() *BufferList {
+	var carg0 *C.GstBufferList // in, none, converted
+	var cret *C.GstBufferList  // return, full, converted
+
+	carg0 = (*C.GstBufferList)(UnsafeBufferListToGlibNone(list))
+
+	cret = C.gst_buffer_list_copy(carg0)
+	runtime.KeepAlive(list)
+
+	var goret *BufferList
+
+	goret = UnsafeBufferListFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -36281,6 +36321,25 @@ func NewEventTocSelect(uid string) *Event {
 
 	cret = C.gst_event_new_toc_select(carg1)
 	runtime.KeepAlive(uid)
+
+	var goret *Event
+
+	goret = UnsafeEventFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// Copy wraps gst_event_copy
+//
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#gst_event_copy
+func (event *Event) Copy() *Event {
+	var carg0 *C.GstEvent // in, none, converted
+	var cret *C.GstEvent  // return, full, converted
+
+	carg0 = (*C.GstEvent)(UnsafeEventToGlibNone(event))
+
+	cret = C.gst_event_copy(carg0)
+	runtime.KeepAlive(event)
 
 	var goret *Event
 
@@ -43343,6 +43402,25 @@ func (query *Query) AddSchedulingMode(mode PadMode) {
 	C.gst_query_add_scheduling_mode(carg0, carg1)
 	runtime.KeepAlive(query)
 	runtime.KeepAlive(mode)
+}
+
+// Copy wraps gst_query_copy
+//
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#gst_query_copy
+func (q *Query) Copy() *Query {
+	var carg0 *C.GstQuery // in, none, converted
+	var cret *C.GstQuery  // return, full, converted
+
+	carg0 = (*C.GstQuery)(UnsafeQueryToGlibNone(q))
+
+	cret = C.gst_query_copy(carg0)
+	runtime.KeepAlive(q)
+
+	var goret *Query
+
+	goret = UnsafeQueryFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
 }
 
 // FindAllocationMeta wraps gst_query_find_allocation_meta

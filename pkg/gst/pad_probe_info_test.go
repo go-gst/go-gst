@@ -68,8 +68,7 @@ func writeThroughProbe(t *testing.T, buf *gst.Buffer) (takenWritable bool, recei
 		}
 		takenWritable = b.IsWritable()
 		if !takenWritable {
-			all := gst.BufferCopyBufferFlags | gst.BufferCopyTimestamps | gst.BufferCopyMeta | gst.BufferCopyMemory
-			b = b.CopyRegion(all, 0, b.GetSize())
+			b = b.Copy()
 		}
 		b.Memset(0, 0xff, 1)
 		info.SetBuffer(b)
