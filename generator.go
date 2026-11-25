@@ -269,6 +269,7 @@ var Data = genmain.Data{
 		typesystem.MarkAsManuallyExtended("Gst-1", "Element"),
 		typesystem.MarkAsManuallyExtended("Gst-1", "Bin"),
 		typesystem.MarkAsManuallyExtended("Gst-1", "Bus"),
+		typesystem.MarkAsManuallyExtended("Gst-1", "Pad"),
 		typesystem.MarkAsManuallyExtended("Gst-1", "ChildProxy"),
 		typesystem.MarkAsManuallyExtended("Gst-1", "TagSetter"),
 		typesystem.MarkAsManuallyExtended("GstApp-1", "AppSink"),

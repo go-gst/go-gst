@@ -12164,6 +12164,7 @@ var _ Pad = (*PadInstance)(nil)
 //
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GstPad
 type Pad interface {
+	PadExtManual // handwritten functions
 	Object
 	upcastToGstPad() *PadInstance
 
